@@ -1,4 +1,4 @@
-var productsByType = {
+var productsByType =  {
   "Encoder & Transcoder":[
     {"url":"/MakitoX4Enc",    "name":"Makito X4 Video Encoder"},
     {"url":"/Kraken",         "name":"Kraken Video Transcoder"},

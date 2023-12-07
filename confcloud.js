@@ -664,7 +664,7 @@ function confCloudJS() {
             $('#vp-js-desktop__navigation').width(val);
           //          if (val < 220)$('#vp-js-desktop__navigation').addClass('small');
           //          $('#sidebar-dragbar').css("left", val);
-            let val10 = val + 10;
+            let val10 = val + 20;
             $('#article-content').css("left", val10).css("width", "calc(100% - " + val10 + "px)");
           //          hideShowBreadcrumbs(val);
           }

@@ -3,9 +3,11 @@ function confCloudJS() {
 
     // Load the script
     var script = document.createElement("SCRIPT");
-    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
     script.type = 'text/javascript';
     script.onload = function() {
+//    script.addEventListener('load', () => {
+
       var productsByType =  {
         "Encoder & Transcoder": [
           {
@@ -803,5 +805,6 @@ function confCloudJS() {
           /* Searching */
           /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
-  }
+  });
+  document.head.appendChild(script);
 }

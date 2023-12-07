@@ -1,128 +1,356 @@
 var productsByType =  {
-  "Encoder & Transcoder":[
-    {"url":"/MakitoX4Enc",    "name":"Makito X4 Video Encoder"},
-    {"url":"/Kraken",         "name":"Kraken Video Transcoder"},
-    {"url":"/MakitoX1Enc",    "name":"Makito X1 Rugged Video Encoder"},
-    {"url":"/MakitoXEnc",     "name":"Makito X Video Encoder"},
-    {"url":"/MFXE",           "name":"Makito FX Video Encoder"},
-    {"url":"/MobileIPVideo",  "name":"Haivision Rack Video Encoder"},
-    {"url":"/EMS",            "name":"Haivision EMS Device Manager"},
-    {"url":"/Hardware",       "name":"Makito MB6/MB21 Chassis"}
+  "Encoder & Transcoder": [
+    {
+      "url": "/MakitoX4Enc",
+      "name": "Makito X4 Video Encoder"
+    },
+    {
+      "url": "/Kraken",
+      "name": "Kraken Video Transcoder"
+    },
+    {
+      "url": "/MakitoX1Enc",
+      "name": "Makito X1 Rugged Video Encoder"
+    },
+    {
+      "url": "/MakitoXEnc",
+      "name": "Makito X Video Encoder"
+    },
+    {
+      "url": "/MFXE",
+      "name": "Makito FX Video Encoder"
+    },
+    {
+      "url": "/MobileIPVideo",
+      "name": "Haivision Rack Video Encoder"
+    },
+    {
+      "url": "/EMS",
+      "name": "Haivision EMS Device Manager"
+    },
+    {
+      "url": "/Hardware",
+      "name": "Makito MB6/MB21 Chassis"
+    }
   ],
-  "Video Transmitter":[
-    {"url":"/MobileIPVideo/haivision-pro",   "name":"Haivision Pro"},
-    {"url":"/MobileIPVideo/haivision-air",   "name":"Haivision Air"},
-    {"url":"/MobileIPVideo/haivision-rack",  "name":"Haivision Rack Video Encoder"},
-    {"url":"/MJPiOS",                        "name":"Haivision MoJoPro Mobile App"},
-    {"url":"/MobileIPVideo/haivision-quad",  "name":"Haivision Quad Antenna"},
-    {"url":"/MobileIPVideo/data-plans",      "name":"Data Plans"}
+  "Video Transmitter": [
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Haivision Pro"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-air",
+      "name": "Haivision Air"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Haivision Rack Video Encoder"
+    },
+    {
+      "url": "/MJPiOS",
+      "name": "Haivision MoJoPro Mobile App"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-quad",
+      "name": "Haivision Quad Antenna"
+    },
+    {
+      "url": "/MobileIPVideo/data-plans",
+      "name": "Data Plans"
+    }
   ],
-  "Video Wall Technology":[
-    {"url":"/Command360",   "name":"Haivision Command 360"}
+  "Video Wall Technology": [
+    {
+      "url": "/Command360",
+      "name": "Haivision Command 360"
+    }
   ],
-  "IPTV":[
-    {"url":"/HMP",         "name":"Haivision Media Platform"},
-    {"url":"/HMG",         "name":"Haivision Media Gateway"},
-    {"url":"/SetTopBox",   "name":"Haivision Play Set-Top Boxes"},
-    {"url":"/PlayProiOS",  "name":"Haivision Play Pro iOS"},
-    {"url":"/HPPM",        "name":"Haivision Play Pro Android"},
-    {"url":"/HaiHelper",   "name":"Haivision Helper"}
+  "IPTV": [
+    {
+      "url": "/HMP",
+      "name": "Haivision Media Platform"
+    },
+    {
+      "url": "/HMG",
+      "name": "Haivision Media Gateway"
+    },
+    {
+      "url": "/SetTopBox",
+      "name": "Haivision Play Set-Top Boxes"
+    },
+    {
+      "url": "/PlayProiOS",
+      "name": "Haivision Play Pro iOS"
+    },
+    {
+      "url": "/HPPM",
+      "name": "Haivision Play Pro Android"
+    },
+    {
+      "url": "/HaiHelper",
+      "name": "Haivision Helper"
+    }
   ],
-  "Cloud & IP Gateway":[
-    {"url":"/Hub",                               "name":"Haivision Hub"},
-    {"url":"/MobileIPVideo/haivision-streamhub", "name":"Haivision StreamHub"},
-    {"url":"/MobileIPVideo/haivision-manager",   "name":"Haivision Manager"},
-    {"url":"/HMG",                               "name":"Haivision SRT Gateway"}
+  "Cloud & IP Gateway": [
+    {
+      "url": "/Hub",
+      "name": "Haivision Hub"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-streamhub",
+      "name": "Haivision StreamHub"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-manager",
+      "name": "Haivision Manager"
+    },
+    {
+      "url": "/HMG",
+      "name": "Haivision SRT Gateway"
+    }
   ],
-  "Decoder & Receiver":[
-    {"url":"/MobileIPVideo", "name":"Haivision StreamHub"},
-    {"url":"/MakitoX4Dec",   "name":"Makito X4 Decoder"},
-    {"url":"/MakitoXDec",    "name":"Makito X Decoder"},
-    {"url":"/EMS",           "name":"Haivision EMS Device Manager"},
-    {"url":"/Hardware",      "name":"Makito MB6/MB21 Chassis"}
+  "Decoder & Receiver": [
+    {
+      "url": "/MobileIPVideo",
+      "name": "Haivision StreamHub"
+    },
+    {
+      "url": "/MakitoX4Dec",
+      "name": "Makito X4 Decoder"
+    },
+    {
+      "url": "/MakitoXDec",
+      "name": "Makito X Decoder"
+    },
+    {
+      "url": "/EMS",
+      "name": "Haivision EMS Device Manager"
+    },
+    {
+      "url": "/Hardware",
+      "name": "Makito MB6/MB21 Chassis"
+    }
   ],
-  "Open source video streaming":[
-    {"url":"/additional-resources/srt-deployment-guide",   "name":"SRT Protocol"}
+  "Open source video streaming": [
+    {
+      "url": "/additional-resources/srt-deployment-guide",
+      "name": "SRT Protocol"
+    }
   ],
-  "Legacy":[
-    {"url":"/CDVR",      "name":"Connect DVR"},
-    {"url":"/CS",        "name":"CoolSign"},
-    {"url":"/Furnace",   "name":"Furnace"},
-    {"url":"/hai1000",   "name":"hai1000 Series"},
-    {"url":"/KB",        "name":"KB"},
-    {"url":"/LightFlow", "name":"LightFlow"},
-    {"url":"/MakitoDec", "name":"Makito Classic Decoder"},
-    {"url":"/MakitoEnc", "name":"Makito Classic Encoder"},
-    {"url":"/HPM",       "name":"Play Mobile"},
-    {"url":"/Torpedo",   "name":"Torpedo"}
+  "Legacy": [
+    {
+      "url": "/CDVR",
+      "name": "Connect DVR"
+    },
+    {
+      "url": "/CS",
+      "name": "CoolSign"
+    },
+    {
+      "url": "/Furnace",
+      "name": "Furnace"
+    },
+    {
+      "url": "/hai1000",
+      "name": "hai1000 Series"
+    },
+    {
+      "url": "/KB",
+      "name": "KB"
+    },
+    {
+      "url": "/LightFlow",
+      "name": "LightFlow"
+    },
+    {
+      "url": "/MakitoDec",
+      "name": "Makito Classic Decoder"
+    },
+    {
+      "url": "/MakitoEnc",
+      "name": "Makito Classic Encoder"
+    },
+    {
+      "url": "/HPM",
+      "name": "Play Mobile"
+    },
+    {
+      "url": "/Torpedo",
+      "name": "Torpedo"
+    }
   ]
 };
 
 var productsByFamily = {
-  "Air":[
-    {"url":"/MobileIPVideo/haivision-air",    "name":"Air 200, 220, 220-5G, 320e-5G"},
-    {"url":"/MobileIPVideo/beonair",         "name":"BeOnAir"}
+  "Air": [
+    {
+      "url": "/MobileIPVideo/haivision-air",
+      "name": "Air 200, 220, 220-5G, 320e-5G"
+    },
+    {
+      "url": "/MobileIPVideo/beonair",
+      "name": "BeOnAir"
+    }
   ],
-  "Command 360":[
-    {"url":"/Command360",    "name":"Command 360"}
+  "Command 360": [
+    {
+      "url": "/Command360",
+      "name": "Command 360"
+    }
   ],
-  "Data Plans":[
-    {"url":"/MobileIPVideo/data-plans",    "name":"Data Plans"}
+  "Data Plans": [
+    {
+      "url": "/MobileIPVideo/data-plans",
+      "name": "Data Plans"
+    }
   ],
-  "EMS":[
-    {"url":"/EMS",    "name":"EMS"}
+  "EMS": [
+    {
+      "url": "/EMS",
+      "name": "EMS"
+    }
   ],
-  "Haivision Hub":[
-    {"url":"/Hub",    "name":"Haivision Hub"}
+  "Haivision Hub": [
+    {
+      "url": "/Hub",
+      "name": "Haivision Hub"
+    }
   ],
-  "Kraken":[
-    {"url":"/Kraken",    "name":"Kraken"}
+  "Kraken": [
+    {
+      "url": "/Kraken",
+      "name": "Kraken"
+    }
   ],
-  "Manager":[
-    {"url":"/MobileIPVideo/haivision-manager",    "name":"Manager"}
+  "Manager": [
+    {
+      "url": "/MobileIPVideo/haivision-manager",
+      "name": "Manager"
+    }
   ],
-  "Makito":[
-    {"url":"/MFXE",        "name":"FX Encoder"},
-    {"url":"/Hardware",    "name":"MB6/MB21 Chassis"},
-    {"url":"/MakitoXDec",  "name":"X Decoder"},
-    {"url":"/MakitoXEnc",  "name":"X Encoder"},
-    {"url":"/MakitoX1Enc", "name":"X1 Rugged Encoder"},
-    {"url":"/MakitoX4Dec", "name":"X4 Decoder"},
-    {"url":"/MakitoX4Enc", "name":"X4 Encoder"}
+  "Makito": [
+    {
+      "url": "/MFXE",
+      "name": "FX Encoder"
+    },
+    {
+      "url": "/Hardware",
+      "name": "MB6/MB21 Chassis"
+    },
+    {
+      "url": "/MakitoXDec",
+      "name": "X Decoder"
+    },
+    {
+      "url": "/MakitoXEnc",
+      "name": "X Encoder"
+    },
+    {
+      "url": "/MakitoX1Enc",
+      "name": "X1 Rugged Encoder"
+    },
+    {
+      "url": "/MakitoX4Dec",
+      "name": "X4 Decoder"
+    },
+    {
+      "url": "/MakitoX4Enc",
+      "name": "X4 Encoder"
+    }
   ],
-  "MoJoPro":[
-    {"url":"/MJPiOS",    "name":"MoJoPro"},
-    {"url":"/MobileIPVideo/beonair",    "name":"BeOnAir"}
+  "MoJoPro": [
+    {
+      "url": "/MJPiOS",
+      "name": "MoJoPro"
+    },
+    {
+      "url": "/MobileIPVideo/beonair",
+      "name": "BeOnAir"
+    }
   ],
-  "Pro":[
-    {"url":"/MobileIPVideo/haivision-pro",    "name":"Pro 3 (340, 360-5G, 380)"},
-    {"url":"/MobileIPVideo/haivision-pro",    "name":"Pro 4 (460)"}
+  "Pro": [
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Pro 3 (340, 360-5G, 380)"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Pro 4 (460)"
+    }
   ],
-  "Quad Antenna":[
-    {"url":"/MobileIPVideo/haivision-quad",    "name":"Quad Antenna"}
+  "Quad Antenna": [
+    {
+      "url": "/MobileIPVideo/haivision-quad",
+      "name": "Quad Antenna"
+    }
   ],
-  "Rack":[
-    {"url":"/MobileIPVideo/haivision-rack",    "name":"Rack 200/300"},
-    {"url":"/MobileIPVideo/haivision-rack",    "name":"Rack 400"}
+  "Rack": [
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Rack 200/300"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Rack 400"
+    }
   ],
-  "SRT":[
-    {"url":"/additional-resources/srt-deployment-guide",    "name":"SRT Deployment Guide"},
-    {"url":"/HMG",    "name":"RSRT Gateway"}
+  "SRT": [
+    {
+      "url": "/additional-resources/srt-deployment-guide",
+      "name": "SRT Deployment Guide"
+    },
+    {
+      "url": "/HMG",
+      "name": "RSRT Gateway"
+    }
   ],
-  "StreamHub":[
-    {"url":"/MobileIPVideo/haivision-streamhub",    "name":"StreamHub"}
+  "StreamHub": [
+    {
+      "url": "/MobileIPVideo/haivision-streamhub",
+      "name": "StreamHub"
+    }
   ],
-  "Legacy":[
-    {"url":"/CDVR",      "name":"Connect DVR"},
-    {"url":"/CS",        "name":"CoolSign"},
-    {"url":"/Furnace",   "name":"Furnace"},
-    {"url":"/hai1000",   "name":"hai1000 Series"},
-    {"url":"/KB",        "name":"KB"},
-    {"url":"/LightFlow", "name":"LightFlow"},
-    {"url":"/MakitoDec", "name":"Makito Classic Decoder"},
-    {"url":"/MakitoEnc", "name":"Makito Classic Encoder"},
-    {"url":"/HPM",       "name":"Play Mobile"},
-    {"url":"/Torpedo",   "name":"Torpedo"}
+  "Legacy": [
+    {
+      "url": "/CDVR",
+      "name": "Connect DVR"
+    },
+    {
+      "url": "/CS",
+      "name": "CoolSign"
+    },
+    {
+      "url": "/Furnace",
+      "name": "Furnace"
+    },
+    {
+      "url": "/hai1000",
+      "name": "hai1000 Series"
+    },
+    {
+      "url": "/KB",
+      "name": "KB"
+    },
+    {
+      "url": "/LightFlow",
+      "name": "LightFlow"
+    },
+    {
+      "url": "/MakitoDec",
+      "name": "Makito Classic Decoder"
+    },
+    {
+      "url": "/MakitoEnc",
+      "name": "Makito Classic Encoder"
+    },
+    {
+      "url": "/HPM",
+      "name": "Play Mobile"
+    },
+    {
+      "url": "/Torpedo",
+      "name": "Torpedo"
+    }
   ]
 };
 var svgHamburger = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250 250" xml:space="preserve" class="HaiIcon" iconname="Hamburger" subtype="hamburger" type="navigation"><path id="Path_1229" d="M219.4,73.7H32.6c-6.2-0.4-10.9-5.9-10.5-12.1C22.5,56,27,51.5,32.6,51.1h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,68.8,225,73.3,219.4,73.7z"></path><path id="Path_1230" d="M219.4,137H32.6c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,132.1,225,136.6,219.4,137z"></path><path id="Path_1231" d="M218.8,199.1H32c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C228.9,194.2,224.4,198.7,218.8,199.1z"></path></svg>';
@@ -134,10 +362,18 @@ var svgSmallLogo = '<svg class="logo-small" style="display: none;" xmlns="http:/
 var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
 var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
 
-(function() {
+// Anonymous "self-invoking" function to load jquery
+//(function() {
+
+  // Load the script
+/*   var script = document.createElement("SCRIPT");
+  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+  script.type = 'text/javascript';
+  script.onload = function() { */
+    console.log('loaded and running!');
 
     if (window.location.pathname == '/search.html') {
-
+      console.log('search results page');
     }
     // Redirect to homepage
     else if (window.location.pathname == '/') {
@@ -559,4 +795,5 @@ var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
     /* Searching */
     /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
     // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
-});
+//}
+// });

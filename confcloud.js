@@ -1,5 +1,5 @@
 
-function confCloudJS() {
+function confCloudJS() { 
 
   var productsByType =  {
     "Encoder & Transcoder": [

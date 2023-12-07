@@ -661,11 +661,11 @@ function confCloudJS() {
 
           function setDragbar(val) {
             if (val == NaN)val = 320;
-            $('#vp-js-desktop__navigation').width(val);
+            let val10 = val - 10;
+            $('#vp-js-desktop__navigation').width(val10);
           //          if (val < 220)$('#vp-js-desktop__navigation').addClass('small');
           //          $('#sidebar-dragbar').css("left", val);
-            let val10 = val + 20;
-            $('#article-content').css("left", val10).css("width", "calc(100% - " + val10 + "px)");
+            $('#article-content').css("left", val).css("width", "calc(100% - " + val + "px)");
           //          hideShowBreadcrumbs(val);
           }
 

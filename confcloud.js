@@ -805,6 +805,6 @@ function confCloudJS() {
           /* Searching */
           /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
-  });
+  };
   document.head.appendChild(script);
 }

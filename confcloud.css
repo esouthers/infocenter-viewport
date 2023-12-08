@@ -630,7 +630,7 @@ h1.vp-article__heading {
 a:hover {
   text-decoration: none;
 }
-.vp-breadcrumbs a:hover, #article-inner-content a:not(.js-enlargeOnClick):hover {
+.vp-breadcrumbs a:hover, #article-inner-content a:not(.js-enlargeOnClick):hover, vp-article-pagination a:hover .description {
   border-bottom: 2px solid var(--haiui-blue-03);
 }
 /* Tables */
@@ -963,3 +963,15 @@ figure.image-right {
   margin-bottom: 16px;
 }
 
+/* Previous/Next arrows at bottom of page */
+vp-article-pagination .cta {
+  color: var(--haiui-blue-01);
+  background-color: transparent;
+}
+vp-article-pagination .label {
+  display: none;
+}
+a .description, a:is(:hover, :focus-visible) .description {
+  text-decoration: none;
+  color: var(--haiui-blue-03);
+}

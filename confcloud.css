@@ -964,7 +964,7 @@ figure.image-right {
 }
 
 /* Previous/Next arrows at bottom of page */
-vp-article-pagination .cta {
+vp-article-pagination .cta, a:is(:hover, :focus-visible) .cta {
   color: var(--haiui-blue-01);
   background-color: transparent;
 }

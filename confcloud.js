@@ -57,7 +57,7 @@ function confCloudJS() {
               $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
                 .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
               });
-              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByFamily(data); })
+              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbyfamily.json', function(data) { processProductsByFamily(data); })
                 .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
               });
               function processProductsByType(data) {

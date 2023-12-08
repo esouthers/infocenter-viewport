@@ -1,0 +1,172 @@
+{
+  "Air": [
+    {
+      "url": "/MobileIPVideo/haivision-air",
+      "name": "Air 200, 220, 220-5G, 320e-5G"
+    },
+    {
+      "url": "/MobileIPVideo/beonair",
+      "name": "BeOnAir"
+    }
+  ],
+  "Command 360": [
+    {
+      "url": "/Command360",
+      "name": "Command 360"
+    }
+  ],
+  "Data Plans": [
+    {
+      "url": "/MobileIPVideo/data-plans",
+      "name": "Data Plans"
+    }
+  ],
+  "EMS": [
+    {
+      "url": "/EMS",
+      "name": "EMS"
+    }
+  ],
+  "Haivision Hub": [
+    {
+      "url": "/Hub",
+      "name": "Haivision Hub"
+    }
+  ],
+  "Kraken": [
+    {
+      "url": "/Kraken",
+      "name": "Kraken"
+    }
+  ],
+  "Manager": [
+    {
+      "url": "/MobileIPVideo/haivision-manager",
+      "name": "Manager"
+    }
+  ],
+  "Makito": [
+    {
+      "url": "/MFXE",
+      "name": "FX Encoder"
+    },
+    {
+      "url": "/Hardware",
+      "name": "MB6/MB21 Chassis"
+    },
+    {
+      "url": "/MakitoXDec",
+      "name": "X Decoder"
+    },
+    {
+      "url": "/MakitoXEnc",
+      "name": "X Encoder"
+    },
+    {
+      "url": "/MakitoX1Enc",
+      "name": "X1 Rugged Encoder"
+    },
+    {
+      "url": "/MakitoX4Dec",
+      "name": "X4 Decoder"
+    },
+    {
+      "url": "/MakitoX4Enc",
+      "name": "X4 Encoder"
+    }
+  ],
+  "MoJoPro": [
+    {
+      "url": "/MJPiOS",
+      "name": "MoJoPro"
+    },
+    {
+      "url": "/MobileIPVideo/beonair",
+      "name": "BeOnAir"
+    }
+  ],
+  "Pro": [
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Pro 3 (340, 360-5G, 380)"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Pro 4 (460)"
+    }
+  ],
+  "Quad Antenna": [
+    {
+      "url": "/MobileIPVideo/haivision-quad",
+      "name": "Quad Antenna"
+    }
+  ],
+  "Rack": [
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Rack 200/300"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Rack 400"
+    }
+  ],
+  "SRT": [
+    {
+      "url": "/additional-resources/srt-deployment-guide",
+      "name": "SRT Deployment Guide"
+    },
+    {
+      "url": "/HMG",
+      "name": "RSRT Gateway"
+    }
+  ],
+  "StreamHub": [
+    {
+      "url": "/MobileIPVideo/haivision-streamhub",
+      "name": "StreamHub"
+    }
+  ],
+  "Legacy": [
+    {
+      "url": "/CDVR",
+      "name": "Connect DVR"
+    },
+    {
+      "url": "/CS",
+      "name": "CoolSign"
+    },
+    {
+      "url": "/Furnace",
+      "name": "Furnace"
+    },
+    {
+      "url": "/hai1000",
+      "name": "hai1000 Series"
+    },
+    {
+      "url": "/KB",
+      "name": "KB"
+    },
+    {
+      "url": "/LightFlow",
+      "name": "LightFlow"
+    },
+    {
+      "url": "/MakitoDec",
+      "name": "Makito Classic Decoder"
+    },
+    {
+      "url": "/MakitoEnc",
+      "name": "Makito Classic Encoder"
+    },
+    {
+      "url": "/HPM",
+      "name": "Play Mobile"
+    },
+    {
+      "url": "/Torpedo",
+      "name": "Torpedo"
+    }
+  ]
+}

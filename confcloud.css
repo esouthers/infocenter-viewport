@@ -661,6 +661,9 @@ a:hover {
 .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .tablesorter-header {
   background-position-y: 12px;
 }
+.article__content .jira-table, .article__content .plugin_attachments_table_container, .article__content .table-wrap {
+  margin-bottom: 1rem;
+}
 
 .hidden {
   display: none;
@@ -976,3 +979,25 @@ a .description, a:is(:hover, :focus-visible) .description {
   color: var(--haiui-blue-03);
 }
 /* document.querySelector('vp-article-pagination').shadowRoot.querySelectorAll('.label').forEach((item) => {item.setAttribute('style', 'display:none') }) */
+
+a.article__content__anchor {
+  display: none;
+}
+.vp-content-by-label-items {
+  border-width: 0px;
+  padding: 0px;
+}
+.expand-container {
+  border-width: 0px;
+  margin: 0px;
+}
+.expand-container .expand-control {
+  padding: 0px;
+  color: var(--haiui-blue-01);
+}
+.expand-container .expand-content {
+  padding: 0px;
+}
+.expand-container .expand-content ul {
+  margin-bottom: 0px;
+}

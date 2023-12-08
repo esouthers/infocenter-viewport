@@ -316,10 +316,10 @@ function confCloudJS() {
           function setDragbar(val) {
             if (val == NaN)val = 320;
             let val10 = val - 10;
-            $('#vp-js-desktop__navigation').width(val10);
+            $('#vp-js-desktop__navigation').width(val10 + "px");
           //          if (val < 220)$('#vp-js-desktop__navigation').addClass('small');
           //          $('#sidebar-dragbar').css("left", val);
-            $('#article-content').css("left", val).css("width", "calc(100% - " + val + "px)");
+            $('#article-content').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
           //          hideShowBreadcrumbs(val);
           }
 

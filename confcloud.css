@@ -630,11 +630,8 @@ h1.vp-article__heading {
 a:hover {
   text-decoration: none;
 }
-.vp-breadcrumbs a:hover, #article-inner-content a:hover {
+.vp-breadcrumbs a:hover, #article-inner-content a:not(.js-enlargeOnClick):hover {
   border-bottom: 2px solid var(--haiui-blue-03);
-}
-#article-inner-content figure a:hover {
-  border-bottom-width: 0px !important;
 }
 /* Tables */
 .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) {

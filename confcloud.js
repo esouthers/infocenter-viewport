@@ -317,8 +317,6 @@ function confCloudJS() {
             if (val == NaN)val = 320;
             let val10 = val - 10;
             $('#vp-js-desktop__navigation').width(val10 + "px");
-          //          if (val < 220)$('#vp-js-desktop__navigation').addClass('small');
-          //          $('#sidebar-dragbar').css("left", val);
             $('#article-content').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
           //          hideShowBreadcrumbs(val);
           }
@@ -341,7 +339,7 @@ function confCloudJS() {
               $.each(product, function(key,value) {
                 htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="' + value.name + '" aria-expanded="false" aria-selected="false" aria-level="2"><div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + value.url + '">' + value.name + '</a><div class="vp-tree-item__header__icon"></div></div></li>';
               });
-            htmltoBuild += '</ul></li>';
+              htmltoBuild += '</ul></li>';
             });
             return htmltoBuild;
           }

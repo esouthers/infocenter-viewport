@@ -54,10 +54,10 @@ function confCloudJS() {
               let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
               $('.vp-desktop-navigation__page-tree').append(productsHTML);
 
-              $.getJSON('productsbytype.json', function(data) { processProductsByType(data); })
+              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
                 .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
               });
-              $.getJSON('productsbyfamily.json', function(data) { processProductsByFamily(data); })
+              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByFamily(data); })
                 .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
               });
               function processProductsByType(data) {

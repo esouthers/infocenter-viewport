@@ -845,6 +845,19 @@ figure.vp-image img {
 .article__content .confluence-embedded-file-wrapper a img {
   border: none;
 }
+figure.image-left {
+  float: left;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+figure.image-right {
+  float: rightt;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
 
 .vp-collapse-button {
   display: none;

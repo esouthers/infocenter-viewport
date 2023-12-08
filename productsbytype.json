@@ -1,0 +1,182 @@
+{
+  "Encoder & Transcoder": [
+    {
+      "url": "/MakitoX4Enc",
+      "name": "Makito X4 Video Encoder"
+    },
+    {
+      "url": "/Kraken",
+      "name": "Kraken Video Transcoder"
+    },
+    {
+      "url": "/MakitoX1Enc",
+      "name": "Makito X1 Rugged Video Encoder"
+    },
+    {
+      "url": "/MakitoXEnc",
+      "name": "Makito X Video Encoder"
+    },
+    {
+      "url": "/MFXE",
+      "name": "Makito FX Video Encoder"
+    },
+    {
+      "url": "/MobileIPVideo",
+      "name": "Haivision Rack Video Encoder"
+    },
+    {
+      "url": "/EMS",
+      "name": "Haivision EMS Device Manager"
+    },
+    {
+      "url": "/Hardware",
+      "name": "Makito MB6/MB21 Chassis"
+    }
+  ],
+  "Video Transmitter": [
+    {
+      "url": "/MobileIPVideo/haivision-pro",
+      "name": "Haivision Pro"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-air",
+      "name": "Haivision Air"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-rack",
+      "name": "Haivision Rack Video Encoder"
+    },
+    {
+      "url": "/MJPiOS",
+      "name": "Haivision MoJoPro Mobile App"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-quad",
+      "name": "Haivision Quad Antenna"
+    },
+    {
+      "url": "/MobileIPVideo/data-plans",
+      "name": "Data Plans"
+    }
+  ],
+  "Video Wall Technology": [
+    {
+      "url": "/Command360",
+      "name": "Haivision Command 360"
+    }
+  ],
+  "IPTV": [
+    {
+      "url": "/HMP",
+      "name": "Haivision Media Platform"
+    },
+    {
+      "url": "/HMG",
+      "name": "Haivision Media Gateway"
+    },
+    {
+      "url": "/SetTopBox",
+      "name": "Haivision Play Set-Top Boxes"
+    },
+    {
+      "url": "/PlayProiOS",
+      "name": "Haivision Play Pro iOS"
+    },
+    {
+      "url": "/HPPM",
+      "name": "Haivision Play Pro Android"
+    },
+    {
+      "url": "/HaiHelper",
+      "name": "Haivision Helper"
+    }
+  ],
+  "Cloud & IP Gateway": [
+    {
+      "url": "/Hub",
+      "name": "Haivision Hub"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-streamhub",
+      "name": "Haivision StreamHub"
+    },
+    {
+      "url": "/MobileIPVideo/haivision-manager",
+      "name": "Haivision Manager"
+    },
+    {
+      "url": "/HMG",
+      "name": "Haivision SRT Gateway"
+    }
+  ],
+  "Decoder & Receiver": [
+    {
+      "url": "/MobileIPVideo",
+      "name": "Haivision StreamHub"
+    },
+    {
+      "url": "/MakitoX4Dec",
+      "name": "Makito X4 Decoder"
+    },
+    {
+      "url": "/MakitoXDec",
+      "name": "Makito X Decoder"
+    },
+    {
+      "url": "/EMS",
+      "name": "Haivision EMS Device Manager"
+    },
+    {
+      "url": "/Hardware",
+      "name": "Makito MB6/MB21 Chassis"
+    }
+  ],
+  "Open source video streaming": [
+    {
+      "url": "/additional-resources/srt-deployment-guide",
+      "name": "SRT Protocol"
+    }
+  ],
+  "Legacy": [
+    {
+      "url": "/CDVR",
+      "name": "Connect DVR"
+    },
+    {
+      "url": "/CS",
+      "name": "CoolSign"
+    },
+    {
+      "url": "/Furnace",
+      "name": "Furnace"
+    },
+    {
+      "url": "/hai1000",
+      "name": "hai1000 Series"
+    },
+    {
+      "url": "/KB",
+      "name": "KB"
+    },
+    {
+      "url": "/LightFlow",
+      "name": "LightFlow"
+    },
+    {
+      "url": "/MakitoDec",
+      "name": "Makito Classic Decoder"
+    },
+    {
+      "url": "/MakitoEnc",
+      "name": "Makito Classic Encoder"
+    },
+    {
+      "url": "/HPM",
+      "name": "Play Mobile"
+    },
+    {
+      "url": "/Torpedo",
+      "name": "Torpedo"
+    }
+  ]
+}

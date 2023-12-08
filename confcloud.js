@@ -65,12 +65,18 @@ function confCloudJS() {
                 productsTypeHTML = buildSidebarList(data,productsTypeHTML);
                 productsTypeHTML += '</ul>';
                 $('#ic-products').parent().append(productsTypeHTML);
+                $('.ic-products-top.productlist-type button').click(function() {
+                  sidebarExpandoListeners(this);
+                });
               }
               function processProductsByFamily(data) {
                 let productsFamilyHTML = '<ul class="ic-products-top productlist-family hidden vp-tree__container relative m-0 outline-none" role="tree">';
                 productsFamilyHTML = buildSidebarList(data,productsFamilyHTML);
                 productsFamilyHTML += '</ul>';
                 $('#ic-products').parent().append(productsFamilyHTML);
+                $('.ic-products-top.productlist-family button').click(function() {
+                  sidebarExpandoListeners(this);
+                });
               }
 
               // Add User Preferences, and Support to sidebar
@@ -109,14 +115,7 @@ function confCloudJS() {
                 }
               });
               $('.ic-products-top button').click(function() {
-                if ($(this).hasClass('rotate-0')) {
-                  $(this).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
-                  $(this).closest('li').children('ul').first().removeClass('hidden');
-                }
-                else {
-                  $(this).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
-                  $(this).closest('li').children('ul').first().addClass('hidden');
-                }
+                sidebarExpandoListeners(this);
               });
               $('.sort-products .products-by-type').click(function() {
                 $('ul.productlist-type').removeClass('hidden');
@@ -171,6 +170,17 @@ function confCloudJS() {
                   $('ul.productlist-type').addClass('hidden');
                 }
               });
+
+              function sidebarExpandoListeners(sidebarButton) {
+                if ($(sidebarButton).hasClass('rotate-0')) {
+                  $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
+                  $(sidebarButton).closest('li').children('ul').first().removeClass('hidden');
+                }
+                else {
+                  $(sidebarButton).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
+                  $(sidebarButton).closest('li').children('ul').first().addClass('hidden');
+                }
+              }
             });
 
 

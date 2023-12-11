@@ -807,7 +807,7 @@ nav a {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  left: 2px;
+  left: 0px;
   width: 10px;
   cursor: col-resize;
   z-index: 125;
@@ -1000,4 +1000,10 @@ a.article__content__anchor {
 }
 .expand-container .expand-content ul {
   margin-bottom: 0px;
+}
+.expand-container .expand-control:focus, .expand-container .expand-control:hover {
+  background-color: transparent;
+  color: var(--haiui-blue-03);
+  text-decoration: none;
+  border-bottom: 2px solid var(--haiui-blue-03);
 }

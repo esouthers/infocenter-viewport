@@ -994,6 +994,7 @@ a.article__content__anchor {
 .expand-container .expand-control {
   padding: 0px;
   color: var(--haiui-blue-03);
+  font-weight: 400;
   border-bottom: 2px solid transparent;
   justify-content: flex-end;
   flex-direction: row-reverse;
@@ -1011,4 +1012,7 @@ a.article__content__anchor {
   color: var(--haiui-blue-03);
   text-decoration: none;
   border-bottom: 2px solid var(--haiui-blue-03);
+}
+details.vp-disclosure .vp-disclosure-icon {
+  width: 17px;
 }

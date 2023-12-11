@@ -968,7 +968,7 @@ figure.image-right {
 
 /* Previous/Next arrows at bottom of page */
 [i18nkey="page.article.pagination.label"] .cta, a:is(:hover, :focus-visible) .cta {
-  color: var(--haiui-blue-01);
+  color: var(--haiui-blue-03);
   background-color: transparent;
 }
 [i18nkey="page.article.pagination.label"] .label {
@@ -993,7 +993,7 @@ a.article__content__anchor {
 }
 .expand-container .expand-control {
   padding: 0px;
-  color: var(--haiui-blue-01);
+  color: var(--haiui-blue-03);
   border-bottom: 2px solid transparent;
   justify-content: flex-end;
   flex-direction: row-reverse;

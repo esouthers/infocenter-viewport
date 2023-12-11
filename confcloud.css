@@ -994,6 +994,7 @@ a.article__content__anchor {
 .expand-container .expand-control {
   padding: 0px;
   color: var(--haiui-blue-01);
+  border-bottom: 2px solid transparent;
 }
 .expand-container .expand-content {
   padding: 0px;

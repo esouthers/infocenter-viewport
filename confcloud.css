@@ -995,6 +995,10 @@ a.article__content__anchor {
   padding: 0px;
   color: var(--haiui-blue-01);
   border-bottom: 2px solid transparent;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  column-gap: 5px;
+  margin-left: -5px;
 }
 .expand-container .expand-content {
   padding: 0px;

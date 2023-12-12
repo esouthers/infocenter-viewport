@@ -242,6 +242,12 @@ function confCloudJS() {
             let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
             $('#article-content').append(dragbarToAdd);
 
+            $('summary').each(function() {
+              let expandIcon = $('.vp-disclosure-icon',this);
+              let expandTitle = $(this).text();
+              $(this).text('');
+              $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
+            });
 
             $('body').show();
 
@@ -457,6 +463,19 @@ function confCloudJS() {
           /* Searching */
           /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
+
+
+          /* Aui tabs */
+          /* 1. Search page for auitabs jscript.
+           2. If found get page id and macro ids
+              var pageID = $('body').attr('pageid');
+              var macroID = $('.ap-container script').text().split('macro.id\\":\\"')[1].split('\\')[0];
+              $.get( "https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
+                // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
+                // data.value.split('data-macro-id=\\')
+              });
+              https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
+          */
   };
   document.head.appendChild(script);
 }

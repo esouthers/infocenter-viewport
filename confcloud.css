@@ -1005,7 +1005,7 @@ a.article__content__anchor {
   padding: 0px;
 }
 .expand-container .expand-content ul {
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
 }
 .expand-container .expand-control:focus, .expand-container .expand-control:hover,
 .expand-container .expand-control .expand-title:focus, .expand-container .expand-control .expand-title:hover {

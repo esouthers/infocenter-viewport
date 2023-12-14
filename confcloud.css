@@ -370,6 +370,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 
 .hc-header-background-color, .header .top-bar {
   background-color: transparent !important;
+
+#site-navigation .header .top-bar {
+  padding-left: 12px;
 }
 .top-bar-left ul {
   align-content: start;
@@ -611,6 +614,9 @@ h1.vp-article__heading {
 }
 .vp-breadcrumbs { 
   max-width: fit-content; 
+}
+.vp-article .vp-breadcrumbs__wrapper {
+  padding-right: 0px;
 }
 .vp-breadcrumbs .breadcrumbs-wrapper {
   width: fit-content;

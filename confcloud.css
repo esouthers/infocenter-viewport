@@ -370,7 +370,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 
 .hc-header-background-color, .header .top-bar {
   background-color: transparent !important;
-
+}
 #site-navigation .header .top-bar {
   padding-left: 12px;
 }

@@ -609,7 +609,9 @@ h1.vp-article__heading {
     mask-size: contain;
     mask-repeat: no-repeat;
 }
-
+.vp-breadcrumbs { 
+  max-width: fit-content; 
+}
 .vp-breadcrumbs .breadcrumbs-wrapper {
   width: fit-content;
 }

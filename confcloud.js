@@ -199,6 +199,12 @@ function confCloudJS() {
                 $('#titleBreadcrumb').show();
               }
             });
+            var breadcrumbs = $('.breadcrumbs--fit-content li');
+            if (breadcrumbs.length > 4) {
+              for (var i = 2; i < breadcrumbs.length-2; i++) {
+                breadcrumbs.eq(i).children('a').text('...');
+              }
+            }
 
             // Work with spacename in sidebar
             $('#vp-js-desktop__navigation .header__navigation--heading').each(function() {

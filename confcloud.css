@@ -1030,3 +1030,67 @@ a.article__content__anchor {
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;
 }
+
+/* Tabs */
+.aui-tabs {
+  display: flex;
+  margin-top: 32px;
+  line-height: 1.6;
+  font-size: 13px;
+  margin: 10px 0 0 0;
+}
+.aui-tabs.horizontal-tabs {
+  flex-direction: column;
+}
+.aui-tabs.horizontal-tabs > .tabs-menu {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  width: 100%;
+  position: relative;
+  list-style: none;
+}
+.aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child {
+  margin-left: 0px;
+}
+.aui-tabs.horizontal-tabs > .tabs-menu > .menu-item {
+  background: inherit;
+  margin-left: 20px;
+  display: block;
+  float: left;
+  margin: 0;
+}
+.aui-tabs>.tabs-menu .menu-item {
+  position: relative;
+}
+#ht-wrap-container .aui-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:active {
+  border: none;
+  background: inherit;
+  margin-bottom: 0px;
+}
+.aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child a {
+  border-left-color: var(--haiui-gray-08);
+  border-top-left-radius: 3px;
+}
+.aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:active, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:focus, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:hover {
+  padding-left: 0px;
+}
+.aui-tabs > .tabs-menu .menu-item a, .aui-tabs > .tabs-menu .menu-item a:link, .aui-tabs > .tabs-menu .menu-item a:visited, .aui-tabs > .tabs-menu .menu-item a:hover {
+  font-weight: 500;
+  color: var(--haiui-gray-07);
+  padding-bottom: 10px !important;
+  padding-top: 0px !important;
+}
+.aui-tabs.horizontal-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:active {
+  display: block;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding: 4px 10px 3px 10px;
+  text-decoration: none;
+}
+.aui-tabs>.tabs-menu>.menu-item>a, .aui-tabs>.tabs-menu>.menu-item>a strong {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

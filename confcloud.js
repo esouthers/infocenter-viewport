@@ -502,7 +502,7 @@ function confCloudJS() {
                   addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
                     $('#' + tabPageTitleNoSpaces).append(data.value);
-//                    renderTab($('#' + tabPageTitleNoSpaces));
+                    renderTab($('#' + tabPageTitleNoSpaces));
                   });
                 });
               }
@@ -517,6 +517,12 @@ function confCloudJS() {
             });
           }
           function renderTab(tabContent) {
+            $('a', tabContent).each(function() {
+              let pageID = $(this).attr('data-linked-resource-id');
+              let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
+              let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
+              $(this).attr('href', pageHREF).text(pageTitle);
+            });
           }
   };
   document.head.appendChild(script);

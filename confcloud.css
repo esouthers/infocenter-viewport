@@ -687,6 +687,9 @@ table.confluenceTable th.confluenceTh.highlight-red, table.confluenceTable td.co
 table.confluenceTable th.confluenceTh.highlight-grey, table.confluenceTable td.confluenceTd.highlight-grey {
     background-color: #F4F5F7;
 }
+table .article__content .confluence-embedded-file-wrapper:has(.confluence-embedded-image) {
+  margin: 0px;
+}
 
 .hidden {
   display: none;

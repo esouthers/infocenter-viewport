@@ -508,8 +508,8 @@ function confCloudJS() {
             $(tab).click(function() {
               $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
               $(tab).parent().addClass('active-tab');
-              $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane');
-              $($(tab).attr('href')).addClass('active-pane');
+              $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane').hide();
+              $($(tab).attr('href')).addClass('active-pane').show();
             });
 
           }

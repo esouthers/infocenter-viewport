@@ -1065,7 +1065,7 @@ details.vp-disclosure .vp-disclosure-icon {
 .aui-tabs>.tabs-menu .menu-item {
   position: relative;
 }
-#ht-wrap-container .aui-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:active {
+.aui-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:active {
   border: none;
   background: inherit; 
   margin-bottom: 0px;
@@ -1094,4 +1094,36 @@ details.vp-disclosure .vp-disclosure-icon {
   cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:active, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:focus, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:hover, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:link, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:visited {
+  color: #33333C;
+  font-weight: bold;
+  border: none;
+}
+.aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:first-child:before {
+  left: 0px;
+}
+.aui-tabs.horizontal-tabs>.tabs-menu>.menu-item.active-tab a:before {
+  background: #33333c;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  right: 10px;
+  width: auto;
+  z-index: 1;
+}
+.aui-tabs > .tabs-pane.active-pane {
+  border: 1px solid var(--haiui-gray-08);
+  border-top: 0px;
+  padding-bottom: 10px;
+  border-radius: 0px;
+  display: block;
+}
+.aui-tabs.horizontal-tabs>.tabs-pane {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px
 }

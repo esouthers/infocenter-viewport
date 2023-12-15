@@ -732,7 +732,7 @@ nav a {
   border-left-style: solid;
 }
 table .confluence-information-macro {
-  font-size: inherit;
+  font-size: inherit !important;
 }
 .confluence-information-macro .confluence-information-macro-body,
 .panel-macro--tip .panel-macro__content, .panel-macro--note .panel-macro__content, .panel-macro--info .panel-macro__content, .panel-macro--caution .panel-macro__content, .panel-macro--warning .panel-macro__content {

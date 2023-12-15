@@ -495,7 +495,7 @@ function confCloudJS() {
                   var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
 //                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
 //                  href="#' + tabPageTitleNoSpaces + 
-                  $('#' + tabPageID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces);
+                  $('#' + tabPageID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();

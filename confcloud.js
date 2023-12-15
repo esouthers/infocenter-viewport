@@ -527,7 +527,7 @@ function confCloudJS() {
               let imgPageID = $(this).attr('data-linked-resource-container-id');
               let imgID = $(this).attr('data-media-id');
               let imgNameTemp = $(this).attr('src').split('/');
-              let imgName = imgNameTemp[imgNameTemp - 1].split('?')[0];
+              let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
               $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
             });
           }

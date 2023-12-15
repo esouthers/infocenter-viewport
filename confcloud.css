@@ -672,6 +672,21 @@ a:hover {
 .article__content .jira-table, .article__content .plugin_attachments_table_container, .article__content .table-wrap {
   margin-bottom: 1rem;
 }
+table.confluenceTable th.confluenceTh.highlight-green, table.confluenceTable td.confluenceTd.highlight-green {
+  background-color: #E3FCEF;
+}
+table.confluenceTable th.confluenceTh.highlight-blue, table.confluenceTable td.confluenceTd.highlight-blue {
+    background-color: #DEEBFF;
+}
+table.confluenceTable th.confluenceTh.highlight-yellow, table.confluenceTable td.confluenceTd.highlight-yellow {
+    background-color: #FFFAE6;
+}
+table.confluenceTable th.confluenceTh.highlight-red, table.confluenceTable td.confluenceTd.highlight-red {
+    background-color: #FFEBE6;
+}
+table.confluenceTable th.confluenceTh.highlight-grey, table.confluenceTable td.confluenceTd.highlight-grey {
+    background-color: #F4F5F7;
+}
 
 .hidden {
   display: none;

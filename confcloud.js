@@ -471,17 +471,61 @@ function confCloudJS() {
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
 
 
-          /* Aui tabs */
-          /* 1. Search page for auitabs jscript.
-           2. If found get page id and macro ids
-              var pageID = $('body').attr('pageid');
-              var macroID = $('.ap-container script').text().split('macro.id\\":\\"')[1].split('\\')[0];
-              $.get( "https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
-                // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
-                // data.value.split('data-macro-id=\\')
-              });
-              https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
-          */
+          // Aui tabs
+          // 1. Search page for auitabs jscript.
+          // 2. If found get page id and macro ids
+          var pageID = $('body').attr('pageid');
+          $('.ap-container script').each( function() {
+            var that = this;
+            var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
+            $(that).parent('.ap-container').after('<div class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
+            // https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
+            $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
+              // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
+              var tabPageIDs = data.value.split('data-macro-id=\"');
+              var tabPageTitles = [];
+              for (var i = 1; i < tabPageIDs.length; i++) {
+                tabPageIDs[i] = tabPageIDs[i].split('\"')[0];
+                var tabPageID = tabPageIDs[i];
+                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
+                  var tabPageTitle = data.parameters.title.value;
+//                  var tabPageID = tabPageIDs[i];
+                  $('.tabs-menu',that).append('<li class="menu-item active-tab"><a href="#' + tabPageTitle.replace(' ','') + '">' + tabPageTitle + '</a></li> \
+                    <div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane active-pane" role="tabpanel" loaded="true" style="display: block;"></div>');
+                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
+//                    console.log(data.value);
+                    $('#' + tabPageTitle.replace(' ',''), that).append(data.value);
+                  });
+                });
+              }
+            });
+          });
   };
   document.head.appendChild(script);
 }
+
+/* 
+<div class="contentf aui-tabs horizontal-tabs" role="application">
+    <ul class="tabs-menu" role="tablist">
+        <li class="menu-item active-tab">
+            <a href="#DisplaySettings">Display Settings</a>
+        </li>
+        <li class="menu-item">
+            <a href="#Branding">Branding</a>
+        </li>
+        <li class="menu-item">
+            <a href="#MobileBranding">Mobile Branding</a>
+        </li>
+    </ul>
+    <div id="DisplaySettings" data-pane-title="Display Settings" class="cfm tabs-pane active-pane" role="tabpanel" loaded="true" style="display: block;">
+      ***** BODY HERE ***********
+    </div>
+    <div id="Branding" data-pane-title="Branding" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;">
+      ***** BODY HERE ***********
+    </div>
+    <div id="MobileBranding" data-pane-title="Mobile Branding" class="cfm tabs-pane" role="tabpanel" style="display: none;" loaded="true">
+      ***** BODY HERE ***********
+    </div>
+</div>
+*/
+

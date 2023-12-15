@@ -491,8 +491,10 @@ function confCloudJS() {
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
                   var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
-                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item active-tab"><a href="#' + tabPageTitle.replace(' ','') + '">' + tabPageTitle + '</a></li>');
-                  $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane active-pane" role="tabpanel" loaded="true" style="display: block;"></div>');
+                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a href="#' + tabPageTitle.replace(' ','') + '">' + tabPageTitle + '</a></li>');
+                  $('#aui-tabs' + tabsIndex + '.menu-item').first().addClass('active-tab');
+                  $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
+                  $('#aui-tabs' + tabsIndex + '.tabs-pane').first().addClass('active-pane').show();
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
 //                    console.log(data.value);
                     $('#' + tabPageTitle.replace(' ','')).append(data.value);

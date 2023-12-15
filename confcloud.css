@@ -690,6 +690,9 @@ table.confluenceTable th.confluenceTh.highlight-grey, table.confluenceTable td.c
 table .article__content .confluence-embedded-file-wrapper:has(.confluence-embedded-image) {
   margin: 0px;
 }
+.article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td ul, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td.confluenceTd ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td.confluenceTd ul, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr.attachment-row td ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr.attachment-row td ul, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td ul, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td.confluenceTd ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td.confluenceTd ul, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr.attachment-row td ol, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr.attachment-row td ul {
+  margin-bottom: 0px;
+}
 
 .hidden {
   display: none;

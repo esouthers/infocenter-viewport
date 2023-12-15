@@ -488,11 +488,14 @@ function confCloudJS() {
               for (var i = 1; i < tabPageIDs.length; i++) {
                 tabPageIDs[i] = tabPageIDs[i].split('\"')[0];
                 var tabPageID = tabPageIDs[i];
+                $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageID + '-tab"></a></li>');
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
                   var tabPageTitleNoSpaces = data.parameters.title.value.replace(' ','');
                   var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
-                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
+//                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
+//                  href="#' + tabPageTitleNoSpaces + 
+                  $('#' + tabPageID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces);
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();

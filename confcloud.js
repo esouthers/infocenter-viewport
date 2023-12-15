@@ -509,7 +509,7 @@ function confCloudJS() {
               $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
               $(tab).parent().addClass('active-tab');
               $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane');
-              $('#' + $(tab).attr('href')).addClass('active-pane');
+              $($(tab).attr('href')).addClass('active-pane');
             });
 
           }

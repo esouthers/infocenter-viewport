@@ -1051,6 +1051,7 @@ details.vp-disclosure .vp-disclosure-icon {
   position: relative;
   list-style: none;
 }
+
 .aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child {
   margin-left: 0px;
 }
@@ -1066,7 +1067,7 @@ details.vp-disclosure .vp-disclosure-icon {
 }
 #ht-wrap-container .aui-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled > .tabs-menu > .menu-item > a:active {
   border: none;
-  background: inherit;
+  background: inherit; 
   margin-bottom: 0px;
 }
 .aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child a {

@@ -750,7 +750,7 @@ nav a {
   border-left-width: 3px;
   border-left-style: solid;
 }
-table .confluence-information-macro {
+table .confluence-information-macro, table .panel-macro {
   font-size: inherit !important;
 }
 .confluence-information-macro .confluence-information-macro-body,

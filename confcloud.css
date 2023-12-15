@@ -1070,10 +1070,6 @@ details.vp-disclosure .vp-disclosure-icon {
   background: inherit; 
   margin-bottom: 0px;
 }
-.aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child a {
-  border-left-color: var(--haiui-gray-08);
-  border-top-left-radius: 3px;
-}
 .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:active, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:focus, .aui-tabs.horizontal-tabs>.tabs-menu>.menu-item a:first-child:hover {
   padding-left: 0px;
 }
@@ -1085,8 +1081,6 @@ details.vp-disclosure .vp-disclosure-icon {
 }
 .aui-tabs.horizontal-tabs > .tabs-menu > .menu-item > a, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:focus, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:hover, .aui-tabs.aui-tabs-disabled.horizontal-tabs > .tabs-menu > .menu-item > a:active {
   display: block;
-  border-right: 1px solid #ccc;
-  border-top: 1px solid #ccc;
   padding: 4px 10px 3px 10px;
   text-decoration: none;
 }
@@ -1117,7 +1111,6 @@ details.vp-disclosure .vp-disclosure-icon {
 }
 .aui-tabs > .tabs-pane.active-pane {
   border: 1px solid var(--haiui-gray-08);
-  border-top: 0px;
   padding-bottom: 10px;
   border-radius: 0px;
   display: block;
@@ -1126,4 +1119,8 @@ details.vp-disclosure .vp-disclosure-icon {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px
+}
+.aui-tabs .tabs-menu a:hover {
+  border: none !important;
+  font-weight: bold;
 }

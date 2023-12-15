@@ -671,6 +671,7 @@ a:hover {
 }
 .article__content .jira-table, .article__content .plugin_attachments_table_container, .article__content .table-wrap {
   margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 table.confluenceTable th.confluenceTh.highlight-green, table.confluenceTable td.confluenceTd.highlight-green {
   background-color: #E3FCEF;

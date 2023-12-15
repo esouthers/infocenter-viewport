@@ -495,8 +495,8 @@ function confCloudJS() {
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();
+/****                   addTabEventListener();   **********/ 
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
-//                    console.log(data.value);
                     $('#' + tabPageTitle.replace(' ','')).append(data.value);
                   });
                 });

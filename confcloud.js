@@ -490,19 +490,29 @@ function confCloudJS() {
                 var tabPageID = tabPageIDs[i];
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
+                  var tabPageTitleNoSpaces = data.parameters.title.value.replace(' ','');
                   var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
-                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a href="#' + tabPageTitle.replace(' ','') + '">' + tabPageTitle + '</a></li>');
+                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
-                  $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
+                  $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();
-/****                   addTabEventListener();   **********/ 
+                  addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab');
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
-                    $('#' + tabPageTitle.replace(' ','')).append(data.value);
+                    $('#' + tabPageTitleNoSpaces).append(data.value);
                   });
                 });
               }
             });
           });
+          function addTabEventListener(tab) {
+            $(tab).click(function() {
+              $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
+              $(tab).parent().addClass('active-tab');
+              $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane');
+              $('#' + $(tab).attr('href')).addClass('active-pane');
+            });
+
+          }
   };
   document.head.appendChild(script);
 }

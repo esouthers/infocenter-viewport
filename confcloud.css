@@ -770,6 +770,9 @@ table .confluence-information-macro {
   margin-top: 0px;
   font-weight: 700;
 }
+.confluence-information-macro > .confluence-information-macro-icon {
+  top: 20px;
+}
 .confluence-information-macro > .confluence-information-macro-icon,
 .panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon {
   width: 20px;

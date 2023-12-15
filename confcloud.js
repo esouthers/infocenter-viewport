@@ -522,6 +522,9 @@ function confCloudJS() {
               let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
               let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
               $(this).attr('href', pageHREF).text(pageTitle);
+              /**************
+               * Issue here with links that don't appear yet in the sidebar. See P2P Analytics tab at https://haivision-infocenter.scrollhelp.site/HMP/3.9/reports-and-logs
+               * ************/
             });
             $('img', tabContent).each(function() {
               let imgPageID = $(this).attr('data-linked-resource-container-id');
@@ -529,6 +532,21 @@ function confCloudJS() {
               let imgNameTemp = $(this).attr('src').split('/');
               let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
               $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
+              /*********** 
+               * Add inline image fix for icons in tabs: https://haivision-infocenter.scrollhelp.site/HMP/3.9/security-settings#Appliance
+               * /
+            });
+            $('table-wrap', tabContent).each(function() {
+/* Add enlarge functionality to tabs in tabs
+              $(this).prepend('<button type="button" aria-hidden="true" class="button enlarge-table-button" data-open="js-table-overlay"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 11.7 11.7" xml:space="preserve"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.239 2.963h1.4v1.5M4.539 8.663h-1.5v-1.6M8.739 7.163v1.5h-1.6M3.039 4.563v-1.5h1.6"></path></svg></button>');
+              '<div class="table-overlay full reveal article__content" data-vp-id="js-table-overlay" style="display: block;"> \
+              <i18n-message i18nkey="modal.cta.close.label" attribute="title"><button class="close-button table-overlay__close" data-close="" title="Close modal" type="button"> \
+              <span aria-hidden="true">×</span></button></i18n-message><div class="table-overlay__content"><div class="article">' + + '</div></div></div>';
+              $('vp-article-pagination').before(this);
+              $('button', this).click(function() {
+
+              });
+*/
             });
           }
   };

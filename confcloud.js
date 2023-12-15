@@ -523,6 +523,13 @@ function confCloudJS() {
               let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
               $(this).attr('href', pageHREF).text(pageTitle);
             });
+            $('img', tabContent).each(function() {
+              let imgPageID = $(this).attr('data-linked-resource-container-id');
+              let imgID = $(this).attr('data-media-id');
+              let imgNameTemp = $(this).attr('src').split('/');
+              let imgName = imgNameTemp[imgNameTemp - 1].split('?')[0];
+              $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
+            });
           }
   };
   document.head.appendChild(script);

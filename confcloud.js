@@ -491,7 +491,7 @@ function confCloudJS() {
                 $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageID + '-tab"></a></li>');
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
-                  var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','');
+                  var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
                   var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
 //                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
 //                  href="#' + tabPageTitleNoSpaces + 

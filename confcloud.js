@@ -490,7 +490,7 @@ function confCloudJS() {
                 var tabPageID = tabPageIDs[i];
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
-//                  var tabPageID = tabPageIDs[i];
+                  var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
                   $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item active-tab"><a href="#' + tabPageTitle.replace(' ','') + '">' + tabPageTitle + '</a></li>');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitle.replace(' ','') + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane active-pane" role="tabpanel" loaded="true" style="display: block;"></div>');
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {

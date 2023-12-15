@@ -713,6 +713,9 @@ nav a {
 .panel-macro__content--heading {
   font-weight: 500;
 }
+.confluence-information-macro p {
+  margin-bottom: 0px !important;
+}
 .confluence-information-macro,
 .panel-macro--tip, .panel-macro--note, .panel-macro--info, .panel-macro--caution, .panel-macro--warning {
   color: #333;
@@ -755,7 +758,9 @@ table .confluence-information-macro {
   border-left-color: var(--haiui-alert-warning-border);
   background-color:  var(--haiui-alert-warning-bg) !important;
 }
-
+.confluence-information-macro > .title {
+  padding-left: 35px;
+}
 
 .confluence-information-macro > .title,
 .panel-macro--tip .panel-macro__content--heading, .panel-macro--note .panel-macro__content--heading, .panel-macro--info .panel-macro__content--heading, 

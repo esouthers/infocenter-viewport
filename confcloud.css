@@ -753,7 +753,7 @@ nav a {
   background-color:  var(--haiui-alert-warning-bg) !important;
 }
 
-.confluence-information-macro > title,
+.confluence-information-macro > .title,
 .panel-macro--tip .panel-macro__content--heading, .panel-macro--note .panel-macro__content--heading, .panel-macro--info .panel-macro__content--heading, 
 .panel-macro--caution .panel-macro__content--heading, .panel-macro--warning .panel-macro__content--heading {
   padding-top: 0px;

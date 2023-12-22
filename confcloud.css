@@ -2,28 +2,28 @@
 /* Gotham Fonts */
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-Light.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-LightItalic.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-LightItalic.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-Book.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-Book.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-BookItalic.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-BookItalic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   
@@ -31,28 +31,28 @@
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-Medium.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-MediumItalic.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-MediumItalic.otf') format('opentype');
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-Bold.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gotham';
-  src:url('../fonts/Gotham-BoldItalic.otf') format('opentype');
+  src:url('https://esouthers.github.io/infocenter-viewport/assets/fonts/Gotham-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
 }

@@ -1,4 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* Gotham Fonts */
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-BookItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src:url('../fonts/Gotham-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
 
 :root {
   --haiui-gray-00:   #1E1F21;
@@ -55,7 +113,7 @@
 
   --K15t-link: var(--haiui-blue-03);
   --K15t-link-visited: var(--haiui-blue-03);
-  --_K15t-font-family-sans: 'Figtree',Helvetica,Arial,sans-serif;
+  --_K15t-font-family-sans: 'Gotham',Helvetica,Arial,sans-serif;
 
 }
 
@@ -88,7 +146,6 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   display: block;
   padding: 0px;
   margin: 0 auto;
-/*  font-family: Gotham, sans-serif !important; */
   font-size: 14px !important;
   line-height: 1.6 !important;
   word-wrap: break-word;

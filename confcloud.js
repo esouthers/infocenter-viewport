@@ -23,11 +23,12 @@ function confCloudJS() {
           }
           else {
             addModifiedDate();
+//            updateSidebar();
 
             $('article').append($('.footer__attribution-line--copyright'));
             $('.vp-desktop-navigation__page-tree.vp-scrollable-container--hidden-scrollbars').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
-            let bgImgSrc = $('footer img').attr('src');       
-          //        $('body').css('background-image','linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("'+bgImgSrc+'")').css('background-size','cover');
+//            let bgImgSrc = $('footer img').attr('src');
+            let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
             $('.vp-article__aside-left').css('background-image','linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("'+bgImgSrc+'")');
             $('#vp-js-desktop__navigation').prepend($('.top-bar-left'));
             $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');

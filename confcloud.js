@@ -23,210 +23,217 @@ function confCloudJS() {
           }
           else {
             addModifiedDate();
-//            updateSidebar();
+            updateHeader();
+            updateSidebar();
+            updateFooter();
 
-            $('article').append($('.footer__attribution-line--copyright'));
-            $('.vp-desktop-navigation__page-tree.vp-scrollable-container--hidden-scrollbars').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
-//            let bgImgSrc = $('footer img').attr('src');
-            let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
-            $('.vp-article__aside-left').css('background-image','linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("'+bgImgSrc+'")');
-            $('#vp-js-desktop__navigation').prepend($('.top-bar-left'));
-            $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
-            $('#article-content').prepend($('body > header'));
-            $('.header__navigation--heading').removeClass('py-3');
-            
-            // Add Hamburger button
-            let hambutton = '<li class="ht-menu-button">' + svgHamburger + '</li>';
-            $('.top-bar-left .header__navigation--logo').after(hambutton);
+            function updateFooter() {
+              $('article').append($('.footer__attribution-line--copyright'));
+            }
+            function updateSidebar() {
 
-            // Remove built-in sidebar collapse button
-            $('.vp-desktop-navigation__page-tree__collapser').remove();
-            $('.vp-collapse-button').remove();
+              $('.vp-desktop-navigation__page-tree.vp-scrollable-container--hidden-scrollbars').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
+  //            let bgImgSrc = $('footer img').attr('src');
+              let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
+              $('.vp-article__aside-left').css('background-image','linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("'+bgImgSrc+'")');
+              $('#vp-js-desktop__navigation').prepend($('.top-bar-left'));
 
-            // Update sidebar sections
-            waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+              // Add Hamburger button
+              let hambutton = '<li class="ht-menu-button">' + svgHamburger + '</li>';
+              $('.top-bar-left .header__navigation--logo').after(hambutton);
 
-              // Update page tree section
-              $(elm).wrap('<div class="sidebar-section"></div>');
-              let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
-              $(elm).parent().prepend(pageTreeHTML);
+              // Remove built-in sidebar collapse button
+              $('.vp-desktop-navigation__page-tree__collapser').remove();
+              $('.vp-collapse-button').remove();
 
-              // Add Products lists to the sidebar
-              let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
-              $('.vp-desktop-navigation__page-tree').append(productsHTML);
+              // Work with spacename in sidebar
+              $('#vp-js-desktop__navigation .header__navigation--heading').each(function() {
+                let spaceName = $(this).text();
+                // Add version # to space name if version # exists
+                let versionNum = $(this).attr('href').split('/')[4];
+                if ((versionNum.split('.').length > 1) && (!isNaN(versionNum.split('.')[0]))) {
+                  $(this).text(spaceName + ' ' + versionNum);
+                }
+                // Update page title to include space name and version
+                $('title').text($('title').text() + ' - ' + $(this).text());
 
-              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
-                .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
+                // Home page of space doesn't include breadcrumbs, so add them:
+                if ($('.breadcrumbs').length == 0) {
+                  let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
+                  <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $(this).attr('href') + 
+                  '" rel="prev">' + spaceName + '</a></li></ol> \
+                  </vp-scroll-shadow></div></nav></i18n-message>';
+                  $('#article-content > header').prepend(breacrumbsToAdd);
+                }
               });
-              $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbyfamily.json', function(data) { processProductsByFamily(data); })
-                .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
-              });
-              function processProductsByType(data) {
-                let productsTypeHTML = '<ul class="ic-products-top productlist-type hidden vp-tree__container relative m-0 outline-none" role="tree">';
-                productsTypeHTML = buildSidebarList(data,productsTypeHTML);
-                productsTypeHTML += '</ul>';
-                $('#ic-products').parent().append(productsTypeHTML);
-                $('.ic-products-top.productlist-type button').click(function() {
-                  sidebarExpandoListeners(this);
+
+              // Update sidebar sections
+              waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+
+                // Update page tree section
+                $(elm).wrap('<div class="sidebar-section"></div>');
+                let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
+                $(elm).parent().prepend(pageTreeHTML);
+
+                // Add Products lists to the sidebar
+                let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
+                $('.vp-desktop-navigation__page-tree').append(productsHTML);
+
+                $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
+                  .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
                 });
-              }
-              function processProductsByFamily(data) {
-                let productsFamilyHTML = '<ul class="ic-products-top productlist-family hidden vp-tree__container relative m-0 outline-none" role="tree">';
-                productsFamilyHTML = buildSidebarList(data,productsFamilyHTML);
-                productsFamilyHTML += '</ul>';
-                $('#ic-products').parent().append(productsFamilyHTML);
-                $('.ic-products-top.productlist-family button').click(function() {
-                  sidebarExpandoListeners(this);
+                $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbyfamily.json', function(data) { processProductsByFamily(data); })
+                  .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
                 });
-              }
+                function processProductsByType(data) {
+                  let productsTypeHTML = '<ul class="ic-products-top productlist-type hidden vp-tree__container relative m-0 outline-none" role="tree">';
+                  productsTypeHTML = buildSidebarList(data,productsTypeHTML);
+                  productsTypeHTML += '</ul>';
+                  $('#ic-products').parent().append(productsTypeHTML);
+                  $('.ic-products-top.productlist-type button').click(function() {
+                    sidebarExpandoListeners(this);
+                  });
+                }
+                function processProductsByFamily(data) {
+                  let productsFamilyHTML = '<ul class="ic-products-top productlist-family hidden vp-tree__container relative m-0 outline-none" role="tree">';
+                  productsFamilyHTML = buildSidebarList(data,productsFamilyHTML);
+                  productsFamilyHTML += '</ul>';
+                  $('#ic-products').parent().append(productsFamilyHTML);
+                  $('.ic-products-top.productlist-family button').click(function() {
+                    sidebarExpandoListeners(this);
+                  });
+                }
 
-              // Add User Preferences, and Support to sidebar
-              let prefSupportHTML = '<div class="sidebar-section"> \
-                    <div id="ic-settings" class="heading">' + svgPrefs + '<h3 class="haiui-label-01-med ic-settings">User Preferences</h3></div></div> \
-                  <div class="sidebar-section"> \
-                    <div id="ic-support" class="heading"> \
-                      <a href="https://www.haivision.com/support" target="_blank" style="display: flex;">' + svgSupport + '<h3 class="haiui-label-01-med">Haivision Support</h3> \
-                      </a></div></div></div>';
-              $('.vp-desktop-navigation__page-tree').append(prefSupportHTML);
+                // Add User Preferences, and Support to sidebar
+                let prefSupportHTML = '<div class="sidebar-section"> \
+                      <div id="ic-settings" class="heading">' + svgPrefs + '<h3 class="haiui-label-01-med ic-settings">User Preferences</h3></div></div> \
+                    <div class="sidebar-section"> \
+                      <div id="ic-support" class="heading"> \
+                        <a href="https://www.haivision.com/support" target="_blank" style="display: flex;">' + svgSupport + '<h3 class="haiui-label-01-med">Haivision Support</h3> \
+                        </a></div></div></div>';
+                $('.vp-desktop-navigation__page-tree').append(prefSupportHTML);
 
-              /* Sidebar event listeners */
-              $('#article-content').css('left','320px').css('width','calc(100% - 320px)');
-              $('#vp-js-desktop__navigation').css('width','320px');
-              $('.header__navigation--logo img').addClass('logo-large');
-              $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
-              var articleLeft = '';
-              $('.ht-menu-button').click(function() {
-                $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
-                if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
-                  // close sidebar 96px
-                  articleLeft = $('#article-content').css('left');
-                  $('#article-content').css('left','96px').css('width','calc(100% - 96px)');
-                  $('#vp-js-desktop__navigation').css('width','96px');
-                  $('#sidebar-dragbar').addClass('hidden');
-                  $('.header__navigation--logo img.logo-large').hide();
-                  $('.header__navigation--logo svg.logo-small').show();
-                }
-                else {
-                  // open sidebar 320px
-                  $('#article-content').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
-                  $('#vp-js-desktop__navigation').css('width',articleLeft);
-                  $('#sidebar-dragbar').removeClass('hidden');
-                  $('.header__navigation--logo img.logo-large').show();
-                  $('.header__navigation--logo svg.logo-small').hide();
-                }
-              });
-              $('.ic-products-top button').click(function() {
-                sidebarExpandoListeners(this);
-              });
-              $('.sort-products .products-by-type').click(function() {
-                $('ul.productlist-type').removeClass('hidden');
-                $('.products-by-type').addClass('current');
-                $('ul.productlist-family').addClass('hidden');
-                $('.products-by-family').removeClass('current');
-              });
-              $('.sort-products .products-by-family').click(function() {
-                $('ul.productlist-family').removeClass('hidden');
-                $('.products-by-family').addClass('current');
-                $('ul.productlist-type').addClass('hidden');
-                $('.products-by-type').removeClass('current');
-              });
-
-              $('#ic-pagetree').click(function() {
-                if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
-                  $('.ht-menu-button').click(); // If sidebar collapsed, open it
-                }
-                if ($('.vp-tree').hasClass('hidden')) {
-                  $('.vp-tree').removeClass('hidden');
-                  $(this).addClass('current');
-                  $('#ic-products').removeClass('current')
-                }
-                else {
-                  $('.vp-tree').addClass('hidden');
-                  $(this).removeClass('current');
-                  if (!$('.sort-items').hasClass('hidden')) {
-                    $('#ic-products').addClass('current');
-                  }
-                }
-              });
-              $('#ic-products').click(function() {
-                if ($('.sort-items').hasClass('hidden')) {
-                  $(this).addClass('current');
-                  $('#ic-pagetree').removeClass('current');
-                  $('.sort-items').removeClass('hidden');
-                  if ($('.products-by-family').hasClass('current')) {
-                    $('ul.productlist-family').removeClass('hidden');
+                /* Sidebar event listeners */
+                $('#article-content').css('left','320px').css('width','calc(100% - 320px)');
+                $('#vp-js-desktop__navigation').css('width','320px');
+                $('.header__navigation--logo img').addClass('logo-large');
+                $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
+                var articleLeft = '';
+                $('.ht-menu-button').click(function() {
+                  $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
+                  if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+                    // close sidebar 96px
+                    articleLeft = $('#article-content').css('left');
+                    $('#article-content').css('left','96px').css('width','calc(100% - 96px)');
+                    $('#vp-js-desktop__navigation').css('width','96px');
+                    $('#sidebar-dragbar').addClass('hidden');
+                    $('.header__navigation--logo img.logo-large').hide();
+                    $('.header__navigation--logo svg.logo-small').show();
                   }
                   else {
-                    $('.products-by-type').addClass('current');
-                    $('ul.productlist-type').removeClass('hidden');
+                    // open sidebar 320px
+                    $('#article-content').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
+                    $('#vp-js-desktop__navigation').css('width',articleLeft);
+                    $('#sidebar-dragbar').removeClass('hidden');
+                    $('.header__navigation--logo img.logo-large').show();
+                    $('.header__navigation--logo svg.logo-small').hide();
                   }
-                }
-                else {
-                  $(this).removeClass('current');
-                  if (!$('.vp-tree').hasClass('hidden')) {
-                    $('#ic-pagetree').addClass('current');
-                  }
-                  $('.sort-items').addClass('hidden');
+                });
+                $('.ic-products-top button').click(function() {
+                  sidebarExpandoListeners(this);
+                });
+                $('.sort-products .products-by-type').click(function() {
+                  $('ul.productlist-type').removeClass('hidden');
+                  $('.products-by-type').addClass('current');
                   $('ul.productlist-family').addClass('hidden');
+                  $('.products-by-family').removeClass('current');
+                });
+                $('.sort-products .products-by-family').click(function() {
+                  $('ul.productlist-family').removeClass('hidden');
+                  $('.products-by-family').addClass('current');
                   $('ul.productlist-type').addClass('hidden');
+                  $('.products-by-type').removeClass('current');
+                });
+
+                $('#ic-pagetree').click(function() {
+                  if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+                    $('.ht-menu-button').click(); // If sidebar collapsed, open it
+                  }
+                  if ($('.vp-tree').hasClass('hidden')) {
+                    $('.vp-tree').removeClass('hidden');
+                    $(this).addClass('current');
+                    $('#ic-products').removeClass('current')
+                  }
+                  else {
+                    $('.vp-tree').addClass('hidden');
+                    $(this).removeClass('current');
+                    if (!$('.sort-items').hasClass('hidden')) {
+                      $('#ic-products').addClass('current');
+                    }
+                  }
+                });
+                $('#ic-products').click(function() {
+                  if ($('.sort-items').hasClass('hidden')) {
+                    $(this).addClass('current');
+                    $('#ic-pagetree').removeClass('current');
+                    $('.sort-items').removeClass('hidden');
+                    if ($('.products-by-family').hasClass('current')) {
+                      $('ul.productlist-family').removeClass('hidden');
+                    }
+                    else {
+                      $('.products-by-type').addClass('current');
+                      $('ul.productlist-type').removeClass('hidden');
+                    }
+                  }
+                  else {
+                    $(this).removeClass('current');
+                    if (!$('.vp-tree').hasClass('hidden')) {
+                      $('#ic-pagetree').addClass('current');
+                    }
+                    $('.sort-items').addClass('hidden');
+                    $('ul.productlist-family').addClass('hidden');
+                    $('ul.productlist-type').addClass('hidden');
+                  }
+                });
+
+                function sidebarExpandoListeners(sidebarButton) {
+                  if ($(sidebarButton).hasClass('rotate-0')) {
+                    $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
+                    $(sidebarButton).closest('li').children('ul').first().removeClass('hidden');
+                  }
+                  else {
+                    $(sidebarButton).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
+                    $(sidebarButton).closest('li').children('ul').first().addClass('hidden');
+                  }
                 }
               });
-
-              function sidebarExpandoListeners(sidebarButton) {
-                if ($(sidebarButton).hasClass('rotate-0')) {
-                  $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
-                  $(sidebarButton).closest('li').children('ul').first().removeClass('hidden');
+            }
+            function updateHeader() {
+              $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
+              $('#article-content').prepend($('body > header'));
+              $('.header__navigation--heading').removeClass('py-3');
+              // Move breadcrumbs to header
+              $('#article-content>header').prepend($('.vp-breadcrumbs__wrapper'));
+              // Show title in the breadcrumbs if title isn't shown when scrolling
+              $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
+              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
+              $('.breadcrumbs').append(titleBreadcrumb);
+              $(window).on('resize scroll', function() {
+                if ($('h1.vp-article__heading').isInViewport($('header.header').height())) {
+                  $('#titleBreadcrumbSlash').hide();
+                  $('#titleBreadcrumb').hide();
+                } else {
+                  $('#titleBreadcrumbSlash').show();
+                  $('#titleBreadcrumb').show();
                 }
-                else {
-                  $(sidebarButton).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
-                  $(sidebarButton).closest('li').children('ul').first().addClass('hidden');
+              });
+              var breadcrumbs = $('.breadcrumbs--fit-content li');
+              if (breadcrumbs.length > 4) {
+                for (var i = 2; i < breadcrumbs.length-2; i++) {
+                  breadcrumbs.eq(i).children('a').text('...');
                 }
-              }
-            });
-
-
-            // Move breadcrumbs to header
-            $('#article-content>header').prepend($('.vp-breadcrumbs__wrapper'));
-            // Show title in the breadcrumbs if title isn't shown when scrolling
-            $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
-            let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
-            $('.breadcrumbs').append(titleBreadcrumb);
-            $(window).on('resize scroll', function() {
-              if ($('h1.vp-article__heading').isInViewport($('header.header').height())) {
-                $('#titleBreadcrumbSlash').hide();
-                $('#titleBreadcrumb').hide();
-              } else {
-                $('#titleBreadcrumbSlash').show();
-                $('#titleBreadcrumb').show();
-              }
-            });
-            var breadcrumbs = $('.breadcrumbs--fit-content li');
-            if (breadcrumbs.length > 4) {
-              for (var i = 2; i < breadcrumbs.length-2; i++) {
-                breadcrumbs.eq(i).children('a').text('...');
               }
             }
-
-            // Work with spacename in sidebar
-            $('#vp-js-desktop__navigation .header__navigation--heading').each(function() {
-              let spaceName = $(this).text();
-              // Add version # to space name if version # exists
-              let versionNum = $(this).attr('href').split('/')[4];
-              if ((versionNum.split('.').length > 1) && (!isNaN(versionNum.split('.')[0]))) {
-                $(this).text(spaceName + ' ' + versionNum);
-              }
-              // Update page title to include space name and version
-              $('title').text($('title').text() + ' - ' + $(this).text());
-
-              // Home page of space doesn't include breadcrumbs, so add them:
-              if ($('.breadcrumbs').length == 0) {
-                let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
-                <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $(this).attr('href') + 
-                '" rel="prev">' + spaceName + '</a></li></ol> \
-                </vp-scroll-shadow></div></nav></i18n-message>';
-                $('#article-content > header').prepend(breacrumbsToAdd);
-              }
-            })
 
             // Fix alerts
               // Remove built-in icon

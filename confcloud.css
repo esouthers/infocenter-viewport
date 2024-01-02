@@ -653,6 +653,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .vp-accordion-link-group__summary {
   padding: 5px;
 }
+.vp-accordion-link-group__summary .expand-title {
+
+}
 .vp-accordion-link-group__panel {
   padding-top: 0px;
   padding-bottom: 5px;
@@ -1179,9 +1182,11 @@ a.article__content__anchor {
   color: var(--haiui-blue-03);
   text-decoration: none;
 }
+.vp-accordion-link-group__summary .expand-title,
 .expand-container .expand-control .expand-title {
   border-bottom: 2px solid transparent;
 }
+.vp-accordion-link-group__summary .expand-title:hover,
 .expand-container .expand-control .expand-title:hover {
   border-bottom: 2px solid var(--haiui-blue-03);
 }

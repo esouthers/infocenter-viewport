@@ -618,6 +618,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   row-gap: 0;
   border: none;
 }
+.article__content .vp-accordion-link-group {
+  margin-left: 0px;
+}
 .vp-accordion-link-group__title a {
   font-size: 13px;
   font-weight: normal;

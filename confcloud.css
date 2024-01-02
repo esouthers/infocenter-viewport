@@ -648,9 +648,11 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   padding-bottom: 5px;
   font-size: 13px;
 }
+.article__content .vp-accordion-link-group__list-item:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
 .article__content .vp-accordion-link-group__list-item {
   font-size: 13px;
-  border-bottom: 1px solid var(--border-color);
   padding: 5px;
 }
 details.vp-disclosure summary {

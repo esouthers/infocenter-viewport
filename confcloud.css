@@ -633,9 +633,16 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .article__content .vp-accordion-link-group__item {
   display: list-item;
 }
-
 .vp-accordion-link-group__summary {
   padding: 5px;
+}
+.vp-accordion-link-group__panel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 13px;
+}
+.vp-accordion-link-group__child-list>.vp-accordion-link-group__list-item:not(:last-child) {
+  margin-bottom: 5px !important;
 }
 .vp-accordion-link-group a:is(:hover,:focus,:focus-visible) {
   text-decoration: none;
@@ -643,6 +650,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 .vp-accordion-link-group__summary:where(:hover,:focus,:focus-visible,:focus-within) {
   background-color: transparent;
+}
+.panel-macro--panel {
+  --color-background: transparent;
 }
 
 h1.vp-article__heading {

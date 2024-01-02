@@ -648,6 +648,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   padding-bottom: 5px;
   font-size: 13px;
 }
+li.vp-accordion-link-group__list-item:is(:first-child) {
+  border-top: 1px solid var(--border-color);
+}
 .article__content .vp-accordion-link-group__list-item:not(:last-child) {
   border-bottom: 1px solid var(--border-color);
 }

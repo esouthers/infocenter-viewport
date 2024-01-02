@@ -1176,19 +1176,17 @@ a.article__content__anchor {
 .expand-container .expand-content ul {
   margin-bottom: 0px !important;
 }
+.vp-accordion-link-group__summary .expand-title:focus, .vp-accordion-link-group__summary .expand-title:hover,
 .expand-container .expand-control:focus, .expand-container .expand-control:hover,
 .expand-container .expand-control .expand-title:focus, .expand-container .expand-control .expand-title:hover {
   background-color: transparent;
   color: var(--haiui-blue-03);
   text-decoration: none;
+  border-bottom: 2px solid var(--haiui-blue-03);
 }
 .vp-accordion-link-group__summary .expand-title,
 .expand-container .expand-control .expand-title {
   border-bottom: 2px solid transparent;
-}
-.vp-accordion-link-group__summary .expand-title:hover,
-.expand-container .expand-control .expand-title:hover {
-  border-bottom: 2px solid var(--haiui-blue-03);
 }
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;

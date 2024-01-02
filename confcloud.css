@@ -543,6 +543,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .columnLayout.two-right-sidebar > div.aside {
   width: 33%
 } */
+.columnLayout .cell.normal {
+  width: 100%;
+}
 
 #main-content {
   max-width: unset;

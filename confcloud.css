@@ -619,7 +619,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   border: none;
 }
 .article__content .vp-accordion-link-group {
-  margin-left: 0px;
+  margin-left: -40px;
 }
 .vp-accordion-link-group__title a {
   font-size: 13px;

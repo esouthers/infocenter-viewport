@@ -855,7 +855,9 @@ nav a {
 }
 
 /* Alert macros */
-
+.panel-macro__content>* {
+  color: inherit;
+}
 .panel-macro__content--heading {
   font-weight: 500;
 }

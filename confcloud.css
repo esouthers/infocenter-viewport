@@ -113,6 +113,7 @@
 
   --K15t-foreground: var(--haiui-blue-03);
   --K15t-background-neutral: transparent;
+  --K15t-background-neutral-hovered: transparent;
   --K15t-foreground-brand: var(--haiui-blue-03);
   --K15t-link: var(--haiui-blue-03);
   --K15t-link-visited: var(--haiui-blue-03);

@@ -616,15 +616,33 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   margin-bottom: 0;
   margin-left: 20px;
   row-gap: 0;
+  border: none;
+}
+.vp-accordion-link-group__title a {
+  font-size: 13px;
+  font-weight: normal;
 }
 .article__content .vp-accordion-link-group {
   display: flex;
   flex-direction: column;
   list-style-position: outside;
   list-style-type: disc;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .article__content .vp-accordion-link-group__item {
   display: list-item;
+}
+
+.vp-accordion-link-group__summary {
+  padding: 5px;
+}
+.vp-accordion-link-group a:is(:hover,:focus,:focus-visible) {
+  text-decoration: none;
+  color: inherit;
+}
+.vp-accordion-link-group__summary:where(:hover,:focus,:focus-visible,:focus-within) {
+  background-color: transparent;
 }
 
 h1.vp-article__heading {

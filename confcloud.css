@@ -641,6 +641,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 .article__content .vp-accordion-link-group__item {
   display: list-item;
+  margin-left: 2em;
 }
 .article__content div.vp-accordion-link-group__item {
   padding-left: 17px;

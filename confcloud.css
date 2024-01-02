@@ -111,6 +111,8 @@
   --haiui-spacing-10: 64px;
   --haiui-spacing-11: 80px;
 
+  --K15t-foreground: var(--haiui-blue-03);
+  --K15t-background-neutral: transparent;
   --K15t-foreground-brand: var(--haiui-blue-03);
   --K15t-link: var(--haiui-blue-03);
   --K15t-link-visited: var(--haiui-blue-03);

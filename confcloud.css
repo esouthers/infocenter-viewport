@@ -650,6 +650,11 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 .vp-accordion-link-group__list-item {
   font-size: 13px;
+  border-bottom: 1px solid var(--border-color);
+  padding: 5px;
+}
+details.vp-disclosure summary {
+  font-size: 13px;
 }
 .vp-accordion-link-group__child-list>.vp-accordion-link-group__list-item:not(:last-child) {
   margin-bottom: 5px !important;

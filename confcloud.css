@@ -633,6 +633,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .article__content .vp-accordion-link-group__item {
   display: list-item;
 }
+.article__content div.vp-accordion-link-group__item {
+  padding-left: 17px;
+}
 .vp-accordion-link-group__item--disclosure .vp-accordion-link-group__summary {
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -643,7 +646,10 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .vp-accordion-link-group__panel {
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 13px;
+  font-size: 14px;
+}
+.vp-accordion-link-group__list-item {
+  font-size: 14px;
 }
 .vp-accordion-link-group__child-list>.vp-accordion-link-group__list-item:not(:last-child) {
   margin-bottom: 5px !important;

@@ -640,8 +640,8 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   margin-top: -30px;
 }
 .article__content .vp-accordion-link-group__item {
-  display: list-item;
-  margin-left: 2em;
+/*  display: list-item;
+  margin-left: 2em; */
 }
 .article__content div.vp-accordion-link-group__item {
   padding-left: 17px;

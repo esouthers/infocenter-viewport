@@ -619,6 +619,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   border: none;
 }
 .article__content .vp-accordion-link-group {
+  margin-left: 0px;
+}
+.article__content .panel-macro .vp-accordion-link-group {
   margin-left: -40px;
 }
 .vp-accordion-link-group__title a {
@@ -630,8 +633,11 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   flex-direction: column;
   list-style-position: outside;
   list-style-type: disc;
-  margin-top: -30px;
+  margin-top: 0px;
   margin-bottom: 10px;
+}
+.article__content .panel-macro .vp-accordion-link-group {
+  margin-top: -30px;
 }
 .article__content .vp-accordion-link-group__item {
   display: list-item;

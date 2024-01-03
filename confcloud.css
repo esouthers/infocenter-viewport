@@ -773,6 +773,9 @@ a:hover {
   border-bottom: 2px solid var(--haiui-blue-03);
 }
 /* Tables */
+.toggle, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr .tablesorter-header, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr th, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr .tablesorter-header, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr th {
+  color: var(--haiui-gray-03);
+}
 .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) {
   border-left: none;
   border-right: none;

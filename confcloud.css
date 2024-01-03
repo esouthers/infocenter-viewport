@@ -400,9 +400,10 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .vp-search-suggestion-option--default {
   padding: 7px 10px;
 }
-.vp-search-suggestion-option--default:hover {
+.vp-search-suggestion-option:is(:hover,:focus-visible,.is-active) {
   background-color: var(--haiui-gray-10);
   color: var(--haiui-gray-03);
+  box-shadow: none;
 }
 .vp-search-suggestion-option__info:not(:last-child):after {
   content: none;

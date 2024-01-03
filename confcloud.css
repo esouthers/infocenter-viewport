@@ -773,7 +773,9 @@ a:hover {
   border-bottom: 2px solid var(--haiui-blue-03);
 }
 /* Tables */
-.article__content code, .toggle:is(:hover, :focus-visible), .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .confluenceTh, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .header-row, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .numberingColumn, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) th {
+.article__content code, 
+.toggle:is(:hover, :focus-visible), 
+.article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .confluenceTh, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .header-row, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) .numberingColumn, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) th {
   background-color: var(--haiui-gray-11);
 }
 .toggle, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr .tablesorter-header, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr td, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) tbody tr th, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr .tablesorter-header, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr td, .article__content table:is(.tablesorter-default,.confluenceTable,.attachments.aui) thead tr th {

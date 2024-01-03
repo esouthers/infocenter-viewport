@@ -295,6 +295,7 @@ function confCloudJS() {
 
               if (($('img', this).height() < maxThumbnailHeight) || ($('img', this).attr('width') < maxThumbnailWidth)) {
                 $(this).css('display','inline');
+                $($('vp-lightbox-toggle', this)[0].shadowRoot).find('button').remove();
                 $('a', this).css('display','inline');
                 if ($(this)[0].nextSibling) {
                   if ($(this)[0].nextSibling.nodeType == 3) {

@@ -244,6 +244,11 @@ function confCloudJS() {
                 $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
               }
             });
+            $('vp-article-pagination').each(function() {
+              let style =  document.createElement( 'style' );
+              style.innerHTML = '.description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible) .description { color: transparent; } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
+              $(this)[0].shadowRoot.appendChild(style);
+            });
 
             // Add K15t footer
             $('footer').remove();
@@ -318,9 +323,9 @@ function confCloudJS() {
                 }
               }
               else {
-                let style =  document.createElement( 'style' );
-                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
-                $('vp-lightbox-toggle', this)[0].shadowRoot.appendChild(style);
+//                let style =  document.createElement( 'style' );
+//                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
+//                $('vp-lightbox-toggle', this)[0].shadowRoot.appendChild(style);
               }
             });
             let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';

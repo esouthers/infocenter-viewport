@@ -578,8 +578,12 @@ function confCloudJS() {
                 let that = this;
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
                   let imgName = data.parameters.diagramName.value + '.png';
-                  let imgSize = data.parameters.size.value;
-                  let img = '<img width="' + imgSize + '" src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
+                  let imgSize = data.parameters.size?.value;
+                  let imgWidth = '';
+                  if (imgSize !== undefined) {
+                    imgWidth = ' width="' + imgSize + '"';
+                  }
+                  let img = '<img' + imgWidth + ' src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
                   $(that).append(img);
                 });
               });

@@ -500,29 +500,30 @@ function confCloudJS() {
           $('.ap-container script').each( function(index) {
             var that = this;
             var tabsIndex = index;
+            pageID = $(that).text().split('page.id\\":\\"')[1].split('\\')[0];
             var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
             $(that).parent('.ap-container').after('<div id="aui-tabs' + tabsIndex + '" class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
             // https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
             $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
               // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
-              var tabPageIDs = data.value.split('data-macro-id=\"');
+              var tabMacroIDs = data.value.split('data-macro-id=\"');
               var tabPageTitles = [];
-              for (var i = 1; i < tabPageIDs.length; i++) {
-                tabPageIDs[i] = tabPageIDs[i].split('\"')[0];
-                var tabPageID = tabPageIDs[i];
-                $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageID + '-tab"></a></li>');
-                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID, function( data ) {
+              for (var i = 1; i < tabMacroIDs.length; i++) {
+                tabMacroIDs[i] = tabMacroIDs[i].split('\"')[0];
+                var tabMacroID = tabMacroIDs[i];
+                $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabMacroID + '-tab"></a></li>');
+                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
                   var tabPageTitle = data.parameters.title.value;
                   var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
-                  var tabPageID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
+                  var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
 //                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
 //                  href="#' + tabPageTitleNoSpaces + 
-                  $('#' + tabPageID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
+                  $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();
                   addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
-                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabPageID + "/convert/view", function( data ) {
+                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
                     $('#' + tabPageTitleNoSpaces).append(data.value);
                     renderTab($('#' + tabPageTitleNoSpaces));
                   });

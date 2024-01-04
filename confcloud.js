@@ -231,7 +231,8 @@ function confCloudJS() {
               var breadcrumbs = $('.breadcrumbs--fit-content li');
               if (breadcrumbs.length > 4) {
                 for (var i = 2; i < breadcrumbs.length-2; i++) {
-                  breadcrumbs.eq(i).children('a').text('...');
+                  let tempTitle = breadcrumbs.eq(i).children('a').text();
+                  breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
                 }
               }
             }

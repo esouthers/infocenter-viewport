@@ -991,6 +991,8 @@ table .confluence-information-macro, table .panel-macro {
 }
 #ht-footer, #ht-footer a {
   color: var(--haiui-gray-08);
+}
+#ht-footer a {
   border-bottom: 1px solid var(--haiui-gray-08);
 }
 #ht-footer a:is(:hover, :focus-visible) {

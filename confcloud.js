@@ -236,6 +236,7 @@ function confCloudJS() {
               }
             }
 
+            $('.vp-search-input > input').attr('placeholder','How can we help you?');
             // Fix alerts
               // Remove built-in icon
             $('.panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon').children('img').remove();

@@ -577,7 +577,7 @@ function confCloudJS() {
                   let imgSize = data.parameters.size.value;
 //                  https://dochaivision.atlassian.net/wiki/download/attachments/36052653/HMP%20Front%20R640.drawio.png?api=v2
                   let img = '<img width="' + imgSize + '" src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
-                  $(that).parent().append(img);
+                  $(that).append(img);
                 });
               });
 

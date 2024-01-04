@@ -557,7 +557,7 @@ function confCloudJS() {
                * /
             });
             $('table-wrap', tabContent).each(function() {
-/* Add enlarge functionality to tabs in tabs
+/* Add enlarge functionality to tables in tabs
               $(this).prepend('<button type="button" aria-hidden="true" class="button enlarge-table-button" data-open="js-table-overlay"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 11.7 11.7" xml:space="preserve"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.239 2.963h1.4v1.5M4.539 8.663h-1.5v-1.6M8.739 7.163v1.5h-1.6M3.039 4.563v-1.5h1.6"></path></svg></button>');
               '<div class="table-overlay full reveal article__content" data-vp-id="js-table-overlay" style="display: block;"> \
               <i18n-message i18nkey="modal.cta.close.label" attribute="title"><button class="close-button table-overlay__close" data-close="" title="Close modal" type="button"> \
@@ -568,6 +568,18 @@ function confCloudJS() {
               });
 */
             });
+            /* Add fix for draw.io images */
+              $('[data-macro-name="drawio"]').each(function() {
+                let macroID = $(this).attr('data-macro-id');
+                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
+                  let imgName = data.parameters.diagramName.value + '.png';
+                  let imgSize = data.parameters.size.value;
+//                  https://dochaivision.atlassian.net/wiki/download/attachments/36052653/HMP%20Front%20R640.drawio.png?api=v2
+                  let img = '<img width="' + imgSize + '" src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
+                  $(this).parent().append(img);
+                });
+              });
+
           }
   };
   document.head.appendChild(script);

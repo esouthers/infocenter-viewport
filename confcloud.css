@@ -368,6 +368,10 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   padding-inline-start: calc(var(--padding-inline) + .25rem);
   padding-inline-end: calc(var(--padding-inline) + 3.775rem);
 }
+.vp-search-input > input::placeholder, .vp-search-input > input::-ms-input-placeholder {
+  color: var(--haiui-gray-08);
+  opacity: 1;
+}
 .vp-search-input__icon {
   right: 0;
   left: unset;

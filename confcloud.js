@@ -518,7 +518,7 @@ function confCloudJS() {
                   var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
 //                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
 //                  href="#' + tabPageTitleNoSpaces + 
-                  $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
+                  $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('data-href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
                   $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();
@@ -536,7 +536,7 @@ function confCloudJS() {
               $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
               $(tab).parent().addClass('active-tab');
               $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane').hide();
-              $($(tab).attr('href')).addClass('active-pane').show();
+              $($(tab).attr('data-href')).addClass('active-pane').show();
             });
           }
           function renderTab(tabContent) {
@@ -544,7 +544,7 @@ function confCloudJS() {
               let pageID = $(this).attr('data-linked-resource-id');
               let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
               let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
-              $(this).attr('href', pageHREF).text(pageTitle);
+              $(this).attr('data-href', pageHREF).text(pageTitle);
               /**************
                * Issue here with links that don't appear yet in the sidebar. See P2P Analytics tab at https://haivision-infocenter.scrollhelp.site/HMP/3.9/reports-and-logs
                * ************/

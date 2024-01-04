@@ -552,6 +552,7 @@ function confCloudJS() {
               let imgNameTemp = $(this).attr('src').split('/');
               let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
               $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
+              $(this).attr('width',$(this).attr('height'));
               /*********** 
                * Add inline image fix for icons in tabs: https://haivision-infocenter.scrollhelp.site/HMP/3.9/security-settings#Appliance
                * /
@@ -575,7 +576,6 @@ function confCloudJS() {
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
                   let imgName = data.parameters.diagramName.value + '.png';
                   let imgSize = data.parameters.size.value;
-//                  https://dochaivision.atlassian.net/wiki/download/attachments/36052653/HMP%20Front%20R640.drawio.png?api=v2
                   let img = '<img width="' + imgSize + '" src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
                   $(that).append(img);
                 });

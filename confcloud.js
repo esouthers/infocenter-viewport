@@ -246,7 +246,7 @@ function confCloudJS() {
             });
             $('vp-article-pagination').each(function() {
               let style =  document.createElement( 'style' );
-              style.innerHTML = '.description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
+              style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
               $(this)[0].shadowRoot.appendChild(style);
             });
 

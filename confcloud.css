@@ -690,7 +690,7 @@ details.vp-disclosure summary {
 .vp-accordion-link-group__child-list>.vp-accordion-link-group__list-item:not(:last-child) {
   margin-bottom: 5px !important;
 }
-.vp-accordion-link-group a:is(:hover,:focus,:focus-visible) {
+.vp-accordion-link-group a, .vp-accordion-link-group a:is(:hover,:focus,:focus-visible) {
   text-decoration: none;
   color: var(--K15t-link);;
 }

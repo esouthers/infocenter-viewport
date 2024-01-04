@@ -569,7 +569,7 @@ function confCloudJS() {
 */
             });
             /* Add fix for draw.io images */
-              $('[data-macro-name="drawio"]').each(function() {
+              $('[data-macro-name="drawio"]', tabContent).each(function() {
                 let macroID = $(this).attr('data-macro-id');
                 let that = this;
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {

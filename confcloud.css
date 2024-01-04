@@ -993,7 +993,7 @@ table .confluence-information-macro, table .panel-macro {
   color: var(--haiui-gray-08);
 }
 #ht-footer a:is(:hover, :focus-visible) {
- border-bottom: 2px solid var(--haiui-gray-08);
+ border-bottom: 1px solid var(--haiui-gray-08);
 }
 /* Dragbar */
 #sidebar-dragbar {

@@ -990,9 +990,11 @@ table .confluence-information-macro, table .panel-macro {
   margin: 0px 40px 12px 30px;
 }
 #ht-footer, #ht-footer a {
-  color: #CCCCCC;
+  color: var(--haiui-gray-08);
 }
-
+#ht-footer a:is(:hover, :focus-visible) {
+ border-bottom: 2px solid var(--haiui-gray-08);
+}
 /* Dragbar */
 #sidebar-dragbar {
   position: absolute;

@@ -571,12 +571,13 @@ function confCloudJS() {
             /* Add fix for draw.io images */
               $('[data-macro-name="drawio"]').each(function() {
                 let macroID = $(this).attr('data-macro-id');
+                let that = this;
                 $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
                   let imgName = data.parameters.diagramName.value + '.png';
                   let imgSize = data.parameters.size.value;
 //                  https://dochaivision.atlassian.net/wiki/download/attachments/36052653/HMP%20Front%20R640.drawio.png?api=v2
                   let img = '<img width="' + imgSize + '" src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
-                  $(this).parent().append(img);
+                  $(that).parent().append(img);
                 });
               });
 

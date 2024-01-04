@@ -58,7 +58,7 @@ function confCloudJS() {
                 $('title').text($('title').text() + ' - ' + $(this).text());
 
                 // Home page of space doesn't include breadcrumbs, so add them:
-                let spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();
+                spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();
                 if ($('.breadcrumbs').length == 0) {
                   let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
                   <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $(this).attr('href') + 

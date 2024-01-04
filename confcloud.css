@@ -369,7 +369,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   padding-inline-end: calc(var(--padding-inline) + 3.775rem);
 }
 .vp-search-input > input::placeholder, .vp-search-input > input::-ms-input-placeholder {
-  color: var(--haiui-gray-08);
+  color: var(--haiui-gray-10);
   opacity: 1;
 }
 .vp-search-input__icon {

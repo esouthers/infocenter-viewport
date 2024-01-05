@@ -135,11 +135,13 @@ function confCloudJS() {
                 let spaceName = $(this).text();
                 // Add version # to space name if version # exists
                 let versionNum = $(this).attr('href').split('/')[4];
-                if ((versionNum.split('.').length > 1) && (!isNaN(versionNum.split('.')[0]))) {
-                  $(this).text(spaceName + ' ' + versionNum);
+                if (versionNum !== undefined) {
+                  if ((versionNum.split('.').length > 1) && (!isNaN(versionNum.split('.')[0]))) {
+                    $(this).text(spaceName + ' ' + versionNum);
+                  }
+                  // Update page title to include space name and version
+                  $('title').text($('title').text() + ' - ' + $(this).text());
                 }
-                // Update page title to include space name and version
-                $('title').text($('title').text() + ' - ' + $(this).text());
 
                 // Home page of space doesn't include breadcrumbs, so add them:
                 spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();

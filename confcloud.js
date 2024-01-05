@@ -319,7 +319,10 @@ function confCloudJS() {
 
             if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth)) {
               $(figureToFix).css('display','inline');
-              $($('vp-lightbox-toggle', figureToFix)[0].shadowRoot).find('button').remove();
+              let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
+              if (vpLBToggle !== undefined) {
+                $(vpLBToggle[0].shadowRoot).find('button').remove();
+              }
               $('a', figureToFix).css('display','inline');
               if ($(figureToFix)[0].nextSibling) {
                 if ($(figureToFix)[0].nextSibling.nodeType == 3) {

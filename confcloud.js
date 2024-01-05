@@ -320,7 +320,7 @@ function confCloudJS() {
             if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth)) {
               $(figureToFix).css('display','inline');
               let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
-              if (vpLBToggle !== undefined) {
+              if (vpLBToggle.length > 0) {
                 $(vpLBToggle[0].shadowRoot).find('button').remove();
               }
               $('a', figureToFix).css('display','inline');

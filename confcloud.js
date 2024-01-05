@@ -18,7 +18,7 @@ function confCloudJS() {
           if (window.location.pathname == '/search.html') {
             console.log('search results page');
             let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
-            $('.vp-article').append(sidebar);
+            $('#content').before(sidebar);
             updateSidebar();
           }
           // Redirect to homepage

@@ -14,6 +14,7 @@ function confCloudJS() {
       var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
       var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
 
+          // Start of processing depending on page type
           if (window.location.pathname == '/search.html') {
             console.log('search results page');
           }
@@ -29,6 +30,12 @@ function confCloudJS() {
 
             function updateFooter() {
               $('article').append($('.footer__attribution-line--copyright'));
+              // Add K15t footer
+              $('footer').remove();
+              let footerToAdd = '<footer id="ht-footer"> \
+              <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
+              <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
+              $('#article-content').append(footerToAdd);
             }
             function updateSidebar() {
 
@@ -114,6 +121,28 @@ function confCloudJS() {
                         </a></div></div></div>';
                 $('.vp-desktop-navigation__page-tree').append(prefSupportHTML);
 
+                // Add sidebar dragbar
+                let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
+                $('#article-content').append(dragbarToAdd);
+                $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
+                  e.preventDefault();
+                  $(document).on('mousemove touchmove', function (e) {
+                    if (e.type == 'touchmove') { mousex = e.touches[0].pageX + 2; }
+                    else { mousex = e.pageX + 2; }
+                    if (mousex < 190 || mousex/$(window).innerWidth() > 0.7)return;
+                    if (mousex < 220)$('#vp-js-desktop__navigation').addClass('small');
+                    else $('#vp-js-desktop__navigation').removeClass('small');
+                    setDragbar(mousex);
+//                  setLocalStorageWithExpiry('sidebar-width', mousex, 365);
+                  });
+                  // Disable mouse events for navigation bar iframe
+                  $(document).on('mouseup', function (e) {
+                      $(document).unbind('mousemove');
+                  });
+                  $(document).on('touchend', function (e) {
+                      $(document).unbind('touchmove');
+                  });
+                });
                 /* Sidebar event listeners */
                 $('#article-content').css('left','320px').css('width','calc(100% - 320px)');
                 $('#vp-js-desktop__navigation').css('width','320px');
@@ -197,6 +226,7 @@ function confCloudJS() {
                   }
                 });
 
+
                 function sidebarExpandoListeners(sidebarButton) {
                   if ($(sidebarButton).hasClass('rotate-0')) {
                     $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
@@ -237,6 +267,7 @@ function confCloudJS() {
               }
             }
 
+            // Search box placeholder
             $('.vp-search-input > input').attr('placeholder','How can we help you?');
             // Fix alerts
               // Remove built-in icon
@@ -247,23 +278,15 @@ function confCloudJS() {
                 $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
               }
             });
+
+            // Apply styling to next/prev links at bottom of page
             $('vp-article-pagination').each(function() {
               let style =  document.createElement( 'style' );
               style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
               $(this)[0].shadowRoot.appendChild(style);
             });
 
-            // Add K15t footer
-            $('footer').remove();
-            let footerToAdd = '<footer id="ht-footer"> \
-            <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
-            <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
-            $('#article-content').append(footerToAdd);
-
-            // Add sidebar dragbar
-            let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
-            $('#article-content').append(dragbarToAdd);
-
+            // Expand/collapse buttons
             $('summary').each(function() {
               let expandIcon = $('.vp-disclosure-icon',this);
               let expandTitle = $(this).text();
@@ -273,71 +296,58 @@ function confCloudJS() {
 
             $('body').show();
 
-            $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
-              e.preventDefault();
-              $(document).on('mousemove touchmove', function (e) {
-                if (e.type == 'touchmove') { mousex = e.touches[0].pageX + 2; }
-                else { mousex = e.pageX + 2; }
-                if (mousex < 190 || mousex/$(window).innerWidth() > 0.7)return;
-                if (mousex < 220)$('#vp-js-desktop__navigation').addClass('small');
-                else $('#vp-js-desktop__navigation').removeClass('small');
-                setDragbar(mousex);
-          //            setLocalStorageWithExpiry('sidebar-width', mousex, 365);
-              });
-              // Disable mouse events for navigation bar iframe
-              $(document).on('mouseup', function (e) {
-                  $(document).unbind('mousemove');
-              });
-              $(document).on('touchend', function (e) {
-                  $(document).unbind('touchmove');
-              });
-            });
-
             // Fix table cell background colors
             $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
 
-            // Fix inline images
             $('#main-content figure').each(function() {
-              let maxThumbnailWidth = 30;
-              let maxThumbnailHeight = 30;
-
-              if (($('img', this).height() < maxThumbnailHeight) || ($('img', this).attr('width') < maxThumbnailWidth)) {
-                $(this).css('display','inline');
-                $($('vp-lightbox-toggle', this)[0].shadowRoot).find('button').remove();
-                $('a', this).css('display','inline');
-                if ($(this)[0].nextSibling) {
-                  if ($(this)[0].nextSibling.nodeType == 3) {
-                    if (($(this)[0].previousSibling) && ($(this)[0].previousSibling.nodeType == 1)) {
-                      textNode = $(this)[0].nextSibling.nodeValue;
-                      $(this)[0].nextSibling.nodeValue = '';
-                      $(this).prev().append($(this)).append(textNode).contents().unwrap();
-                    }
-                    else {
-                      textNode = $(this)[0].nextSibling.nodeValue;
-                      $(this)[0].nextSibling.nodeValue = '';
-                      $(this).append(textNode);
-                    }
-                  }
-                }
-                else {
-                  if (($(this)[0].previousSibling) && ($(this)[0].previousSibling.nodeType == 1)) {
-                    $(this).prev().append($(this)).contents().unwrap();
-                  }
-                }
-              }
-              else {
-//                let style =  document.createElement( 'style' );
-//                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
-//                $('vp-lightbox-toggle', this)[0].shadowRoot.appendChild(style);
-              }
+              fixInlineImages(this);
             });
+            fixTabs();
+
             let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
             $('#vp-js-desktop__navigation__picker').before(verIcon);
 
             let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
           //        addIconNextToVersion(newMsg, flagID, 14);
 
+          } // End of processing depending on page type
+
+          // Fix inline images
+          function fixInlineImages(figureToFix) {
+            let maxThumbnailWidth = 30;
+            let maxThumbnailHeight = 30;
+
+            if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth)) {
+              $(figureToFix).css('display','inline');
+              $($('vp-lightbox-toggle', figureToFix)[0].shadowRoot).find('button').remove();
+              $('a', figureToFix).css('display','inline');
+              if ($(figureToFix)[0].nextSibling) {
+                if ($(figureToFix)[0].nextSibling.nodeType == 3) {
+                  if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
+                    textNode = $(figureToFix)[0].nextSibling.nodeValue;
+                    $(figureToFix)[0].nextSibling.nodeValue = '';
+                    $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
+                  }
+                  else {
+                    textNode = $(figureToFix)[0].nextSibling.nodeValue;
+                    $(figureToFix)[0].nextSibling.nodeValue = '';
+                    $(figureToFix).append(textNode);
+                  }
+                }
+              }
+              else {
+                if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
+                  $(figureToFix).prev().append($(figureToFix)).contents().unwrap();
+                }
+              }
+            }
+            else {
+//                let style =  document.createElement( 'style' );
+//                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
+//                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
+            }
           }
+
 
           $.fn.isInViewport = function(elementOffset) {
             var elementTop = $(this).offset().top - elementOffset;
@@ -492,105 +502,110 @@ function confCloudJS() {
           /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
 
+          // Temp fix for Adaptavist's Tabs macros
+          function fixTabs() {
+            // Aui tabs
+            // 1. Search page for auitabs jscript.
+            // 2. If found get page id and macro ids
+            var pageID = $('body').attr('pageid');
+            $('.ap-container script').each( function(index) {
+              var that = this;
+              var tabsIndex = index;
+              pageID = $(that).text().split('page.id\\":\\"')[1].split('\\')[0];
+              var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
+              $(that).parent('.ap-container').after('<div id="aui-tabs' + tabsIndex + '" class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
+              // https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
+              $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
+                // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
+                var tabMacroIDs = data.value.split('data-macro-id=\"');
+                var tabPageTitles = [];
+                for (var i = 1; i < tabMacroIDs.length; i++) {
+                  tabMacroIDs[i] = tabMacroIDs[i].split('\"')[0];
+                  var tabMacroID = tabMacroIDs[i];
+                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabMacroID + '-tab"></a></li>');
+                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
+                    var tabPageTitle = data.parameters.title.value;
+                    var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
+                    var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
+  //                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
+  //                  href="#' + tabPageTitleNoSpaces + 
+                    $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('data-href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
+                    $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
+                    $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
+  /* Update these 2 lines to add support for tabs in URL feature */
+                    let firstTab = $('#aui-tabs' + tabsIndex + ' .tabs-menu .menu-item').first().children('a').attr('data-href');
+                    $('#aui-tabs' + tabsIndex + ' ' + firstTab).addClass('active-pane').show();
 
-          // Aui tabs
-          // 1. Search page for auitabs jscript.
-          // 2. If found get page id and macro ids
-          var pageID = $('body').attr('pageid');
-          $('.ap-container script').each( function(index) {
-            var that = this;
-            var tabsIndex = index;
-            pageID = $(that).text().split('page.id\\":\\"')[1].split('\\')[0];
-            var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
-            $(that).parent('.ap-container').after('<div id="aui-tabs' + tabsIndex + '" class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
-            // https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
-            $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
-              // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
-              var tabMacroIDs = data.value.split('data-macro-id=\"');
-              var tabPageTitles = [];
-              for (var i = 1; i < tabMacroIDs.length; i++) {
-                tabMacroIDs[i] = tabMacroIDs[i].split('\"')[0];
-                var tabMacroID = tabMacroIDs[i];
-                $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabMacroID + '-tab"></a></li>');
-                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
-                  var tabPageTitle = data.parameters.title.value;
-                  var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
-                  var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
-//                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
-//                  href="#' + tabPageTitleNoSpaces + 
-                  $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('data-href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
-                  $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
-                  $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
-/* Update these 2 lines to add support for tabs in URL feature */
-                  let firstTab = $('#aui-tabs' + tabsIndex + ' .tabs-menu .menu-item').first().children('a').attr('data-href');
-                  $('#aui-tabs' + tabsIndex + ' ' + firstTab).addClass('active-pane').show();
+                    addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
+                    $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
+                      $('#' + tabPageTitleNoSpaces).append(data.value);
+                      renderTab($('#' + tabPageTitleNoSpaces));
+                    });
+                  });
+                }
+              });
+            });
+            function addTabEventListener(tab) {
+              $(tab).click(function() {
+                $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
+                $(tab).parent().addClass('active-tab');
+                $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane').hide();
+                $($(tab).attr('data-href')).addClass('active-pane').show();
+              });
+            }
+            function renderTab(tabContent) {
+              $('.confluence-embedded-file-wrapper', tabContent).each(function() {
+                fixInlineImages(this);
+              });
+              $('a', tabContent).each(function() {
+                let pageID = $(this).attr('data-linked-resource-id');
+                let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
+                let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
+                $(this).attr('data-href', pageHREF).text(pageTitle);
+                /**************
+                 * Issue here with links that don't appear yet in the sidebar. See P2P Analytics tab at https://haivision-infocenter.scrollhelp.site/HMP/3.9/reports-and-logs
+                 * ************/
+              });
+              $('img', tabContent).each(function() {
+                let imgPageID = $(this).attr('data-linked-resource-container-id');
+                let imgID = $(this).attr('data-media-id');
+                let imgNameTemp = $(this).attr('src').split('/');
+                let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
+                $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
+                $(this).attr('width',$(this).attr('height'));
+                /*********** 
+                 * Add inline image fix for icons in tabs: https://haivision-infocenter.scrollhelp.site/HMP/3.9/security-settings#Appliance
+                 * /
+              });
+              $('table-wrap', tabContent).each(function() {
+  /* Add enlarge functionality to tables in tabs
+                $(this).prepend('<button type="button" aria-hidden="true" class="button enlarge-table-button" data-open="js-table-overlay"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 11.7 11.7" xml:space="preserve"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.239 2.963h1.4v1.5M4.539 8.663h-1.5v-1.6M8.739 7.163v1.5h-1.6M3.039 4.563v-1.5h1.6"></path></svg></button>');
+                '<div class="table-overlay full reveal article__content" data-vp-id="js-table-overlay" style="display: block;"> \
+                <i18n-message i18nkey="modal.cta.close.label" attribute="title"><button class="close-button table-overlay__close" data-close="" title="Close modal" type="button"> \
+                <span aria-hidden="true">×</span></button></i18n-message><div class="table-overlay__content"><div class="article">' + + '</div></div></div>';
+                $('vp-article-pagination').before(this);
+                $('button', this).click(function() {
 
-                  addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
-                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
-                    $('#' + tabPageTitleNoSpaces).append(data.value);
-                    renderTab($('#' + tabPageTitleNoSpaces));
+                });
+  */
+              });
+              /* Add fix for draw.io images */
+                $('[data-macro-name="drawio"]', tabContent).each(function() {
+                  let macroID = $(this).attr('data-macro-id');
+                  let that = this;
+                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
+                    let imgName = data.parameters.diagramName.value + '.png';
+                    let imgSize = data.parameters.size?.value;
+                    let imgWidth = '';
+                    if (imgSize !== undefined) {
+                      imgWidth = ' width="' + imgSize + '"';
+                    }
+                    let img = '<img' + imgWidth + ' src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
+                    $(that).append(img);
                   });
                 });
-              }
-            });
-          });
-          function addTabEventListener(tab) {
-            $(tab).click(function() {
-              $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
-              $(tab).parent().addClass('active-tab');
-              $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane').hide();
-              $($(tab).attr('data-href')).addClass('active-pane').show();
-            });
-          }
-          function renderTab(tabContent) {
-            $('a', tabContent).each(function() {
-              let pageID = $(this).attr('data-linked-resource-id');
-              let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
-              let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
-              $(this).attr('data-href', pageHREF).text(pageTitle);
-              /**************
-               * Issue here with links that don't appear yet in the sidebar. See P2P Analytics tab at https://haivision-infocenter.scrollhelp.site/HMP/3.9/reports-and-logs
-               * ************/
-            });
-            $('img', tabContent).each(function() {
-              let imgPageID = $(this).attr('data-linked-resource-container-id');
-              let imgID = $(this).attr('data-media-id');
-              let imgNameTemp = $(this).attr('src').split('/');
-              let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
-              $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
-              $(this).attr('width',$(this).attr('height'));
-              /*********** 
-               * Add inline image fix for icons in tabs: https://haivision-infocenter.scrollhelp.site/HMP/3.9/security-settings#Appliance
-               * /
-            });
-            $('table-wrap', tabContent).each(function() {
-/* Add enlarge functionality to tables in tabs
-              $(this).prepend('<button type="button" aria-hidden="true" class="button enlarge-table-button" data-open="js-table-overlay"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 11.7 11.7" xml:space="preserve"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.239 2.963h1.4v1.5M4.539 8.663h-1.5v-1.6M8.739 7.163v1.5h-1.6M3.039 4.563v-1.5h1.6"></path></svg></button>');
-              '<div class="table-overlay full reveal article__content" data-vp-id="js-table-overlay" style="display: block;"> \
-              <i18n-message i18nkey="modal.cta.close.label" attribute="title"><button class="close-button table-overlay__close" data-close="" title="Close modal" type="button"> \
-              <span aria-hidden="true">×</span></button></i18n-message><div class="table-overlay__content"><div class="article">' + + '</div></div></div>';
-              $('vp-article-pagination').before(this);
-              $('button', this).click(function() {
 
-              });
-*/
-            });
-            /* Add fix for draw.io images */
-              $('[data-macro-name="drawio"]', tabContent).each(function() {
-                let macroID = $(this).attr('data-macro-id');
-                let that = this;
-                $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
-                  let imgName = data.parameters.diagramName.value + '.png';
-                  let imgSize = data.parameters.size?.value;
-                  let imgWidth = '';
-                  if (imgSize !== undefined) {
-                    imgWidth = ' width="' + imgSize + '"';
-                  }
-                  let img = '<img' + imgWidth + ' src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
-                  $(that).append(img);
-                });
-              });
-
+            }
           }
   };
   document.head.appendChild(script);

@@ -521,10 +521,10 @@ function confCloudJS() {
                   $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('data-href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
                   $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
                   $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
-/* Fix this line */
-//                  $('#aui-tabs' + tabsIndex + ' .tabs-pane').first().addClass('active-pane').show();
+/* Update these 2 lines to add support for tabs in URL feature */
                   let firstTab = $('#aui-tabs' + tabsIndex + ' .tabs-menu .menu-item').first().children('a').attr('data-href');
                   $('#aui-tabs' + tabsIndex + ' ' + firstTab).addClass('active-pane').show();
+
                   addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
                   $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
                     $('#' + tabPageTitleNoSpaces).append(data.value);

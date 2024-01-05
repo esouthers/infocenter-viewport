@@ -315,7 +315,7 @@ function confCloudJS() {
           // Fix inline images
           function fixInlineImages(figureToFix) {
             let maxThumbnailWidth = 30;
-            let maxThumbnailHeight = 30;
+            let maxThumbnailHeight = 30; 
 
             if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth)) {
               $(figureToFix).css('display','inline');

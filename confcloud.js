@@ -31,22 +31,12 @@ function confCloudJS() {
             updateSidebar();
             updateFooter();
 
-            function updateFooter() {
-              $('article').append($('.footer__attribution-line--copyright'));
-              // Add K15t footer
-              $('footer').remove();
-              let footerToAdd = '<footer id="ht-footer"> \
-              <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
-              <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
-              $('#article-content').append(footerToAdd);
-            }
-
             function updateHeader() {
               $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
-              $('#article-content').prepend($('body > header'));
+              $('main').prepend($('body > header'));
               $('.header__navigation--heading').removeClass('py-3');
               // Move breadcrumbs to header
-              $('#article-content>header').prepend($('.vp-breadcrumbs__wrapper'));
+              $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
               // Show title in the breadcrumbs if title isn't shown when scrolling
               $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
               let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
@@ -68,6 +58,17 @@ function confCloudJS() {
                 }
               }
             }
+
+            function updateFooter() {
+              $('article').append($('.footer__attribution-line--copyright'));
+              // Add K15t footer
+              $('footer').remove();
+              let footerToAdd = '<footer id="ht-footer"> \
+              <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
+              <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
+              $('main').append(footerToAdd);
+            }
+
 
             // Search box placeholder
             $('.vp-search-input > input').attr('placeholder','How can we help you?');
@@ -150,7 +151,7 @@ function confCloudJS() {
                   <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $(this).attr('href') + 
                   '" rel="prev">' + spaceName + '</a></li></ol> \
                   </vp-scroll-shadow></div></nav></i18n-message>';
-                  $('#article-content > header').prepend(breacrumbsToAdd);
+                  $('main > header').prepend(breacrumbsToAdd);
                 }
               });
 
@@ -202,7 +203,7 @@ function confCloudJS() {
 
                 // Add sidebar dragbar
                 let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
-                $('#article-content').append(dragbarToAdd);
+                $('main').append(dragbarToAdd);
                 $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
                   e.preventDefault();
                   $(document).on('mousemove touchmove', function (e) {
@@ -223,7 +224,7 @@ function confCloudJS() {
                   });
                 });
                 /* Sidebar event listeners */
-                $('#article-content').css('left','320px').css('width','calc(100% - 320px)');
+                $('main').css('left','320px').css('width','calc(100% - 320px)');
                 $('#vp-js-desktop__navigation').css('width','320px');
                 $('.header__navigation--logo img').addClass('logo-large');
                 $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
@@ -232,8 +233,8 @@ function confCloudJS() {
                   $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
                   if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
                     // close sidebar 96px
-                    articleLeft = $('#article-content').css('left');
-                    $('#article-content').css('left','96px').css('width','calc(100% - 96px)');
+                    articleLeft = $('main').css('left');
+                    $('main').css('left','96px').css('width','calc(100% - 96px)');
                     $('#vp-js-desktop__navigation').css('width','96px');
                     $('#sidebar-dragbar').addClass('hidden');
                     $('.header__navigation--logo img.logo-large').hide();
@@ -241,7 +242,7 @@ function confCloudJS() {
                   }
                   else {
                     // open sidebar 320px
-                    $('#article-content').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
+                    $('main').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
                     $('#vp-js-desktop__navigation').css('width',articleLeft);
                     $('#sidebar-dragbar').removeClass('hidden');
                     $('.header__navigation--logo img.logo-large').show();
@@ -371,7 +372,7 @@ function confCloudJS() {
             if (val == NaN)val = 320;
             let val10 = val - 10;
             $('#vp-js-desktop__navigation').width(val10 + "px");
-            $('#article-content').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
+            $('main').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
           //          hideShowBreadcrumbs(val);
           }
 

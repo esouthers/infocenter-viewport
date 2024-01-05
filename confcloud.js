@@ -40,9 +40,83 @@ function confCloudJS() {
               <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
               $('#article-content').append(footerToAdd);
             }
+
+            function updateHeader() {
+              $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
+              $('#article-content').prepend($('body > header'));
+              $('.header__navigation--heading').removeClass('py-3');
+              // Move breadcrumbs to header
+              $('#article-content>header').prepend($('.vp-breadcrumbs__wrapper'));
+              // Show title in the breadcrumbs if title isn't shown when scrolling
+              $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
+              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
+              $('.breadcrumbs').append(titleBreadcrumb);
+              $(window).on('resize scroll', function() {
+                if ($('h1.vp-article__heading').isInViewport($('header.header').height())) {
+                  $('#titleBreadcrumbSlash').hide();
+                  $('#titleBreadcrumb').hide();
+                } else {
+                  $('#titleBreadcrumbSlash').show();
+                  $('#titleBreadcrumb').show();
+                }
+              });
+              var breadcrumbs = $('.breadcrumbs--fit-content li');
+              if (breadcrumbs.length > 4) {
+                for (var i = 2; i < breadcrumbs.length-2; i++) {
+                  let tempTitle = breadcrumbs.eq(i).children('a').text();
+                  breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
+                }
+              }
+            }
+
+            // Search box placeholder
+            $('.vp-search-input > input').attr('placeholder','How can we help you?');
+            // Fix alerts
+              // Remove built-in icon
+            $('.panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon').children('img').remove();
+              // For Warning alerts with Caution title, update its class to caution
+            $('.panel-macros--warning__content--heading').each(function() {
+              if ($(this).text() == 'Caution') {
+                $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
+              }
+            });
+
+            // Apply styling to next/prev links at bottom of page
+            $('vp-article-pagination').each(function() {
+              let style =  document.createElement( 'style' );
+              style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
+              $(this)[0].shadowRoot.appendChild(style);
+            });
+
+            // Expand/collapse buttons
+            $('summary').each(function() {
+              let expandIcon = $('.vp-disclosure-icon',this);
+              let expandTitle = $(this).text();
+              $(this).text('');
+              $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
+            });
+
+            $('body').show();
+
+            // Fix table cell background colors
+            $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
+
+            $('#main-content figure').each(function() {
+              fixInlineImages(this);
+            });
+            fixTabs();
+
+            let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
+            $('#vp-js-desktop__navigation__picker').before(verIcon);
+
+            let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
+          //        addIconNextToVersion(newMsg, flagID, 14);
+
+          } // End of processing depending on page type
+
             function updateSidebar() {
 
-              $('.vp-desktop-navigation__page-tree.vp-scrollable-container--hidden-scrollbars').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
+              $('.vp-desktop-navigation__page-tree').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
   //            let bgImgSrc = $('footer img').attr('src');
               let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
               $('.vp-article__aside-left').css('background-image','linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("'+bgImgSrc+'")');
@@ -242,80 +316,8 @@ function confCloudJS() {
                 }
               });
             }
-            function updateHeader() {
-              $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
-              $('#article-content').prepend($('body > header'));
-              $('.header__navigation--heading').removeClass('py-3');
-              // Move breadcrumbs to header
-              $('#article-content>header').prepend($('.vp-breadcrumbs__wrapper'));
-              // Show title in the breadcrumbs if title isn't shown when scrolling
-              $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
-              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
-              $('.breadcrumbs').append(titleBreadcrumb);
-              $(window).on('resize scroll', function() {
-                if ($('h1.vp-article__heading').isInViewport($('header.header').height())) {
-                  $('#titleBreadcrumbSlash').hide();
-                  $('#titleBreadcrumb').hide();
-                } else {
-                  $('#titleBreadcrumbSlash').show();
-                  $('#titleBreadcrumb').show();
-                }
-              });
-              var breadcrumbs = $('.breadcrumbs--fit-content li');
-              if (breadcrumbs.length > 4) {
-                for (var i = 2; i < breadcrumbs.length-2; i++) {
-                  let tempTitle = breadcrumbs.eq(i).children('a').text();
-                  breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
-                }
-              }
-            }
 
-            // Search box placeholder
-            $('.vp-search-input > input').attr('placeholder','How can we help you?');
-            // Fix alerts
-              // Remove built-in icon
-            $('.panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon').children('img').remove();
-              // For Warning alerts with Caution title, update its class to caution
-            $('.panel-macros--warning__content--heading').each(function() {
-              if ($(this).text() == 'Caution') {
-                $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
-              }
-            });
-
-            // Apply styling to next/prev links at bottom of page
-            $('vp-article-pagination').each(function() {
-              let style =  document.createElement( 'style' );
-              style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
-              $(this)[0].shadowRoot.appendChild(style);
-            });
-
-            // Expand/collapse buttons
-            $('summary').each(function() {
-              let expandIcon = $('.vp-disclosure-icon',this);
-              let expandTitle = $(this).text();
-              $(this).text('');
-              $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
-            });
-
-            $('body').show();
-
-            // Fix table cell background colors
-            $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
-
-            $('#main-content figure').each(function() {
-              fixInlineImages(this);
-            });
-            fixTabs();
-
-            let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
-            $('#vp-js-desktop__navigation__picker').before(verIcon);
-
-            let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
-          //        addIconNextToVersion(newMsg, flagID, 14);
-
-          } // End of processing depending on page type
-
-          // Fix inline images
+            // Fix inline images
           function fixInlineImages(figureToFix) {
             let maxThumbnailWidth = 30;
             let maxThumbnailHeight = 30; 

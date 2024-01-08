@@ -1331,3 +1331,6 @@ details.vp-disclosure .vp-disclosure-icon {
 .header {
   border: none;
 }
+.vp-search-page__subgrid hr {
+  display: none;
+}

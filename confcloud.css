@@ -1334,3 +1334,6 @@ details.vp-disclosure .vp-disclosure-icon {
 .vp-search-page__subgrid hr {
   display: none;
 }
+.vp-search-page .vp-search-input__submit {
+  width: 55px;
+}

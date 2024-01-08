@@ -3,7 +3,9 @@
     {
       "url": "/MobileIPVideo/haivision-air",
       "name": "Air 200, 220, 220-5G, 320e-5G"
-    },
+    }
+  ],
+  "BeOnAir": [
     {
       "url": "/MobileIPVideo/beonair",
       "name": "BeOnAir"
@@ -79,10 +81,6 @@
     {
       "url": "/MJPiOS",
       "name": "MoJoPro"
-    },
-    {
-      "url": "/MobileIPVideo/beonair",
-      "name": "BeOnAir"
     }
   ],
   "Pro": [

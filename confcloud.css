@@ -1316,3 +1316,11 @@ details.vp-disclosure .vp-disclosure-icon {
   border: none !important;
   font-weight: bold;
 }
+
+/* Search Page */
+.vp-search-page {
+  max-width: unset;
+}
+.vp-search-page__main-inner {
+  width: 800px;
+}

@@ -31,20 +31,17 @@ function confCloudJS() {
               if (numResults > 1) { plural = 's';}
               $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned ' + numResults + ' result' + plural + '.');
               $('#titleBreadcrumb').text($('.search-header'));
-              const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-              let startIdx = parseInt(params.start) + 1;
-              let maxIdx = parseInt(params.max);
-              if (startIdx + maxIdx - 1 > numResults) {
-                stopIdx = numResults;
-              }
-              else {
-                stopIdx = startIdx + maxIdx - 1
-              }
-              $('.search-header').after('<p>Showing results ' + startIdx + ' to ' + stopIdx + '.</p>');
+
+              let searchIdx = getSearchIndexes();
+              $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '<span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
               $(elm).remove();
-            })
+            });
+            $(window).on('hashchange', function(e){
+              let searchIdx = getSearchIndexes();
+              $('#startIdx').text(searchIdx[0]);
+              $('#stopIdx').text(searchIdx[1]);
+            });
+
           }
           // Redirect to homepage
           else if (window.location.pathname == '/') {
@@ -649,6 +646,21 @@ function confCloudJS() {
                 });
 
             }
+          }
+
+          function getSearchIndexes() {
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+              get: (searchParams, prop) => searchParams.get(prop),
+            });
+            let startIdx = parseInt(params.start) + 1;
+            let maxIdx = parseInt(params.max);
+            if (startIdx + maxIdx - 1 > numResults) {
+              stopIdx = numResults;
+            }
+            else {
+              stopIdx = startIdx + maxIdx - 1
+            }
+            return [startIdx, stopIdx];
           }
   };
   document.head.appendChild(script);

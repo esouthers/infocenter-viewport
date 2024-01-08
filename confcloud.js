@@ -25,8 +25,8 @@ function confCloudJS() {
 
             waitForElm('.search-results__results__label').then((elm) => {
               let searchTerm = $('.vp-search-input__input').val();
-              let numResults = $(elm).text().split(' result')[0]
-              $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned ' + numResults + ' results'.);
+              let numResults = $(elm).text().split(' result')[0];
+              $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned ' + numResults + ' results.');
               const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),
               });

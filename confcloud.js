@@ -106,20 +106,19 @@ function confCloudJS() {
             $('.header__navigation--heading').removeClass('py-3');
             // Move breadcrumbs to header
             $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
-            // Home page of space doesn't include breadcrumbs, so add them:
-            spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();
-            if ($('.breadcrumbs').length == 0) {
-              let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
-              <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $('#vp-js-desktop__navigation .header__navigation--heading').attr('href') + 
-              '" rel="prev">' + spaceName + '</a></li></ol> \
-              </vp-scroll-shadow></div></nav></i18n-message>';
-              $('main > header').prepend(breacrumbsToAdd);
-            }
-
           }
 
           function updateBreadcrumbs() {
             waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+              // Home page of space doesn't include breadcrumbs, so add them:
+              spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();
+              if ($('.breadcrumbs').length == 0) {
+                let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
+                <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $('#vp-js-desktop__navigation .header__navigation--heading').attr('href') + 
+                '" rel="prev">' + spaceName + '</a></li></ol> \
+                </vp-scroll-shadow></div></nav></i18n-message>';
+                $('main > header').prepend(breacrumbsToAdd);
+              }
               // Show title in the breadcrumbs if title isn't shown when scrolling
               $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
               let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'

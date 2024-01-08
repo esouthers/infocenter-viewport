@@ -22,6 +22,7 @@ function confCloudJS() {
             updateHeader();
             updateSidebar();
             updateFooter();
+            updateBreadcrumbs();
 
             waitForElm('.search-results__results__label').then((elm) => {
               let searchTerm = $('.vp-search-input__input').val();
@@ -53,7 +54,7 @@ function confCloudJS() {
             updateHeader();
             updateSidebar();
             updateFooter();
-
+            updateBreadcrumbs();
             // Search box placeholder
             $('.vp-search-input > input').attr('placeholder','How can we help you?');
             // Fix alerts
@@ -115,6 +116,9 @@ function confCloudJS() {
               $('main > header').prepend(breacrumbsToAdd);
             }
 
+          }
+
+          function updateBreadcrumbs() {
             // Show title in the breadcrumbs if title isn't shown when scrolling
             $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
             let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
@@ -142,7 +146,6 @@ function confCloudJS() {
               }
             }
           }
-
           function updateSidebar() {
 
             $('.vp-desktop-navigation__page-tree').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');

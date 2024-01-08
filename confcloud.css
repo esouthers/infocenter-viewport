@@ -1351,3 +1351,9 @@ h1.search-header {
 .vp-breadcrumbs__wrapper {
   padding-inline: 2rem;
 }
+.vp-search-page__results-header h1 {
+  margin-bottom: 0px;
+}
+.vp-search-page__results-header p {
+  margin-bottom: 5px;
+}

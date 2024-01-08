@@ -21,7 +21,7 @@ function confCloudJS() {
             $('#content').before(sidebar);
             updateHeader();
             updateSidebar();
-
+            updateFooter();
           }
           // Redirect to homepage
           else if (window.location.pathname == '/') {
@@ -32,17 +32,6 @@ function confCloudJS() {
             updateHeader();
             updateSidebar();
             updateFooter();
-
-            function updateFooter() {
-              $('article').append($('.footer__attribution-line--copyright'));
-              // Add K15t footer
-              $('footer').remove();
-              let footerToAdd = '<footer id="ht-footer"> \
-              <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
-              <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
-              $('main').append(footerToAdd);
-            }
-
 
             // Search box placeholder
             $('.vp-search-input > input').attr('placeholder','How can we help you?');
@@ -320,6 +309,16 @@ function confCloudJS() {
                 }
               }
             });
+          }
+
+          function updateFooter() {
+            $('article').append($('.footer__attribution-line--copyright'));
+            // Add K15t footer
+            $('footer').remove();
+            let footerToAdd = '<footer id="ht-footer"> \
+            <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
+            <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
+            $('main').append(footerToAdd);
           }
 
             // Fix inline images

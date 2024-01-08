@@ -32,8 +32,8 @@ function confCloudJS() {
               const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),
               });
-              let startIdx = params.start + 1;
-              let maxIdx = params.max;
+              let startIdx = parseInt(params.start) + 1;
+              let maxIdx = parseInt(params.max);
               if (startIdx + maxIdx - 1 > numResults) {
                 stopIdx = numResults;
               }

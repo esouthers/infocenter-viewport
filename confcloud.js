@@ -29,15 +29,15 @@ function confCloudJS() {
               let numResults = $(elm).text().split(' result')[0];
               let plural = '';
               if (numResults > 1) { plural = 's';}
-              $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned ' + numResults + ' result' + plural + '.');
-              $('#titleBreadcrumb').text($('.search-header'));
+              $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+              $('#titleBreadcrumb').text($('.search-header').text());
 
-              let searchIdx = getSearchIndexes();
+              let searchIdx = getSearchIndexes(numResults);
               $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '<span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
               $(elm).remove();
             });
             $(window).on('hashchange', function(e){
-              let searchIdx = getSearchIndexes();
+              let searchIdx = getSearchIndexes($('#numResults').text());
               $('#startIdx').text(searchIdx[0]);
               $('#stopIdx').text(searchIdx[1]);
             });

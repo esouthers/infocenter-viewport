@@ -1324,6 +1324,9 @@ details.vp-disclosure .vp-disclosure-icon {
 .vp-search-page__main-inner {
   width: 800px;
 }
+.vp-search-page__subgrid {
+  margin: 2rem 0;
+}
 .vp-search-page__search-bar {
   display: block;
   margin: auto;

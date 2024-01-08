@@ -1328,3 +1328,6 @@ details.vp-disclosure .vp-disclosure-icon {
   display: block;
   margin: auto;
 }
+.header {
+  border: none;
+}

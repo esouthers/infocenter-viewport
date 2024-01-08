@@ -1340,3 +1340,11 @@ details.vp-disclosure .vp-disclosure-icon {
 .vp-search-page .vp-search-input__submit {
   width: 55px;
 }
+.vp-search-page__results-header {
+  display: block;
+}
+h1.search-header {
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.25;
+}

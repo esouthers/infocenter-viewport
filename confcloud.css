@@ -1331,7 +1331,7 @@ details.vp-disclosure .vp-disclosure-icon {
 .header {
   border: none;
 }
-.vp-search-page__subgrid hr {
+.vp-search-page__subgrid hr, .vp-search-page > hr {
   display: none;
 }
 .vp-search-page .vp-search-input__submit {

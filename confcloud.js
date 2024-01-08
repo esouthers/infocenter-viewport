@@ -27,9 +27,7 @@ function confCloudJS() {
               let searchTerm = $('.vp-search-input__input').val();
               let numResults = $(elm).text().split(' result')[0];
               let plural = '';
-              if (numResults > 1) {
-                plural = 's';
-              }
+              if (numResults > 1) { plural = 's';}
               $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned ' + numResults + ' result' + plural + '.');
               const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),

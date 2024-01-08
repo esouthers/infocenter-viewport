@@ -119,32 +119,34 @@ function confCloudJS() {
           }
 
           function updateBreadcrumbs() {
-            // Show title in the breadcrumbs if title isn't shown when scrolling
-            $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
-            let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
-            $('.breadcrumbs').append(titleBreadcrumb);
-            $(window).on('resize scroll', function() {
-              if ($('.search-header').length > 0) {
-                that = $('.search-header');
-              }
-              else {
-                that = $('header > h1'); 
-              }
-              if (that.isInViewport($('main > header').height())) {
-                $('#titleBreadcrumbSlash').hide();
-                $('#titleBreadcrumb').hide();
-              } else {
-                $('#titleBreadcrumbSlash').show();
-                $('#titleBreadcrumb').show();
+            waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+              // Show title in the breadcrumbs if title isn't shown when scrolling
+              $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
+              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
+              $('.breadcrumbs').append(titleBreadcrumb);
+              $(window).on('resize scroll', function() {
+                if ($('.search-header').length > 0) {
+                  that = $('.search-header');
+                }
+                else {
+                  that = $('header > h1'); 
+                }
+                if (that.isInViewport($('main > header').height())) {
+                  $('#titleBreadcrumbSlash').hide();
+                  $('#titleBreadcrumb').hide();
+                } else {
+                  $('#titleBreadcrumbSlash').show();
+                  $('#titleBreadcrumb').show();
+                }
+              });
+              var breadcrumbs = $('.breadcrumbs--fit-content li');
+              if (breadcrumbs.length > 4) {
+                for (var i = 2; i < breadcrumbs.length-2; i++) {
+                  let tempTitle = breadcrumbs.eq(i).children('a').text();
+                  breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
+                }
               }
             });
-            var breadcrumbs = $('.breadcrumbs--fit-content li');
-            if (breadcrumbs.length > 4) {
-              for (var i = 2; i < breadcrumbs.length-2; i++) {
-                let tempTitle = breadcrumbs.eq(i).children('a').text();
-                breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
-              }
-            }
           }
           function updateSidebar() {
 

@@ -110,7 +110,7 @@ function confCloudJS() {
             let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
             $('.breadcrumbs').append(titleBreadcrumb);
             $(window).on('resize scroll', function() {
-              if ($('h1.vp-article__heading').isInViewport($('header.header').height())) {
+              if ($('header > h1').isInViewport($('main > header').height())) {
                 $('#titleBreadcrumbSlash').hide();
                 $('#titleBreadcrumb').hide();
               } else {

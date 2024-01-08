@@ -121,15 +121,13 @@ function confCloudJS() {
               }
               // Show title in the breadcrumbs if title isn't shown when scrolling
               $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
-              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
+                if ($('.search-header').length > 0) { that = $('.search-header'); }
+                else                                { that = $('h1.vp-article__heading'); }
+              let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + that.text() + '</li>'
               $('.breadcrumbs').append(titleBreadcrumb);
               $(window).on('resize scroll', function() {
-                if ($('.search-header').length > 0) {
-                  that = $('.search-header');
-                }
-                else {
-                  that = $('header > h1'); 
-                }
+                if ($('.search-header').length > 0) { that = $('.search-header');   }
+                else                                { that = $('header > h1');      }
                 if (that.isInViewport($('main > header').height())) {
                   $('#titleBreadcrumbSlash').hide();
                   $('#titleBreadcrumb').hide();

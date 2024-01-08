@@ -36,7 +36,7 @@ function confCloudJS() {
               $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '<span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
               $(elm).remove();
             });
-            $(window).on('hashchange', function(e){
+            $('.vp-pagination__inner button').on('click', function(e){
               let searchIdx = getSearchIndexes($('#numResults').text());
               $('#startIdx').text(searchIdx[0]);
               $('#stopIdx').text(searchIdx[1]);

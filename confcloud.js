@@ -40,7 +40,8 @@ function confCloudJS() {
               else {
                 stopIdx = startIdx + maxIdx - 1
               }
-              $('.search-header').after('<p>Showing results ' + startIdx + ' to ' + stopIdx + '.</p>')
+              $('.search-header').after('<p>Showing results ' + startIdx + ' to ' + stopIdx + '.</p>');
+              $(elm).remove();
             })
           }
           // Redirect to homepage

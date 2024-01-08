@@ -124,7 +124,7 @@ function confCloudJS() {
             let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + $('h1.vp-article__heading').text() + '</li>'
             $('.breadcrumbs').append(titleBreadcrumb);
             $(window).on('resize scroll', function() {
-              if ($('.search-header').length() > 0) {
+              if ($('.search-header').length > 0) {
                 that = $('.search-header');
               }
               else {

@@ -37,9 +37,12 @@ function confCloudJS() {
               $(elm).remove();
             });
             $('.vp-pagination__inner button').on('click', function(e){
-              let searchIdx = getSearchIndexes($('#numResults').text());
-              $('#startIdx').text(searchIdx[0]);
-              $('#stopIdx').text(searchIdx[1]);
+              waitForElm('.search-results__results__label').then((elm) => {
+                let searchIdx = getSearchIndexes($('#numResults').text());
+                $('#startIdx').text(searchIdx[0]);
+                $('#stopIdx').text(searchIdx[1]);
+                $(elm).remove();
+              });
             });
 
           }

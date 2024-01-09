@@ -1320,6 +1320,7 @@ details.vp-disclosure .vp-disclosure-icon {
 /* Search Page */
 .vp-search-page {
   max-width: unset;
+  z-index: 200;
 }
 .vp-search-page__main-inner {
   width: 800px;

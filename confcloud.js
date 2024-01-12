@@ -1,5 +1,5 @@
 function confCloudJS() { 
-
+  if (1==0) {
     var script = document.createElement("SCRIPT");
     script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
     script.type = 'text/javascript';
@@ -665,8 +665,9 @@ function confCloudJS() {
             }
             return [startIdx, stopIdx];
           }
-  };
-  document.head.appendChild(script);
+    };
+    document.head.appendChild(script);
+  }
 }
 
 /* 

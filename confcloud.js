@@ -669,29 +669,3 @@ function confCloudJS() {
     document.head.appendChild(script);
   }
 }
-
-/* 
-<div class="contentf aui-tabs horizontal-tabs" role="application">
-    <ul class="tabs-menu" role="tablist">
-        <li class="menu-item active-tab">
-            <a href="#DisplaySettings">Display Settings</a>
-        </li>
-        <li class="menu-item">
-            <a href="#Branding">Branding</a>
-        </li>
-        <li class="menu-item">
-            <a href="#MobileBranding">Mobile Branding</a>
-        </li>
-    </ul>
-    <div id="DisplaySettings" data-pane-title="Display Settings" class="cfm tabs-pane active-pane" role="tabpanel" loaded="true" style="display: block;">
-      ***** BODY HERE ***********
-    </div>
-    <div id="Branding" data-pane-title="Branding" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;">
-      ***** BODY HERE ***********
-    </div>
-    <div id="MobileBranding" data-pane-title="Mobile Branding" class="cfm tabs-pane" role="tabpanel" style="display: none;" loaded="true">
-      ***** BODY HERE ***********
-    </div>
-</div>
-*/
-

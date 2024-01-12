@@ -143,6 +143,8 @@ function confCloudJS() {
                   breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
                 }
               }
+              // Add version number to breadcrumbs
+              $('.breadcrumbs li').first().children('a').text($('.header__navigation--heading').text());
             });
           }
           function updateSidebar() {

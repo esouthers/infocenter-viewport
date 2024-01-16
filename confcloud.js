@@ -558,8 +558,8 @@ function confCloudJS() {
               pageID = $(that).text().split('page.id\\":\\"')[1].split('\\')[0];
               var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
               $(that).parent('.ap-container').after('<div id="aui-tabs' + tabsIndex + '" class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
-              // https://dochaivision.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
-              $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
+              // https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
+              $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
                 // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
                 var tabMacroIDs = data.value.split('data-macro-id=\"');
                 var tabPageTitles = [];
@@ -567,7 +567,7 @@ function confCloudJS() {
                   tabMacroIDs[i] = tabMacroIDs[i].split('\"')[0];
                   var tabMacroID = tabMacroIDs[i];
                   $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabMacroID + '-tab"></a></li>');
-                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
+                  $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
                     var tabPageTitle = data.parameters.title.value;
                     var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
                     var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
@@ -581,7 +581,7 @@ function confCloudJS() {
                     $('#aui-tabs' + tabsIndex + ' ' + firstTab).addClass('active-pane').show();
 
                     addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
-                    $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
+                    $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
                       $('#' + tabPageTitleNoSpaces).append(data.value);
                       renderTab($('#' + tabPageTitleNoSpaces));
                     });
@@ -637,14 +637,14 @@ function confCloudJS() {
                 $('[data-macro-name="drawio"]', tabContent).each(function() {
                   let macroID = $(this).attr('data-macro-id');
                   let that = this;
-                  $.get("https://corsproxy.io/?https://dochaivision.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
+                  $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
                     let imgName = data.parameters.diagramName.value + '.png';
                     let imgSize = data.parameters.size?.value;
                     let imgWidth = '';
                     if (imgSize !== undefined) {
                       imgWidth = ' width="' + imgSize + '"';
                     }
-                    let img = '<img' + imgWidth + ' src="https://dochaivision.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
+                    let img = '<img' + imgWidth + ' src="https://haivisioninfocenter.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
                     $(that).append(img);
                   });
                 });

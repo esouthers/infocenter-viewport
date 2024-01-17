@@ -92,7 +92,7 @@ function confCloudJS() {
             $('#main-content figure').each(function() {
               fixInlineImages(this);
             });
-            fixTabs();
+//            fixTabs(); Do not use due to Cors proxy security issues
 
             let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
             $('#vp-js-desktop__navigation__picker').before(verIcon);
@@ -548,6 +548,7 @@ function confCloudJS() {
           /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
           // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
 
+          // Do not use due to Cors proxy security issues
           // Temp fix for Adaptavist's Tabs macros
           function fixTabs() {
             // Aui tabs

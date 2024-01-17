@@ -49,7 +49,7 @@ function confCloudJS() {
           }
           // Redirect to homepage
           else if (window.location.pathname == '/') {
-            window.location.replace(window.location.href + 'Home');
+            window.location.replace('https://' + window.location.hostname + '/Home');
           }
           else {
             addModifiedDate();

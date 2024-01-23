@@ -250,7 +250,7 @@ function confCloudJS() {
               });
               /* Sidebar event listeners */
               $('main').css('left','320px').css('width','calc(100% - 320px)');
-              $('#vp-js-desktop__navigation').css('width','320px');
+              $('#vp-js-desktop__navigation').css('width','320px').removeClass('vp-article__aside-left__inner--collapsed');
               $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
               $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
               var articleLeft = '';

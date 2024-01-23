@@ -1214,6 +1214,9 @@ a.article__content__anchor {
   background-color: transparent;
   color: var(--haiui-blue-03);
   text-decoration: none;
+}
+.vp-accordion-link-group__summary .expand-title:focus, .vp-accordion-link-group__summary .expand-title:hover,
+.expand-container .expand-control .expand-title:focus, .expand-container .expand-control .expand-title:hover {
   border-bottom: 2px solid var(--haiui-blue-03);
 }
 .vp-accordion-link-group__summary .expand-title,

@@ -1437,3 +1437,12 @@ ul.producthome [data-macro-name="sp-image"] img {
     margin-right: 0;
   }
 }
+
+/* Headings */
+h2 {
+  color: var(--haiui-blue-01);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 30px 0 5px 0;
+}

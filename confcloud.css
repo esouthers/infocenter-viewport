@@ -689,6 +689,7 @@ li.vp-accordion-link-group__list-item:is(:first-child) {
 .article__content .vp-accordion-link-group__list-item {
   font-size: 13px;
   padding: 5px;
+  padding-bottom: 0px;
 }
 details.vp-disclosure summary {
   font-size: 13px;

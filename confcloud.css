@@ -1446,3 +1446,34 @@ h2 {
   line-height: 1.5;
   margin: 30px 0 5px 0;
 }
+.home-sidebar h2:first-child {
+  margin-top: 0px;
+}
+
+/* Responsive */
+@media screen and (min-width: 1024px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1024px) {
+  .hidden-mdlg {
+     display: none !important;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 800px) {
+  .visible-md {
+    display: block !important;
+  }
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}

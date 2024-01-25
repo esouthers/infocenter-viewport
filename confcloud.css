@@ -666,6 +666,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .vp-accordion-link-group__item--disclosure .vp-accordion-link-group__summary {
   flex-direction: row-reverse;
   justify-content: flex-end;
+  padding-bottom: 0px
 }
 .vp-accordion-link-group__summary {
   padding: 5px;

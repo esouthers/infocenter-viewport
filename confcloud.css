@@ -1378,6 +1378,7 @@ h1.search-header {
 ul.producthome {
   padding-left: 0;
   margin-left: 0;
+  display: block;
 }
 ul.producthome > li {
   display:inline-block;

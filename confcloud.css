@@ -1414,7 +1414,7 @@ ul.producthome > li {
 }
 ul.producthome .childpages-macro li {
   padding-bottom: 3px;
-  list-style: none;
+  list-style: square;
   padding-left: 2px;
 }
 /* #content ul.producthome a:hover,

@@ -1441,6 +1441,10 @@ ul.producthome [data-macro-name="sp-image"] img {
   width: auto;
   height: 125px;
 }
+.home-sidebar h2,
+ul.producthome h2 a {
+  color: var(--haiui-blue-01);
+}
 
 @media screen and (max-width: 60em) {
   ul.producthome p,
@@ -1449,6 +1453,7 @@ ul.producthome [data-macro-name="sp-image"] img {
     margin-right: 0;
   }
 }
+
 
 /* Headings */
 h2 {

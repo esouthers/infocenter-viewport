@@ -1446,6 +1446,9 @@ ul.producthome h2 a {
   color: var(--haiui-blue-01);
 }
 
+.home-sidebar p {
+  line-height: 1.3;
+}
 @media screen and (max-width: 60em) {
   ul.producthome p,
   ul.producthome h2 {

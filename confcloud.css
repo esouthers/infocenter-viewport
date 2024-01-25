@@ -1230,6 +1230,7 @@ a.article__content__anchor {
 }
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;
+  margin-top: -3px;
 }
 
 /* Tabs */
@@ -1375,12 +1376,14 @@ h1.search-header {
 /******************************/
 ul.producthome {
   padding-left: 0;
+  margin-left: 0;
 }
 ul.producthome > li {
   display:inline-block;
   margin-left: 0px;
   margin-right: 20px;
   margin-top: 5px;
+  padding-left: 0px;
   vertical-align: top;
 }
 
@@ -1483,4 +1486,8 @@ h2 {
   .hidden-sm {
     display: none !important;
   }
+}
+
+.aui-group > .aui-item + .aui-item {
+  padding-left: 5%;
 }

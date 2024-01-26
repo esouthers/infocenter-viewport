@@ -182,6 +182,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   height: 100%;
   border: none;
   background-color: var(--haiui-gray-00);
+  display: block;
 }
 
 }

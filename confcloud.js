@@ -14,6 +14,9 @@ function confCloudJS() {
   var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
 
   $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
+  $(window).resize(function() {
+    testWindowSize();
+  });
 
   // Start of processing depending on page type
   if (window.location.pathname == '/search.html') {
@@ -278,24 +281,7 @@ function confCloudJS() {
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
         $('.ht-menu-button').click(function() {
-          $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
-          if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
-            // close sidebar 96px
-            articleLeft = $('main').css('left');
-            $('main').css('left','96px').css('width','calc(100% - 96px)');
-            $('#vp-js-desktop__navigation').css('width','96px');
-            $('#sidebar-dragbar').addClass('hidden');
-            $('.header__navigation--logo img.logo-large').hide();
-            $('.header__navigation--logo svg.logo-small').show();
-          }
-          else {
-            // open sidebar 320px
-            $('main').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
-            $('#vp-js-desktop__navigation').css('width',articleLeft);
-            $('#sidebar-dragbar').removeClass('hidden');
-            $('.header__navigation--logo img.logo-large').show();
-            $('.header__navigation--logo svg.logo-small').hide();
-          }
+          collapseOpenSidebar();
         });
         $('.ic-products-top button').click(function() {
           sidebarExpandoListeners(this);
@@ -366,6 +352,27 @@ function confCloudJS() {
           }
         }
       });
+    }
+
+    function collapseOpenSidebar() {
+      $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
+      if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+        // close sidebar 96px
+        articleLeft = $('main').css('left');
+        $('main').css('left','96px').css('width','calc(100% - 96px)');
+        $('#vp-js-desktop__navigation').css('width','96px');
+        $('#sidebar-dragbar').addClass('hidden');
+        $('.header__navigation--logo img.logo-large').hide();
+        $('.header__navigation--logo svg.logo-small').show();
+      }
+      else {
+        // open sidebar 320px
+        $('main').css('left',articleLeft).css('width','calc(100% - ' + articleLeft + ')');
+        $('#vp-js-desktop__navigation').css('width',articleLeft);
+        $('#sidebar-dragbar').removeClass('hidden');
+        $('.header__navigation--logo img.logo-large').show();
+        $('.header__navigation--logo svg.logo-small').hide();
+      }
     }
 
     function updateFooter() {
@@ -698,6 +705,34 @@ function confCloudJS() {
       }
       return [startIdx, stopIdx];
     }
+
+    function testWindowSize() {
+      let width = window.innerWidth;
+      let sidebarWidth = $('.vp-article__aside-left').width();
+      if (sidebarWidth / width > 0.6) {
+        let newWidth = parseInt(0.6 * width);
+//        setLocalStorageWithExpiry('sidebar-width',newWidth,14)
+        setDragbar(newWidth);
+      }
+      if (width < 800) { 
+        if !($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+          $('.ht-menu-button').click();
+        }
+      }
+      else { 
+        if (window.innerWidth - $('.vp-article__aside-left').width() < 445) {
+          let newWidth = window.innerWidth - 445;
+          if (newWidth < 231) {newWidth = 231;}
+//              setLocalStorageWithExpiry('sidebar-width',newWidth,14)
+          setDragbar(newWidth);
+        }
+        if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+          $('.ht-menu-button').click();
+        }          
+      }
+    }
+
+
   };
   document.head.appendChild(script);
 }

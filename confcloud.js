@@ -228,7 +228,13 @@ function confCloudJS() {
           $('.ic-products-top .vp-tree-item__header__title').each(function() { 
             if ($(this).attr('href')) {
               if ($(this).attr('href').indexOf(path) > 0) { 
-                $(this).addClass('current'); 
+                $(this).addClass('current');
+                let currentParent = $(this).parents('ul').parent();
+                if (currentParent.hasClass('vp-tree-item__children')) {
+                  currentParent.removeClass('hidden').attr('aria-label','Collapse item');
+                  currentParent.parent().prev().children('.vp-tree-item__header__icon').children('button').removeClass('rotate-0').addClass('rotate-90');
+
+                }
               }
             }
           });

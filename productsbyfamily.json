@@ -35,32 +35,6 @@
       "name": "Haivision Hub"
     }
   ],
-  "Haivision Media Platform": [
-    {
-      "url": "/HMP",
-      "name": "Haivision Media Platform"
-    },
-    {
-      "url": "/HMG",
-      "name": "Haivision Media Gateway"
-    },
-    {
-      "url": "/SetTopBox",
-      "name": "Haivision Play Set-Top Boxes"
-    },
-    {
-      "url": "/PlayProiOS",
-      "name": "Haivision Play Pro iOS"
-    },
-    {
-      "url": "/HPPM",
-      "name": "Haivision Play Pro Android"
-    },
-    {
-      "url": "/HaiHelper",
-      "name": "Haivision Helper"
-    }
-  ],
   "Kraken": [
     {
       "url": "/Kraken",
@@ -101,6 +75,32 @@
     {
       "url": "/MakitoX4Enc",
       "name": "X4 Encoder"
+    }
+  ],
+  "Media Platform": [
+    {
+      "url": "/HaiHelper",
+      "name": "Helper"
+    },
+    {
+      "url": "/HMP",
+      "name": "HMP"
+    },
+    {
+      "url": "/HMG",
+      "name": "Media Gateway"
+    },
+    {
+      "url": "/PlayProiOS",
+      "name": "Play Pro iOS"
+    },
+    {
+      "url": "/HPPM",
+      "name": "Play Pro Android"
+    },
+    {
+      "url": "/SetTopBox",
+      "name": "Play Set-Top Boxes"
     }
   ],
   "MoJoPro": [

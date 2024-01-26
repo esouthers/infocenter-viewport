@@ -205,7 +205,7 @@ function confCloudJS() {
                 $('#ic-products').parent().append(productsTypeHTML);
                 $('.ic-products-top.productlist-type .vp-tree-item__header__title, .ic-products-top.productlist-type .vp-tree-item__header__icon').click(function() {
                   if ($(this).hasClass('vp-tree-item__header__title')) { sidebarExpandoListeners($(this).parent().children().children('button')); }
-                  else { sidebarExpandoListeners(this); }
+                  else { sidebarExpandoListeners($(this).children('button')); }
                 });
               }
               function processProductsByFamily(data) {
@@ -215,7 +215,7 @@ function confCloudJS() {
                 $('#ic-products').parent().append(productsFamilyHTML);
                 $('.ic-products-top.productlist-family .vp-tree-item__header__title, .ic-products-top.productlist-family .vp-tree-item__header__icon').click(function() {
                   if ($(this).hasClass('vp-tree-item__header__title')) { sidebarExpandoListeners($(this).parent().children().children('button')); }
-                  else { sidebarExpandoListeners(this); }
+                  else { sidebarExpandoListeners($(this).children('button')); }
                 });
               }
 

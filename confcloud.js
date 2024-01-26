@@ -203,7 +203,7 @@ function confCloudJS() {
                 productsTypeHTML = buildSidebarList(data,productsTypeHTML,'type');
                 productsTypeHTML += '</ul>';
                 $('#ic-products').parent().append(productsTypeHTML);
-                $('.ic-products-top.productlist-type button').click(function() {
+                $('.ic-products-top.productlist-type > *').click(function() {
                   sidebarExpandoListeners(this);
                 });
               }

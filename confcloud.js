@@ -302,14 +302,16 @@ function confCloudJS() {
         $('#ic-pagetree').click(function() {
           if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
             $('.ht-menu-button').click(); // If sidebar collapsed, open it
+//            $('.vp-desktop-navigation__page-tree__tree').removeClass('hidden');
+//            $(this).addClass('current');
           }
-          if ($('.vp-tree').hasClass('hidden')) {
+          if ($('.vp-desktop-navigation__page-tree__tree').hasClass('hidden')) {
             $('.vp-tree').removeClass('hidden');
             $(this).addClass('current');
             $('#ic-products').removeClass('current')
           }
           else {
-            $('.vp-tree').addClass('hidden');
+            $('.vp-desktop-navigation__page-tree__tree').addClass('hidden');
             $(this).removeClass('current');
             if (!$('.sort-items').hasClass('hidden')) {
               $('#ic-products').addClass('current');

@@ -1379,6 +1379,12 @@ h1.search-header {
 /******************************/
 /* Home/Product landing pages */
 /******************************/
+#article-inner-content ul.producthome figure a:hover {
+  border-bottom: 0px;
+}
+ul.producthome .image-link-overlay {
+  display: none;
+}
 ul.producthome {
   padding-left: 0;
   margin-left: 0;

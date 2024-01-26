@@ -184,7 +184,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   background-color: var(--haiui-gray-00);
   display: block;
 }
-
+#vp-js-mobile__navigation {
+  display: none;
+}
 }
 .vp-article__aside-left .vp-scrollable-container {
     padding-right: 0px;

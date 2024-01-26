@@ -1474,7 +1474,7 @@ ul.producthome h2 a {
 
 /* Headings */
 h2 {
-  color: var(--haiui-blue-01);
+  color: var(--haiui-gray-00);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;

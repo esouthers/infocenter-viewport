@@ -203,7 +203,7 @@ function confCloudJS() {
                 productsTypeHTML = buildSidebarList(data,productsTypeHTML,'type');
                 productsTypeHTML += '</ul>';
                 $('#ic-products').parent().append(productsTypeHTML);
-                $('.ic-products-top.productlist-type > *').click(function() {
+                $('.ic-products-top.productlist-type .vp-tree-item__header__title, .ic-products-top.productlist-type .vp-tree-item__header__icon').click(function() {
                   sidebarExpandoListeners(this);
                 });
               }
@@ -212,7 +212,7 @@ function confCloudJS() {
                 productsFamilyHTML = buildSidebarList(data,productsFamilyHTML,'family');
                 productsFamilyHTML += '</ul>';
                 $('#ic-products').parent().append(productsFamilyHTML);
-                $('.ic-products-top.productlist-family button').click(function() {
+                $('.ic-products-top.productlist-family .vp-tree-item__header__title, .ic-products-top.productlist-family .vp-tree-item__header__icon').click(function() {
                   sidebarExpandoListeners(this);
                 });
               }

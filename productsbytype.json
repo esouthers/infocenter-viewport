@@ -36,23 +36,23 @@
   "Video Transmitter": [
     {
       "url": "/MobileIPVideo/haivision-pro",
-      "name": "Haivision Pro"
+      "name": "Pro"
     },
     {
       "url": "/MobileIPVideo/haivision-air",
-      "name": "Haivision Air"
+      "name": "Air"
     },
     {
       "url": "/MobileIPVideo/haivision-rack",
-      "name": "Haivision Rack Video Encoder"
+      "name": "Rack Video Encoder"
     },
     {
       "url": "/MJPiOS",
-      "name": "Haivision MoJoPro Mobile App"
+      "name": "MoJoPro Mobile App"
     },
     {
       "url": "/MobileIPVideo/haivision-quad",
-      "name": "Haivision Quad Antenna"
+      "name": "Quad Antenna"
     },
     {
       "url": "/MobileIPVideo/data-plans",
@@ -62,33 +62,33 @@
   "Video Wall Technology": [
     {
       "url": "/Command360",
-      "name": "Haivision Command 360"
+      "name": "Command 360"
     }
   ],
   "IPTV": [
     {
       "url": "/HMP",
-      "name": "Haivision Media Platform"
+      "name": "HMP"
     },
     {
       "url": "/HMG",
-      "name": "Haivision Media Gateway"
+      "name": "Media Gateway"
     },
     {
       "url": "/SetTopBox",
-      "name": "Haivision Play Set-Top Boxes"
+      "name": "Play Set-Top Boxes"
     },
     {
       "url": "/PlayProiOS",
-      "name": "Haivision Play Pro iOS"
+      "name": "Play Pro iOS"
     },
     {
       "url": "/HPPM",
-      "name": "Haivision Play Pro Android"
+      "name": "Play Pro Android"
     },
     {
       "url": "/HaiHelper",
-      "name": "Haivision Helper"
+      "name": "Helper"
     }
   ],
   "Cloud & IP Gateway": [
@@ -98,21 +98,21 @@
     },
     {
       "url": "/MobileIPVideo/haivision-streamhub",
-      "name": "Haivision StreamHub"
+      "name": "StreamHub"
     },
     {
       "url": "/MobileIPVideo/haivision-manager",
-      "name": "Haivision Manager"
+      "name": "Manager"
     },
     {
       "url": "/HMG",
-      "name": "Haivision SRT Gateway"
+      "name": "SRT Gateway"
     }
   ],
   "Decoder & Receiver": [
     {
       "url": "/MobileIPVideo",
-      "name": "Haivision StreamHub"
+      "name": "StreamHub"
     },
     {
       "url": "/MakitoX4Dec",

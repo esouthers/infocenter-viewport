@@ -2,7 +2,7 @@
   "Air": [
     {
       "url": "/MobileIPVideo/haivision-air",
-      "name": "Air 200, 220, 220-5G, 320e-5G"
+      "name": "Air"
     }
   ],
   "BeOnAir": [
@@ -33,6 +33,32 @@
     {
       "url": "/Hub",
       "name": "Haivision Hub"
+    }
+  ],
+  "Haivision Media Platform": [
+    {
+      "url": "/HMP",
+      "name": "Haivision Media Platform"
+    },
+    {
+      "url": "/HMG",
+      "name": "Haivision Media Gateway"
+    },
+    {
+      "url": "/SetTopBox",
+      "name": "Haivision Play Set-Top Boxes"
+    },
+    {
+      "url": "/PlayProiOS",
+      "name": "Haivision Play Pro iOS"
+    },
+    {
+      "url": "/HPPM",
+      "name": "Haivision Play Pro Android"
+    },
+    {
+      "url": "/HaiHelper",
+      "name": "Haivision Helper"
     }
   ],
   "Kraken": [
@@ -116,7 +142,7 @@
     },
     {
       "url": "/HMG",
-      "name": "RSRT Gateway"
+      "name": "SRT Gateway"
     }
   ],
   "StreamHub": [

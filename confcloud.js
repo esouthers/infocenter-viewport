@@ -226,8 +226,10 @@ function confCloudJS() {
         function productHighlight() {
           let path = window.location.pathname.split('/')[1];
           $('.ic-products-top .vp-tree-item__header__title').each(function() { 
-            if ($(this).attr('href').indexOf(path) > 0) { 
-              console.log($(this)); 
+            if ($(this).attr('href')) {
+              if ($(this).attr('href').indexOf(path) > 0) { 
+                $(this).addClass('current'); 
+              }
             }
           });
         }

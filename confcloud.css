@@ -1385,6 +1385,10 @@ h1.search-header {
 ul.producthome .image-link-overlay {
   display: none;
 }
+.article__content ul.producthome li>.vp-image {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
 ul.producthome {
   padding-left: 0;
   margin-left: 0;

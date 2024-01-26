@@ -715,7 +715,7 @@ function confCloudJS() {
         setDragbar(newWidth);
       }
       if (width < 800) { 
-        if !($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+        if (!($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed'))) {
           $('.ht-menu-button').click();
         }
       }

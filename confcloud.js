@@ -427,7 +427,7 @@ function confCloudJS() {
             $.each(jsonObject, function(sectionTitle,product) {
               htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-setsize="4" aria-label="' + sectionTitle + '" aria-expanded="false" aria-selected="false" aria-level="1"><div class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="';
               if ((listType == 'family') && (product.length == 1)) {
-                htmltoBuild += product[0].url + '">' + sectionTitle + '</a></div></li>';
+                htmltoBuild += product[0].url + '">' + sectionTitle + '</a><div class="vp-tree-item__header__icon"><button style="display:none;" class="vp-tree-item__header__expand-button cursor-pointer color-inherit transform rotate-0" type="button" aria-hidden="true" aria-label="Expand item" tabindex="-1">' + svgChevron + '</button></div></div></li>';
               }
               else {
                 htmltoBuild += '#">' + sectionTitle + '</a><div class="vp-tree-item__header__icon"><button class="vp-tree-item__header__expand-button cursor-pointer color-inherit transform rotate-0" type="button" aria-hidden="true" aria-label="Expand item" tabindex="-1">' + svgChevron + '</button></div></div><ul class="vp-tree-item__children hidden" role="group">';

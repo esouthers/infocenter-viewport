@@ -425,11 +425,17 @@ function confCloudJS() {
           }
           function buildSidebarList(jsonObject,htmltoBuild) {
             $.each(jsonObject, function(sectionTitle,product) {
-              htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-setsize="4" aria-label="' + sectionTitle + '" aria-expanded="false" aria-selected="false" aria-level="1"><div class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="#">' + sectionTitle + '</a><div class="vp-tree-item__header__icon"><button class="vp-tree-item__header__expand-button cursor-pointer color-inherit transform rotate-0" type="button" aria-hidden="true" aria-label="Expand item" tabindex="-1">' + svgChevron + '</button></div></div><ul class="vp-tree-item__children hidden" role="group">';
-              $.each(product, function(key,value) {
-                htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="' + value.name + '" aria-expanded="false" aria-selected="false" aria-level="2"><div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + value.url + '">' + value.name + '</a><div class="vp-tree-item__header__icon"></div></div></li>';
-              });
-              htmltoBuild += '</ul></li>';
+              htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-setsize="4" aria-label="' + sectionTitle + '" aria-expanded="false" aria-selected="false" aria-level="1"><div class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="';
+              if (product.length > 1) {
+                htmltoBuild += '#">' + sectionTitle + '</a><div class="vp-tree-item__header__icon"><button class="vp-tree-item__header__expand-button cursor-pointer color-inherit transform rotate-0" type="button" aria-hidden="true" aria-label="Expand item" tabindex="-1">' + svgChevron + '</button></div></div><ul class="vp-tree-item__children hidden" role="group">';
+                $.each(product, function(key,value) {
+                  htmltoBuild += '<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="' + value.name + '" aria-expanded="false" aria-selected="false" aria-level="2"><div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + value.url + '">' + value.name + '</a><div class="vp-tree-item__header__icon"></div></div></li>';
+                });
+                htmltoBuild += '</ul></li>';
+              }
+              else {
+                htmltoBuild += product[0].url + '">' + sectionTitle + '</a></div></li>';
+              }
             });
             return htmltoBuild;
           }

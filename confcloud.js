@@ -306,7 +306,7 @@ function confCloudJS() {
 //            $(this).addClass('current');
           }
           if ($('.vp-desktop-navigation__page-tree__tree').hasClass('hidden')) {
-            $('.vp-tree').removeClass('hidden');
+            $('.vp-desktop-navigation__page-tree__tree').removeClass('hidden');
             $(this).addClass('current');
             $('#ic-products').removeClass('current')
           }

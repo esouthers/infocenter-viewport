@@ -747,16 +747,21 @@ function confCloudJS() {
       $('.expand-container').each(function() {
         let thisNext = $(this).next();
         let thisPrev = $(this).prev();
-        if (thisNext.hasClass('expand-container')) { // Two or more expands together, so lets convert it to tabs
-          $(this).addClass('menu-item').changeElementType('li');
+        if ((thisNext.hasClass('expand-container')) || (thisPrev.hasClass('tabs-menu'))) { // Two or more expands together, so lets convert it to tabs
           if (!thisPrev.hasClass('tabs-menu')) { // Haven't started converting yet
             $(this).wrap('<ul class="tabs-menu" role="tablist"></ul>');
+            $(this).parent().wrap('<div class="contentf aui-tabs horizontal-tabs" role="application"></div>');
           }
           else {
             $(this).appendTo(thisPrev);
           }
+          $(this).addClass('menu-item').changeElementType('li');
+          if (!(thisNext.hasClass('expand-container'))) { //last tab
+
+          }
         }
       });
+
     }
   };
   document.head.appendChild(script);

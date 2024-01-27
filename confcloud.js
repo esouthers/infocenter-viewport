@@ -1,6 +1,6 @@
 function confCloudJS() { 
   var script = document.createElement("SCRIPT");
-  script.src = 'https://esouthers.github.io/infocenter-viewport/notifiy.js';
+  script.src = 'https://esouthers.github.io/infocenter-viewport/notify.js';
   script.type = 'text/javascript';
   document.head.appendChild(script);
   script = document.createElement("SCRIPT");

@@ -262,8 +262,8 @@ function confCloudJS() {
         $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
           e.preventDefault();
           $(document).on('mousemove touchmove', function (e) {
-            if (e.type == 'touchmove') { mousex = e.touches[0].pageX + 2; }
-            else { mousex = e.pageX + 2; }
+            if (e.type == 'touchmove') { mousex = e.touches[0].pageX; }
+            else { mousex = e.pageX; }
             if (mousex < 190 || mousex/$(window).innerWidth() > 0.7)return;
             if (mousex < 220)$('#vp-js-desktop__navigation').addClass('small');
             else $('#vp-js-desktop__navigation').removeClass('small');
@@ -443,7 +443,7 @@ function confCloudJS() {
 
     function setDragbar(val) {
       if (val == NaN)val = 320;
-      let val10 = val - 22;
+      let val10 = val - 20;
       $('#vp-js-desktop__navigation').width(val10 + "px");
       $('main').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
       hideShowBreadcrumbs(val);

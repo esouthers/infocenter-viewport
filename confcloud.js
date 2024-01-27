@@ -97,7 +97,7 @@ function confCloudJS() {
     });
 //            fixTabs(); Do not use due to Cors proxy security issues
     convertExpandsToTabs();
-    
+
     let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
     $('#vp-js-desktop__navigation__picker').before(verIcon);
 
@@ -734,18 +734,6 @@ function confCloudJS() {
         }          
       }
     }
-    function convertExpandsToTabs() {
-      $('.expand-container').each(function() {
-        let thisNext = $(this).next();
-        let thisPrev = $(this).prev();
-        if (thisNext.hasClass('expand-container')) { // Two or more expands together, so lets convert it to tabs
-          if (!thisPrev.hasClass('tabs-menu')) { // Haven't started converting yet
-            $(this).wrap('<ul class="tabs-menu" role="tablist"></ul>');
-          }
-          $(this).addClass('menu-item').changeElementType('ul');
-        }
-      });
-    }
     (function($) {
         $.fn.changeElementType = function(newType) {
             var attrs = {};
@@ -759,6 +747,21 @@ function confCloudJS() {
             });
         };
     })(jQuery);
+    function convertExpandsToTabs() {
+      $('.expand-container').each(function() {
+        let thisNext = $(this).next();
+        let thisPrev = $(this).prev();
+        if (thisNext.hasClass('expand-container')) { // Two or more expands together, so lets convert it to tabs
+          $(this).addClass('menu-item').changeElementType('li');
+          if (!thisPrev.hasClass('tabs-menu')) { // Haven't started converting yet
+            $(this).wrap('<ul class="tabs-menu" role="tablist"></ul>');
+          }
+          else {
+            $(this).appendTo(thisPrev);
+          }
+        }
+      });
+    }
   };
   document.head.appendChild(script);
 }

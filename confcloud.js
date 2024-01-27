@@ -453,6 +453,7 @@ function confCloudJS() {
       let testVal = window.innerWidth - val - $('.header__navigation').width();
       if (testVal <= 500) {
         $('.vp-breadcrumbs').addClass('hidden');
+        $('#vp-js-desktop__navigation__picker').addClass('hidebefore');
       }
       else if (testVal <= 700) {
         if ($('.breadcrumbs li').length > 3) {
@@ -463,6 +464,7 @@ function confCloudJS() {
           }
         }
         $('.vp-breadcrumbs').removeClass('hidden');
+        $('#vp-js-desktop__navigation__picker').removeClass('hidebefore');
       }
       else {
         $('.breadcrumbs li.hidden').each(function() {
@@ -470,6 +472,7 @@ function confCloudJS() {
           $('a',this).text($(this).attr('data-title'));
         });
         $('.vp-breadcrumbs').removeClass('hidden');
+        $('#vp-js-desktop__navigation__picker').removeClass('hidebefore');
       }
     }
     // Adds modified date under page title

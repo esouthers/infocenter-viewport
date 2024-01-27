@@ -741,11 +741,6 @@ main > header {
   color: var(--haiui-gray-01);
   margin-right: 10px;
 }
-@media screen and (max-width: 800px) {
-  #vp-js-desktop__navigation__picker:before {
-    display: none;
-  }
-}
 .header .vp-picker {
   color: var(--haiui-gray-00);
   --_button-border-color: transparent;
@@ -857,7 +852,7 @@ table .article__content .confluence-embedded-file-wrapper:has(.confluence-embedd
   margin-bottom: 0px;
 }
 
-.hidden {
+.hidden, .hidebefore:before {
   display: none;
 }
 .vp-article__aside-left .hidden {

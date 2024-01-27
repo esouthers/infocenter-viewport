@@ -460,6 +460,7 @@ function confCloudJS() {
             $('a', addDots).text('...');
           }
         }
+        $('.vp-breadcrumbs').removeClass('hidden');
       }
       else {
         $('.breadcrumbs li.hidden').each(function() {

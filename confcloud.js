@@ -25,6 +25,8 @@ function confCloudJS() {
     // cookieSetup();
     localStorage.setItem('acceptedCookie', 'true');
 
+    $.notify('Hello World!');
+
     // Start of processing depending on page type
     if (window.location.pathname == '/search.html') {
       console.log('search results page');

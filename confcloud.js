@@ -114,7 +114,7 @@ function confCloudJS() {
       $('.header__navigation--heading').removeClass('py-3');
       // Move breadcrumbs to header
       $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
-      $('.vp-search-input__submit').addClass('hidden-lg');
+      $('.vp-search-input__submit').addClass('hidden-mdlg hidden-md hidden-sm');
     }
 
     function updateBreadcrumbs() {
@@ -128,7 +128,7 @@ function confCloudJS() {
           </vp-scroll-shadow></div></nav></i18n-message>';
           $('main > header').prepend(breacrumbsToAdd);
         }
-        $('.breadcrumbs-wrapper').addClass('hidden-mdlg');
+        $('.breadcrumbs-wrapper').addClass('hidden-mdlg hidden-md hidden-sm');
         // Show title in the breadcrumbs if title isn't shown when scrolling
         $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
           if ($('.search-header').length > 0) { that = $('.search-header'); }

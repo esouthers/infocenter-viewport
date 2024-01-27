@@ -385,6 +385,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   background-color: var(--haiui-blue-01);
   color: white;
 }
+
 .vp-search-input__submit {
   border-radius: 0;
   border: 1px var(--haiui-blue-01) solid;

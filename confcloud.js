@@ -456,13 +456,15 @@ function confCloudJS() {
         if ($('.breadcrumbs li').length > 2) {
           let addDots = $('.breadcrumbs li').eq(1);
           if (!(addDots.hasClass('hidden'))) {
-            addDots.addClass('hidden').attr('data-title',addDots.text()).text('...');
+            addDots.addClass('hidden').attr('data-title',$('a', addDots).text());
+            $('a', addDots).text('...');
           }
         }
       }
       else {
         $('.breadcrumbs li.hidden').each(function() {
-          $(this).removeClass('hidden').text($(this).attr('data-title'));
+          $(this).removeClass('hidden');
+          $('a',this).text($(this).attr('data-title'));
         });
         $('.vp-breadcrumbs').removeClass('hidden');
       }

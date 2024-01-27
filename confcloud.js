@@ -96,7 +96,8 @@ function confCloudJS() {
       fixInlineImages(this);
     });
 //            fixTabs(); Do not use due to Cors proxy security issues
-
+    convertExpandsToTabs();
+    
     let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
     $('#vp-js-desktop__navigation__picker').before(verIcon);
 
@@ -733,8 +734,31 @@ function confCloudJS() {
         }          
       }
     }
+    function convertExpandsToTabs() {
+      $('.expand-container').each(function() {
+        let thisNext = $(this).next();
+        let thisPrev = $(this).prev();
+        if (thisNext.hasClass('expand-container')) { // Two or more expands together, so lets convert it to tabs
+          if (!thisPrev.hasClass('tabs-menu')) { // Haven't started converting yet
+            $(this).wrap('<ul class="tabs-menu" role="tablist"></ul>');
+          }
+          $(this).addClass('menu-item').changeElementType('ul');
+        }
+      });
+    }
+    (function($) {
+        $.fn.changeElementType = function(newType) {
+            var attrs = {};
 
+            $.each(this[0].attributes, function(idx, attr) {
+                attrs[attr.nodeName] = attr.nodeValue;
+            });
 
+            this.replaceWith(function() {
+                return $("<" + newType + "/>", attrs).append($(this).contents());
+            });
+        };
+    })(jQuery);
   };
   document.head.appendChild(script);
 }

@@ -1315,6 +1315,9 @@ details.vp-disclosure .vp-disclosure-icon {
   width: auto;
   z-index: 1;
 }
+.aui-tabs > .tabs-pane {
+  display: none;
+}
 .aui-tabs > .tabs-pane.active-pane {
   border: 1px solid var(--haiui-gray-08);
   padding-bottom: 10px;

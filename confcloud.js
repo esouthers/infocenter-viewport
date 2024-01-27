@@ -749,18 +749,37 @@ function confCloudJS() {
         let thisPrev = $(this).prev();
         if ((thisNext.hasClass('expand-container')) || (thisPrev.hasClass('tabs-menu'))) { // Two or more expands together, so lets convert it to tabs
           if (!thisPrev.hasClass('tabs-menu')) { // Haven't started converting yet
+            $(this).addClass('active-tab');
             $(this).wrap('<ul class="tabs-menu" role="tablist"></ul>');
-            $(this).parent().wrap('<div class="contentf aui-tabs horizontal-tabs" role="application"></div>');
           }
           else {
             $(this).appendTo(thisPrev);
           }
-          $(this).addClass('menu-item').changeElementType('li');
           if (!(thisNext.hasClass('expand-container'))) { //last tab
-
+            $(this).parent().wrap('<div class="contentf aui-tabs horizontal-tabs" role="application"></div>');
           }
+          $(this).addClass('menu-item').removeAttr('id').removeClass('expand-container').changeElementType('li');
         }
       });
+      $('.aui-tabs').each(function() {
+        $('.menu-item', this).each(function() {
+          title = $('.expand-title', this).text();
+          tabID = $('.expand-control', this).attr('data-vp-id');
+          $(this).append('<a href="#' + tabID + '">' + title + '</a>');
+          content = $('.expand-content', this)
+          content.attr('id',tabID).attr('data-pane-title',title).addClass('cfm tabs-pane').removeClass('expand-content').attr('role','tabpanel');
+          content.appendTo($(this).parent().parent());
+          $('details', this).remove();
+        });
+        $('.tabs-pane', this).first().addClass('active-pane').attr('loaded','true');
+      });
+      $('.aui-tabs .menu-item').on('click', function() {
+        $(this).parent().children('active-tab').removeClass('active-tab');
+        $(this).addClass('active-tab');
+        let tabLink = $('a', this).attr('href');
+        $(this).parent().parent().children().removeClass('active-pane');
+        $(tabLink).addClass('active-pane');
+      })
 
     }
   };

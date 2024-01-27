@@ -121,12 +121,13 @@ function confCloudJS() {
         // Home page of space doesn't include breadcrumbs, so add them:
         spaceName = $('#vp-js-desktop__navigation .header__navigation--heading').text();
         if ($('.breadcrumbs').length == 0) {
-          let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper hidden-mdlg"><vp-scroll-shadow> \
+          let breacrumbsToAdd = '<i18n-message i18nkey="breadcrumb.label" attribute="aria-label" class="vp-breadcrumbs__wrapper"><nav class="vp-breadcrumbs" aria-label="Breadcrumb" role="navigation"><div class="breadcrumbs-wrapper"><vp-scroll-shadow> \
           <ol class="breadcrumbs breadcrumbs--fit-content"><li><a href="' + $('#vp-js-desktop__navigation .header__navigation--heading').attr('href') + 
           '" rel="prev">' + spaceName + '</a></li></ol> \
           </vp-scroll-shadow></div></nav></i18n-message>';
           $('main > header').prepend(breacrumbsToAdd);
         }
+        $('.breadcrumbs-wrapper').addClass('hidden-mdlg');
         // Show title in the breadcrumbs if title isn't shown when scrolling
         $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
           if ($('.search-header').length > 0) { that = $('.search-header'); }

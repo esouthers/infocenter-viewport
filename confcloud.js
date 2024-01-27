@@ -109,6 +109,15 @@ function confCloudJS() {
 
     } // End of processing depending on page type
 
+
+    let sidebarWidth = getLocalStorageWithExpiry('sidebar-width');
+    if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
+//    if (sidebarWidth < 231) {sidebarWidth = 231; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
+    setDragbar(sidebarWidth);
+
+
+
+
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message
     function cookieSetup() {

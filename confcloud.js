@@ -114,6 +114,7 @@ function confCloudJS() {
       $('.header__navigation--heading').removeClass('py-3');
       // Move breadcrumbs to header
       $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
+      $('.vp-search-input__submit').addClass('hidden-lg');
     }
 
     function updateBreadcrumbs() {

@@ -150,7 +150,7 @@ function confCloudJS() {
         if (breadcrumbs.length > 4) {
           for (var i = 2; i < breadcrumbs.length-2; i++) {
             let tempTitle = breadcrumbs.eq(i).children('a').text();
-            breadcrumbs.eq(i).children('a').attr('title',tempTitle).text('...');
+            breadcrumbs.eq(i).children('a').attr('data-title',tempTitle).text('...');
           }
         }
         // Add version number to breadcrumbs

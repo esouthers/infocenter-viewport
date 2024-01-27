@@ -461,7 +461,7 @@ function confCloudJS() {
       else {
         $('.breadcrumbs li.hidden').each(function() {
           $(this).removeClass('hidden').text($(this).attr('data-title'));
-        };
+        });
         $('.vp-breadcrumbs').removeClass('hidden');
       }
     }

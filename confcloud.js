@@ -4,117 +4,153 @@ function confCloudJS() {
   script.type = 'text/javascript';
   script.onload = function() {
 
-  var svgHamburger = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250 250" xml:space="preserve" class="HaiIcon" iconname="Hamburger" subtype="hamburger" type="navigation"><path id="Path_1229" d="M219.4,73.7H32.6c-6.2-0.4-10.9-5.9-10.5-12.1C22.5,56,27,51.5,32.6,51.1h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,68.8,225,73.3,219.4,73.7z"></path><path id="Path_1230" d="M219.4,137H32.6c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,132.1,225,136.6,219.4,137z"></path><path id="Path_1231" d="M218.8,199.1H32c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C228.9,194.2,224.4,198.7,218.8,199.1z"></path></svg>';
-  var svgPageTree  = '<svg id="a" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M14,36h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M14,26h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M14,16h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M40,2H8c-2.21,0-4,1.79-4,4V42c0,2.21,1.79,4,4,4H40c2.21,0,4-1.79,4-4V6c0-2.21-1.79-4-4-4Zm-1,40H9c-.55,0-1-.45-1-1V7c0-.55,.45-1,1-1h30c.55,0,1,.45,1,1V41c0,.55-.45,1-1,1Z"></path></svg>';
-  var svgProducts  = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" style="height: 20px; width: 20px;"><path d="M42,22H6c-2.21,0-4-1.79-4-4V6c0-2.21,1.79-4,4-4H42c2.21,0,4,1.79,4,4v12c0,2.21-1.79,4-4,4ZM6,7v10c0,.55,.45,1,1,1H41c.55,0,1-.45,1-1V7c0-.55-.45-1-1-1H7c-.55,0-1,.45-1,1Z"></path><path d="M42,46H6c-2.21,0-4-1.79-4-4v-12c0-2.21,1.79-4,4-4H42c2.21,0,4,1.79,4,4v12c0,2.21-1.79,4-4,4ZM6,31v10c0,.55,.45,1,1,1H41c.55,0,1-.45,1-1v-10c0-.55-.45-1-1-1H7c-.55,0-1,.45-1,1Z"></path><circle cx="36" cy="36" r="2"></circle><circle cx="36" cy="12" r="2"></circle></svg>';
-  var svgPrefs     = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M10,22.26V4c0-1.1-.9-2-2-2s-2,.9-2,2V22.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v6.26c0,1.1,.9,2,2,2s2-.9,2-2v-6.26c3.44-.89,6-4.02,6-7.74s-2.56-6.85-6-7.74Zm-2,11.74c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M32,16c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2v4.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v20.26c0,1.1,.9,2,2,2s2-.9,2-2V23.74c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M48,34c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2V26.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v2.26c0,1.1,.9,2,2,2s2-.9,2-2v-2.26c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path></svg>';
-  var svgSupport   = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" version="1.1" viewBox="0 0 200 200" xml:space="preserve"><path d="m185.5 60h-18.1c-5.4-33-34.1-58.3-68.6-58.3-34.7 0-63.6 25.6-68.7 58.9h-17.6c-7.2 0-13 5.8-13 13v41.3c0 7.2 5.8 13 13 13h16.8v0.4c0 5.2 4.3 9.5 9.5 9.5s9.5-4.3 9.5-9.5v-57.1c0-27.8 22.7-50.5 50.5-50.5s50.5 22.7 50.5 50.5v57.1c0 27.5-22.1 49.9-49.4 50.5h-0.2-0.7-0.1c-4.8 0.4-8.6 4.5-8.6 9.5s3.8 9 8.6 9.5v0.1c38.3 0 69.5-31.2 69.5-69.5v-0.4h17.2c7.2 0 13-5.8 13-13v-42c-0.1-7.2-5.9-13-13.1-13zm-156.2 48.8h-10.8v-29.3h10.8zm150.2 0h-11.2v-29.8h11.2z"/><path d="m123.5 177.8c-12.8 0-25.1-4-35.5-11.5-4.2-3-5.2-9-2.2-13.2 3-4.3 8.8-5.3 12.9-2.3 7.2 5.3 15.8 8 24.7 8s17.5-2.8 24.7-8c4.2-3 10-2 12.9 2.3 3 4.3 2 10.2-2.2 13.2-10.3 7.5-22.5 11.5-35.3 11.5z"/></svg>';
-  var svgSmallLogo = '<svg class="logo-small" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="40" viewBox="0 0 44 40"><path d="M3.1,0H7.04V-22.4H3.1Zm19.68.384a11.558,11.558,0,0,0,9.088-3.968l-2.528-2.56c-1.92,1.792-3.68,2.88-6.432,2.88-4.288,0-7.392-3.552-7.392-7.936v-.064c0-4.384,3.136-7.872,7.36-7.872a8.951,8.951,0,0,1,6.3,2.752L31.712-19.3a11.7,11.7,0,0,0-8.8-3.488A11.328,11.328,0,0,0,11.392-11.2v.064A11.246,11.246,0,0,0,22.784.384Z" transform="translate(6 32)" fill="#fff"/></svg>';
-  var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
-  var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
+    var svgHamburger = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250 250" xml:space="preserve" class="HaiIcon" iconname="Hamburger" subtype="hamburger" type="navigation"><path id="Path_1229" d="M219.4,73.7H32.6c-6.2-0.4-10.9-5.9-10.5-12.1C22.5,56,27,51.5,32.6,51.1h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,68.8,225,73.3,219.4,73.7z"></path><path id="Path_1230" d="M219.4,137H32.6c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,132.1,225,136.6,219.4,137z"></path><path id="Path_1231" d="M218.8,199.1H32c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C228.9,194.2,224.4,198.7,218.8,199.1z"></path></svg>';
+    var svgPageTree  = '<svg id="a" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M14,36h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M14,26h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M14,16h20c1.1,0,2-.9,2-2s-.9-2-2-2H14c-1.1,0-2,.9-2,2s.9,2,2,2Z"></path><path d="M40,2H8c-2.21,0-4,1.79-4,4V42c0,2.21,1.79,4,4,4H40c2.21,0,4-1.79,4-4V6c0-2.21-1.79-4-4-4Zm-1,40H9c-.55,0-1-.45-1-1V7c0-.55,.45-1,1-1h30c.55,0,1,.45,1,1V41c0,.55-.45,1-1,1Z"></path></svg>';
+    var svgProducts  = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" style="height: 20px; width: 20px;"><path d="M42,22H6c-2.21,0-4-1.79-4-4V6c0-2.21,1.79-4,4-4H42c2.21,0,4,1.79,4,4v12c0,2.21-1.79,4-4,4ZM6,7v10c0,.55,.45,1,1,1H41c.55,0,1-.45,1-1V7c0-.55-.45-1-1-1H7c-.55,0-1,.45-1,1Z"></path><path d="M42,46H6c-2.21,0-4-1.79-4-4v-12c0-2.21,1.79-4,4-4H42c2.21,0,4,1.79,4,4v12c0,2.21-1.79,4-4,4ZM6,31v10c0,.55,.45,1,1,1H41c.55,0,1-.45,1-1v-10c0-.55-.45-1-1-1H7c-.55,0-1,.45-1,1Z"></path><circle cx="36" cy="36" r="2"></circle><circle cx="36" cy="12" r="2"></circle></svg>';
+    var svgPrefs     = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M10,22.26V4c0-1.1-.9-2-2-2s-2,.9-2,2V22.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v6.26c0,1.1,.9,2,2,2s2-.9,2-2v-6.26c3.44-.89,6-4.02,6-7.74s-2.56-6.85-6-7.74Zm-2,11.74c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M32,16c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2v4.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v20.26c0,1.1,.9,2,2,2s2-.9,2-2V23.74c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M48,34c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2V26.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v2.26c0,1.1,.9,2,2,2s2-.9,2-2v-2.26c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path></svg>';
+    var svgSupport   = '<svg class="pagetree-icon HaiIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" version="1.1" viewBox="0 0 200 200" xml:space="preserve"><path d="m185.5 60h-18.1c-5.4-33-34.1-58.3-68.6-58.3-34.7 0-63.6 25.6-68.7 58.9h-17.6c-7.2 0-13 5.8-13 13v41.3c0 7.2 5.8 13 13 13h16.8v0.4c0 5.2 4.3 9.5 9.5 9.5s9.5-4.3 9.5-9.5v-57.1c0-27.8 22.7-50.5 50.5-50.5s50.5 22.7 50.5 50.5v57.1c0 27.5-22.1 49.9-49.4 50.5h-0.2-0.7-0.1c-4.8 0.4-8.6 4.5-8.6 9.5s3.8 9 8.6 9.5v0.1c38.3 0 69.5-31.2 69.5-69.5v-0.4h17.2c7.2 0 13-5.8 13-13v-42c-0.1-7.2-5.9-13-13.1-13zm-156.2 48.8h-10.8v-29.3h10.8zm150.2 0h-11.2v-29.8h11.2z"/><path d="m123.5 177.8c-12.8 0-25.1-4-35.5-11.5-4.2-3-5.2-9-2.2-13.2 3-4.3 8.8-5.3 12.9-2.3 7.2 5.3 15.8 8 24.7 8s17.5-2.8 24.7-8c4.2-3 10-2 12.9 2.3 3 4.3 2 10.2-2.2 13.2-10.3 7.5-22.5 11.5-35.3 11.5z"/></svg>';
+    var svgSmallLogo = '<svg class="logo-small" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="40" viewBox="0 0 44 40"><path d="M3.1,0H7.04V-22.4H3.1Zm19.68.384a11.558,11.558,0,0,0,9.088-3.968l-2.528-2.56c-1.92,1.792-3.68,2.88-6.432,2.88-4.288,0-7.392-3.552-7.392-7.936v-.064c0-4.384,3.136-7.872,7.36-7.872a8.951,8.951,0,0,1,6.3,2.752L31.712-19.3a11.7,11.7,0,0,0-8.8-3.488A11.328,11.328,0,0,0,11.392-11.2v.064A11.246,11.246,0,0,0,22.784.384Z" transform="translate(6 32)" fill="#fff"/></svg>';
+    var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
+    var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
 
-  $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
-  $(window).resize(function() {
-    testWindowSize();
-  });
-
-  // Start of processing depending on page type
-  if (window.location.pathname == '/search.html') {
-    console.log('search results page');
-    let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
-    $('#content').before(sidebar);
-    updateHeader();
-    updateSidebar();
-    updateFooter();
-    updateBreadcrumbs();
-
-    waitForElm('.search-results__results__label').then((elm) => {
-      let searchTerm = $('.vp-search-input__input').val();
-      let numResults = $(elm).text().split(' result')[0];
-      let plural = '';
-      if (numResults > 1) { plural = 's';}
-      $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
-      $('#titleBreadcrumb').text($('.search-header').text());
-
-      let searchIdx = getSearchIndexes(numResults);
-      $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
-      $(elm).remove();
+    $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
+    
+    $(window).resize(function() {
+      testWindowSize();
     });
-    $('.vp-pagination__inner button').on('click', function(e){
+    // cookieSetup();
+    setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
+
+    // Start of processing depending on page type
+    if (window.location.pathname == '/search.html') {
+      console.log('search results page');
+      let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
+      $('#content').before(sidebar);
+      updateHeader();
+      updateSidebar();
+      updateFooter();
+      updateBreadcrumbs();
+
       waitForElm('.search-results__results__label').then((elm) => {
-        let searchIdx = getSearchIndexes($('#numResults').text());
-        $('#startIdx').text(searchIdx[0]);
-        $('#stopIdx').text(searchIdx[1]);
+        let searchTerm = $('.vp-search-input__input').val();
+        let numResults = $(elm).text().split(' result')[0];
+        let plural = '';
+        if (numResults > 1) { plural = 's';}
+        $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+        $('#titleBreadcrumb').text($('.search-header').text());
+
+        let searchIdx = getSearchIndexes(numResults);
+        $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
         $(elm).remove();
       });
-    });
+      $('.vp-pagination__inner button').on('click', function(e){
+        waitForElm('.search-results__results__label').then((elm) => {
+          let searchIdx = getSearchIndexes($('#numResults').text());
+          $('#startIdx').text(searchIdx[0]);
+          $('#stopIdx').text(searchIdx[1]);
+          $(elm).remove();
+        });
+      });
 
-  }
-  // Redirect to homepage
-  else if (window.location.pathname == '/') {
-    window.location.replace('https://' + window.location.hostname + '/Home');
-  }
-  else {
-    addModifiedDate();
-    updateHeader();
-    updateSidebar();
-    updateFooter();
-    updateBreadcrumbs();
-    // Search box placeholder
-    $('.vp-search-input > input').attr('placeholder','How can we help you?');
-    // Fix alerts
-      // Remove built-in icon
-    $('.panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon').children('img').remove();
-      // For Warning alerts with Caution title, update its class to caution
-    $('.panel-macros--warning__content--heading').each(function() {
-      if ($(this).text() == 'Caution') {
-        $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
+    }
+    // Redirect to homepage
+    else if (window.location.pathname == '/') {
+      window.location.replace('https://' + window.location.hostname + '/Home');
+    }
+    else {
+      addModifiedDate();
+      updateHeader();
+      updateSidebar();
+      updateFooter();
+      updateBreadcrumbs();
+      // Search box placeholder
+      $('.vp-search-input > input').attr('placeholder','How can we help you?');
+      // Fix alerts
+        // Remove built-in icon
+      $('.panel-macro--tip .panel-macro__icon, .panel-macro--note .panel-macro__icon, .panel-macro--info .panel-macro__icon, .panel-macro--caution .panel-macro__icon, .panel-macro--warning .panel-macro__icon').children('img').remove();
+        // For Warning alerts with Caution title, update its class to caution
+      $('.panel-macros--warning__content--heading').each(function() {
+        if ($(this).text() == 'Caution') {
+          $(this).closest('.panel-macro--warning').removeClass('panel-macro--warning').addClass('panel-macro--caution');
+        }
+      });
+
+      // Apply styling to next/prev links at bottom of page
+      $('vp-article-pagination').each(function() {
+        let style =  document.createElement( 'style' );
+        style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
+        $(this)[0].shadowRoot.appendChild(style);
+      });
+
+      // Expand/collapse buttons
+      $('summary').each(function() {
+        let expandIcon = $('.vp-disclosure-icon',this);
+        let expandTitle = $(this).text();
+        $(this).text('');
+        $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
+      });
+
+      $('body').show();
+
+      // Fix table cell background colors
+      $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
+
+      $('#main-content figure').each(function() {
+        fixInlineImages(this);
+      });
+  //            fixTabs(); Do not use due to Cors proxy security issues
+      convertExpandsToTabs();
+
+      let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
+      $('#vp-js-desktop__navigation__picker').before(verIcon);
+
+      let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
+    //        addIconNextToVersion(newMsg, flagID, 14);
+
+    } // End of processing depending on page type
+
+    // GDPR cookie popup
+    // Show a popup if user hasn't been here before and accepted cookie message
+    function cookieSetup() {
+      if (!isPlayPro()) {
+        if (!(getLocalStorageWithExpiry('acceptedCookie')) && (!isInIframe())) {
+          var cookieFlag = AJS.flag({
+            type: 'success',
+            body: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. Click <strong>View</strong> to read more.' +
+              '<ul class="aui-nav-actions-list">' +
+              '<li><a class="cookieAccept">Accept</a></li>' +
+              '<li><a href="https://doc.haivision.com/about-haivision/privacy-and-cookies">View</a></li>' +
+              '<li><a class="cookieReject">Reject Optional Cookies</a></li>' +
+              '</ul>' 
+          });
+          $('#aui-flag-container .cookieAccept').on('click', function() {
+            $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
+            cookieFlag.close();
+            setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
+            // Set default cookie values
+            setLocalStorageWithExpiry('ICglossary', 'true', 3650);
+            $('#checkGlossary').prop('checked',true);
+            // Setup Google Analytics
+      //        gaSetup();
+          });
+          $('#aui-flag-container .cookieReject').on('click', function() {
+            $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
+            cookieFlag.close();
+            setLocalStorageWithExpiry('acceptedCookie', 'false', 3650);
+          });
+        }
+        else if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
+      //      gaSetup(); 
+        }
       }
-    });
-
-    // Apply styling to next/prev links at bottom of page
-    $('vp-article-pagination').each(function() {
-      let style =  document.createElement( 'style' );
-      style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
-      $(this)[0].shadowRoot.appendChild(style);
-    });
-
-    // Expand/collapse buttons
-    $('summary').each(function() {
-      let expandIcon = $('.vp-disclosure-icon',this);
-      let expandTitle = $(this).text();
-      $(this).text('');
-      $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
-    });
-
-    $('body').show();
-
-    // Fix table cell background colors
-    $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
-
-    $('#main-content figure').each(function() {
-      fixInlineImages(this);
-    });
-//            fixTabs(); Do not use due to Cors proxy security issues
-    convertExpandsToTabs();
-
-    let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
-    $('#vp-js-desktop__navigation__picker').before(verIcon);
-
-    let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
-  //        addIconNextToVersion(newMsg, flagID, 14);
-
-  } // End of processing depending on page type
-
-
-
+    }
     function updateHeader() {
       $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
       $('main').prepend($('body > header'));
       $('.header__navigation--heading').removeClass('py-3');
       // Move breadcrumbs to header
       $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
-      $('.vp-search-input__submit').addClass('hidden-mdlg hidden-md hidden-sm');
+//      $('.vp-search-input__submit').addClass('hidden-mdlg hidden-md hidden-sm');
     }
 
     function updateBreadcrumbs() {
@@ -269,7 +305,7 @@ function confCloudJS() {
             if (mousex < 220)$('#vp-js-desktop__navigation').addClass('small');
             else $('#vp-js-desktop__navigation').removeClass('small');
             setDragbar(mousex);
-//                  setLocalStorageWithExpiry('sidebar-width', mousex, 365);
+            setLocalStorageWithExpiry('sidebar-width', mousex, 365);
           });
           // Disable mouse events for navigation bar iframe
           $(document).on('mouseup', function (e) {
@@ -506,7 +542,7 @@ function confCloudJS() {
       });
       return htmltoBuild;
     }
-    /*
+
     function addMsg(message, hideOption, expireDays) {
       let dnsMsg = '';
       if (expireDays == 'session') {
@@ -529,7 +565,7 @@ function confCloudJS() {
         if ((isInIframe()) || ((localStorage.getItem('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
           if (expireDays == 'session') {
             sessionStorage.setItem(cookieToSet, 'true');
-    //        setLocalStorageWithExpiry(cookieToSet,'true',0);
+            setLocalStorageWithExpiry(cookieToSet,'true',0);
           }
           else {
             setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
@@ -540,7 +576,7 @@ function confCloudJS() {
         }
       });
     }
-    */
+
 
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
@@ -748,7 +784,7 @@ function confCloudJS() {
       let sidebarWidth = $('.vp-article__aside-left').width();
       if (sidebarWidth / width > 0.6) {
         let newWidth = parseInt(0.6 * width);
-//        setLocalStorageWithExpiry('sidebar-width',newWidth,14)
+        setLocalStorageWithExpiry('sidebar-width',newWidth,14)
         setDragbar(newWidth);
       }
       if (width < 800) { 
@@ -760,7 +796,7 @@ function confCloudJS() {
         if (window.innerWidth - $('.vp-article__aside-left').width() < 445) {
           let newWidth = window.innerWidth - 445;
           if (newWidth < 231) {newWidth = 231;}
-//              setLocalStorageWithExpiry('sidebar-width',newWidth,14)
+          setLocalStorageWithExpiry('sidebar-width',newWidth,14)
           setDragbar(newWidth);
         }
         if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
@@ -778,7 +814,6 @@ function confCloudJS() {
               return $("<" + newType + "/>", attrs).append($(this).contents());
           });
       };
-
       $('.expand-container').each(function() {
         let thisNext = $(this).next();
         let thisPrev = $(this).prev();
@@ -796,7 +831,6 @@ function confCloudJS() {
           $(this).addClass('menu-item').removeAttr('id').removeClass('expand-container').changeElementType('li');
         }
       });
-
       $('.aui-tabs').each(function() {
         $('.menu-item', this).each(function() {
           title = $('.expand-title', this).text();
@@ -816,8 +850,73 @@ function confCloudJS() {
         $(this).parent().parent().children().removeClass('active-pane');
         $(tabLink).addClass('active-pane');
       });
-
     }
+    // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
+    function gaSetup() {
+       $('#userprefs .cookieContainer, #userprefs form.options').removeClass('hidden');
+       $('#userprefs .cookieDisabledNote').addClass('hidden');
+       if (window.location.hostname == "doc.haivision.com") {  // Don't log analytics on Sandbox.
+          gtag('js', new Date());
+        gtag('config', 'G-SDDSB8BN8V');
+          // Add tracking to the PDF button and Create PDF footer link
+          setTimeout(function() {
+            // Must have a delay to wait for js library to load the children.
+            var numChildrenPDF = $('.sp-pagetree .current li').length;
+            $('.pdf-button').attr('onClick','gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": window.location.href,"value": '+numChildrenPDF+'});');
+            $('.footerbuttons#pdf-exporter').attr('onClick','gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": window.location.href,"value": '+numChildrenPDF+'});');
+          }, 1000);
+          // Add tracking to talk to sales
+          $('.footerbuttons#talk-to-sales').attr('onClick','gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": window.location.href,"value": 0});');
+          // Add tracking to provide feedback
+          $('.footerbuttons#provide-feedback').attr('onClick','gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": window.location.href,"value": 0});');
+          // Add tracking for external links
+          gaExternalLinks();
+        }
+    }
+      
+    function gaExternalLinks() {
+      // CX-335: Track Outbound Link Clicks and auto-add click event to links with external URLs
+      // Code from http://www.joehessert.com/seo/google-analytics-external-link-tracking
+      var hitCallbackHandler = function(url, win) {
+        if (win) { window.open(url, win); } 
+        else { window.location.href = url; }
+      };
+      var addEvent = function(el, eventName, handler) {
+        if (el.addEventListener) { el.addEventListener(eventName, handler); } 
+        else { el.attachEvent('on' + eventName, function() { handler.call(el); }); }
+      }
+      if (document.getElementsByTagName) {
+        var el = document.getElementsByTagName('a');
+        var getDomain = document.domain;
+
+        // Look thru each a element
+        for (var i = 0; i < el.length; i++) {
+          // Extract its href attribute
+          var href = (typeof(el[i].getAttribute('href')) == 'string') ? el[i].getAttribute('href') : '';
+          // Query the href for the top level domain (xxxxx.com)
+          var myDomain = href.match(getDomain);
+          // If link is outbound and is not to this domain        
+          if ((href.match(/^(https?:|\/\/)/i) && !myDomain) || href.match(/^mailto\:/i)) {
+            // Add an event to click
+            addEvent(el[i], 'click', function(e) {
+              var url = this.getAttribute('href'),
+                  win = (typeof(this.getAttribute('target')) == 'string') ? this.getAttribute('target') : '';
+                if (url.match('store.haivision.com')) { var event_category = "link_store"; }
+                else if (url.match('support.haivision.com')) { var event_category = "link_support"; }
+                else if (url.match('haivision.com')) { var event_category = "link_haivision"; }
+                else { var event_category = "link_external"; }
+
+              // Log event to Analytics, once done, go to the link
+              // Specify the GA specifics here
+                gtag("event", "externallink", {"event_category": event_category,"event_action": url,"event_label": window.location.href,"event_callback": hitCallbackHandler(url, win)});
+              e.preventDefault();
+            });
+          }
+        }
+      }
+    }
+    // End of must edit for GA
+
   };
   document.head.appendChild(script);
 }

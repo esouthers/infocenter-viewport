@@ -144,6 +144,7 @@ function confCloudJS() {
             $('#titleBreadcrumbSlash').show();
             $('#titleBreadcrumb').show();
           }
+          hideShowBreadcrumbs(parseInt($('#vp-js-desktop__navigation').css('width')));
         });
         var breadcrumbs = $('.breadcrumbs--fit-content li');
         if (breadcrumbs.length > 4) {

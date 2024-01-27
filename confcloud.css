@@ -741,6 +741,11 @@ main > header {
   color: var(--haiui-gray-01);
   margin-right: 10px;
 }
+@media screen and (max-width: 1024px) {
+  #vp-js-desktop__navigation__picker:before {
+    display: none;
+  }
+}
 .header .vp-picker {
   color: var(--haiui-gray-00);
   --_button-border-color: transparent;

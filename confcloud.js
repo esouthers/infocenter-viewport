@@ -442,9 +442,16 @@ function confCloudJS() {
       let val10 = val - 10;
       $('#vp-js-desktop__navigation').width(val10 + "px");
       $('main').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
-    //          hideShowBreadcrumbs(val);
+      hideShowBreadcrumbs(val);
     }
-
+    function hideShowBreadcrumbs(val) {
+      if (window.innerWidth - val - $('.header__navigation').width() <= 500) {
+        $('.vp-breadcrumbs').addClass('hidden');
+      }
+      else {
+        $('.vp-breadcrumbs').removeClass('hidden');
+      }
+    }
     // Adds modified date under page title
     function addModifiedDate() {
       let modDate = $('meta[name="source-last-modified"]').attr('content');

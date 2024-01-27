@@ -155,6 +155,7 @@ function confCloudJS() {
         }
         // Add version number to breadcrumbs
         $('.breadcrumbs li').first().children('a').text($('.header__navigation--heading').text());
+        hideShowBreadcrumbs(parseInt($('#vp-js-desktop__navigation').css('width')));
       });
     }
     function updateSidebar() {

@@ -96,7 +96,7 @@ function confCloudJS() {
       fixInlineImages(this);
     });
 //            fixTabs(); Do not use due to Cors proxy security issues
-//    convertExpandsToTabs();
+    convertExpandsToTabs();
 
     let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
     $('#vp-js-desktop__navigation__picker').before(verIcon);
@@ -435,15 +435,6 @@ function confCloudJS() {
       var viewportBottom = viewportTop + $(window).height();
       return elementBottom > viewportTop && elementTop < viewportBottom;
     };
-    $.fn.changeElementType = function(newType) {
-        var attrs = {};
-        $.each(this[0].attributes, function(idx, attr) {
-            attrs[attr.nodeName] = attr.nodeValue;
-        });
-        this.replaceWith(function() {
-            return $("<" + newType + "/>", attrs).append($(this).contents());
-        });
-    };
 
     function setDragbar(val) {
       if (val == NaN)val = 320;
@@ -744,6 +735,16 @@ function confCloudJS() {
       }
     }
     function convertExpandsToTabs() {
+      $.fn.changeElementType = function(newType) {
+          var attrs = {};
+          $.each(this[0].attributes, function(idx, attr) {
+              attrs[attr.nodeName] = attr.nodeValue;
+          });
+          this.replaceWith(function() {
+              return $("<" + newType + "/>", attrs).append($(this).contents());
+          });
+      };
+
       $('.expand-container').each(function() {
         let thisNext = $(this).next();
         let thisPrev = $(this).prev();
@@ -761,6 +762,7 @@ function confCloudJS() {
           $(this).addClass('menu-item').removeAttr('id').removeClass('expand-container').changeElementType('li');
         }
       });
+
       $('.aui-tabs').each(function() {
         $('.menu-item', this).each(function() {
           title = $('.expand-title', this).text();
@@ -774,12 +776,12 @@ function confCloudJS() {
         $('.tabs-pane', this).first().addClass('active-pane').attr('loaded','true');
       });
       $('.aui-tabs .menu-item').on('click', function() {
-        $(this).parent().children('active-tab').removeClass('active-tab');
+        $(this).siblings('.active-tab').removeClass('active-tab');
         $(this).addClass('active-tab');
         let tabLink = $('a', this).attr('data-tabID');
         $(this).parent().parent().children().removeClass('active-pane');
         $(tabLink).addClass('active-pane');
-      })
+      });
 
     }
   };

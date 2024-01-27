@@ -443,7 +443,7 @@ function confCloudJS() {
 
     function setDragbar(val) {
       if (val == NaN)val = 320;
-      let val10 = val - 10;
+      let val10 = val - 12;
       $('#vp-js-desktop__navigation').width(val10 + "px");
       $('main').css("left", val + "px").css("width", "calc(100% - " + val + "px)");
       hideShowBreadcrumbs(val);

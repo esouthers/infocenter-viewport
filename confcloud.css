@@ -665,7 +665,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   margin-left: 2em; */
 }
 .article__content div.vp-accordion-link-group__item {
-  padding-left: 17px;
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 20px;
 }
 .vp-accordion-link-group__item--disclosure .vp-accordion-link-group__summary {
   flex-direction: row-reverse;

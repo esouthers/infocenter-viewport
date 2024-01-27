@@ -19,7 +19,7 @@ function confCloudJS() {
       testWindowSize();
     });
     // cookieSetup();
-    setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
+    localStorage.setItem('acceptedCookie', 'true');
 
     // Start of processing depending on page type
     if (window.location.pathname == '/search.html') {

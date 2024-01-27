@@ -765,7 +765,7 @@ function confCloudJS() {
         $('.menu-item', this).each(function() {
           title = $('.expand-title', this).text();
           tabID = $('.expand-control', this).attr('data-vp-id');
-          $(this).append('<a href="#' + tabID + '">' + title + '</a>');
+          $(this).append('<a data-tabID="#' + tabID + '">' + title + '</a>');
           content = $('.expand-content', this)
           content.attr('id',tabID).attr('data-pane-title',title).addClass('cfm tabs-pane').removeClass('expand-content').attr('role','tabpanel');
           content.appendTo($(this).parent().parent());
@@ -776,7 +776,7 @@ function confCloudJS() {
       $('.aui-tabs .menu-item').on('click', function() {
         $(this).parent().children('active-tab').removeClass('active-tab');
         $(this).addClass('active-tab');
-        let tabLink = $('a', this).attr('href');
+        let tabLink = $('a', this).attr('data-tabID');
         $(this).parent().parent().children().removeClass('active-pane');
         $(tabLink).addClass('active-pane');
       })

@@ -1243,7 +1243,7 @@ details.vp-disclosure .vp-disclosure-icon {
   display: flex;
   margin-top: 32px;
   line-height: 1.6;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
 }
 .aui-tabs.horizontal-tabs {
   flex-direction: column;

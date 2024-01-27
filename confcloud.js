@@ -448,10 +448,20 @@ function confCloudJS() {
       hideShowBreadcrumbs(val);
     }
     function hideShowBreadcrumbs(val) {
-      if (window.innerWidth - val - $('.header__navigation').width() <= 500) {
+      let testVal = window.innerWidth - val - $('.header__navigation').width();
+      if (testVal <= 500) {
         $('.vp-breadcrumbs').addClass('hidden');
       }
+      else if (testVal <= 700) {
+        if ($('.breadcrumbs li').length > 2) {
+          let addDots = $('.breadcrumbs li').eq(1);
+          addDots.addClass('hidden').attr('data-title',addDots.text()).text('...');
+        }
+      }
       else {
+        $('.breadcrumbs li.hidden').each(function() {
+          $(this).removeClass('hidden').text($(this).attr('data-title'));
+        };
         $('.vp-breadcrumbs').removeClass('hidden');
       }
     }

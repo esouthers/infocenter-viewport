@@ -453,7 +453,7 @@ function confCloudJS() {
         $('.vp-breadcrumbs').addClass('hidden');
       }
       else if (testVal <= 700) {
-        if ($('.breadcrumbs li').length > 2) {
+        if ($('.breadcrumbs li').length > 3) {
           let addDots = $('.breadcrumbs li').eq(1);
           if (!(addDots.hasClass('hidden'))) {
             addDots.addClass('hidden').attr('data-title',$('a', addDots).text());

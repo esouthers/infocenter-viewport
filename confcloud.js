@@ -96,7 +96,7 @@ function confCloudJS() {
       fixInlineImages(this);
     });
 //            fixTabs(); Do not use due to Cors proxy security issues
-    convertExpandsToTabs();
+//    convertExpandsToTabs();
 
     let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
     $('#vp-js-desktop__navigation__picker').before(verIcon);

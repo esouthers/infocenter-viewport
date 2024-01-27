@@ -741,7 +741,7 @@ main > header {
   color: var(--haiui-gray-01);
   margin-right: 10px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
   #vp-js-desktop__navigation__picker:before {
     display: none;
   }

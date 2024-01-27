@@ -455,7 +455,9 @@ function confCloudJS() {
       else if (testVal <= 700) {
         if ($('.breadcrumbs li').length > 2) {
           let addDots = $('.breadcrumbs li').eq(1);
-          addDots.addClass('hidden').attr('data-title',addDots.text()).text('...');
+          if (!(addDots.hasClass('hidden'))) {
+            addDots.addClass('hidden').attr('data-title',addDots.text()).text('...');
+          }
         }
       }
       else {

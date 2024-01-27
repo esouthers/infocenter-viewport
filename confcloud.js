@@ -280,7 +280,7 @@ function confCloudJS() {
         /* Sidebar event listeners */
         let sidebarwidth = 320;
         $('main').css('left',sidebarwidth + 'px').css('width','calc(100% - ' + sidebarwidth + 'px)');
-        hideShowBreadcrumbs(val);
+        hideShowBreadcrumbs(sidebarwidth);
         $('#vp-js-desktop__navigation').css('width',sidebarwidth + 'px').removeClass('vp-article__aside-left__inner--collapsed');
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);

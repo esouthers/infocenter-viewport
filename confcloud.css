@@ -753,7 +753,7 @@ main > header {
   background-color: var(--haiui-white) !important;
   border-bottom: none;
 }
-main.error-page > header {
+main.error-page > header, main.error-page .header .top-bar {
   background-color: transparent !important;
 }
 #vp-js-desktop__navigation__picker:before {

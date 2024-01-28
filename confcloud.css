@@ -131,7 +131,7 @@
 }
 
 body {
-/*  overflow-y: hidden; */
+  overflow-y: auto;
   display: none;
 }
 body, #vp-js-desktop__navigation, .vp-picker__menu {
@@ -786,6 +786,9 @@ main.error-page h3 {
   letter-spacing: -0.5px;
   margin: 16px 0 40px 0;
   }
+main.error-page .scroll-viewport-attribution {
+  font-size: 11px;
+}
 #vp-js-desktop__navigation__picker:before {
   content: "Version: ";
   margin-top: 6px;
@@ -1716,6 +1719,9 @@ h2 {
 }
 
 /*              Buttons                */
+button {
+  font-size: 13px;
+}
 button.btn-sm.primary, button.btn-sm.secondary {
   font-size: .625rem;
   font-weight: 500;

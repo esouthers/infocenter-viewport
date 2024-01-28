@@ -177,6 +177,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   position: absolute;
   right: 0px;
   min-height: 100vh;
+  text-align: left;
 }
 
 #vp-js-desktop__navigation {
@@ -756,6 +757,11 @@ main > header {
 main.error-page > header, main.error-page .header .top-bar {
   background-color: transparent !important;
 }
+main.error-page .ht-error-message {
+  margin-left: 320px;
+  margin-top: 60px;
+}
+
 #vp-js-desktop__navigation__picker:before {
   content: "Version: ";
   margin-top: 6px;

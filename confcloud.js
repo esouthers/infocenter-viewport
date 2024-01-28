@@ -154,7 +154,7 @@ function confCloudJS() {
           }
         }
         if ((cookieToSet == 'flagOldVer') || (cookieToSet == 'flagBeta') || (cookieToSet == 'flagMaintenance') || (cookieToSet == 'flagMakito')) {
-          $('.versionIcon').show();
+          $('.versionIcon').fadeIn(1000);
         }
       });
     }
@@ -645,10 +645,10 @@ function confCloudJS() {
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
       $('.versionIcon').on('mouseenter', function() {
-        $('.aui-tooltip').css('z-index',125).removeClass('hidden');
+        $('.aui-tooltip').css('z-index',125).removeClass('hidden').fadeIn(1000);
       });
       $('.versionIcon').on('mouseleave', function() {
-        $('.aui-tooltip').css('z-index','unset').addClass('hidden');
+        $('.aui-tooltip').css('z-index','unset').addClass('hidden').fadeOut(1000);
       });
       $('.versionIcon').tooltip({gravity: 'nw'});
       $('.aui-tooltip').addClass('hidden');
@@ -659,7 +659,7 @@ function confCloudJS() {
         } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
             addBanner(newMsg, true, expDays);
         } else {
-            $('.versionIcon').show();
+            $('.versionIcon').fadeIn(1000);
         }
       }
     }

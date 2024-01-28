@@ -1966,6 +1966,9 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
   justify-content: flex-end;
   margin: 48px 20px 0px 0px;
 }
+.card a.card-close {
+  color: var(--haiui-gray-05);
+}
 
 .slider {
   -webkit-appearance: none;
@@ -1983,4 +1986,16 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
   box-shadow: 0 0 0.375rem 0 rgb(0 0 0 / 40%);
   border-radius: 50%;
   cursor: pointer;
+}
+.slider {
+  background-image: -webkit-linear-gradient(left, var(--gradientColor1) 0%, var(--gradientColor2) 50%, var(--defaultBackground) 50%);
+  --defaultBackground: var(--haiui-gray-03);
+  --gradientColor1: var(--haiui-blue-01);
+  --gradientColor2: var(--haiui-blue-01);
+}
+.slider::-webkit-slider-thumb:active {
+  background-color: var(--haiui-blue-01);
+}
+.slider::-webkit-slider-thumb {
+  background: var(--haiui-white);
 }

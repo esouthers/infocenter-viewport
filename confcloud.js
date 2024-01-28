@@ -158,7 +158,7 @@ function confCloudJS() {
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message
     function cookieSetup() {
-      if (!isPlayPro()) {
+//      if (!isPlayPro()) {
         if (!(getLocalStorageWithExpiry('acceptedCookie')) && (!isInIframe())) {
           var cookieFlag = AJS.flag({
             type: 'success',
@@ -188,7 +188,7 @@ function confCloudJS() {
         else if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
       //      gaSetup(); 
         }
-      }
+//      }
     }
     function updateHeader() {
       $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');

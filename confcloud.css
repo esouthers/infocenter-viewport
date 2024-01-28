@@ -1542,7 +1542,7 @@ h2 {
   margin-top: 2px;
   cursor: pointer;
 }
-#site-navigation .versionIcon:before,
+/* #site-navigation .versionIcon:before, */
 .aui-message:after {
   color: var(--haiui-blue-01);
   -moz-osx-font-smoothing: grayscale;

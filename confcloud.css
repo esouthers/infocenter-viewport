@@ -160,6 +160,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 #article-content, .vp-search-page, #content{
   margin-bottom: 0px;
+  padding-top: 0px;
   padding-bottom: 0px;
   position: absolute;
   left: 330px;

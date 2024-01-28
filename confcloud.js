@@ -953,7 +953,7 @@ function confCloudJS() {
           $('.dialog-overlay, #userprefs, #dialog-overlay').attr('aria-hidden','false');
     //      $('.sp-blanket').removeClass('hidden');
           $('#dialog-overlay').fadeIn(500);
-          addEventTrackingUserPrefs("Open dialog", window.location.href);
+//          addEventTrackingUserPrefs("Open dialog", window.location.href);
       });
       // Hides the dialog
       $('#userprefs .dialog-close-button, .card a.card-close').click(function (e) {
@@ -963,8 +963,7 @@ function confCloudJS() {
         $('#userprefs').animate({top: '0%', opacity: '0%'},500).fadeOut(0);
         $('#dialog-overlay').fadeOut(500);
         $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
-    //    $('.sp-blanket').addClass('hidden');
-        addEventTrackingUserPrefs("Close dialog", window.location.href);
+//        addEventTrackingUserPrefs("Close dialog", window.location.href);
       });
       if (!isPlayPro()) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") {

@@ -1858,6 +1858,12 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   align-items: center;
   margin: 0 14px 0 20px;
   color: var(--haiui-gray-06);
+  font-size: 24px !important;
+  font-weight: normal !important;
+  font-stretch: normal !important;
+  font-style: normal !important;
+  line-height: 1.17 !important;
+  letter-spacing: -0.6px !important;
 }
 .card a span, .card a span:before {
   margin: 0px;

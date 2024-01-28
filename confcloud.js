@@ -51,9 +51,9 @@ function confCloudJS() {
       updateHeader();
       updateSidebar();
       updateFooter();
-      updateBreadcrumbs();
 
       if (pageSearch) {
+        updateBreadcrumbs();
         waitForElm('.search-results__results__label').then((elm) => {
           let searchTerm = $('.vp-search-input__input').val();
           let numResults = $(elm).text().split(' result')[0];

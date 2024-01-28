@@ -645,10 +645,10 @@ function confCloudJS() {
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
       $('.versionIcon').on('mouseenter', function() {
-        $('.aui-tooltip').css('z-index',125).removeClass('hidden').fadeIn(1000);
+        $('.aui-tooltip').css('z-index',125).css('margin-top','100px').removeClass('hidden').fadeIn(1000);
       });
       $('.versionIcon').on('mouseleave', function() {
-        $('.aui-tooltip').css('z-index','unset').addClass('hidden').fadeOut(1000);
+        $('.aui-tooltip').css('z-index','unset').css('margin-top','unset').addClass('hidden').fadeOut(1000);
       });
       $('.versionIcon').tooltip({gravity: 'nw'});
       $('.aui-tooltip').addClass('hidden');

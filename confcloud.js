@@ -644,7 +644,14 @@ function confCloudJS() {
 
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
+      $('.versionIcon').on('mouseenter', function() {
+        $('.aui-tooltip').css('z-index',125).removeClass('hidden');
+      });
+      $('.versionIcon').on('mouseleave', function() {
+        $('.aui-tooltip').css('z-index','unset').addClass('hidden');
+      });
       $('.versionIcon').tooltip({gravity: 'nw'});
+      $('.aui-tooltip').addClass('hidden');
       newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
       if (!isPlayPro()) { 
         if (expDays == 'session' && !sessionStorage.getItem(flagID)) {

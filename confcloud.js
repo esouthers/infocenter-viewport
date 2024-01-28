@@ -596,13 +596,13 @@ function confCloudJS() {
         body: message + dnsMsg
       });
       if (!isPlayPro()) {
-        if (localStorage.getItem('acceptedCookie')=="true") { // Only show if we have accepted cookies.
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
       }
       $('.aui-close-button',cookieFlag).on('click',function() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
-        if ((isInIframe()) || ((localStorage.getItem('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
+        if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
           if (expireDays == 'session') {
             sessionStorage.setItem(cookieToSet, 'true');
             setLocalStorageWithExpiry(cookieToSet,'true',0);
@@ -650,7 +650,7 @@ function confCloudJS() {
 
 
     function setLocalStorageWithExpiry(key, value, ttl) {
-      if ((key == 'acceptedCookie') || (localStorage.getItem('acceptedCookie')=="true")) {
+      if ((key == 'acceptedCookie') || (getLocalStorageWithExpiry('acceptedCookie')=="true")) {
         const now = new Date();
         const item = {
           value: value,

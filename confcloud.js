@@ -648,7 +648,7 @@ function confCloudJS() {
         $('.aui-tooltip').css('margin-top','100px')
         setTimeout(function() { 
           $('.aui-tooltip').css('z-index',125).css('margin-top','unset').removeClass('hidden').fadeIn(1000);
-        }, 1000);
+        }, 500);
       });
       $('.versionIcon').on('mouseleave', function() {
         $('.aui-tooltip').css('z-index','unset').css('margin-top','100px').addClass('hidden').fadeOut(1000);

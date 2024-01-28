@@ -200,7 +200,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   margin-left: calc(var(--_gap-inline) + var(--_icon-size)/1.5 - 6px);
 }
 .vp-tree-item--with-hover-effect {
-  padding: 4px;
+  padding: 3px;
   --_padding: 0px;
 }
 .vp-tree-item--with-hover-effect:first-child {
@@ -256,6 +256,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   overflow: hidden;
   white-space: nowrap;
   font-weight: 400;
+  line-height: 20px;
 }
 .header__navigation a:hover {
   text-decoration: none;
@@ -494,7 +495,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .sidebar-section .heading {
   display: flex;
   margin-left: -20px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .vp-article__aside-left .vp-desktop-navigation__page-tree {

@@ -624,25 +624,27 @@ function confCloudJS() {
 
     // Adds popup warning if older version, in beta space, maintenance, etc.
     function warningMessage() {
-      var curFolder = location.pathname.split('/')[1];          // Get product+version # from the URL
-      var curVer =  $('.spaceSelect li[data-path="'+curFolder+'"]').text();  // Get current location's version #
-      var latestVer = $('.spaceSelect li[data-path="'+curFolder+'"]').parents('[id^="spaceSelect"]').children('li').eq(0);
+      var curProd = location.pathname.split('/')[1];  // Get product+version # from the URL
+      var curVer =  location.pathname.split('/')[2];  // Get current location's version #
+      var latestVer = '';
+      // Get version numbers used
+      let prodVersions = $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
+      $.each(prodVersions.members, function(key, prod) { 
+        if (prod.prefix == curProd) {
+          latestVer = prod.versions.available[0].name;
+          spaceName = prod.name;
+        }
+      });
       var newMsg = '';
-      if (latestVer.hasClass('minorVersions')) {
-        latestVer = $('li',latestVer).first().text();  // Get latest version # listed in dropdown menu
-      }
-      else {
-        latestVer = latestVer.eq(0).text();
-      }
      
       if (curVer != latestVer) { // Test if we aren't viewing the latest version
         // Add content to popup window and show it
         let flagID = 'flagOldVer';
-        newMsg = 'You are viewing documentation for ' + spaceName + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
+        newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
       
-      if (ifBetaSpace) { // If we are in a space with a beta label. ifBetaSpace defined in include-htmlhead.vm
+/*      if (ifBetaSpace) { // If we are in a space with a beta label. ifBetaSpace defined in include-htmlhead.vm
         let flagID = 'flagBeta';
         newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
         addIconNextToVersion(newMsg, flagID, 14);
@@ -654,7 +656,7 @@ function confCloudJS() {
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-      
+*/      
       // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
       // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
       //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)

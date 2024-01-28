@@ -1,7 +1,7 @@
 function confCloudJS() { 
   var link = document.createElement("LINK");
-  script.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
-  script.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+  link.rel = 'stylesheet';
   document.head.appendChild(link);
 
   var script = document.createElement("SCRIPT");

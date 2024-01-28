@@ -1627,3 +1627,14 @@ h2 {
   position: relative;
   top: 2px;
 }
+.aui-nav-actions-list>li+li:before {
+  content: "";
+  border-radius: 2px;
+  width: 2px;
+  height: 2px;
+  background-color: var(--aui-border-strong);
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 10px;
+}

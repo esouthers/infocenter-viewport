@@ -23,6 +23,7 @@ function confCloudJS() {
     var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
     var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
     var svgCheckFilled = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="HaiIcon fixedSize" iconname="CheckmarkCircle" subtype="checkmark-circle" theme="argon" type="toggle"><path d="M8,0C3.58,0,0,3.58,0,8s3.58,8,8,8,8-3.58,8-8S12.42,0,8,0Zm3.9,5.33l-3.48,6.95c-.16,.33-.48,.55-.85,.6-.05,0-.1,0-.15,0-.31,0-.62-.13-.83-.37l-2.82-3.15c-.2-.22-.3-.5-.28-.8s.15-.57,.37-.76c.2-.18,.47-.28,.74-.28,.32,0,.62,.13,.83,.37l1.73,1.93,2.75-5.49c.19-.38,.57-.61,.99-.61,.17,0,.34,.04,.5,.12,.27,.13,.46,.36,.56,.64,.09,.28,.07,.58-.06,.85Z"></path></svg>';
+    var isInIframe = false;
 
     $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
     
@@ -138,11 +139,11 @@ function confCloudJS() {
         type: 'info',
         body: message + dnsMsg
       });
-//      if (!isPlayPro()) {
+      if (!isPlayPro()) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
-//      }
+      }
       $('.aui-close-button',cookieFlag).on('click',function() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
         if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
@@ -163,7 +164,7 @@ function confCloudJS() {
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message
     function cookieSetup() {
-//      if (!isPlayPro()) {
+      if (!isPlayPro()) {
         if (!(getLocalStorageWithExpiry('acceptedCookie'))) {
           var cookieFlag = AJS.flag({
             type: 'success',
@@ -193,7 +194,7 @@ function confCloudJS() {
         else if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
       //      gaSetup(); 
         }
-//      }
+      }
     }
     function updateHeader() {
       $('.top-bar-left ul').removeClass('flex-row mr-4 items-center').addClass('flex-col');
@@ -600,17 +601,16 @@ function confCloudJS() {
         type: 'info',
         body: message + dnsMsg
       });
-//      if (!isPlayPro()) {
+      if (!isPlayPro()) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
-//      }
+      }
       $('.aui-close-button',cookieFlag).on('click',function() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
         if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
           if (expireDays == 'session') {
             sessionStorage.setItem(cookieToSet, 'true');
-//            setLocalStorageWithExpiry(cookieToSet,'true',0);
           }
           else {
             setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
@@ -680,15 +680,15 @@ function confCloudJS() {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
       $('.versionIcon').tooltip({gravity: 'nw'});
       newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
-//      if (!isPlayPro()) { 
-      if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
-          addBanner(newMsg, true, expDays);
-      } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
-          addBanner(newMsg, true, expDays);
-      } else {
-          $('.versionIcon').removeClass('hideIcon');
+      if (!isPlayPro()) { 
+        if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
+            addBanner(newMsg, true, expDays);
+        } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
+            addBanner(newMsg, true, expDays);
+        } else {
+            $('.versionIcon').removeClass('hideIcon');
+        }
       }
-//      }
     }
 /*
     function addBanner(newMsg, flagID, expDays) {
@@ -948,6 +948,11 @@ function confCloudJS() {
         $(this).parent().parent().children().removeClass('active-pane');
         $(tabLink).addClass('active-pane');
       });
+    }
+    // Test if viewing from Play Pro. Called by playProFixes and functions in other files
+    function isPlayPro() {
+      if (navigator.userAgent.indexOf('HaivisionPlayPro') >= 0) { return true; }
+      else { return false; }
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
     function gaSetup() {

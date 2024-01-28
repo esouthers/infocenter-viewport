@@ -133,11 +133,11 @@ function confCloudJS() {
         type: 'info',
         body: message + dnsMsg
       });
-      if (!isPlayPro()) {
+//      if (!isPlayPro()) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
-      }
+//      }
       $('.aui-close-button',cookieFlag).on('click',function() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
         if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
@@ -595,17 +595,17 @@ function confCloudJS() {
         type: 'info',
         body: message + dnsMsg
       });
-      if (!isPlayPro()) {
+//      if (!isPlayPro()) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
-      }
+//      }
       $('.aui-close-button',cookieFlag).on('click',function() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
         if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
           if (expireDays == 'session') {
             sessionStorage.setItem(cookieToSet, 'true');
-            setLocalStorageWithExpiry(cookieToSet,'true',0);
+//            setLocalStorageWithExpiry(cookieToSet,'true',0);
           }
           else {
             setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
@@ -622,7 +622,7 @@ function confCloudJS() {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
     //          $('.versionIcon').tooltip({gravity: 'nw'});
       newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
-      if (!isPlayPro()) { 
+//      if (!isPlayPro()) { 
         if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
             addBanner(newMsg, true, expDays);
         } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
@@ -630,7 +630,7 @@ function confCloudJS() {
         } else {
             $('.versionIcon').removeClass('hideIcon');
         }
-      }
+//      }
     }
 
     function addBanner(newMsg, flagID, expDays) {

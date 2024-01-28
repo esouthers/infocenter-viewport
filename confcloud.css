@@ -1523,6 +1523,46 @@ h2 {
 }
 
 /* Alerts */
+/*             AUI alert                              */
+#aui-flag-container>.aui-flag-stack>div.aui-flag-stack-top-item[aria-hidden="false"] {
+  border-top: 10px solid var(--haiui-blue-01);
+}
+.aui-message.closeable .aui-close-button {
+  right: var(--haiui-spacing-02);
+  top: var(--haiui-spacing-02);
+  text-align: right;
+}
+.aui-message:after {
+  color: var(--haiui-blue-01);
+  left: var(--haiui-spacing-02);
+  top: var(--haiui-spacing-02);
+}
+#site-navigation .versionIcon {
+  margin-right: 5px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+#site-navigation .versionIcon:before,
+.aui-message:after {
+  color: var(--haiui-blue-01);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0;
+  font-family: 'Material Icons';
+  font-weight: 400;
+  font-style: normal;
+  speak: none;
+  content: '\e86c';
+  font-size: 16px;
+  line-height: inherit;
+  position: absolute;
+}
+#site-navigation .versionIcon:before {
+  position: relative;
+}
+#site-navigation .versionIcon.hideIcon:before {
+  display: none;
+}
 #aui-flag-container {
   font-size: 13px;
   top: 50px;

@@ -753,7 +753,9 @@ main > header {
   background-color: var(--haiui-white) !important;
   border-bottom: none;
 }
-
+main.error-page > header {
+  background-color: transparent !important;
+}
 #vp-js-desktop__navigation__picker:before {
   content: "Version: ";
   margin-top: 6px;

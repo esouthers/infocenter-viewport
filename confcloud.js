@@ -690,7 +690,7 @@ function confCloudJS() {
       }
 //      }
     }
-
+/*
     function addBanner(newMsg, flagID, expDays) {
       let auiflag = '<div id="aui-flag-container"><div class="aui-flag" aria-live="polite" open="open"><div class="aui-message closeable aui-message-info">' + message + hideForMsg + '<button type="button" class="aui-close-button" aria-label="Close"></button></div></div></div>';
       $('body').prepend(auiflag);
@@ -705,7 +705,7 @@ function confCloudJS() {
         $('> .aui-flag', this).attr('open','open');
       }
     }
-
+*/
 
     function setLocalStorageWithExpiry(key, value, ttl) {
       if ((key == 'acceptedCookie') || (getLocalStorageWithExpiry('acceptedCookie')=="true")) {

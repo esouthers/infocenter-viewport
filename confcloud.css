@@ -255,6 +255,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  font-weight: 400;
 }
 .header__navigation a:hover {
   text-decoration: none;
@@ -477,10 +478,10 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 .header__navigation--logo {
   margin-top: 50px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .header__navigation--logo a, .header__navigation--logo a img {
-  max-height: 40px;
+  max-height: 36px;
 }
 
 /* Sidebar pagetree, products, etc. */

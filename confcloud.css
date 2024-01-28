@@ -276,6 +276,11 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 #vp-js-desktop__navigation__picker .vp-picker__button-icon svg {
   width: 20px;
   height: 20px;
+  transform: translate(-2px,0px);
+  -ms-transform: translate(-2px,0px); /* IE 9 */
+  -webkit-transform: translate(-2px,0px); /* Safari and Chrome */
+  -o-transform: translate(-2px,0px); /* Opera */
+  -moz-transform: translate(-2px,0px);
 }
 #article-content, .vp-article__aside-right, .vp-search-page {
   color: var(--haiui-gray-01);

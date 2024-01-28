@@ -1,4 +1,9 @@
 function confCloudJS() { 
+  var link = document.createElement("LINK");
+  script.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+  script.rel = 'stylesheet';
+  document.head.appendChild(link);
+
   var script = document.createElement("SCRIPT");
   script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
   script.type = 'text/javascript';

@@ -650,7 +650,7 @@ function confCloudJS() {
 
 
     function setLocalStorageWithExpiry(key, value, ttl) {
-      if ((key == 'acceptedCookie') && (localStorage.getItem('acceptedCookie')=="true")) {
+      if ((key == 'acceptedCookie') || (localStorage.getItem('acceptedCookie')=="true")) {
         const now = new Date();
         const item = {
           value: value,

@@ -659,7 +659,7 @@ function confCloudJS() {
         } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
             addBanner(newMsg, true, expDays);
         } else {
-            $('.versionIcon').removeClass('hideIcon');
+            $('.versionIcon').show();
         }
       }
     }

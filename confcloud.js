@@ -967,7 +967,7 @@ function confCloudJS() {
         addEventTrackingUserPrefs("Close dialog", window.location.href);
       });
       if (!isPlayPro()) {
-        if (getLocalStorageWithExpiry('acceptedCookie')=="true")) {
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
           $('#ic-settings').css({opacity: 1.0, visibility: "visible"});
           var userBrightness = getLocalStorageWithExpiry('ICbrightness');
           var userContrast = getLocalStorageWithExpiry('ICcontrast');

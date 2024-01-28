@@ -934,50 +934,6 @@ function confCloudJS() {
         $(tabLink).addClass('active-pane');
       });
     }
-    // Get device vendor, type, and model. e.g.: {vendor: "Apple", model: "iPhone", type: "mobile"}
-    function getDevice() {
-      var parser = new UAParser();
-      var result = parser.getResult();
-      return result.device;
-    }
-    // Get browser name and version
-    function getBrowser() {
-      var parser = new UAParser();
-      var result = parser.getResult();
-      return result.browser;
-    };
-    // Determine if this is Chrome
-    function isChromeBrowser() {
-      var browserName = getBrowser().name;
-      if (browserName) {
-        if (browserName.indexOf('Chrome') > -1) { return true; }
-        else { return false; }
-      }
-      else {return false;}
-    };
-    function isSafari() {
-      var browserName = getBrowser().name;
-      if (browserName) {
-        if (browserName.indexOf('Safari') > -1) { return true; }
-        else { return false; }
-      }
-      else {return false;}
-    };
-    // Determine if this is IE
-    function isIEBrowser() {
-      var browserName = getBrowser().name;
-      if (browserName) {
-        if (browserName.indexOf('IE') > -1) { return true; }
-        else { return false; }
-      }
-      else {return false;}
-    };
-    // returns the version of IE or -1 if browser is not IE
-    // Should be used after a success from Utils.isIEBrowser
-    function IEVersion() {
-      var browserVersion = getBrowser().version;
-      return browserVersion;
-    };
     function isInIframe() {
       if ( window.self === window.top ) { return false; }
       else { return true; }
@@ -1011,7 +967,7 @@ function confCloudJS() {
         addEventTrackingUserPrefs("Close dialog", window.location.href);
       });
       if (!isPlayPro()) {
-        if ((getLocalStorageWithExpiry('acceptedCookie')=="true") && (!isIEBrowser())) {
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true")) {
           $('#ic-settings').css({opacity: 1.0, visibility: "visible"});
           var userBrightness = getLocalStorageWithExpiry('ICbrightness');
           var userContrast = getLocalStorageWithExpiry('ICcontrast');

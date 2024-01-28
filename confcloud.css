@@ -2020,3 +2020,11 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
 .slider::-webkit-slider-thumb {
   background: var(--haiui-white);
 }
+::selection {
+  background: #BBD4FA;
+  color: var(--haiui-gray-03);
+}
+::-moz-selection {
+  background: #BBD4FA;
+  color: var(--haiui-gray-03);
+}

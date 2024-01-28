@@ -158,7 +158,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   line-height: 1.6 !important;
   word-wrap: break-word;
 }
-#article-content, .vp-search-page {
+#article-content, .vp-search-page, #content{
   margin-bottom: 0px;
   padding-bottom: 0px;
   position: absolute;

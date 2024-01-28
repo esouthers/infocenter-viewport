@@ -1538,8 +1538,8 @@ h2 {
   top: var(--haiui-spacing-02);
 }
 #site-navigation .versionIcon {
-  margin-right: 5px;
-  margin-top: 2px;
+  margin-right: 0px;
+  margin-top: 9px;
   cursor: pointer;
 }
 /* #site-navigation .versionIcon:before, */
@@ -1642,4 +1642,24 @@ h2 {
   vertical-align: middle;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+/* Tooltips */
+.aui-tooltip {
+  z-index: 125;
+}
+.aui-tooltip-content {
+  background: var(--haiui-gray-04);
+  color: var(--haiui-white);
+  padding: 15px;
+  font-size: 10px;
+  font-family: 'Gotham', Arial, sans-serif;
+  max-width: 200px;
+  text-align: center;
+  line-height: 1.6;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin-bottom: 0px;
+  margin-top: 5px;
 }

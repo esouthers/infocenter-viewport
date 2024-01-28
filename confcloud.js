@@ -33,36 +33,48 @@ function confCloudJS() {
 
 
     // Start of processing depending on page type
-    if ((window.location.pathname == '/search.html') || ($('[i18nkey="page.error.status.404.label"]').length > 0)) {
-      console.log('search results page');
+    let page404 = ($('[i18nkey="page.error.status.404.label"]').length > 0);
+    let pageSearch = (window.location.pathname == '/search.html');
+    if (pageSearch || page404) {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
+      if (page404) {
+//        let bg404ImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/background-404.png';
+        let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
+        let page404content = '<div class="ht-error-message">' + 
+          '<img height="50px" src="' + hvLogoImgSrc + '">' +
+          '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
+          '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+        $('main h1, main h2, main p').remove();
+        $('main').prepend(page404content);
+      }
       updateHeader();
       updateSidebar();
       updateFooter();
       updateBreadcrumbs();
 
-      waitForElm('.search-results__results__label').then((elm) => {
-        let searchTerm = $('.vp-search-input__input').val();
-        let numResults = $(elm).text().split(' result')[0];
-        let plural = '';
-        if (numResults > 1) { plural = 's';}
-        $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
-        $('#titleBreadcrumb').text($('.search-header').text());
-
-        let searchIdx = getSearchIndexes(numResults);
-        $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
-        $(elm).remove();
-      });
-      $('.vp-pagination__inner button').on('click', function(e){
+      if (pageSearch) {
         waitForElm('.search-results__results__label').then((elm) => {
-          let searchIdx = getSearchIndexes($('#numResults').text());
-          $('#startIdx').text(searchIdx[0]);
-          $('#stopIdx').text(searchIdx[1]);
+          let searchTerm = $('.vp-search-input__input').val();
+          let numResults = $(elm).text().split(' result')[0];
+          let plural = '';
+          if (numResults > 1) { plural = 's';}
+          $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+          $('#titleBreadcrumb').text($('.search-header').text());
+
+          let searchIdx = getSearchIndexes(numResults);
+          $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
           $(elm).remove();
         });
-      });
-
+        $('.vp-pagination__inner button').on('click', function(e){
+          waitForElm('.search-results__results__label').then((elm) => {
+            let searchIdx = getSearchIndexes($('#numResults').text());
+            $('#startIdx').text(searchIdx[0]);
+            $('#stopIdx').text(searchIdx[1]);
+            $(elm).remove();
+          });
+        });
+      }
     }
     // Redirect to homepage
     else if (window.location.pathname == '/') {
@@ -200,6 +212,9 @@ function confCloudJS() {
       $('main').prepend($('body > header'));
       $('.header__navigation--heading').removeClass('py-3');
       // Move breadcrumbs to header
+      if ($('main>header').length == 0) {
+        $('main').prepend('<header data-vp-component="header" class="header hc-header-background-color"></header>');
+      }
       $('main>header').prepend($('.vp-breadcrumbs__wrapper'));
 //      $('.vp-search-input__submit').addClass('hidden-mdlg hidden-md hidden-sm');
     }

@@ -31,7 +31,6 @@ function confCloudJS() {
     });
     cookieSetup();
 
-
     // Start of processing depending on page type
     let page404 = ($('[i18nkey="page.error.status.404.label"]').length > 0);
     let pageSearch = (window.location.pathname == '/search.html');
@@ -358,6 +357,10 @@ function confCloudJS() {
                 <a href="https://www.haivision.com/support" target="_blank" style="display: flex;">' + svgSupport + '<h3 class="haiui-label-01-med">Haivision Support</h3> \
                 </a></div></div></div>';
         $('.vp-desktop-navigation__page-tree').append(prefSupportHTML);
+        let userprefs = '<section role="dialog" id="userprefs" data-aui-modal="true" class="hai-dialog aui-dialog2 card" aria-hidden="true" style="display:none"><header class="aui-dialog2-header card-header"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" class="HaiIcon"><path d="M10,22.26V4c0-1.1-.9-2-2-2s-2,.9-2,2V22.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v6.26c0,1.1,.9,2,2,2s2-.9,2-2v-6.26c3.44-.89,6-4.02,6-7.74s-2.56-6.85-6-7.74Zm-2,11.74c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M32,16c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2v4.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v20.26c0,1.1,.9,2,2,2s2-.9,2-2V23.74c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path><path d="M48,34c0-3.72-2.56-6.85-6-7.74V4c0-1.1-.9-2-2-2s-2,.9-2,2V26.26c-3.44,.89-6,4.02-6,7.74s2.56,6.85,6,7.74v2.26c0,1.1,.9,2,2,2s2-.9,2-2v-2.26c3.44-.89,6-4.02,6-7.74Zm-8,4c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z"></path></svg><h2 class="haiui-heading-03-book">User Preferences</h2><a class="card-close"><span class="aui-icon aui-icon-small hai-icon-download-close">Close</span></a></header><div class="card-body haiui-body-02"><form class="brightnessContrast"><div class="control-container"><label class="slidertext" id="brightnessRangeLabel">Brightness</label><div class="slidecontainer"><input type="range" min="70" max="130" value="100" class="control slider brightnessRange" aria-labelledby="brightnessRangeLabel"></div></div><div class="control-container"><label class="slidertext" id="contrastRangeLabel">Contrast</label><div class="slidecontainer"><input type="range" min="70" max="130" value="100" class="control slider contrastRange" aria-labelledby="contrastRangeLabel"></div></div></form><div class="control-container control-borderbottom"><button class="secondary btn-sm resetBCButton">Reset</button><p class="cookieDisabledNote"><strong>Note:</strong>Cookies are disabled. Therefore, these settings to do not persist when browsing.</p></div><div class="cookieContainer control-container hidden"><label class="control-label">Cookies</label><div class="combine-items align-left"><button class="secondary btn-sm clearCookies">Clear</button><div class="clearCookiesNote"><strong>Note:</strong><a href="https://doc.haivision.com/about-haivision/privacy-and-cookies">View list</a>of cookies used.</div></div></div></div><footer class="card-footer"><div class=""><button class="primary dialog-close-button">Close</button></div></footer></section>';
+        $('footer').before(userprefs);
+        $(body).append('<div id="dialog-overlay" aria-hidden="false" style="display: block;"></div>');
+        userPreferences();
 
         // Add sidebar dragbar
         let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
@@ -931,6 +934,50 @@ function confCloudJS() {
         $(tabLink).addClass('active-pane');
       });
     }
+    // Get device vendor, type, and model. e.g.: {vendor: "Apple", model: "iPhone", type: "mobile"}
+    function getDevice() {
+      var parser = new UAParser();
+      var result = parser.getResult();
+      return result.device;
+    }
+    // Get browser name and version
+    function getBrowser() {
+      var parser = new UAParser();
+      var result = parser.getResult();
+      return result.browser;
+    };
+    // Determine if this is Chrome
+    function isChromeBrowser() {
+      var browserName = getBrowser().name;
+      if (browserName) {
+        if (browserName.indexOf('Chrome') > -1) { return true; }
+        else { return false; }
+      }
+      else {return false;}
+    };
+    function isSafari() {
+      var browserName = getBrowser().name;
+      if (browserName) {
+        if (browserName.indexOf('Safari') > -1) { return true; }
+        else { return false; }
+      }
+      else {return false;}
+    };
+    // Determine if this is IE
+    function isIEBrowser() {
+      var browserName = getBrowser().name;
+      if (browserName) {
+        if (browserName.indexOf('IE') > -1) { return true; }
+        else { return false; }
+      }
+      else {return false;}
+    };
+    // returns the version of IE or -1 if browser is not IE
+    // Should be used after a success from Utils.isIEBrowser
+    function IEVersion() {
+      var browserVersion = getBrowser().version;
+      return browserVersion;
+    };
     function isInIframe() {
       if ( window.self === window.top ) { return false; }
       else { return true; }
@@ -939,6 +986,98 @@ function confCloudJS() {
     function isPlayPro() {
       if (navigator.userAgent.indexOf('HaivisionPlayPro') >= 0) { return true; }
       else { return false; }
+    }
+    // User Preferences - Brightness/Contrast & Image Hover Zoom
+    function userPreferences() {
+      $('#ic-settings *').click(function(e) {
+        e.preventDefault();
+        $('#ic-products.current,#ic-pagetree.current').removeClass('current').addClass('wascurrent');
+        $('#ic-settings').addClass('current');
+          $("#userprefs").show().animate({top: '20%', opacity: '100%'},500);
+          $('.dialog-overlay, #userprefs, #dialog-overlay').attr('aria-hidden','false');
+    //      $('.sp-blanket').removeClass('hidden');
+          $('#dialog-overlay').fadeIn(500);
+          addEventTrackingUserPrefs("Open dialog", window.location.href);
+      });
+      // Hides the dialog
+      $('#userprefs .dialog-close-button, .card a.card-close').click(function (e) {
+        e.preventDefault();
+        $('#ic-products.wascurrent,#ic-pagetree.wascurrent').removeClass('wascurrent').addClass('current');
+        $('#ic-settings').removeClass('current');
+        $('#userprefs').animate({top: '0%', opacity: '0%'},500).fadeOut(0);
+        $('#dialog-overlay').fadeOut(500);
+        $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
+    //    $('.sp-blanket').addClass('hidden');
+        addEventTrackingUserPrefs("Close dialog", window.location.href);
+      });
+      if (!isPlayPro()) {
+        if ((getLocalStorageWithExpiry('acceptedCookie')=="true") && (!isIEBrowser())) {
+          $('#ic-settings').css({opacity: 1.0, visibility: "visible"});
+          var userBrightness = getLocalStorageWithExpiry('ICbrightness');
+          var userContrast = getLocalStorageWithExpiry('ICcontrast');
+          if (!userBrightness) {
+            userBrightness = '100';
+            setLocalStorageWithExpiry('ICbrightness',userBrightness, 3650);
+          }
+          if (!userContrast) {
+            userContrast = '100';
+            setLocalStorageWithExpiry('ICcontrast',userContrast, 3650);
+          }
+          else { $('#checkGlossary').prop('checked',false); }
+          $('html').css('filter','brightness(' + userBrightness + '%) contrast(' + userContrast + '%)');
+          $('.brightnessRange').val(userBrightness);
+          $('.contrastRange').val(userContrast);
+          $('.brightnessRange, .contrastRange').each(function() {
+            calcCSS(this);
+          })
+        }
+        else if (isIEBrowser()) {
+            $('form.brightnessContrast').hide();
+            $('.resetBCButton').parent().hide();
+        }
+      }
+
+      // Update the current slider value (each time you drag the slider handle)
+      $('.brightnessRange').on('input', function() {
+        changeBrightness(this);
+      });
+      $('.brightnessRange').mouseup(function() {
+//        addEventTrackingUserPrefs("Change brightness", this.value + '%');
+      });
+      $('.contrastRange').on('input', function() {
+        changeContrast(this);
+      });
+      $('.contrastRange').mouseup(function() {
+//        addEventTrackingUserPrefs("Change contrast", this.value + '%');
+      });
+      $('button.resetBCButton').click(function() {
+        resetBC();
+//        addEventTrackingUserPrefs("Reset brightness contrast", window.location.href);
+      });
+      
+      $('button.clearCookies').click(function() {
+        localStorage.clear();
+        sessionStorage.clear();
+        var cookies = getCookies();
+        for(var cookie in cookies) {
+          $.cookie(cookie, null, { path: '/' });
+          $.cookie(cookie, null, { path: '/', domain: 'doc.haivision.com'});
+          $.cookie(cookie, null, { path: '/', domain: '.haivision.com'});
+        }
+        $('#userprefs .cookieContainer').addClass('hidden');
+        $('#userprefs .cookieDisabledNote').removeClass('hidden');
+//        addEventTrackingUserPrefs("Clear cookies", window.location.href);
+      });
+      var getCookies = function(){
+        let pairs = document.cookie.split(";");
+        let cookies = {};
+        for (var i=0; i<pairs.length; i++){
+          var pair = pairs[i].split("=");
+          cookies[(pair[0]+'').trim()] = unescape(pair.slice(1).join('='));
+        }
+        return cookies;
+      }
+
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
     function gaSetup() {

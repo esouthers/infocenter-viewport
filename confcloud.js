@@ -5,7 +5,7 @@ function confCloudJS() {
   script.onload = function() {
 
    var script = document.createElement("SCRIPT");
-   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aui/9.10.0/aui/themes/dark.min.js';
+   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aui/9.10.0/aui/aui-prototyping.min.js';
    script.type = 'text/javascript';
    script.onload = function() {
   

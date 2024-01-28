@@ -168,6 +168,13 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   height: auto;
   background-color: white;
 }
+#content.error-page {
+  background-image: url('https://esouthers.github.io/infocenter-viewport/assets/background-404.png');
+  background-color: var(--haiui-gray-01);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 #vp-js-desktop__navigation {
   padding-left: 22px;

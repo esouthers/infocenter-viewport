@@ -159,7 +159,7 @@ function confCloudJS() {
     // Show a popup if user hasn't been here before and accepted cookie message
     function cookieSetup() {
 //      if (!isPlayPro()) {
-        if (!(getLocalStorageWithExpiry('acceptedCookie')) && (!isInIframe())) {
+        if (!(getLocalStorageWithExpiry('acceptedCookie'))) {
           var cookieFlag = AJS.flag({
             type: 'success',
             body: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. Click <strong>View</strong> to read more.' +

@@ -777,7 +777,14 @@ main.error-page h2 {
   font-weight: 500;
   letter-spacing: -0.9px;
   margin: 40px 0 16px 0;
-
+}
+main.error-page h3 {
+  font-size: 20px;
+  line-height: normal;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  margin: 16px 0 40px 0;
+  }
 #vp-js-desktop__navigation__picker:before {
   content: "Version: ";
   margin-top: 6px;
@@ -1705,4 +1712,85 @@ h2 {
   -webkit-border-radius: 3px;
   margin-bottom: 0px;
   margin-top: 5px;
+}
+
+/*              Buttons                */
+button.btn-sm.primary, button.btn-sm.secondary {
+  font-size: .625rem;
+  font-weight: 500;
+  line-height: .875rem;
+  letter-spacing: -.025rem;
+  border-radius: 0.125rem;
+  white-space: nowrap!important;
+  height: 1.875rem;
+  padding: 0.25rem 0.625rem;
+  min-width: 6.25rem;
+}
+
+button.primary, button.secondary, button.ghost, button.danger {
+  min-width: 130px;
+  height: var(--haiui-spacing-08);
+  padding: 0 20px;
+  border-radius: 4px;
+  border: none;
+  border-color: var(--haiui-blue-01);
+  transition: cubic-bezier (0.19, 1,0.22, 1);
+  transition-duration: 300ms;
+  text-transform: uppercase;
+}
+button.ghost {
+  border: 1px solid transparent;
+}
+button.primary {
+  background-color: var(--haiui-blue-01) !important;  
+  color: var(--haiui-white);
+}
+button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--haiui-blue-01);  
+  color: var(--haiui-blue-04);
+}
+button.ghost {
+  background-color: transparent;
+  color: var(--haiui-blue-04);
+}
+button.danger {
+  background-color: var(--haiui-red-01);
+  color: var(--haiui-white);
+}
+button.primary:hover, button.primary:active, button.secondary:hover, button.secondary:active, button.ghost:hover, button.ghost:active, button.danger:hover, button.danger:active {
+  cursor: pointer;
+}
+button.primary:hover {
+  background-color: #1E83FF;
+}
+button.secondary:hover {
+  background-color: #304360;
+  color: var(--haiui-blue-02);
+}
+button.ghost:hover {
+  border: solid 1px var(--haiui-blue-03);
+  background-color: #304360;
+  color: var(--haiui-blue-02);
+}
+button.danger:hover {
+  background-color: #F94E4E;
+}
+button.primary:active {
+  background-color: #336ECC;
+}
+button.secondary:active {
+  background-color: #22324b;
+}
+button.ghost:active {
+  background-color: #22324b;
+}
+button.danger:active {
+  background-color: #c73636;
+}
+
+button.primary:disabled, button.primary[disabled], button.secondary:disabled, button.secondary[disabled], button.ghost:disabled, button.ghost[disabled], button.danger:disabled, button.danger[disabled] {
+  border: solid 2px var(--haiui-gray-03);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--haiui-gray-05);
 }

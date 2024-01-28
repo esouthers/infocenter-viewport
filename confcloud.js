@@ -147,14 +147,14 @@ function confCloudJS() {
         let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
         if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
           if (expireDays == 'session') {
-            setLocalStorageWithExpiry(cookieToSet,'true',3650);
+            sessionStorage.setItem(cookieToSet,'true');
           }
           else {
             setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
           }
         }
         if ((cookieToSet == 'flagOldVer') || (cookieToSet == 'flagBeta') || (cookieToSet == 'flagMaintenance') || (cookieToSet == 'flagMakito')) {
-          $('.versionIcon').removeClass('hideIcon');
+          $('.versionIcon').show();
         }
       });
     }
@@ -588,39 +588,6 @@ function confCloudJS() {
       return htmltoBuild;
     }
 
-    function addMsg(message, hideOption, expireDays) {
-      let dnsMsg = '';
-      if (expireDays == 'session') {
-        dnsMsg = '<div class="aui-nav-actions-list flagDoNotShow hidden"><input type="checkbox" name="doNotShow" value="show"><label for="doNotShow"> Remind me later.</label></div>';
-      }
-      else if (hideOption) {
-        dnsMsg = '<div class="aui-nav-actions-list flagDoNotShow hidden"><input type="checkbox" name="doNotShow" value="show"><label for="doNotShow"> Hide for ' + expireDays + ' days?</label></div>';
-      }
-      var cookieFlag = AJS.flag({
-        type: 'info',
-        body: message + dnsMsg
-      });
-      if (!isPlayPro()) {
-        if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
-          $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
-        }
-      }
-      $('.aui-close-button',cookieFlag).on('click',function() {
-        let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
-        if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
-          if (expireDays == 'session') {
-            sessionStorage.setItem(cookieToSet, 'true');
-          }
-          else {
-            setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
-          }
-        }
-        if ((cookieToSet == 'flagOldVer') || (cookieToSet == 'flagBeta') || (cookieToSet == 'flagMaintenance') || (cookieToSet == 'flagMakito')) {
-          $('.versionIcon').removeClass('hideIcon');
-        }
-      });
-    }
-
     // Adds popup warning if older version, in beta space, maintenance, etc.
     function warningMessage() {
       var curProd = location.pathname.split('/')[1];  // Get product+version # from the URL
@@ -689,22 +656,6 @@ function confCloudJS() {
         }
       }
     }
-/*
-    function addBanner(newMsg, flagID, expDays) {
-      let auiflag = '<div id="aui-flag-container"><div class="aui-flag" aria-live="polite" open="open"><div class="aui-message closeable aui-message-info">' + message + hideForMsg + '<button type="button" class="aui-close-button" aria-label="Close"></button></div></div></div>';
-      $('body').prepend(auiflag);
-      $('#aui-flag-container .aui-close-button').click(function() {
-        $(this).closeFlag();
-    //            if $('.', this)
-      });
-      $.fn.closeFlag = function(elementOffset) {
-        $('> .aui-flag', this).removeAttr('open')
-      }
-      $.fn.openFlag = function(elementOffset) {
-        $('> .aui-flag', this).attr('open','open');
-      }
-    }
-*/
 
     function setLocalStorageWithExpiry(key, value, ttl) {
       if ((key == 'acceptedCookie') || (getLocalStorageWithExpiry('acceptedCookie')=="true")) {

@@ -29,7 +29,6 @@ function confCloudJS() {
       testWindowSize();
     });
     cookieSetup();
-    // localStorage.setItem('acceptedCookie', 'true');
 
 
     // Start of processing depending on page type
@@ -112,12 +111,12 @@ function confCloudJS() {
   //            fixTabs(); Do not use due to Cors proxy security issues
       convertExpandsToTabs();
 
+//********************
       let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
       $('#vp-js-desktop__navigation__picker').before(verIcon);
-
       let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
-    //        addIconNextToVersion(newMsg, flagID, 14);
-
+      addIconNextToVersion(newMsg, flagID, 14);
+//*****************************
     } // End of processing depending on page type
 
 
@@ -625,16 +624,16 @@ function confCloudJS() {
 
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);
-    //          $('.versionIcon').tooltip({gravity: 'nw'});
+      $('.versionIcon').tooltip({gravity: 'nw'});
       newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
 //      if (!isPlayPro()) { 
-        if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
-            addBanner(newMsg, true, expDays);
-        } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
-            addBanner(newMsg, true, expDays);
-        } else {
-            $('.versionIcon').removeClass('hideIcon');
-        }
+      if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
+          addBanner(newMsg, true, expDays);
+      } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
+          addBanner(newMsg, true, expDays);
+      } else {
+          $('.versionIcon').removeClass('hideIcon');
+      }
 //      }
     }
 

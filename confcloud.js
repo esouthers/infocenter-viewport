@@ -22,6 +22,7 @@ function confCloudJS() {
     var svgSmallLogo = '<svg class="logo-small" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="40" viewBox="0 0 44 40"><path d="M3.1,0H7.04V-22.4H3.1Zm19.68.384a11.558,11.558,0,0,0,9.088-3.968l-2.528-2.56c-1.92,1.792-3.68,2.88-6.432,2.88-4.288,0-7.392-3.552-7.392-7.936v-.064c0-4.384,3.136-7.872,7.36-7.872a8.951,8.951,0,0,1,6.3,2.752L31.712-19.3a11.7,11.7,0,0,0-8.8-3.488A11.328,11.328,0,0,0,11.392-11.2v.064A11.246,11.246,0,0,0,22.784.384Z" transform="translate(6 32)" fill="#fff"/></svg>';
     var svgChevron   = '<svg data-vp-id="chevron-right-icon-tree-item-36059661" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>';
     var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
+    var svgCheckFilled = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="HaiIcon fixedSize" iconname="CheckmarkCircle" subtype="checkmark-circle" theme="argon" type="toggle"><path d="M8,0C3.58,0,0,3.58,0,8s3.58,8,8,8,8-3.58,8-8S12.42,0,8,0Zm3.9,5.33l-3.48,6.95c-.16,.33-.48,.55-.85,.6-.05,0-.1,0-.15,0-.31,0-.62-.13-.83-.37l-2.82-3.15c-.2-.22-.3-.5-.28-.8s.15-.57,.37-.76c.2-.18,.47-.28,.74-.28,.32,0,.62,.13,.83,.37l1.73,1.93,2.75-5.49c.19-.38,.57-.61,.99-.61,.17,0,.34,.04,.5,.12,.27,.13,.46,.36,.56,.64,.09,.28,.07,.58-.06,.85Z"></path></svg>';
 
     $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
     
@@ -110,12 +111,12 @@ function confCloudJS() {
       });
   //            fixTabs(); Do not use due to Cors proxy security issues
       convertExpandsToTabs();
-
 //********************
       let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
       $('#vp-js-desktop__navigation__picker').before(verIcon);
-      let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
-      addIconNextToVersion(newMsg, flagID, 14);
+      warningMessage();
+//      let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
+//      addIconNextToVersion(newMsg, flagID, 14);
 //*****************************
     } // End of processing depending on page type
 
@@ -621,6 +622,57 @@ function confCloudJS() {
       });
     }
 
+    // Adds popup warning if older version, in beta space, maintenance, etc.
+    function warningMessage() {
+      var curFolder = location.pathname.split('/')[1];          // Get product+version # from the URL
+      var curVer =  $('.spaceSelect li[data-path="'+curFolder+'"]').text();  // Get current location's version #
+      var latestVer = $('.spaceSelect li[data-path="'+curFolder+'"]').parents('[id^="spaceSelect"]').children('li').eq(0);
+      var newMsg = '';
+      if (latestVer.hasClass('minorVersions')) {
+        latestVer = $('li',latestVer).first().text();  // Get latest version # listed in dropdown menu
+      }
+      else {
+        latestVer = latestVer.eq(0).text();
+      }
+     
+      if (curVer != latestVer) { // Test if we aren't viewing the latest version
+        // Add content to popup window and show it
+        let flagID = 'flagOldVer';
+        newMsg = 'You are viewing documentation for ' + spaceName + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
+        addIconNextToVersion(newMsg, flagID, 14);
+      }
+      
+      if (ifBetaSpace) { // If we are in a space with a beta label. ifBetaSpace defined in include-htmlhead.vm
+        let flagID = 'flagBeta';
+        newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
+        addIconNextToVersion(newMsg, flagID, 14);
+        $('.versionSelectGroup .dropdown-content').text("Beta");
+      }
+
+      if (spaceKey == 'MakitoXEnc252') {
+        let flagID = 'flagMakito';
+        newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
+        addIconNextToVersion(newMsg, flagID, 14);
+      }
+      
+      // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
+      // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
+      //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
+    //  var maintenanceTime = new Date(2022, 05, 16, 00, 00, 00, 0);
+      maintenanceTime = new Date(2023, 10, 03, 04, 00, 00, 0);
+      var currentTime = new Date();
+      if (currentTime < maintenanceTime) {
+        let flagID = 'flagMaintenance';
+    //    if (!(sessionStorage.getItem(flagID))) {
+          const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+          let monthStr = month[maintenanceTime.getMonth()];
+          newMsg = 'Server maintenance will occur on ' + monthStr + ' ' + maintenanceTime.getDate() + ', ' + maintenanceTime.getFullYear() +' at approximately 4:00AM EDT. Expect up to 2 hours of downtime.';
+    //      let timetoexpire = Math.round((maintenanceTime.getTime() - currentTime.getTime())/(1000*60*60*24));
+    //      addBanner(newMsg, true, 'session');
+        addIconNextToVersion(newMsg, flagID, 'session');
+    //    }
+      }
+    }
 
     function addIconNextToVersion(newMsg, flagID, expDays) {
       $('.versionIcon').attr('data-original-title', newMsg).attr('title', newMsg);

@@ -1632,7 +1632,7 @@ h2 {
   border-radius: 2px;
   width: 2px;
   height: 2px;
-  background-color: var(--aui-border-strong);
+  background-color: var(--haiui-gray-05);
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;

@@ -23,10 +23,9 @@ function confCloudJS() {
     $(window).resize(function() {
       testWindowSize();
     });
-    // cookieSetup();
-    localStorage.setItem('acceptedCookie', 'true');
+    cookieSetup();
+    // localStorage.setItem('acceptedCookie', 'true');
 
-//    setupNotify();
 
     // Start of processing depending on page type
     if (window.location.pathname == '/search.html') {
@@ -119,33 +118,42 @@ function confCloudJS() {
 
     let sidebarWidth = getLocalStorageWithExpiry('sidebar-width');
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
-//    if (sidebarWidth < 231) {sidebarWidth = 231; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
 
 
-
-    function setupNotifyCookie() {
-      $.notify.addStyle('success', {
-        html: 
-          "<div class='aui-message closeable aui-message-success'><div class='message-text' data-notify-html='message'/><div class='aui-nav-actions-list'>" +
-          "<button class='cookieAccept' data-notify-text='button1'/>"+
-          "<button class='cookieView' data-notify-text='button2'/>"+
-          "<button class='cookieReject' data-notify-text='button3'/>"+
-          "<div class='aui-close-button' aria-label='Close'></div>"+
-          "</div>"
+    function addBanner(message, hideOption, expireDays) {
+      let dnsMsg = '';
+      if (expireDays == 'session') {
+        dnsMsg = '<div class="aui-nav-actions-list flagDoNotShow hidden"><input type="checkbox" name="doNotShow" value="show"><label for="doNotShow"> Remind me later.</label></div>';
+      }
+      else if (hideOption) {
+        dnsMsg = '<div class="aui-nav-actions-list flagDoNotShow hidden"><input type="checkbox" name="doNotShow" value="show"><label for="doNotShow"> Hide for ' + expireDays + ' days?</label></div>';
+      }
+      var cookieFlag = AJS.flag({
+        type: 'info',
+        body: message + dnsMsg
       });
-      $.notify({
-        message: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. Click <strong>View</strong> to read more.',
-        button1: 'Accept',
-        button2: 'View',
-        button3: 'Reject Optional Cookies'
-      }, { 
-        style: 'success',
-        autoHide: false,
-        clickToHide: false
+      if (!isPlayPro()) {
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
+          $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
+        }
+      }
+      $('.aui-close-button',cookieFlag).on('click',function() {
+        let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
+        if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
+          if (expireDays == 'session') {
+            setLocalStorageWithExpiry(cookieToSet,'true',3650);
+          }
+          else {
+            setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
+          }
+        }
+        if ((cookieToSet == 'flagOldVer') || (cookieToSet == 'flagBeta') || (cookieToSet == 'flagMaintenance') || (cookieToSet == 'flagMakito')) {
+          $('.versionIcon').removeClass('hideIcon');
+        }
       });
-
     }
+
 
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message

@@ -987,10 +987,6 @@ function confCloudJS() {
             calcCSS(this);
           })
         }
-        else if (isIEBrowser()) {
-            $('form.brightnessContrast').hide();
-            $('.resetBCButton').parent().hide();
-        }
       }
 
       // Update the current slider value (each time you drag the slider handle)

@@ -601,14 +601,14 @@ function confCloudJS() {
       // Get version numbers used
       let prodVersions = $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
       $.each(prodVersions.members, function(key, prod) { 
-        if (prod.prefix == curProd) {
+        if ((prod.prefix == curProd) && (prod.versions)) {
           latestVer = prod.versions.available[0].name;
           spaceName = prod.name;
         }
       });
       var newMsg = '';
      
-      if (curVer != latestVer) { // Test if we aren't viewing the latest version
+      if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
         // Add content to popup window and show it
         let flagID = 'flagOldVer';
         newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';

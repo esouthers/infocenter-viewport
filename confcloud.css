@@ -1801,3 +1801,186 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   background-color: rgba(255, 255, 255, 0.05);
   color: var(--haiui-gray-05);
 }
+
+/* Dialogs */
+#dialog-overlay {
+  z-index: 50;
+  background: rgb(0 0 0);
+  opacity: 0.5;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+}
+.aui-blanket[aria-hidden="false"] {
+    opacity: 0.3;
+}
+.card {
+  opacity: 0%;
+}
+.card, .hai-dialog {
+  position: fixed;
+  overflow: visible;
+  width: 560px;
+  height: auto;
+  padding: 30px 27px 48px 48px;
+  border-radius: 4px;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--haiui-gray-11);
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+  top: 50% !important;
+  transform: translate(0%, -50%);
+}
+.aui-dialog2-content {
+  background-color: unset;
+}
+.card header.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.card header.card-header * {
+  display: flex;
+}
+.card svg {
+  justify-content: flex-start;
+  align-items: center;
+  fill: var(--haiui-gray-06);
+  
+}
+.card h2 {
+  flex-grow: 4;
+  justify-content: left;
+  align-items: center;
+  margin: 0 14px 0 20px;
+  color: var(--haiui-gray-06);
+}
+.card a span, .card a span:before {
+  margin: 0px;
+  padding: 0px;
+}
+.card a.card-close, .hai-dialog .aui-dialog2-header-close {
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -34px;
+}
+a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
+    cursor: pointer;
+}
+.card .card-body label {
+  color: var(--haiui-gray-06);
+}
+.card .card-body .control-container > label {
+  font-weight: 500;
+}
+.card .card-body .checkbox label {
+  color: var(--haiui-gray-02);
+}
+.card .card-body .checkboxes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.card .card-body .slidecontainer {
+  margin-top: 20px;
+}
+.card .card-body, .card .card-footer {
+  color: var(--haiui-gray-01);
+  margin-right: 20px;
+}
+.card .card-body > * {
+/*  margin-top: 24px; */
+}
+.card .card-body .control-container {
+  margin-top: 20px;
+}
+.card .card-body .cookieContainerList {
+  margin-top: 15px;
+}
+.card .card-body .combine-items {
+  display: flex;
+  align-items: center;
+}
+.card .card-body .combine-items.align-left {
+  justify-content: left;
+}
+.card .card-body .combine-items.align-right {
+  justify-content: right;
+}
+.card .card-body .combine-items > * {
+  margin-right: 16px;
+  margin-top: 10px;
+}
+.card .clearCookiesNote, .card .cookieDisabledNote {
+  font-size: 12px;
+  color: var(--haiui-gray-05);
+}
+
+
+.card .card-body input.slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--haiui-gray-07);
+}
+.card .slider::-webkit-slider-thumb, .card .slider::-moz-range-thumb, .card .slider::-ms-thumb {
+  height: 16px;
+  width: 16px;
+  border: none;
+  background-color: var(--haiui-white);
+}
+
+.card .slider {
+  -webkit-appearance: none;
+  border: none;
+  height: 12px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  width: 250px;
+}
+.card .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background: var(--haiui-white);
+  cursor: pointer;
+}
+.card .slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  background: var(--haiui-white);
+  cursor: pointer;
+}
+.card .card-footer, .hai-dialog .aui-dialog2-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 48px 20px 0px 0px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 0.25rem;
+  width: 100%;
+  display: flex;
+  border-radius: 0.125rem;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  box-shadow: 0 0 0.375rem 0 rgb(0 0 0 / 40%);
+  border-radius: 50%;
+  cursor: pointer;
+}

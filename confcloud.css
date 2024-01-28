@@ -1521,3 +1521,69 @@ h2 {
 .aui-group > .aui-item + .aui-item {
   padding-left: 5%;
 }
+
+/* Alerts */
+#aui-flag-container {
+  font-size: 13px;
+  top: 50px;
+  z-index: 2000;
+}
+@media screen and (max-width: 640px) {
+  #aui-flag-container {
+    right: 10px;
+  }
+  #aui-flag-container .aui-flag {
+    width: 300px;
+  }
+}
+#aui-flag-container .cookieAccept, #aui-flag-container .cookieReject {
+  cursor: pointer;
+}
+#cookieconsent .confluence-information-macro {
+  position:relative;
+  padding: 0px !important;
+  display: flex;
+}
+#cookieconsent .confluence-information-macro .confluence-information-macro-icon {
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+#cookieconsent #cookieContent {
+  padding: 10px;
+}
+#cookieconsent #cookieContent {
+  padding-left: 50px;
+  line-height: 1.6 !important;
+}
+#cookieconsent #cookieButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid var(--haiui-gray-09);
+  cursor: pointer;
+}
+#cookieconsent #cookieButtons div:first-of-type{
+  border-bottom: 1px solid var(--haiui-gray-09);
+}
+#cookieconsent #cookieButtons div {
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 10px;
+}  
+
+#aui-flag-container .aui-close-button {
+  height: 16px;
+  width: 16px;
+}
+#aui-flag-container .aui-close-button:before {
+  content: "";
+}
+#aui-flag-container .flagDoNotShow {
+  text-align: right;
+}
+#aui-flag-container input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+}

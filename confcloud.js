@@ -5,7 +5,7 @@ function confCloudJS() {
   script.onload = function() {
 
    var script = document.createElement("SCRIPT");
-   script.src = 'https://esouthers.github.io/infocenter-viewport/notify.js';
+   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aui/9.10.0/aui/themes/dark.min.js';
    script.type = 'text/javascript';
    script.onload = function() {
   
@@ -26,7 +26,7 @@ function confCloudJS() {
     // cookieSetup();
     localStorage.setItem('acceptedCookie', 'true');
 
-    $.notify('Hello World!');
+//    setupNotify();
 
     // Start of processing depending on page type
     if (window.location.pathname == '/search.html') {
@@ -124,6 +124,28 @@ function confCloudJS() {
 
 
 
+    function setupNotifyCookie() {
+      $.notify.addStyle('success', {
+        html: 
+          "<div class='aui-message closeable aui-message-success'><div class='message-text' data-notify-html='message'/><div class='aui-nav-actions-list'>" +
+          "<button class='cookieAccept' data-notify-text='button1'/>"+
+          "<button class='cookieView' data-notify-text='button2'/>"+
+          "<button class='cookieReject' data-notify-text='button3'/>"+
+          "<div class='aui-close-button' aria-label='Close'></div>"+
+          "</div>"
+      });
+      $.notify({
+        message: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. Click <strong>View</strong> to read more.',
+        button1: 'Accept',
+        button2: 'View',
+        button3: 'Reject Optional Cookies'
+      }, { 
+        style: 'success',
+        autoHide: false,
+        clickToHide: false
+      });
+
+    }
 
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message

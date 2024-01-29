@@ -138,6 +138,9 @@
 
 body {
   overflow-y: auto;
+  min-height: 100vh;
+}
+body.flex.flex-col.min-h-screen {
   display: none;
 }
 body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu {

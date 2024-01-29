@@ -52,7 +52,24 @@ function confCloudJS() {
       updateFooter();
 
       if (pageSearch) {
+        $('.vp-tree__container').append('<li>Exit Search Results</li>');
+
+<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="7046570" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">
+  <div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row">
+    <a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="javascript:history.back()">Exit Search Results</a>
+    <div class="vp-tree-item__header__icon">
+      <svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg>
+    </div>
+  </div>
+</li>
+
+
+
+
         updateBreadcrumbs();
+
+        $('.header__navigation--large__menu').append('');
+
         waitForElm('.search-results__results__label').then((elm) => {
           let searchTerm = $('.vp-search-input__input').val();
           let numResults = $(elm).text().split(' result')[0];
@@ -133,6 +150,8 @@ function confCloudJS() {
 //      let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
 //      addIconNextToVersion(newMsg, flagID, 14);
 //*****************************
+
+      $('body').removeClass('min-h-screen');
     } // End of processing depending on page type
 
 

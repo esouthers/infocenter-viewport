@@ -1468,6 +1468,9 @@ h1.search-header {
   font-weight: normal;
   line-height: 1.25;
 }
+.search-header-text {
+  font-size: 12px;
+}
 .vp-breadcrumbs__wrapper {
   padding-inline: 2rem;
 }

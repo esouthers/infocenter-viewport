@@ -391,7 +391,7 @@ function confCloudJS() {
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
         if (getLocalStorageWithExpiry('collapsed-sidebar') == 'true') {
-          $('.ht-menu-button').click();
+          collapseOpenSidebar();
         }
         $('.ht-menu-button').click(function() {
           collapseOpenSidebar();

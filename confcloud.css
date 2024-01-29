@@ -134,7 +134,7 @@ body {
   overflow-y: auto;
   display: none;
 }
-body, #vp-js-desktop__navigation, .vp-picker__menu {
+body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu {
   color: var(--haiui-gray-08);
 }
 .legacy-color-text-gray2 {
@@ -942,7 +942,7 @@ table .article__content .confluence-embedded-file-wrapper:has(.confluence-embedd
   padding-bottom: 5px;
   margin-right: 20px;
 }
-#vp-js-desktop__navigation .sidebar-section .current {
+#vp-js-desktop__navigation .sidebar-section .current h3{
   color: var(--haiui-white);
 }
 #vp-js-desktop__navigation .sort-items .current {

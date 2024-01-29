@@ -151,7 +151,7 @@ function confCloudJS() {
 //      addIconNextToVersion(newMsg, flagID, 14);
 //*****************************
 
-      $('body').removeClass('min-h-screen');
+      
     } // End of processing depending on page type
 
 
@@ -408,14 +408,18 @@ function confCloudJS() {
               $(document).unbind('touchmove');
           });
         });
-        /* Sidebar event listeners */
+
+
+        $('body').removeClass('min-h-screen');
         $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-        $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg').addClass('shown');
+        $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
         if (getLocalStorageWithExpiry('collapsed-sidebar') == 'true') {
           collapseOpenSidebar();
         }
+
+        /* Sidebar event listeners */
         $('.ht-menu-button').click(function() {
           collapseOpenSidebar();
         });

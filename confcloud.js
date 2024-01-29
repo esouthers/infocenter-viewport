@@ -62,7 +62,7 @@ function confCloudJS() {
           $('#titleBreadcrumb').text($('.search-header').text());
 
           let searchIdx = getSearchIndexes(numResults);
-          $('.search-header').after('<p>Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
+          $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
           $(elm).remove();
         });
         $('.vp-pagination__inner button').on('click', function(e){

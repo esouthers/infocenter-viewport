@@ -432,6 +432,9 @@ function confCloudJS() {
           }
         });
         $('#ic-products').click(function() {
+          if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+            $('.ht-menu-button').click(); // If sidebar collapsed, open it
+          }
           if ($('.sort-items').hasClass('hidden')) {
             $(this).addClass('current');
             $('#ic-pagetree').removeClass('current');

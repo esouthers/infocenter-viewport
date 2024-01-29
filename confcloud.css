@@ -130,6 +130,13 @@
     --_background-color-pressed: inherit !important;
 }
 
+/*** Home page overrides ***/
+.portal {
+  display: none;
+}
+
+
+
 body {
   overflow-y: auto;
   display: none;

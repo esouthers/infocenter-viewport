@@ -1847,10 +1847,17 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   flex-direction: column;
   z-index: 220;
   top: 50% !important;
-  transform: translate(0%, -50%);
+  left: 50% !important;
+  transform: translate(-50%, -50%);
 }
 .aui-dialog2-content {
   background-color: unset;
+}
+.aui-dialog2-header {
+  height: 62px;
+  box-sizing: border-box;
+  font-weight: 400;
+  width: 100%;
 }
 .card header.card-header {
   display: flex;

@@ -716,7 +716,9 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
 .vp-accordion-link-group__item--disclosure .vp-accordion-link-group__summary {
   flex-direction: row-reverse;
   justify-content: flex-end;
-  padding-bottom: 0px
+  padding-bottom: 0px;
+  padding-left: 0px;
+  gap: 8px;
 }
 .vp-accordion-link-group__summary {
   padding: 5px;
@@ -740,6 +742,12 @@ li.vp-accordion-link-group__list-item:is(:first-child) {
   font-size: 13px;
   padding: 5px;
   padding-bottom: 0px;
+}
+.vp-accordion-link-group__list-item-inner:before {
+  content: "•";
+}
+.vp-accordion-link-group__list-item-inner a {
+  padding-left: 14px;
 }
 details.vp-disclosure summary {
   font-size: 13px;

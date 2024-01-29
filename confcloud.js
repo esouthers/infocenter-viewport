@@ -410,7 +410,7 @@ function confCloudJS() {
         });
         /* Sidebar event listeners */
         $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-        $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
+        $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg').addClass('shown');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
         if (getLocalStorageWithExpiry('collapsed-sidebar') == 'true') {

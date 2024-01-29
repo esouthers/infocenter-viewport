@@ -1946,8 +1946,9 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
 .card .clearCookiesNote, .card .cookieDisabledNote {
   font-size: 12px;
   color: var(--haiui-gray-05);
+  margin-top: 10px;
+  line-height: 1.43;
 }
-
 
 .card .card-body input.slider {
   width: 100%;

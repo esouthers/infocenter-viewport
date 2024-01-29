@@ -53,7 +53,7 @@ function confCloudJS() {
 
       if (pageSearch) {
         $('.vp-tree__container').append('<li>Exit Search Results</li>');
-
+/* 
 <li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="7046570" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">
   <div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row">
     <a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="javascript:history.back()">Exit Search Results</a>
@@ -62,7 +62,7 @@ function confCloudJS() {
     </div>
   </div>
 </li>
-
+*/
 
 
 

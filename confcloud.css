@@ -436,6 +436,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 .vp-search-suggestion-option {
   font-size: 14px;
 }
+.vp-search-suggestion-option-container:is(:hover,[aria-selected=true]) .vp-search-suggestion-option, .vp-search-suggestion-tools-option:is(:hover,[aria-selected=true]) {
+  box-shadow: none;
+}
 .vp-search-suggestion-option--default {
   padding: 7px 10px;
 }

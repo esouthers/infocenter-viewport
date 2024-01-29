@@ -390,6 +390,9 @@ function confCloudJS() {
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
+        if (getLocalStorageWithExpiry('collapsed-sidebar') == 'true') {
+          $('.ht-menu-button').click();
+        }
         $('.ht-menu-button').click(function() {
           collapseOpenSidebar();
         });
@@ -471,6 +474,7 @@ function confCloudJS() {
       if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
         // close sidebar 96px
         setDragbar(96);
+        setLocalStorageWithExpiry('collapsed-sidebar','true', 3650);
         $('#sidebar-dragbar').addClass('hidden');
         $('.header__navigation--logo img.logo-large').hide();
         $('.header__navigation--logo svg.logo-small').show();
@@ -478,6 +482,7 @@ function confCloudJS() {
       else {
         // open sidebar
         setDragbar(getLocalStorageWithExpiry('sidebar-width'));
+        setLocalStorageWithExpiry('collapsed-sidebar','false', 3650);
         $('#sidebar-dragbar').removeClass('hidden');
         $('.header__navigation--logo img.logo-large').show();
         $('.header__navigation--logo svg.logo-small').hide();

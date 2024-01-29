@@ -202,6 +202,8 @@ function confCloudJS() {
         }
         else if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
       //      gaSetup(); 
+          $('#userprefs .cookieContainer').removeClass('hidden');
+          $('#userprefs .cookieDisabledNote').addClass('hidden');
         }
       }
     }

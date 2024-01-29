@@ -1137,6 +1137,10 @@ figure.image-right {
   margin-top: 0.5rem;
   margin-left: 0.5rem;
 }
+figure.image-inline {
+  display: inline;
+  margin-bottom: -3px;
+}
 
 
 .vp-collapse-button {

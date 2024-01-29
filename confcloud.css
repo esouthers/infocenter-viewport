@@ -1071,6 +1071,13 @@ table .confluence-information-macro, table .panel-macro {
 .article__content code {
   font-size: inherit !important;
 }
+.code-macro code[class*=language-], .code-macro pre[class*=language-] {
+  font-size: 12px;
+}
+.code-macro pre[class*=language-].line-numbers>code {
+  line-height: 1rem;
+}
+
 
 /* Footer attribution */
 #ht-footer {

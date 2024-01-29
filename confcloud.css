@@ -2059,3 +2059,6 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.article__content .vp-image {
+  margin-left: 0px;
+}

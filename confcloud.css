@@ -581,6 +581,9 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
   display: flex;
   flex-direction: row;
 }
+.article__content .columnLayout:is(.two-equal,.two-right-sidebar,.two-left-sidebar,.three-equal,.three-with-sidebars) {
+  margin-bottom: 1.5rem;
+}
 /* .columnLayout.three-equal > div {
   width: 33%;
 }

@@ -119,7 +119,7 @@
   --K15t-link: var(--haiui-blue-01);
   --K15t-link-visited: var(--haiui-blue-01);
   --_K15t-font-family-sans: 'Gotham',Helvetica,Arial,sans-serif;
-
+  --K15t-layout-header-height: 56px;
 }
 
 .vp-tree-item {
@@ -2047,4 +2047,10 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
 ::-moz-selection {
   background: #BBD4FA;
   color: var(--haiui-gray-03);
+}
+
+
+.article__content ol li>.vp-image, .article__content ol li>[data-macro-name], .article__content ol li>table, .article__content ul li>.vp-image, .article__content ul li>[data-macro-name], .article__content ul li>table {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

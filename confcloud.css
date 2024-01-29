@@ -1139,7 +1139,7 @@ figure.image-right {
 }
 figure.image-inline {
   display: inline;
-  margin-bottom: -3px;
+  top: 3px;
 }
 
 

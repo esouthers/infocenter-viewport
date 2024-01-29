@@ -1071,8 +1071,8 @@ table .confluence-information-macro, table .panel-macro {
 .article__content code {
   font-size: inherit !important;
 }
-.code-macro code[class*=language-], .code-macro pre[class*=language-] {
-  font-size: 12px;
+.code-macro code[class*=language-], .code-macro pre[class*=language-], .code-macro code[class*=language-] span, .code-macro pre[class*=language-] span {
+  font-size: 12px !important;
 }
 .code-macro pre[class*=language-].line-numbers>code {
   line-height: 1rem;

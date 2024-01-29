@@ -140,12 +140,8 @@ body {
   overflow-y: auto;
   min-height: 100vh;
 }
-body.flex.flex-col.min-h-screen,
-.header__navigation--logo img {
+body.flex.flex-col.min-h-screen {
   display: none;
-}
-.header__navigation--logo img.shown {
-  display: unset;
 }
 body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu {
   color: var(--haiui-gray-08);

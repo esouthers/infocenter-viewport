@@ -1484,6 +1484,10 @@ h1.search-header {
   display: none;
 }
 
+.vp-search-result__content-source {
+  color: var(--haiui-gray-07);
+}
+
 /******************************/
 /* Home/Product landing pages */
 /******************************/

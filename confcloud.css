@@ -961,6 +961,7 @@ table .article__content .confluence-embedded-file-wrapper:has(.confluence-embedd
 }
 #vp-js-desktop__navigation .sort-items .current {
   border-bottom: 1px solid var(--haiui-white);
+  color: var(--haiui-white);
 }
 nav a {
   color: inherit;

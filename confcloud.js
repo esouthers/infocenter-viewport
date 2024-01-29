@@ -189,11 +189,10 @@ function confCloudJS() {
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
             cookieFlag.close();
             setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
-            // Set default cookie values
-            setLocalStorageWithExpiry('ICglossary', 'true', 3650);
-            $('#checkGlossary').prop('checked',true);
+            $('#userprefs .cookieContainer').removeClass('hidden');
+            $('#userprefs .cookieDisabledNote').addClass('hidden');
             // Setup Google Analytics
-      //        gaSetup();
+            // gaSetup();
           });
           $('#aui-flag-container .cookieReject').on('click', function() {
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
@@ -978,7 +977,6 @@ function confCloudJS() {
             userContrast = '100';
             setLocalStorageWithExpiry('ICcontrast',userContrast, 3650);
           }
-          else { $('#checkGlossary').prop('checked',false); }
           $('html').css('filter','brightness(' + userBrightness + '%) contrast(' + userContrast + '%)');
           $('.brightnessRange').val(userBrightness);
           $('.contrastRange').val(userContrast);
@@ -1074,8 +1072,6 @@ function confCloudJS() {
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
     function gaSetup() {
-       $('#userprefs .cookieContainer, #userprefs form.options').removeClass('hidden');
-       $('#userprefs .cookieDisabledNote').addClass('hidden');
        if (window.location.hostname == "doc.haivision.com") {  // Don't log analytics on Sandbox.
           gtag('js', new Date());
         gtag('config', 'G-SDDSB8BN8V');

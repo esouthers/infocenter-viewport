@@ -130,11 +130,10 @@
     --_background-color-pressed: inherit !important;
 }
 
-/*** Home page overrides ***/
+/*** Don't show the portal view while auto-forwarding ***/
 .portal {
   display: none;
 }
-
 
 
 body {

@@ -1028,6 +1028,48 @@ function confCloudJS() {
         }
         return cookies;
       }
+      function calcCSS(that) {
+        let minValue = parseInt($(that).attr('min'));
+        let maxValue = parseInt($(that).attr('max'));
+        let alpha = 100/(maxValue - minValue);
+        let beta = -alpha*minValue;
+        let leftValue = $(that).val()*alpha + beta;
+        let rightValue = 100 - $(that).val();
+        let cssToAdd = '-webkit-linear-gradient(left, var(--gradientColor1) 0%, var(--gradientColor2) '+leftValue+'%, var(--defaultBackground) '+leftValue+'%)';
+        $(that).css('background-image',cssToAdd);
+      }
+      function changeBrightness(that) {
+        $('html').css('filter','brightness(' + that.value + '%) contrast(' + $('.contrastRange').first().val() + '%)');
+        $('.brightnessRange').val(that.value);
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
+          setLocalStorageWithExpiry('ICbrightness',that.value,3650);
+        }
+        $('.brightnessRange').each(function() {
+          calcCSS(this);
+        })
+      }
+      function changeContrast(that) {
+        $('html').css('filter','brightness(' + $('.brightnessRange').first().val() + '%) contrast(' + that.value + '%)');
+        $('.contrastRange').val(that.value);
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
+          setLocalStorageWithExpiry('ICcontrast',that.value,3650);
+        }
+        $('.contrastRange').each(function() {
+          calcCSS(this);
+        })
+      }
+      function resetBC() {
+        $('.brightnessRange').val('100');
+        calcCSS($('.brightnessRange'));
+        $('.contrastRange').val('100');
+        calcCSS($('.contrastRange'));
+        $('html').css('filter','');
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
+          setLocalStorageWithExpiry('ICbrightness','100',3650);
+          setLocalStorageWithExpiry('ICcontrast','100',3650);
+        }
+      }
+
 
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
@@ -1094,6 +1136,9 @@ function confCloudJS() {
         }
       }
     }
+    function addEventTrackingUserPrefs(eventAction, eventLabel) { // Adds event tracking for User Preferences
+      gtag("event", "User Preferences", {"event_category": "User Preferences","event_action": eventAction,"event_label": eventLabel});
+    } 
     // End of must edit for GA
    }
    document.head.appendChild(script); 

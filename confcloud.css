@@ -275,6 +275,10 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   background-color: var(--haiui-gray-10);
   border: none;
 }
+.vp-picker__button {
+  padding-left: 8px;
+  padding-right: 8px;
+}
 .vp-picker__button, .vp-picker__button:hover, .vp-picker__button:active, .vp-picker__button:focus,
 .vp-picker__button--open, .vp-picker__button--open:hover, .vp-picker__button--open:active, .vp-picker__button--open:focus {
   background-color: inherit;

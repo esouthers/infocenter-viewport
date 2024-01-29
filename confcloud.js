@@ -508,7 +508,7 @@ function confCloudJS() {
       let maxThumbnailHeight = 30; 
 
       if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth)) {
-        $(figureToFix).css('display','inline');
+        $(figureToFix).addClass('image-inline');
         let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
         if (vpLBToggle.length > 0) {
           $(vpLBToggle[0].shadowRoot).find('button').remove();

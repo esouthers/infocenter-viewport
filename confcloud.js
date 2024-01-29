@@ -116,6 +116,10 @@ function confCloudJS() {
 
       // Fix table cell background colors
       $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
+      $("[data-highlight-colour='green']").css('background-color','lightgreen');
+      $("[data-highlight-colour='red']").css('background-color','lightred');
+      $("[data-highlight-colour='blue']").css('background-color','lightblue');
+
 
       $('#main-content figure').each(function() {
         fixInlineImages(this);

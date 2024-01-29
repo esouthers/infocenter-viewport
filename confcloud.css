@@ -349,6 +349,9 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
   scrollbar-color: var(--haiui-gray-04) transparent;
 }
 
+.header__navigation--button {
+  display: none;
+}
 /* Version dropdown */
 .vp-picker__menu {
   top: unset;
@@ -376,6 +379,7 @@ body, #vp-js-desktop__navigation, .vp-picker__menu {
 }
 .header__navigation--large__menu {
   gap: 0;
+  display: flex;
 }
 #site-navigation .versionIcon {
   margin-right: 5px;

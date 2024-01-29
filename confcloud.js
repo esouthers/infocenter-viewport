@@ -656,7 +656,7 @@ function confCloudJS() {
       // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
       //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
     //  var maintenanceTime = new Date(2022, 05, 16, 00, 00, 00, 0);
-      maintenanceTime = new Date(2025, 10, 03, 04, 00, 00, 0);
+      maintenanceTime = new Date(2023, 10, 03, 04, 00, 00, 0);
       var currentTime = new Date();
       if (currentTime < maintenanceTime) {
         let flagID = 'flagMaintenance';

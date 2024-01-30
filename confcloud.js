@@ -64,11 +64,6 @@ function confCloudJS() {
           }
         });
         $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
-        $('.vp-search-result').each(function() {
-          let tempText = $('.vp-search-result__content-source', this).text();
-          $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
-          $('.vp-search-result__labels', this).remove();
-        });
         let exitSearchText = 'Exit Search Results';
         let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
         $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
@@ -104,6 +99,11 @@ function confCloudJS() {
           let searchIdx = getSearchIndexes(numResults);
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
           $(elm).remove();
+          $('.vp-search-result').each(function() {
+            let tempText = $('.vp-search-result__content-source', this).text();
+            $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+            $('.vp-search-result__labels', this).remove();
+          });
         });
         $('.vp-pagination__inner button').on('click', function(e){
           waitForElm('.search-results__results__label').then((elm) => {

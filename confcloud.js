@@ -135,6 +135,15 @@ $('.vp-pagination__inner button').click(function() {
       window.location.replace('https://' + window.location.hostname + '/Home');
     }
     else {
+      var removeBetaSpace = new MutationObserver(function(mutations) {
+        $('.vp-picker__menu__item').each(function() {
+          if ($(this).text().indexOf('Beta') > 0) {
+            $(this).remove();
+          }
+        });
+      });
+      removeBetaSpace.observe(document.querySelector('.vp-version-picker'), {attributes: false, childList: true, characterData: false, subtree:true});
+
       waitForElm('.vp-picker__menu').then((elm) => {
         $('.vp-picker__menu__item').each(function() {
           if ($(this).text().indexOf('Beta') > 0) {

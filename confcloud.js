@@ -86,6 +86,7 @@ function confCloudJS() {
           $('#stopIdx').text(searchIdx[1]);
         });
         updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
+
         var updateSearchResults = new MutationObserver(function(mutations) {
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
@@ -93,11 +94,11 @@ function confCloudJS() {
             $('.vp-search-result__labels', this).remove();
           });
         });
-        updateSearchResults.observe(document.querySelector('.vp-search-result__labels'), {attributes: false, childList: true, characterData: false, subtree:true});
         
 
 
         waitForElm('.search-results__results__label').then((elm) => {
+          updateSearchResults.observe(document.querySelector('.vp-search-result__labels'), {attributes: false, childList: true, characterData: false, subtree:true});
           let searchTerm = $('.vp-search-input__input').val();
           let numResults = $(elm).text().split(' result')[0];
           let plural = '';

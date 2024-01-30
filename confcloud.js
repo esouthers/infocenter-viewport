@@ -90,7 +90,7 @@ function confCloudJS() {
             $('.vp-search-result__labels', this).remove();
           });
         });
-        observer.observe(document.querySelector('#search-form, [data-vp-id="search-page-results"]'), {attributeFilter: ["value", "username"], childList: true, characterData: false, subtree:true});
+        observer.observe(document.querySelector('#search-form, .vp-search-result__labels'), {attributeFilter: ["value", "username"], childList: true, characterData: false, subtree:true});
 
 
         waitForElm('.search-results__results__label').then((elm) => {

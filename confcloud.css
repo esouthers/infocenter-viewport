@@ -1501,7 +1501,15 @@ h1.search-header {
 .vp-search-result__content-source {
   color: var(--haiui-gray-07);
 }
-
+a.vp-search-result__title:hover {
+  text-decoration: underline;
+}
+div.vp-search-result {
+  padding: 20px;
+}
+div.vp-search-result:hover {
+  background-color: var(--haiui-gray-11);
+}
 /******************************/
 /* Home/Product landing pages */
 /******************************/

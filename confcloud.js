@@ -80,17 +80,21 @@ function confCloudJS() {
 */
         updateBreadcrumbs();
 
-        var observer = new MutationObserver(function(mutations) {
+        var updateSearchIndexes = new MutationObserver(function(mutations) {
           let searchIdx = getSearchIndexes(numResults);
           $('#startIdx').text(searchIdx[0]);
           $('#stopIdx').text(searchIdx[1]);
+        });
+        updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
+        var updateSearchResults = new MutationObserver(function(mutations) {
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
             $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
             $('.vp-search-result__labels', this).remove();
           });
         });
-        observer.observe(document.querySelector('#search-form, .vp-search-result__labels'), {attributeFilter: ["value", "username"], childList: true, characterData: false, subtree:true});
+        updateSearchResults.observe(document.querySelector('.vp-search-result__labels'), {attributes: false, childList: true, characterData: false, subtree:true});
+        
 
 
         waitForElm('.search-results__results__label').then((elm) => {

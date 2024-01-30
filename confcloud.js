@@ -53,14 +53,34 @@ function confCloudJS() {
       updateFooter();
 
       if (pageSearch) {
+
+        let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
+        let searchedVersion  = $('#search-form [name="v"]').attr('value');
+        let searchedSpaceName = '';
+        let prodVersions = parseViewportData();
+        $.each(prodVersions.members, function(key,val) {
+          if (val.prefix == searchedSpaceKey) {
+            searchedSpaceName = val.name;
+          }
+        });
+        $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
+
         let exitSearchText = 'Exit Search Results';
+        let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
         $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
           '<div data-item-id="" class="vp-tree-item__header relative flex flex-row items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="javascript:history.back()">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
           '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
 
-        updateBreadcrumbs();
+/*        let searchHTML = '<div class="my-auto list-none ml-4"><form role="search" id="search-form-ixz9artdwd" method="GET" action="/search.html" data-vp-id="vp-search-form" class="flex w-full justify-center"><div data-vp-component="search-bar" data-vp-variant="" class="vp-search-bar has-suggestions">' +
+          '</div></form><div></div><script data-vp-id="search-bar-config" type="application/json"> { "hasContentSourceFilter": false, "hasQuickSearch": true, "variant": "" } </script></div>';
+        $('.header__navigation--large__menu').append(searchHTML);
+        $('.vp-search-bar__input-container').detach().appendTo($('.vp-search-bar'));
+        $('.vp-search-input').attr('data-vp-variant','border').addClass('vp-search-input--border');
+        $('.vp-search-input__input').removeAttr('aria-expanded role aria-controls').attr('aria-autocomplete','list').attr('placeholder','How can we help you?');
+        $('.vp-search-input__submit').removeAttr('form');
+*/
 
-        $('.header__navigation--large__menu').append('');
+        updateBreadcrumbs();
 
         waitForElm('.search-results__results__label').then((elm) => {
           let searchTerm = $('.vp-search-input__input').val();
@@ -634,13 +654,17 @@ function confCloudJS() {
       return htmltoBuild;
     }
 
+    function parseViewportData() {
+      return $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
+    }
+
     // Adds popup warning if older version, in beta space, maintenance, etc.
     function warningMessage() {
       var curProd = location.pathname.split('/')[1];  // Get product+version # from the URL
       var curVer =  location.pathname.split('/')[2];  // Get current location's version #
       var latestVer = '';
       // Get version numbers used
-      let prodVersions = $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
+      let prodVersions = parseViewportData();
       $.each(prodVersions.members, function(key, prod) { 
         if ((prod.prefix == curProd) && (prod.versions)) {
           latestVer = prod.versions.available[0].name;

@@ -1476,6 +1476,7 @@ details.vp-disclosure .vp-disclosure-icon {
 }
 .vp-search-page__results-header {
   display: block;
+  margin-bottom: 32px;
 }
 h1.search-header {
   font-size: 24px;
@@ -1509,6 +1510,9 @@ div.vp-search-result {
 }
 div.vp-search-result:hover {
   background-color: var(--haiui-gray-11);
+}
+.vp-search-page__main-inner {
+  row-gap: 0;
 }
 /******************************/
 /* Home/Product landing pages */

@@ -135,6 +135,13 @@ $('.vp-pagination__inner button').click(function() {
       window.location.replace('https://' + window.location.hostname + '/Home');
     }
     else {
+      waitForElm('.vp-picker__menu').then((elm) => {
+        $('.vp-picker__menu__item').each(function() {
+          if ($(this).text().indexOf('Beta') > 0) {
+            $(this).remove();
+          }
+        });
+      });
       addModifiedDate();
       updateHeader();
       updateSidebar();

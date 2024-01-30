@@ -224,11 +224,6 @@ function confCloudJS() {
             setLocalStorageWithExpiry('acceptedCookie', 'false', 3650);
           });
         }
-        else if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
-      //      gaSetup(); 
-          $('#userprefs .cookieContainer').removeClass('hidden');
-          $('#userprefs .cookieDisabledNote').addClass('hidden');
-        }
       }
     }
     function updateHeader() {
@@ -980,8 +975,14 @@ function confCloudJS() {
       if (navigator.userAgent.indexOf('HaivisionPlayPro') >= 0) { return true; }
       else { return false; }
     }
+    
     // User Preferences - Brightness/Contrast & Image Hover Zoom
     function userPreferences() {
+      if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
+    //      gaSetup(); 
+        $('#userprefs .cookieContainer').removeClass('hidden');
+        $('#userprefs .cookieDisabledNote').addClass('hidden');
+      }
       $('#ic-settings *').click(function(e) {
         e.preventDefault();
         $('#ic-products.current,#ic-pagetree.current').removeClass('current').addClass('wascurrent');

@@ -142,7 +142,9 @@ $('.vp-pagination__inner button').click(function() {
           }
         });
       });
-      removeBetaSpace.observe(document.querySelector('.vp-version-picker'), {attributes: false, childList: true, characterData: false, subtree:true});
+      if ($('.vp-version-picker').length > 0) {
+        removeBetaSpace.observe(document.querySelector('.vp-version-picker'), {attributes: false, childList: true, characterData: false, subtree:true});
+      }
 
       waitForElm('.vp-picker__menu').then((elm) => {
         $('.vp-picker__menu__item').each(function() {

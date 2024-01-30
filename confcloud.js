@@ -98,7 +98,7 @@ function confCloudJS() {
 
 
         waitForElm('.search-results__results__label').then((elm) => {
-          updateSearchResults.observe(document.querySelector('.vp-search-result__labels'), {attributes: false, childList: true, characterData: false, subtree:true});
+          updateSearchResults.observe(document.querySelector('.vp-search-page__main-inner'), {attributes: false, childList: true, characterData: false, subtree:true});
           let searchTerm = $('.vp-search-input__input').val();
           let numResults = $(elm).text().split(' result')[0];
           let plural = '';

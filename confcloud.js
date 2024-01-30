@@ -101,8 +101,8 @@ $('.vp-pagination__inner button').click(function() {
 });
 
         waitForElm('.search-results__results__label').then((elm) => {
-//          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
-          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
+          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
+//          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
           let searchTerm = $('.vp-search-input__input').val();
           let numResults = $(elm).text().split(' result')[0];
           let plural = '';

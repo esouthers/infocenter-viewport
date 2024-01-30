@@ -85,7 +85,7 @@ function confCloudJS() {
           $('#startIdx').text(searchIdx[0]);
           $('#stopIdx').text(searchIdx[1]);
         });
-        observer.observe(document.querySelector('#search-form'), {attributes: false, childList: true, characterData: false, subtree:true});
+        observer.observe(document.querySelector('#search-form'), {attributes: true, childList: true, characterData: false, subtree:true});
 
 
         waitForElm('.search-results__results__label').then((elm) => {

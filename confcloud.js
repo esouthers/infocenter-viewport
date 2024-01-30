@@ -90,7 +90,7 @@ function confCloudJS() {
             $('.vp-search-result__labels', this).remove();
           });
         });
-        observer.observe(document.querySelector('#search-form'), {attributeFilter: ["value", "username"], childList: true, characterData: false, subtree:true});
+        observer.observe(document.querySelector('#search-form, [data-vp-id="search-page-results"]'), {attributeFilter: ["value", "username"], childList: true, characterData: false, subtree:true});
 
 
         waitForElm('.search-results__results__label').then((elm) => {
@@ -104,7 +104,7 @@ function confCloudJS() {
           let searchIdx = getSearchIndexes(numResults);
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
           $(elm).remove();
-          
+
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
             $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());

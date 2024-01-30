@@ -83,8 +83,15 @@ function confCloudJS() {
         $('.vp-search-input__input').removeAttr('aria-expanded role aria-controls').attr('aria-autocomplete','list').attr('placeholder','How can we help you?');
         $('.vp-search-input__submit').removeAttr('form');
 */
-
         updateBreadcrumbs();
+
+        var observer = new MutationObserver(function(mutations) {
+          let searchIdx = getSearchIndexes(numResults);
+          $('#startIdx').text(searchIdx[0]);
+          $('#stopIdx').text(searchIdx[1]);
+        });
+        observer.observe(document.querySelector('#search-form'), {attributes: false, childList: true, characterData: false, subtree:true});
+
 
         waitForElm('.search-results__results__label').then((elm) => {
           let searchTerm = $('.vp-search-input__input').val();

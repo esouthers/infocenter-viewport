@@ -895,11 +895,8 @@ function confCloudJS() {
     }
 
     function getSearchIndexes(numResults) {
-      const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-      let startIdx = parseInt(params.start) + 1;
-      let maxIdx = parseInt(params.max);
+      let startIdx = parseInt($('#search-form [name="start"]').attr('value')) + 1;
+      let maxIdx = parseInt($('#search-form [name="max"]').attr('value'));
       if (startIdx + maxIdx - 1 > numResults) {
         stopIdx = numResults;
       }

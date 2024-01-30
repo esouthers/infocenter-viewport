@@ -93,9 +93,12 @@ function confCloudJS() {
             $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
             $('.vp-search-result__labels', this).remove();
           });
+          $('[data-vp-id="search-page-results"]').show();
         });
         
-
+$('.vp-pagination__inner button').click(function() {
+          $('[data-vp-id="search-page-results"]').hide();  
+});
 
         waitForElm('.search-results__results__label').then((elm) => {
 //          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});

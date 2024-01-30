@@ -1471,6 +1471,9 @@ details.vp-disclosure .vp-disclosure-icon {
 .vp-search-page__subgrid hr, .vp-search-page > hr {
   display: none;
 }
+.vp-search-page .vp-search-input__submit {
+  width: 55px;
+}
 .vp-search-page__results-header {
   display: block;
 }

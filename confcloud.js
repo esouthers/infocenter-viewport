@@ -119,7 +119,7 @@ function confCloudJS() {
 
           let searchIdx = getSearchIndexes(numResults);
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
-          $(elm).remove();
+          $(elm).hide();
 
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
@@ -131,7 +131,8 @@ function confCloudJS() {
           waitForElm('.search-results__results__label').then((elm) => {
             let searchIdx = getSearchIndexes($('#numResults').text());
             $('#startIdx').text(searchIdx[0]);
-            $('#stopIdx').text(searchIdx[1]);
+            $('#stopIdx').text($('#numResults').text() < searchIdx[1] ? $('#numResults').text() : searchIdx[1]);
+
             $(elm).remove();
           });
         });

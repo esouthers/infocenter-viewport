@@ -94,11 +94,18 @@ function confCloudJS() {
             $('.vp-search-result__labels', this).remove();
           });
           $('[data-vp-id="search-page-results"]').show();
+          $('#searchTerm').text($('.vp-search-input__input').val());
+          let numResults = $('.vp-search-result').length;
+          if (numResults < 10) {
+            $('#stopIdx, #numResults').text(numResults);
+          }
+          if (numResults == 0)  { $('.search-header-text').hide(); }
+          else                  { $('.search-header-text').show(); }
         });
         
-$('.vp-pagination__inner button').click(function() {
-          $('[data-vp-id="search-page-results"]').hide();  
-});
+        $('.vp-pagination__inner button').click(function() {
+                  $('[data-vp-id="search-page-results"]').hide();  
+        });
 
         waitForElm('.search-results__results__label').then((elm) => {
           updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
@@ -107,7 +114,7 @@ $('.vp-pagination__inner button').click(function() {
           let numResults = $(elm).text().split(' result')[0];
           let plural = '';
           if (numResults > 1) { plural = 's';}
-          $(elm).before('<h1 class="search-header">Search for \'' + searchTerm + '\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+          $(elm).before('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
           $('#titleBreadcrumb').text($('.search-header').text());
 
           let searchIdx = getSearchIndexes(numResults);

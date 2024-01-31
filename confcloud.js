@@ -95,16 +95,17 @@ function confCloudJS() {
           });
           $('[data-vp-id="search-page-results"]').show();
           $('#searchTerm').text($('.vp-search-input__input').val());
-          let numResults = $('.vp-search-result').length;
-          if (numResults < 10) {
+          let numResultsonPage = $('.vp-search-result').length;
+          if (numResultsonPage < 10) {
+            let numResults = $('.search-results__results__label').text().split(' result')[0];
             $('#stopIdx, #numResults').text(numResults);
           }
-          if (numResults == 0)  { $('.search-header-text').hide(); }
+          if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
           else                  { $('.search-header-text').show(); }
         });
         
         $('.vp-pagination__inner button').click(function() {
-                  $('[data-vp-id="search-page-results"]').hide();  
+          $('[data-vp-id="search-page-results"]').hide();  
         });
 
         waitForElm('.search-results__results__label').then((elm) => {

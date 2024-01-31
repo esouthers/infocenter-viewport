@@ -96,9 +96,10 @@ function confCloudJS() {
           $('[data-vp-id="search-page-results"]').show();
           $('#searchTerm').text($('.vp-search-input__input').val());
           let numResultsonPage = $('.vp-search-result').length;
+          let numResults = $('.search-results__results__label').text().split(' result')[0];
+          $('#numResults').text(numResults);
           if (numResultsonPage < 10) {
-            let numResults = $('.search-results__results__label').text().split(' result')[0];
-            $('#stopIdx, #numResults').text(numResults);
+            $('#stopIdx').text(numResults);
           }
           if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
           else                  { $('.search-header-text').show(); }

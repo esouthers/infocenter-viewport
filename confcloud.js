@@ -734,7 +734,10 @@ function confCloudJS() {
         addIconNextToVersion(newMsg, flagID, 14);
         $('.vp-picker__button span').first().text("Beta");
         var updateVersionButtonLabel = new MutationObserver(function(mutations) {
-          $('.vp-picker__button span').first().text("Beta");
+          let buttonLabel = $('.vp-picker__button span').first();
+          if (buttonLabel.text() != "Beta") {
+            buttonLabel.text("Beta");
+          }
         });
         updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button span'), {attributes: false, childList: true, characterData: false, subtree:true});
       }

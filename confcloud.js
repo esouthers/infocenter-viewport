@@ -740,7 +740,7 @@ function confCloudJS() {
         addIconNextToVersion(newMsg, flagID, 14);
 //        $('.versionSelectGroup .dropdown-content').text("Beta");        
       }
-
+/*
       if (spaceKey == 'MakitoXEnc252') {
         let flagID = 'flagMakito';
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';

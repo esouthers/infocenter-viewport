@@ -295,9 +295,11 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
   background-color: inherit;
   color: inherit;
 }
-.vp-picker__menu__item--active, .vp-picker__menu__item:active, .vp-picker__menu__item:focus, .vp-picker__menu__item:hover,
-.vp-picker__button:active:after, .vp-picker__button:focus:after, .vp-picker__button:hover:after {
+.vp-picker__menu__item--active, .vp-picker__button:active:after, .vp-picker__button:focus:after, .vp-picker__button:hover:after {
   background-color: inherit;
+}
+.vp-picker__menu__item:active, .vp-picker__menu__item:focus, .vp-picker__menu__item:hover {
+  background-color: var(--haiui-gray-11);
 }
 #vp-js-desktop__navigation__picker .vp-picker__button--open .vp-picker__button-icon {
   transform: rotate(270deg);

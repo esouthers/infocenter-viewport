@@ -734,11 +734,11 @@ function confCloudJS() {
         addIconNextToVersion(newMsg, flagID, 14);
       }
       
-/*      if (ifBetaSpace) { // If we are in a space with a beta label. ifBetaSpace defined in include-htmlhead.vm
+      if (window.location.pathname.split('/')[2].indexOf('Beta') > 0) {
         let flagID = 'flagBeta';
         newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
         addIconNextToVersion(newMsg, flagID, 14);
-        $('.versionSelectGroup .dropdown-content').text("Beta");
+//        $('.versionSelectGroup .dropdown-content').text("Beta");        
       }
 
       if (spaceKey == 'MakitoXEnc252') {

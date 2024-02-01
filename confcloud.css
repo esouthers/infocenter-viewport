@@ -1886,6 +1886,7 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
 
 /* Dialogs */
 #dialog-overlay {
+  top: 0px;
   z-index: 200;
   background: rgb(0 0 0);
   opacity: 0.5;

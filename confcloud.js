@@ -727,26 +727,24 @@ function confCloudJS() {
       });
       var newMsg = '';
      
-      if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
-        // Add content to popup window and show it
-        let flagID = 'flagOldVer';
-        newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
-        addIconNextToVersion(newMsg, flagID, 14);
-      }
       
       if (window.location.pathname.split('/')[2].indexOf('Beta') > 0) {
         let flagID = 'flagBeta';
         newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
         addIconNextToVersion(newMsg, flagID, 14);
-//        $('.versionSelectGroup .dropdown-content').text("Beta");        
+        $('.vp-picker__button span').first().text("Beta");
       }
-/*
-      if (spaceKey == 'MakitoXEnc252') {
+      else if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
+        // Add content to popup window and show it
+        let flagID = 'flagOldVer';
+        newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
+        addIconNextToVersion(newMsg, flagID, 14);
+      }
+      if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') > 0) {
         let flagID = 'flagMakito';
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-*/      
       // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
       // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
       //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)

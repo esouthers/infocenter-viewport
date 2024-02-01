@@ -736,7 +736,7 @@ function confCloudJS() {
         var updateVersionButtonLabel = new MutationObserver(function(mutations) {
           $('.vp-picker__button span').first().text("Beta");
         });
-        updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button'), {attributes: false, childList: true, characterData: false, subtree:true});
+        updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button span'), {attributes: false, childList: true, characterData: false, subtree:true});
       }
       else if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
         // Add content to popup window and show it

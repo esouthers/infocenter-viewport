@@ -199,6 +199,7 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
 .vp-article__aside-left {
   top: 0px;
   position: fixed;
+  overflow: hidden;
   z-index: 110;
   height: 100%;
   border: none;

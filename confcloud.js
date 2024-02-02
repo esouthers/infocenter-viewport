@@ -59,18 +59,20 @@ function confCloudJS() {
           }); */
           window.location.replace('https://' + window.location.hostname + '/' + window.location.pathname.split('/')[1]);
         }
-//        let bg404ImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/background-404.png';
-        let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
-        let page404content = '<div class="ht-error-message">' + 
-          '<img height="50px" src="' + hvLogoImgSrc + '">' +
-          '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
-          '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
-        $('main h1, main h2, main p, main .error--search').remove();
-        $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
-      }
-      updateHeader();
-      updateSidebar();
-      updateFooter();
+        else {
+    //        let bg404ImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/background-404.png';
+            let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
+            let page404content = '<div class="ht-error-message">' + 
+              '<img height="50px" src="' + hvLogoImgSrc + '">' +
+              '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
+              '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+            $('main h1, main h2, main p, main .error--search').remove();
+            $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
+          }
+          updateHeader();
+          updateSidebar();
+          updateFooter();
+        }
 
       if (pageSearch) {
 

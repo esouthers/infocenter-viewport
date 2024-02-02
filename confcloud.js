@@ -39,6 +39,26 @@ function confCloudJS() {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
+        if (window.location.pathname.indexOf('/latest') >= 0) {
+/*          let newPath = '';
+          $.each(window.location.pathname.split('/'), function(key,val) {
+            if (key != 0) {
+              if (val != 'latest') {
+                newPath += '/' + val;
+              }
+              else {
+                let prodVersions = parseViewportData();
+                let searchedSpaceKey = window.location.pathname.split('/')[1]; 
+                $.each(prodVersions.members, function(key,val) {
+                  if (val.prefix == searchedSpaceKey) {
+                    newPath += '/' + val.versions.available[0].name;
+                  }
+                });
+              }
+            }
+          }); */
+          window.location.replace('https://' + window.location.hostname + '/' + window.location.pathname.split('/')[1]);
+        }
 //        let bg404ImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/background-404.png';
         let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
         let page404content = '<div class="ht-error-message">' + 
@@ -147,7 +167,7 @@ function confCloudJS() {
     else {
       var removeBetaSpace = new MutationObserver(function(mutations) {
         $('.vp-picker__menu__item').each(function() {
-          if ($(this).text().indexOf('Beta') > 0) {
+          if ($(this).text().indexOf('Beta') >= 0) {
             $(this).remove();
           }
         });
@@ -158,7 +178,7 @@ function confCloudJS() {
 
       waitForElm('.vp-picker__menu').then((elm) => {
         $('.vp-picker__menu__item').each(function() {
-          if ($(this).text().indexOf('Beta') > 0) {
+          if ($(this).text().indexOf('Beta') >= 0) {
             $(this).remove();
           }
         });
@@ -421,7 +441,7 @@ function confCloudJS() {
           let path = window.location.pathname.split('/')[1];
           $('.ic-products-top .vp-tree-item__header__title').each(function() { 
             if ($(this).attr('href')) {
-              if ($(this).attr('href').indexOf(path) > 0) { 
+              if ($(this).attr('href').indexOf(path) >= 0) { 
                 $(this).addClass('current');
                 let currentParent = $(this).parents('ul').first();
                 if (currentParent.hasClass('vp-tree-item__children')) {
@@ -728,7 +748,7 @@ function confCloudJS() {
       var newMsg = '';
      
       
-      if (window.location.pathname.split('/')[2].indexOf('Beta') > 0) {
+      if (window.location.pathname.split('/')[2].indexOf('Beta') >= 0) {
         let flagID = 'flagBeta';
         newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
         addIconNextToVersion(newMsg, flagID, 14);
@@ -747,7 +767,7 @@ function confCloudJS() {
         newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-      if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') > 0) {
+      if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
         let flagID = 'flagMakito';
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);

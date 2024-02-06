@@ -229,10 +229,7 @@ function confCloudJS() {
       let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
       $('#vp-js-desktop__navigation__picker').before(verIcon);
       warningMessage();
-//      let newMsg = '<div id="flagOldVer">You are viewing documentation for Haivision Media Platform 3.6. However, the latest version is 3.9. Documentation is not always updated for older releases.</div>';
-//      addIconNextToVersion(newMsg, flagID, 14);
 //*****************************
-
       
     } // End of processing depending on page type
 
@@ -249,7 +246,7 @@ function confCloudJS() {
         style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
         $(this)[0].shadowRoot.appendChild(style);
       });
-      let baseURL = $('[name="repository-base-url"]').attr('content').replaceAll('../','');
+      let baseURL = $('[name="repository-base-url"]').attr('content').replaceAll('../','').replaceAll('/','');
       let path = window.location.pathname.replaceAll('/','');
       if (baseURL === path) {   // we are on the homepage of the space so add next button
         $('vp-article-pagination').removeAttr('hidden');

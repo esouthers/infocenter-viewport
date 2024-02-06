@@ -76,6 +76,8 @@ function confCloudJS() {
 
       if (pageSearch) {
 
+        updateSidebar();
+
         let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
         let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
         let searchedSpaceName = '';

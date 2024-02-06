@@ -141,7 +141,7 @@ body {
   min-height: 100vh;
 }
 body.flex.flex-col.min-h-screen {
-  display: none;
+/*  display: none; */
 }
 body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu {
   color: var(--haiui-gray-08);

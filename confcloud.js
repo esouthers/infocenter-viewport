@@ -437,9 +437,8 @@ function confCloudJS() {
           productHighlight($('.productlist-type'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
             if (getLocalStorageWithExpiry('productlist-view') == 'family') {
-          //    $('.sort-products > *').removeClass('current');
-              $('ul.productlist-type').addClass('hidden');
-              $('.products-by-type').removeClass('current');
+              $('ul.productlist-type').removeClass('hidden');
+              $('.products-by-type').addClass('current');
             }
             else {
               $('ul.productlist-type').addClass('hidden');

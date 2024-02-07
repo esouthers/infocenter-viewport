@@ -123,6 +123,7 @@ function confCloudJS() {
         });
 
         waitForElm('.search-results__results__label').then((elm) => {
+          $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
           updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
 //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
           let searchTerm = $('.vp-search-input__input').val();

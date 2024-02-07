@@ -487,7 +487,7 @@ function confCloudJS() {
                 let currentParent = $(this).parents('ul').first();
                 if (currentParent.hasClass('vp-tree-item__children')) {
                   currentParent.removeClass('hidden').attr('aria-label','Collapse item');
-                  currentParent.parent().prev().children('.vp-tree-item__header__icon').children('button').removeClass('rotate-0').addClass('rotate-90');
+                  currentParent.parent().children('div').children('.vp-tree-item__header__icon').children('button').removeClass('rotate-0').addClass('rotate-90');
 
                 }
               }

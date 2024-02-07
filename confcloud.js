@@ -442,8 +442,8 @@ function confCloudJS() {
               $('.products-by-type').removeClass('current');
             }
             else {
-              $('ul.productlist-family').addClass('hidden');
-              $('.products-by-family').removeClass('current');
+              $('ul.productlist-type').addClass('hidden');
+              $('.products-by-type').removeClass('current');
             }
           }
 
@@ -459,7 +459,7 @@ function confCloudJS() {
           $('#ic-products').parent().append(productsFamilyHTML);
           productHighlight($('.productlist-family'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
-//            $('#ic-products h3').click();
+            $('.sort-items').removeClass('hidden');
             $('#ic-products').removeClass('current');
             $('#ic-pagetree').addClass('current');
             if (getLocalStorageWithExpiry('productlist-view') == 'family') {

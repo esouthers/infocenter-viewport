@@ -100,6 +100,7 @@ function confCloudJS() {
         updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
         var updateSearchResults = new MutationObserver(function(mutations) {
+          $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
             $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
@@ -122,7 +123,6 @@ function confCloudJS() {
         });
 
         waitForElm('.search-results__results__label').then((elm) => {
-          $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
           updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
 //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
           let searchTerm = $('.vp-search-input__input').val();

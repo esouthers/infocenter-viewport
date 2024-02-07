@@ -593,6 +593,7 @@ function confCloudJS() {
             $('.sort-items').removeClass('hidden');
             if ($('.products-by-family').hasClass('current')) {
               $('ul.productlist-family').removeClass('hidden');
+              $('.products-by-type').removeClass('current');
             }
             else {
               $('.products-by-type').addClass('current');

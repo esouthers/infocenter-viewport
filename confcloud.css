@@ -1461,10 +1461,12 @@ details.vp-disclosure .vp-disclosure-icon {
   z-index: 200;
 }
 .vp-search-page__main-inner {
-  width: 800px;
+  width: 100%;
 }
 .vp-search-page__subgrid {
   margin: 2rem 0;
+  justify-content: start;
+  grid-template-columns: 1fr minmax(min-content,800px) 1fr;
 }
 .vp-search-page__search-bar {
   display: block;

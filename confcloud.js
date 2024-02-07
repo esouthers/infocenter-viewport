@@ -68,11 +68,11 @@ function confCloudJS() {
               '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
             $('main h1, main h2, main p, main .error--search').remove();
             $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
-          }
-          updateHeader();
-          updateSidebar();
-          updateFooter();
         }
+        updateHeader();
+        updateSidebar();
+        updateFooter();
+      }
 
       if (pageSearch) {
         updateHeader();

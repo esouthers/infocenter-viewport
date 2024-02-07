@@ -35,6 +35,7 @@ function confCloudJS() {
     // Start of processing depending on page type
     let page404 = ($('[i18nkey="page.error.status.404.label"]').length > 0);
     let pageSearch = (window.location.pathname == '/search.html');
+    let doNotShowPage = false;
     if (pageSearch || page404) {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
@@ -45,6 +46,7 @@ function confCloudJS() {
           let restOfPath = pathname.substr(latestIdx+7);
           let newPath = 'https://' + window.location.hostname + '/' + pathname.split('/')[1] + restOfPath;
           window.location.replace(newPath);
+          doNotShowPage = true;
         }
         else {
             let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
@@ -225,7 +227,7 @@ function confCloudJS() {
     let sidebarWidth = getLocalStorageWithExpiry('sidebar-width');
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
-    if (!page404) {  $('body').addClass('show'); }
+    if (!doNotShowPage) {  $('body').addClass('show'); }
 
 
     function updatePaginationLinks() {

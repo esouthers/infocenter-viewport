@@ -39,28 +39,14 @@ function confCloudJS() {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-        if (window.location.pathname.indexOf('/latest') >= 0) {
-/*          let newPath = '';
-          $.each(window.location.pathname.split('/'), function(key,val) {
-            if (key != 0) {
-              if (val != 'latest') {
-                newPath += '/' + val;
-              }
-              else {
-                let prodVersions = parseViewportData();
-                let searchedSpaceKey = window.location.pathname.split('/')[1]; 
-                $.each(prodVersions.members, function(key,val) {
-                  if (val.prefix == searchedSpaceKey) {
-                    newPath += '/' + val.versions.available[0].name;
-                  }
-                });
-              }
-            }
-          }); */
-          window.location.replace('https://' + window.location.hostname + '/' + window.location.pathname.split('/')[1]);
+        let pathname = window.location.pathname;
+        let latestIdx = pathname.indexOf('/latest');
+        if (latestIdx >= 0) {
+          let restOfPath = pathname.substr(latestIdx+7);
+          let newPath = 'https://' + window.location.hostname + '/' + pathname.split('/')[1] + restOfPath;
+          window.location.replace(newPath);
         }
         else {
-    //        let bg404ImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/background-404.png';
             let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
             let page404content = '<div class="ht-error-message">' + 
               '<img height="50px" src="' + hvLogoImgSrc + '">' +

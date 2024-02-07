@@ -459,7 +459,7 @@ function confCloudJS() {
           $('#ic-products').parent().append(productsFamilyHTML);
           productHighlight($('.productlist-family'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
-            $('#ic-products h3').click();
+//            $('#ic-products h3').click();
             $('#ic-products').removeClass('current');
             $('#ic-pagetree').addClass('current');
             if (getLocalStorageWithExpiry('productlist-view') == 'family') {

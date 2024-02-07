@@ -435,6 +435,7 @@ function confCloudJS() {
           productsTypeHTML += '</ul>';
           $('#ic-products').parent().append(productsTypeHTML);
           productHighlight();
+
           $('.ic-products-top.productlist-type .vp-tree-item__header__title, .ic-products-top.productlist-type .vp-tree-item__header__icon').click(function() {
             if ($(this).hasClass('vp-tree-item__header__title')) { sidebarExpandoListeners($(this).parent().children().children('button')); }
             else { sidebarExpandoListeners($(this).children('button')); }
@@ -446,6 +447,19 @@ function confCloudJS() {
           productsFamilyHTML += '</ul>';
           $('#ic-products').parent().append(productsFamilyHTML);
           productHighlight();
+          if (getLocalStorageWithExpiry('productlist-view') == 'family') {
+            $('ul.productlist-family').removeClass('hidden');
+            $('.products-by-family').addClass('current');
+        //    $('.sort-products > *').removeClass('current');
+            $('ul.productlist-type').addClass('hidden');
+            $('.products-by-type').removeClass('current');
+          }
+          else {
+            $('ul.productlist-type').removeClass('hidden');
+            $('.products-by-type').addClass('current');
+            $('ul.productlist-family').addClass('hidden');
+            $('.products-by-family').removeClass('current');
+          }
           $('.ic-products-top.productlist-family .vp-tree-item__header__title, .ic-products-top.productlist-family .vp-tree-item__header__icon').click(function() {
             if ($(this).hasClass('vp-tree-item__header__title')) { sidebarExpandoListeners($(this).parent().children().children('button')); }
             else { sidebarExpandoListeners($(this).children('button')); }
@@ -525,12 +539,14 @@ function confCloudJS() {
         $('.sort-products .products-by-type').click(function() {
           $('ul.productlist-type').removeClass('hidden');
           $('.products-by-type').addClass('current');
+          setLocalStorageWithExpiry('productlist-view','type',3650);
           $('ul.productlist-family').addClass('hidden');
           $('.products-by-family').removeClass('current');
         });
         $('.sort-products .products-by-family').click(function() {
           $('ul.productlist-family').removeClass('hidden');
           $('.products-by-family').addClass('current');
+          setLocalStorageWithExpiry('productlist-view','family',3650);
           $('ul.productlist-type').addClass('hidden');
           $('.products-by-type').removeClass('current');
         });

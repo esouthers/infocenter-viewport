@@ -66,6 +66,7 @@ function confCloudJS() {
         updateHeader();
         updateSidebar();
 
+        $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
         let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
         let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
         let searchedSpaceName = '';

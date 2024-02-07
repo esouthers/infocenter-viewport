@@ -436,7 +436,7 @@ function confCloudJS() {
           $('#ic-products').parent().append(productsTypeHTML);
           productHighlight($('.productlist-type'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
-            if (getLocalStorageWithExpiry('productlist-view') == 'family') {
+            if (getLocalStorageWithExpiry('productlist-view') == 'type') {
               $('ul.productlist-type').removeClass('hidden');
               $('.products-by-type').addClass('current');
             }

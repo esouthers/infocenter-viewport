@@ -137,9 +137,11 @@
 
 
 body {
-  display: none;
   overflow-y: auto;
   min-height: 100vh;
+}
+body.flex {
+  display: none;
 }
 body.show {
   display: unset;

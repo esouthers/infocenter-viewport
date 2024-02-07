@@ -664,10 +664,10 @@ function confCloudJS() {
 
       $('[data-width]').each(function() { 
         if (!$(this).attr('height')) { 
-          $(this).attr('width',$(this).attr('data-width') + 'px');
+          $(this).css('width',$(this).attr('data-width') + 'px');
         }
         else {
-          $(this).attr('height',$(this).attr('height') + 'px');
+          $(this).css('height',$(this).attr('height') + 'px');
         }
       });
 

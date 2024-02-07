@@ -662,8 +662,9 @@ function confCloudJS() {
       let maxThumbnailWidth = 30;
       let maxThumbnailHeight = 30; 
 
+      $('[data-width]').each(function() { if (!$(this).attr('height')) { $(this).css('width',$(this).attr('data-width') + 'px') } })        $(figureToFix).addClass('image-inline');
+      
       if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
-        $(figureToFix).addClass('image-inline');
         let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
         if (vpLBToggle.length > 0) {
           $(vpLBToggle[0].shadowRoot).find('button').remove();

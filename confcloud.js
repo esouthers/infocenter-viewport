@@ -662,7 +662,7 @@ function confCloudJS() {
       let maxThumbnailWidth = 30;
       let maxThumbnailHeight = 30; 
 
-      if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth;)) {
+      if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
         $(figureToFix).addClass('image-inline');
         let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
         if (vpLBToggle.length > 0) {

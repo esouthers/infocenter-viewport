@@ -66,7 +66,6 @@ function confCloudJS() {
         updateHeader();
         updateSidebar();
 
-        $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
         let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
         let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
         let searchedSpaceName = '';
@@ -123,6 +122,7 @@ function confCloudJS() {
         });
 
         waitForElm('.search-results__results__label').then((elm) => {
+          $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
           updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
 //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
           let searchTerm = $('.vp-search-input__input').val();

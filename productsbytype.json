@@ -97,7 +97,7 @@
       "name": "Haivision Hub"
     },
     {
-      "url": "/MobileIPVideo/haivision-streamhub",
+      "url": "/StreamHub",
       "name": "StreamHub"
     },
     {
@@ -111,7 +111,7 @@
   ],
   "Decoder & Receiver": [
     {
-      "url": "/MobileIPVideo",
+      "url": "/StreamHub",
       "name": "StreamHub"
     },
     {

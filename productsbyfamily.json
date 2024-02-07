@@ -147,7 +147,7 @@
   ],
   "StreamHub": [
     {
-      "url": "/MobileIPVideo/haivision-streamhub",
+      "url": "/StreamHub",
       "name": "StreamHub"
     }
   ],

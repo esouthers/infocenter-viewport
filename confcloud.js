@@ -435,6 +435,17 @@ function confCloudJS() {
           productsTypeHTML += '</ul>';
           $('#ic-products').parent().append(productsTypeHTML);
           productHighlight();
+          if (getLocalStorageWithExpiry('productlist') == 'true') {
+            if (getLocalStorageWithExpiry('productlist-view') == 'family') {
+          //    $('.sort-products > *').removeClass('current');
+              $('ul.productlist-type').addClass('hidden');
+              $('.products-by-type').removeClass('current');
+            }
+            else {
+              $('ul.productlist-family').addClass('hidden');
+              $('.products-by-family').removeClass('current');
+            }
+          }
 
           $('.ic-products-top.productlist-type .vp-tree-item__header__title, .ic-products-top.productlist-type .vp-tree-item__header__icon').click(function() {
             if ($(this).hasClass('vp-tree-item__header__title')) { sidebarExpandoListeners($(this).parent().children().children('button')); }
@@ -447,23 +458,18 @@ function confCloudJS() {
           productsFamilyHTML += '</ul>';
           $('#ic-products').parent().append(productsFamilyHTML);
           productHighlight();
-          if (getLocalStorageWithExpiry('productlist-view') == 'family') {
-            $('ul.productlist-family').removeClass('hidden');
-            $('.products-by-family').addClass('current');
-        //    $('.sort-products > *').removeClass('current');
-            $('ul.productlist-type').addClass('hidden');
-            $('.products-by-type').removeClass('current');
-          }
-          else {
-            $('ul.productlist-type').removeClass('hidden');
-            $('.products-by-type').addClass('current');
-            $('ul.productlist-family').addClass('hidden');
-            $('.products-by-family').removeClass('current');
-          }
           if (getLocalStorageWithExpiry('productlist') == 'true') {
             $('#ic-products h3').click();
             $('#ic-products').removeClass('current');
             $('#ic-pagetree').addClass('current');
+            if (getLocalStorageWithExpiry('productlist-view') == 'family') {
+              $('ul.productlist-family').removeClass('hidden');
+              $('.products-by-family').addClass('current');
+            }
+            else {
+              $('ul.productlist-family').addClass('hidden');
+              $('.products-by-family').removeClass('current');
+            }
           }
 
           $('.ic-products-top.productlist-family .vp-tree-item__header__title, .ic-products-top.productlist-family .vp-tree-item__header__icon').click(function() {

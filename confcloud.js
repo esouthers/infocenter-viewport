@@ -100,7 +100,7 @@ function confCloudJS() {
         updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
         var updateSearchResults = new MutationObserver(function(mutations) {
-          $('[data-vp-id="search-page-horizontal-filter-content-button"]').removeClass('hidden');
+          $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
           $('.vp-search-result').each(function() {
             let tempText = $('.vp-search-result__content-source', this).text();
             $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());

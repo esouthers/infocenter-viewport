@@ -239,6 +239,7 @@ function confCloudJS() {
     let sidebarWidth = getLocalStorageWithExpiry('sidebar-width');
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
+    $('body').addClass('show');
 
 
     function updatePaginationLinks() {

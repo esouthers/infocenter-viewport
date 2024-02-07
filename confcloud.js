@@ -434,7 +434,7 @@ function confCloudJS() {
           productsTypeHTML = buildSidebarList(data,productsTypeHTML,'type');
           productsTypeHTML += '</ul>';
           $('#ic-products').parent().append(productsTypeHTML);
-          productHighlight();
+          productHighlight($('.productlist-type'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
             if (getLocalStorageWithExpiry('productlist-view') == 'family') {
           //    $('.sort-products > *').removeClass('current');
@@ -457,7 +457,7 @@ function confCloudJS() {
           productsFamilyHTML = buildSidebarList(data,productsFamilyHTML,'family');
           productsFamilyHTML += '</ul>';
           $('#ic-products').parent().append(productsFamilyHTML);
-          productHighlight();
+          productHighlight($('.productlist-family'));
           if (getLocalStorageWithExpiry('productlist') == 'true') {
             $('#ic-products h3').click();
             $('#ic-products').removeClass('current');
@@ -478,9 +478,9 @@ function confCloudJS() {
           });
         }
         // Highlight product in sidebar depending on URL
-        function productHighlight() {
+        function productHighlight(productList) {
           let path = window.location.pathname.split('/')[1];
-          $('.ic-products-top .vp-tree-item__header__title').each(function() { 
+          $('.vp-tree-item__header__title', productList).each(function() { 
             if ($(this).attr('href')) {
               if ($(this).attr('href').indexOf(path) >= 0) { 
                 $(this).addClass('current');

@@ -52,7 +52,7 @@ function confCloudJS() {
             if (matches.length > 0) {
               let newURL = '/' + product.redirect + '/' + matches[0] + '/' + matches[1];
             }
-          }
+          })
           if (newURL) {
             console.log(newURL);
 //            window.location.replace(newURL);

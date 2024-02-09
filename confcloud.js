@@ -46,10 +46,10 @@ function confCloudJS() {
           .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
         });
         function processProductPrefix(jsonObject) {
+          let found = false;
           $.each(jsonObject, function(oldPrefix,prefixList) {
             let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
             let newURL = '/' + prefixList[0].redirect + '/';
-            let found = false;
             for (const match of window.location.pathname.matchAll(regexp)) {
               newURL += match + '/';
               found = true;

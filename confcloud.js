@@ -46,13 +46,13 @@ function confCloudJS() {
           .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
         });
         function processProductPrefix(jsonObject) {
-          $.each(jsonObject, function(sectionTitle,product) {
-            let regexp = new RegExp("/\/" + product + "([^/]+)\/(.+)/g");
+          $.each(jsonObject, function(oldPrefix,prefixList) {
+            let regexp = new RegExp("/\/" + oldPrefix + "([^/]+)\/(.+)","g");
             let matches = window.location.pathname.matchAll(regexp);
             if (matches.length > 0) {
-              let newURL = '/' + product.redirect + '/' + matches[0] + '/' + matches[1];
+              let newURL = '/' + prefixList[0].redirect + '/' + matches[0] + '/' + matches[1];
             }
-          })
+          });
           if (newURL) {
             console.log(newURL);
 //            window.location.replace(newURL);

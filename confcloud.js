@@ -55,8 +55,8 @@ function confCloudJS() {
               found = true;
             }
             if (!found) {
-              let regexp = new RegExp("/\/" + oldPrefix + "(.*)","g");
-              let newURL = '/' + prefixList[0].redirect + '/';
+              regexp = new RegExp("/\/" + oldPrefix + "(.*)","g");
+              newURL = '/' + prefixList[0].redirect + '/';
               for (const match of window.location.pathname.matchAll(regexp)) {
                 newURL += match + '/';
                 found = true;

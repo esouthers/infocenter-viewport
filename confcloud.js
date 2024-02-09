@@ -56,7 +56,7 @@ function confCloudJS() {
               window.location.replace('https://' + window.location.hostname + newURL);
             }
             if (!found) {
-              regexp = new RegExp("/" + oldPrefix + "(.*)","g");
+              regexp = new RegExp("/" + oldPrefix + "([0-9.]+)","g");
               newURL = '/' + prefixList[0].redirect + '/';
               for (const match of window.location.pathname.matchAll(regexp)) {
                 newURL += match[1] + '/';

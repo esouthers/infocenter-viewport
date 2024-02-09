@@ -58,7 +58,7 @@ function confCloudJS() {
               newURL += match + '/';
               found = true;
             }
-          });
+          }); 
           if (found) {
             console.log(newURL);
 //            window.location.replace(newURL);

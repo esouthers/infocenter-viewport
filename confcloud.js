@@ -48,6 +48,7 @@ function confCloudJS() {
         function processProductPrefix(jsonObject) {
           let found = false;
           $.each(jsonObject, function(oldPrefix,prefixList) {
+            $('body').removeClass('show')
             let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
             let newURL = '/' + prefixList[0].redirect + '/';
             for (const match of window.location.pathname.matchAll(regexp)) {
@@ -55,6 +56,7 @@ function confCloudJS() {
               found = true;
               window.location.replace('https://' + window.location.hostname + newURL);
               doNotShowPage = true;
+              $('body').addClass('show')
             }
             if (!found) {
               regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
@@ -64,6 +66,7 @@ function confCloudJS() {
                 found = true;
                 window.location.replace('https://' + window.location.hostname + newURL);
                 doNotShowPage = true;
+                $('body').addClass('show')
               }
             }
           }); 

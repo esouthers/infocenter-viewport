@@ -47,7 +47,7 @@ function confCloudJS() {
         });
         function processProductPrefix(jsonObject) {
           $.each(jsonObject, function(oldPrefix,prefixList) {
-            let regexp = new RegExp("/\/" + oldPrefix + "([^/]+)\/(.+)","g");
+            let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
             let newURL = '/' + prefixList[0].redirect + '/';
             let found = false;
             for (const match of window.location.pathname.matchAll(regexp)) {
@@ -55,7 +55,7 @@ function confCloudJS() {
               found = true;
             }
             if (!found) {
-              regexp = new RegExp("/\/" + oldPrefix + "(.*)","g");
+              regexp = new RegExp("/" + oldPrefix + "(.*)","g");
               newURL = '/' + prefixList[0].redirect + '/';
               for (const match of window.location.pathname.matchAll(regexp)) {
                 newURL += match + '/';

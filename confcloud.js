@@ -54,6 +54,7 @@ function confCloudJS() {
               newURL += match[1] + '/' + match[2];
               found = true;
               window.location.replace('https://' + window.location.hostname + newURL);
+              doNotShowPage = true;
             }
             if (!found) {
               regexp = new RegExp("/" + oldPrefix + "([0-9.]+)","g");
@@ -62,6 +63,7 @@ function confCloudJS() {
                 newURL += match[1] + '/';
                 found = true;
                 window.location.replace('https://' + window.location.hostname + newURL);
+                doNotShowPage = true;
               }
             }
           }); 

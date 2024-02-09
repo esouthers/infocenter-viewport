@@ -44,7 +44,14 @@ function confCloudJS() {
         let latestIdx = pathname.indexOf('/latest');
         if (latestIdx >= 0) {
           let restOfPath = pathname.substr(latestIdx+7);
-          let newPath = 'https://' + window.location.hostname + '/' + pathname.split('/')[1] + restOfPath;
+          let productPrefix = pathname.split('/')[1];
+          let prodVersions = parseViewportData();
+          $.each(prodVersions.members, function(key, prod) { 
+            if ((prod.prefix == productPrefix) && (prod.versions)) {
+              latestVer = prod.versions.available[0].name;
+            }
+          });
+          let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + restOfPath;
           window.location.replace(newPath);
           doNotShowPage = true;
         }

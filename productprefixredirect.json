@@ -1,0 +1,167 @@
+{
+  "Command360": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "CDVR": [
+    {
+      "redirect": "CDVR"
+    }
+  ],
+  "CS": [
+    {
+      "redirect": "CoolSign"
+    }
+  ],
+  "EMS": [
+    {
+      "redirect": "EMS"
+    }
+  ],
+  "Furnace": [
+    {
+      "redirect": "Furnace"
+    }
+  ],
+  "hai1000": [
+    {
+      "redirect": "hai1000"
+    }
+  ],
+  "HaiHelper": [
+    {
+      "redirect": "Helper"
+    }
+  ],
+  "HMG": [
+    {
+      "redirect": "HMG"
+    }
+  ],
+  "HMP": [
+    {
+      "redirect": "HMP"
+    }
+  ],
+  "Hub": [
+    {
+      "redirect": "Hub"
+    }
+  ],
+  "Hub360": [
+    {
+      "redirect": "Hub360"
+    }
+  ],
+  "KB": [
+    {
+      "redirect": "KB"
+    }
+  ],
+  "Kraken": [
+    {
+      "redirect": "Kraken"
+    }
+  ],
+  "LightFlow": [
+    {
+      "redirect": "LightFlow"
+    }
+  ],
+  "MakitoDec": [
+    {
+      "redirect": "MakitoDec"
+    }
+  ],
+  "MakitoEnc": [
+    {
+      "redirect": "MakitoEnc"
+    }
+  ],
+  "MakitoXDec": [
+    {
+      "redirect": "MakitoXDec"
+    }
+  ],
+  "MakitoXEnc": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "MFXE": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "MakitoX1Enc": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "MakitoX4Dec": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "MakitoX4Enc": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "Mantaray": [
+    {
+      "redirect": "Mantaray"
+    }
+  ],
+  "MCSYNC": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "MJPiOS": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "HPM": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "HPPM": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "PlayProiOS": [
+    {
+      "redirect": "FOO"
+    }
+  ],
+  "STB": [
+    {
+      "redirect": "Play1000STB"
+    }
+  ],
+  "Play20004000STB": [
+    {
+      "redirect": "Play20004000STB"
+    }
+  ],
+  "Stingray": [
+    {
+      "redirect": "Stingray"
+    }
+  ],
+  "StreamHub": [
+    {
+      "redirect": "StreamHub"
+    }
+  ],
+  "Torpedo": [
+    {
+      "redirect": "Torpedo"
+    }
+  ]
+}

@@ -42,6 +42,19 @@ function confCloudJS() {
       if (page404) {
         let pathname = window.location.pathname;
         let latestIdx = pathname.indexOf('/latest');
+        $.getJSON('https://esouthers.github.io/infocenter-viewport/productprefixredirect.json', function(data) { processProductPrefix(data); })
+          .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
+        });
+        function processProductPrefix(jsonObject) {
+          $.each(jsonObject, function(sectionTitle,product) {
+            let regexp = new RegExp("/\/" + product + "([^/]+)\/(.+)/g");
+            let matches = window.location.pathname.matchAll(regexp);
+            let newURL = '/' + product.redirect + '/' + match[0] + '/' + match[1];
+          }
+          console.log(newURL);
+//          window.location.replace(newURL);
+        }
+            
         if (latestIdx >= 0) {
           let restOfPath = pathname.substr(latestIdx+7);
           let newPath = 'https://' + window.location.hostname + '/' + pathname.split('/')[1] + restOfPath;

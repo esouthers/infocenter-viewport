@@ -53,7 +53,7 @@ function confCloudJS() {
             for (const match of window.location.pathname.matchAll(regexp)) {
               newURL += match[1] + '/' + match[2];
               found = true;
-              console.log(newURL);
+              window.location.replace('https://' + window.location.hostname + newURL);
             }
             if (!found) {
               regexp = new RegExp("/" + oldPrefix + "(.*)","g");
@@ -61,7 +61,7 @@ function confCloudJS() {
               for (const match of window.location.pathname.matchAll(regexp)) {
                 newURL += match[1] + '/';
                 found = true;
-                console.log(newURL);
+                window.location.replace('https://' + window.location.hostname + newURL);
               }
             }
           }); 

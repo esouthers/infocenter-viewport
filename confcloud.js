@@ -58,10 +58,10 @@ function confCloudJS() {
               regexp = new RegExp("/" + oldPrefix + "(.*)","g");
               newURL = '/' + prefixList[0].redirect + '/';
               for (const match of window.location.pathname.matchAll(regexp)) {
-                newURL += match + '/';
+                newURL += match[1] + '/';
                 found = true;
+                console.log(newURL);
               }
-              console.log(newURL);
             }
             else {
               console.log(newURL);

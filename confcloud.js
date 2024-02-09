@@ -42,36 +42,6 @@ function confCloudJS() {
       if (page404) {
         let pathname = window.location.pathname;
         let latestIdx = pathname.indexOf('/latest');
-        $.getJSON('https://esouthers.github.io/infocenter-viewport/productprefixredirect.json', function(data) { processProductPrefix(data); })
-          .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
-        });
-        function processProductPrefix(jsonObject) {
-          let found = false;
-          $.each(jsonObject, function(oldPrefix,prefixList) {
-            $('body').removeClass('show')
-            let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
-            let newURL = '/' + prefixList[0].redirect + '/';
-            for (const match of window.location.pathname.matchAll(regexp)) {
-              newURL += match[1] + '/' + match[2].replace('index.html','').split('/').pop();
-              found = true;
-              window.location.replace('https://' + window.location.hostname + newURL);
-              doNotShowPage = true;
-              $('body').addClass('show')
-            }
-            if (!found) {
-              regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
-              newURL = '/' + prefixList[0].redirect + '/';
-              for (const match of window.location.pathname.matchAll(regexp)) {
-                newURL += match[1] + '/';
-                found = true;
-                window.location.replace('https://' + window.location.hostname + newURL);
-                doNotShowPage = true;
-                $('body').addClass('show')
-              }
-            }
-          }); 
-        }
-            
         if (latestIdx >= 0) {
           let restOfPath = pathname.substr(latestIdx+7);
           let newPath = 'https://' + window.location.hostname + '/' + pathname.split('/')[1] + restOfPath;
@@ -79,13 +49,43 @@ function confCloudJS() {
           doNotShowPage = true;
         }
         else {
-            let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
-            let page404content = '<div class="ht-error-message">' + 
-              '<img height="50px" src="' + hvLogoImgSrc + '">' +
-              '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
-              '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
-            $('main h1, main h2, main p, main .error--search').remove();
-            $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
+          $.getJSON('https://esouthers.github.io/infocenter-viewport/productprefixredirect.json', function(data) { processProductPrefix(data); })
+            .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
+          });
+          function processProductPrefix(jsonObject) {
+            let found = false;
+            $.each(jsonObject, function(oldPrefix,prefixList) {
+              $('body').removeClass('show')
+              let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
+              let newURL = '/' + prefixList[0].redirect + '/';
+              for (const match of window.location.pathname.matchAll(regexp)) {
+                newURL += match[1] + '/' + match[2].replace('index.html','').split('/').pop();
+                found = true;
+                window.location.replace('https://' + window.location.hostname + newURL);
+                doNotShowPage = true;
+                $('body').addClass('show')
+              }
+              if (!found) {
+                regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
+                newURL = '/' + prefixList[0].redirect + '/';
+                for (const match of window.location.pathname.matchAll(regexp)) {
+                  newURL += match[1] + '/';
+                  found = true;
+                  window.location.replace('https://' + window.location.hostname + newURL);
+                  doNotShowPage = true;
+                  $('body').addClass('show')
+                }
+              }
+            }); 
+          }
+              
+          let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
+          let page404content = '<div class="ht-error-message">' + 
+            '<img height="50px" src="' + hvLogoImgSrc + '">' +
+            '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
+            '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+          $('main h1, main h2, main p, main .error--search').remove();
+          $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
         }
         updateHeader();
         updateSidebar();

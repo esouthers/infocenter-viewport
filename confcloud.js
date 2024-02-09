@@ -61,12 +61,12 @@ function confCloudJS() {
                 newURL += match + '/';
                 found = true;
               }
+              console.log(newURL);
+            }
+            else {
+              console.log(newURL);
             }
           }); 
-          if (found) {
-            console.log(newURL);
-//            window.location.replace(newURL);
-          }
         }
             
         if (latestIdx >= 0) {

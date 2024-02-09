@@ -49,11 +49,17 @@ function confCloudJS() {
           $.each(jsonObject, function(oldPrefix,prefixList) {
             let regexp = new RegExp("/\/" + oldPrefix + "([^/]+)\/(.+)","g");
             let matches = window.location.pathname.matchAll(regexp);
-            if (matches.length > 0) {
+/*             if (matches.length > 0) {
               let newURL = '/' + prefixList[0].redirect + '/' + matches[0] + '/' + matches[1];
+            } */
+            let newURL = '/' + prefixList[0].redirect;
+            let found = false;
+            for (const match of window.location.pathname.matchAll(regexp)) {
+              newURL += match + '/';
+              found = true;
             }
           });
-          if (newURL) {
+          if (found) {
             console.log(newURL);
 //            window.location.replace(newURL);
           }

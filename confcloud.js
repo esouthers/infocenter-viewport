@@ -49,7 +49,9 @@ function confCloudJS() {
           $.each(jsonObject, function(sectionTitle,product) {
             let regexp = new RegExp("/\/" + product + "([^/]+)\/(.+)/g");
             let matches = window.location.pathname.matchAll(regexp);
-            let newURL = '/' + product.redirect + '/' + match[0] + '/' + match[1];
+            if (matches.length > 0) {
+              let newURL = '/' + product.redirect + '/' + matches[0] + '/' + matches[1];
+            }
           }
           console.log(newURL);
 //          window.location.replace(newURL);

@@ -53,8 +53,10 @@ function confCloudJS() {
               let newURL = '/' + product.redirect + '/' + matches[0] + '/' + matches[1];
             }
           }
-          console.log(newURL);
-//          window.location.replace(newURL);
+          if (newURL) {
+            console.log(newURL);
+//            window.location.replace(newURL);
+          }
         }
             
         if (latestIdx >= 0) {

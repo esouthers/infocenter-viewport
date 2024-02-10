@@ -104,9 +104,12 @@ function confCloudJS() {
             let viewportList = parseViewportData();
             $.each(viewportList.members, function(key,val) {
               if ((val.prefix != 'Home') && (val.prefix == pathnameSplit[1])) {
-                found = true;
-                doNotShowPage = true;
-                window.location.replace('https://' + window.location.hostname + '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.pop());
+                newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.pop();
+                if (newPath != window.location.pathname) {
+                  found = true;
+                  doNotShowPage = true;
+                  window.location.replace('https://' + window.location.hostname + newPath);
+                }
                 return false;
               }
             });

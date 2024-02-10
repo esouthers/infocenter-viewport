@@ -64,8 +64,8 @@ function confCloudJS() {
                   found = true;
                   doNotShowPage = true;
                   window.location.replace('https://' + window.location.hostname + newPath);
-                  return false; 
                 }
+                return false;
               }
             });
 
@@ -73,10 +73,10 @@ function confCloudJS() {
               // if space doesn't have version but still long URL
               $.each(viewportList.members, function(key,val) {
                 if (val.prefix == pathnameSplit[1]) {
-                    found = true;
-                    doNotShowPage = false;
+                  found = true;
+                  doNotShowPage = false;
+                  return false;
                 }
-                return false;
               });
               if (pathnameSplit[1] != 'Home') {
                 window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);

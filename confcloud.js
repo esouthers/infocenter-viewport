@@ -115,7 +115,7 @@ function confCloudJS() {
                 latestVer = prod.versions.available[0].name;
               }
             });
-            let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + restOfPath;
+            let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + path.split('/').pop();
             window.location.replace(newPath);
             doNotShowPage = true;
             return true;

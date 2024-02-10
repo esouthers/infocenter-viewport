@@ -107,7 +107,6 @@ function confCloudJS() {
         function forwardIfLatest(path) {
           let latestIdx = path.indexOf('/latest');
           if (latestIdx >= 0) {
-            let restOfPath = path.substr(latestIdx+7);
             let productPrefix = path.split('/')[1];
             let viewportList = parseViewportData();
             $.each(viewportList.members, function(key, prod) { 
@@ -115,7 +114,13 @@ function confCloudJS() {
                 latestVer = prod.versions.available[0].name;
               }
             });
-            let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + path.split('/').pop();
+            let lastofPath = path.split('/').pop();
+            if (lastofPath.indexOf('latest') < 0) {
+              let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
+            }
+            else {
+              let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer
+            }
             window.location.replace(newPath);
             doNotShowPage = true;
             return true;

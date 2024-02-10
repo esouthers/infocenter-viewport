@@ -788,11 +788,12 @@ function confCloudJS() {
 
     // Fix images Sizes
     function fixImageSizes(figureToFix) {
-      if (!$(figureToFix).attr('height')) { 
-        $(figureToFix).css('width',$(figureToFix).attr('data-width') + 'px');
+      let img = $('img', figureToFix)
+      if (!$(img).attr('height')) { 
+        $(img).css('width',$(img).attr('data-width') + 'px');
       }
       else {
-        $(figureToFix).css('height',$(figureToFix).attr('height') + 'px');
+        $(img).css('height',$(img).attr('height') + 'px');
       }
     }
     $.fn.isInViewport = function(elementOffset) {

@@ -46,219 +46,215 @@ function confCloudJS() {
       $('#content').before(sidebar);
       if (page404) {
         process404pages();
-        function process404pages() {
-          let pathname = window.location.pathname;
-          // Test if latest in the URL, e.g. /HMP/latest
-          let found = forwardIfLatest(pathname);
-          // Test if using old product-version path format, e.g. /HMP3.10.2
-          if (!found) {  
-            found = forwardIfProdVer(pathname);
-          }
-          // Test if using a link with a nested URL, e.g. /HMP3.10.2/quick-start-guides/server-quick-start-guide/connecting-the-server
-          if (!found) {
-            found = forwardNestedURL(pathname);            
-          }
-          // Done forwarding functions, so let's just show the 404 page
-          if (!found) {              
-            let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
-            let page404content = '<div class="ht-error-message">' + 
-              '<img height="50px" src="' + hvLogoImgSrc + '">' +
-              '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
-              '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
-            $('main h1, main h2, main p, main .error--search').remove();
-            $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
-            updateHeader();
-            updateSidebar();
-            updateFooter();
-          }
+      }
+      function process404pages() {
+        let pathname = window.location.pathname;
+        // Test if latest in the URL, e.g. /HMP/latest
+        let found = forwardIfLatest(pathname);
+        // Test if using old product-version path format, e.g. /HMP3.10.2
+        if (!found) {  
+          found = forwardIfProdVer(pathname);
+        }
+        // Test if using a link with a nested URL, e.g. /HMP3.10.2/quick-start-guides/server-quick-start-guide/connecting-the-server
+        if (!found) {
+          found = forwardNestedURL(pathname);            
+        }
+        // Done forwarding functions, so let's just show the 404 page
+        if (!found) {              
+          let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
+          let page404content = '<div class="ht-error-message">' + 
+            '<img height="50px" src="' + hvLogoImgSrc + '">' +
+            '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
+            '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+          $('main h1, main h2, main p, main .error--search').remove();
+          $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
+          updateHeader();
+          updateSidebar();
+          updateFooter();
         }
       }
-        function forwardIfLatest(path) {
-          path = path.replace('/index.html','');
-          let latestIdx = path.indexOf('/latest');
-          if (latestIdx >= 0) {
-            let productPrefix = path.split('/')[1];
-            let viewportList = parseViewportData();
-            $.each(viewportList.members, function(key, prod) { 
-              if ((prod.prefix == productPrefix) && (prod.versions)) {
-                latestVer = prod.versions.available[0].name;
-              }
-            });
-            let lastofPath = path.split('/').pop();
-            if (lastofPath.indexOf('latest') < 0) {
-              newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
+      function forwardIfLatest(path) {
+        path = path.replace('/index.html','');
+        let latestIdx = path.indexOf('/latest');
+        if (latestIdx >= 0) {
+          let productPrefix = path.split('/')[1];
+          let viewportList = parseViewportData();
+          $.each(viewportList.members, function(key, prod) { 
+            if ((prod.prefix == productPrefix) && (prod.versions)) {
+              latestVer = prod.versions.available[0].name;
             }
-            else {
-              newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer
-            }
-            window.location.replace(newPath);
-            doNotShowPage = true;
-            return true;
+          });
+          let lastofPath = path.split('/').pop();
+          if (lastofPath.indexOf('latest') < 0) {
+            newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
           }
+          else {
+            newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer
+          }
+          window.location.replace(newPath);
+          doNotShowPage = true;
+          return true;
         }
-        function forwardIfProdVer(path) {
-          let jsonObject = $.parseJSON(productRedirectJSON);
+      }
+      function forwardIfProdVer(path) {
+        let jsonObject = $.parseJSON(productRedirectJSON);
 //          $.getJSON('https://esouthers.github.io/infocenter-viewport/productprefixredirect.json', function(data) { processProductPrefix(data); })
 //            .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
 //          });
 //          function processProductPrefix(jsonObject) {
-          let found = false;
-          $.each(jsonObject, function(oldPrefix,prefixList) {
-            $('body').removeClass('show')
-            let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
-            let newURL = '/' + prefixList[0].redirect + '/';
+        let found = false;
+        $.each(jsonObject, function(oldPrefix,prefixList) {
+          $('body').removeClass('show')
+          let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
+          let newURL = '/' + prefixList[0].redirect + '/';
+          for (const match of window.location.pathname.matchAll(regexp)) {
+            newURL += match[1] + '/' + match[2].replace('index.html','').split('/').slice(-1)[0];
+            found = true;
+            doNotShowPage = true;
+            window.location.replace('https://' + window.location.hostname + newURL);
+            return false;
+          }
+          if (!found) {
+            regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
+            newURL = '/' + prefixList[0].redirect + '/';
             for (const match of window.location.pathname.matchAll(regexp)) {
-              newURL += match[1] + '/' + match[2].replace('index.html','').split('/').slice(-1)[0];
+              newURL += match[1] + '/';
               found = true;
               doNotShowPage = true;
               window.location.replace('https://' + window.location.hostname + newURL);
               return false;
             }
-            if (!found) {
-              regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
-              newURL = '/' + prefixList[0].redirect + '/';
-              for (const match of window.location.pathname.matchAll(regexp)) {
-                newURL += match[1] + '/';
+          }
+        }); 
+//        }
+        return found;
+      }
+      function forwardNestedURL(pathname) {
+        let found = false;
+        let pathnameSplit = window.location.pathname.split('/');
+        if (pathnameSplit.length > 1) {
+          $.each(viewportList.members, function(key,val) {
+            if (val.prefix == pathnameSplit[1]) {
+              if (val.versions === undefined) {
+                newPath = '/' + val.prefix + '/' + pathnameSplit.slice(-1)[0];
+              }
+              else {
+                newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
+              }
+              if (newPath != window.location.pathname) {
                 found = true;
                 doNotShowPage = true;
-                window.location.replace('https://' + window.location.hostname + newURL);
-                return false;
+                window.location.replace('https://' + window.location.hostname + newPath);
               }
+              return false;
             }
-          }); 
-//        }
-          return found;
-        }
-        function forwardNestedURL(pathname) {
-          let found = false;
-          let pathnameSplit = window.location.pathname.split('/');
-          if (pathnameSplit.length > 1) {
+          });
+
+          if (!found) {
+            // For Home space
+            let foundProd = false;
             $.each(viewportList.members, function(key,val) {
               if (val.prefix == pathnameSplit[1]) {
-                if (val.versions === undefined) {
-                  newPath = '/' + val.prefix + '/' + pathnameSplit.slice(-1)[0];
-                }
-                else {
-                  newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
-                }
-                if (newPath != window.location.pathname) {
-                  found = true;
-                  doNotShowPage = true;
-                  window.location.replace('https://' + window.location.hostname + newPath);
-                }
+                foundProd = true;
+                doNotShowPage = false;
                 return false;
               }
             });
-
-            if (!found) {
-              // For Home space
-              let foundProd = false;
-              $.each(viewportList.members, function(key,val) {
-                if (val.prefix == pathnameSplit[1]) {
-                  foundProd = true;
-                  doNotShowPage = false;
-                  return false;
-                }
-              });
-              if (!foundProd) {
-                window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.replace('/index.html','').split('/').pop());
-                doNotShowPage = true;
-                found = true;
-              }
+            if (!foundProd) {
+              window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.replace('/index.html','').split('/').pop());
+              doNotShowPage = true;
+              found = true;
             }
           }
-          return found;
         }
+        return found;
+      }
 
       if (pageSearch) {
         updateHeader();
         updateSidebar();
 
-        let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
-        let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
-        let searchedSpaceName = '';
-        $.each(viewportList.members, function(key,val) {
-          if (val.prefix == searchedSpaceKey) {
-            searchedSpaceName = val.name;
-          }
-        });
-        $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
-        let exitSearchText = 'Exit Search Results';
-        let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
-        $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
-          '<div data-item-id="" class="vp-tree-item__header relative flex items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + exitSearchLink + '">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
-          '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
-
-/*        let searchHTML = '<div class="my-auto list-none ml-4"><form role="search" id="search-form-ixz9artdwd" method="GET" action="/search.html" data-vp-id="vp-search-form" class="flex w-full justify-center"><div data-vp-component="search-bar" data-vp-variant="" class="vp-search-bar has-suggestions">' +
-          '</div></form><div></div><script data-vp-id="search-bar-config" type="application/json"> { "hasContentSourceFilter": false, "hasQuickSearch": true, "variant": "" } </script></div>';
-        $('.header__navigation--large__menu').append(searchHTML);
-        $('.vp-search-bar__input-container').detach().appendTo($('.vp-search-bar'));
-        $('.vp-search-input').attr('data-vp-variant','border').addClass('vp-search-input--border');
-        $('.vp-search-input__input').removeAttr('aria-expanded role aria-controls').attr('aria-autocomplete','list').attr('placeholder','How can we help you?');
-        $('.vp-search-input__submit').removeAttr('form');
-*/
-        updateBreadcrumbs();
-
-        var updateSearchIndexes = new MutationObserver(function(mutations) {
-          let searchIdx = getSearchIndexes(numResults);
-          $('#startIdx').text(searchIdx[0]);
-          $('#stopIdx').text(searchIdx[1]);
-        });
-        updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
-
-        var updateSearchResults = new MutationObserver(function(mutations) {
-          $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
-          $('.vp-search-result').each(function() {
-            let tempText = $('.vp-search-result__content-source', this).text();
-            $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
-            $('.vp-search-result__labels', this).remove();
+        processSearchPage();
+        function processSearchPage() {
+          let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
+          let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
+          let searchedSpaceName = '';
+          $.each(viewportList.members, function(key,val) {
+            if (val.prefix == searchedSpaceKey) {
+              searchedSpaceName = val.name;
+            }
           });
-          $('[data-vp-id="search-page-results"]').show();
-          $('#searchTerm').text($('.vp-search-input__input').val());
-          let numResultsonPage = $('.vp-search-result').length;
-          let numResults = $('.search-results__results__label').text().split(' result')[0];
-          $('#numResults').text(numResults);
-          if (numResultsonPage < 10) {
-            $('#stopIdx').text(numResults);
-          }
-          if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
-          else                  { $('.search-header-text').show(); }
-        });
-        
-        $('.vp-pagination__inner button').click(function() {
-          $('[data-vp-id="search-page-results"]').hide();  
-        });
+          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
+          let exitSearchText = 'Exit Search Results';
+          let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
+          $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
+            '<div data-item-id="" class="vp-tree-item__header relative flex items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + exitSearchLink + '">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
+            '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
 
-        waitForElm('.search-results__results__label').then((elm) => {
-          $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
-          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
-//          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
-          let searchTerm = $('.vp-search-input__input').val();
-          let numResults = $(elm).text().split(' result')[0];
-          let plural = '';
-          if (numResults > 1) { plural = 's';}
-          $(elm).before('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
-          $('#titleBreadcrumb').text($('.search-header').text());
+          updateBreadcrumbs();
 
-          let searchIdx = getSearchIndexes(numResults);
-          $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
-          $(elm).hide();
-
-          $('.vp-search-result').each(function() {
-            let tempText = $('.vp-search-result__content-source', this).text();
-            $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
-            $('.vp-search-result__labels', this).remove();
-          });
-        });
-        $('.vp-pagination__inner button').on('click', function(e){
-          waitForElm('.search-results__results__label').then((elm) => {
-            let searchIdx = getSearchIndexes($('#numResults').text());
+          var updateSearchIndexes = new MutationObserver(function(mutations) {
+            let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);
-            $('#stopIdx').text($('#numResults').text() < searchIdx[1] ? $('#numResults').text() : searchIdx[1]);
-
-            $(elm).remove();
+            $('#stopIdx').text(searchIdx[1]);
           });
-        });
+          updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
+
+          var updateSearchResults = new MutationObserver(function(mutations) {
+            $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
+            $('.vp-search-result').each(function() {
+              let tempText = $('.vp-search-result__content-source', this).text();
+              $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+              $('.vp-search-result__labels', this).remove();
+            });
+            $('[data-vp-id="search-page-results"]').show();
+            $('#searchTerm').text($('.vp-search-input__input').val());
+            let numResultsonPage = $('.vp-search-result').length;
+            let numResults = $('.search-results__results__label').text().split(' result')[0];
+            $('#numResults').text(numResults);
+            if (numResultsonPage < 10) {
+              $('#stopIdx').text(numResults);
+            }
+            if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
+            else                  { $('.search-header-text').show(); }
+          });
+          
+          $('.vp-pagination__inner button').click(function() {
+            $('[data-vp-id="search-page-results"]').hide();  
+          });
+
+          waitForElm('.search-results__results__label').then((elm) => {
+            $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
+            updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
+  //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
+            let searchTerm = $('.vp-search-input__input').val();
+            let numResults = $(elm).text().split(' result')[0];
+            let plural = '';
+            if (numResults > 1) { plural = 's';}
+            $(elm).before('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+            $('#titleBreadcrumb').text($('.search-header').text());
+
+            let searchIdx = getSearchIndexes(numResults);
+            $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
+            $(elm).hide();
+
+            $('.vp-search-result').each(function() {
+              let tempText = $('.vp-search-result__content-source', this).text();
+              $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+              $('.vp-search-result__labels', this).remove();
+            });
+          });
+          $('.vp-pagination__inner button').on('click', function(e){
+            waitForElm('.search-results__results__label').then((elm) => {
+              let searchIdx = getSearchIndexes($('#numResults').text());
+              $('#startIdx').text(searchIdx[0]);
+              $('#stopIdx').text($('#numResults').text() < searchIdx[1] ? $('#numResults').text() : searchIdx[1]);
+
+              $(elm).remove();
+            });
+          });
+        }
+
       }
     }
     // Redirect to homepage

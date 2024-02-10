@@ -97,6 +97,8 @@ function confCloudJS() {
         if (!found) {
 
           if (window.location.pathname.split('/').length > 1) {
+            window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
+            doNotShowPage = true;
           }
               
           let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';

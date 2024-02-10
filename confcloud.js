@@ -110,9 +110,11 @@ function confCloudJS() {
               }
             });
             if (!found) {
-              window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
-              doNotShowPage = true;
-              found = true;
+              if (pathnameSplit[1] != Home) {
+                window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
+                doNotShowPage = true;
+                found = true;
+              }
             }
           }
         }

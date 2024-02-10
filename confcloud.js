@@ -64,6 +64,7 @@ function confCloudJS() {
                   found = true;
                   doNotShowPage = true;
                   window.location.replace('https://' + window.location.hostname + newPath);
+                  return false;
                 }
               }
             });

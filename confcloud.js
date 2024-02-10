@@ -105,6 +105,7 @@ function confCloudJS() {
         }
       }
         function forwardIfLatest(path) {
+          path = path.replace('/index.html','');
           let latestIdx = path.indexOf('/latest');
           if (latestIdx >= 0) {
             let productPrefix = path.split('/')[1];
@@ -115,7 +116,6 @@ function confCloudJS() {
               }
             });
             let lastofPath = path.split('/').pop();
-            if (lastofPath == 'index.html') { lastofPath = path.split('/').pop().pop() }
             if (lastofPath.indexOf('latest') < 0) {
               newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
             }

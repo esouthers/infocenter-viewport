@@ -59,7 +59,12 @@ function confCloudJS() {
             
             $.each(viewportList.members, function(key,val) {
               if (val.prefix == pathnameSplit[1]) {
-                newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
+                if (val.versions === undefined) {
+                  newPath = '/' + val.prefix + '/' + pathnameSplit.slice(-1)[0];
+                }
+                else {
+                  newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
+                }
                 if (newPath != window.location.pathname) {
                   found = true;
                   doNotShowPage = true;

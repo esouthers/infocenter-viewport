@@ -99,11 +99,21 @@ function confCloudJS() {
           }
         }
         if (!found) {
-
-          if (window.location.pathname.split('/').length > 1) {
-            window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
-            doNotShowPage = true;
-            found = true;
+          let pathnameSplit = window.location.pathname.split('/');
+          if (pathnameSplit.length > 1) {
+            let viewportList = parseViewportData();
+            $.each(viewportList.members, function(key,val) {
+              if (val.prefix == pathnameSplit[1]) {
+                found = true;
+                window.location.replace('https://' + window.location.hostname + '/' + val.prefix + '/' + pathnameSplit.pop());
+                return false;
+              }
+            });
+            if (!found) {
+              window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
+              doNotShowPage = true;
+              found = true;
+            }
           }
         }
         if (!found) {              

@@ -45,64 +45,32 @@ function confCloudJS() {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-        let pathname = window.location.pathname;
-        // Test if latest in the URL, e.g. /HMP/latest
-        let found = forwardIfLatest(pathname);
-        // Test if using old product-version path format, e.g. /HMP3.10.2
-        if (!found) {  
-          found = forwardIfProdVer(pathname);
-        }
-        // Test if using a link with a nested URL, e.g. /HMP3.10.2/quick-start-guides/server-quick-start-guide/connecting-the-server
-        if (!found) {
-          let pathnameSplit = window.location.pathname.split('/');
-          if (pathnameSplit.length > 1) {
-            
-            $.each(viewportList.members, function(key,val) {
-              if (val.prefix == pathnameSplit[1]) {
-                if (val.versions === undefined) {
-                  newPath = '/' + val.prefix + '/' + pathnameSplit.slice(-1)[0];
-                }
-                else {
-                  newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
-                }
-                if (newPath != window.location.pathname) {
-                  found = true;
-                  doNotShowPage = true;
-                  window.location.replace('https://' + window.location.hostname + newPath);
-                }
-                return false;
-              }
-            });
-
-            if (!found) {
-              // For Home space
-              let foundProd = false;
-              $.each(viewportList.members, function(key,val) {
-                if (val.prefix == pathnameSplit[1]) {
-                  foundProd = true;
-                  doNotShowPage = false;
-                  return false;
-                }
-              });
-              if (!foundProd) {
-                window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.replace('/index.html','').split('/').pop());
-                doNotShowPage = true;
-                found = true;
-              }
-            }
+        process404pages();
+        function process404pages() {
+          let pathname = window.location.pathname;
+          // Test if latest in the URL, e.g. /HMP/latest
+          let found = forwardIfLatest(pathname);
+          // Test if using old product-version path format, e.g. /HMP3.10.2
+          if (!found) {  
+            found = forwardIfProdVer(pathname);
           }
-        }
-        if (!found) {              
-          let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
-          let page404content = '<div class="ht-error-message">' + 
-            '<img height="50px" src="' + hvLogoImgSrc + '">' +
-            '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
-            '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
-          $('main h1, main h2, main p, main .error--search').remove();
-          $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
-          updateHeader();
-          updateSidebar();
-          updateFooter();
+          // Test if using a link with a nested URL, e.g. /HMP3.10.2/quick-start-guides/server-quick-start-guide/connecting-the-server
+          if (!found) {
+            found = forwardNestedURL(pathname);            
+          }
+          // Done forwarding functions, so let's just show the 404 page
+          if (!found) {              
+            let hvLogoImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/HaivisionLogo.svg';
+            let page404content = '<div class="ht-error-message">' + 
+              '<img height="50px" src="' + hvLogoImgSrc + '">' +
+              '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
+              '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+            $('main h1, main h2, main p, main .error--search').remove();
+            $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
+            updateHeader();
+            updateSidebar();
+            updateFooter();
+          }
         }
       }
         function forwardIfLatest(path) {
@@ -159,6 +127,45 @@ function confCloudJS() {
             }
           }); 
 //        }
+          return found;
+        }
+        function forwardNestedURL(pathname) {
+          let pathnameSplit = window.location.pathname.split('/');
+          if (pathnameSplit.length > 1) {
+            $.each(viewportList.members, function(key,val) {
+              if (val.prefix == pathnameSplit[1]) {
+                if (val.versions === undefined) {
+                  newPath = '/' + val.prefix + '/' + pathnameSplit.slice(-1)[0];
+                }
+                else {
+                  newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
+                }
+                if (newPath != window.location.pathname) {
+                  found = true;
+                  doNotShowPage = true;
+                  window.location.replace('https://' + window.location.hostname + newPath);
+                }
+                return false;
+              }
+            });
+
+            if (!found) {
+              // For Home space
+              let foundProd = false;
+              $.each(viewportList.members, function(key,val) {
+                if (val.prefix == pathnameSplit[1]) {
+                  foundProd = true;
+                  doNotShowPage = false;
+                  return false;
+                }
+              });
+              if (!foundProd) {
+                window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.replace('/index.html','').split('/').pop());
+                doNotShowPage = true;
+                found = true;
+              }
+            }
+          }
           return found;
         }
 

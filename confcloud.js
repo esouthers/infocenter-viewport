@@ -76,7 +76,15 @@ function confCloudJS() {
 
             if (!found) {
               // For Home space
-              if (pathnameSplit[1] != 'Home') {
+              let foundProd = false;
+              $.each(viewportList.members, function(key,val) {
+                if (val.prefix == pathnameSplit[1]) {
+                  foundProd = true;
+                  doNotShowPage = false;
+                  return false;
+                }
+              });
+              if (!foundProd) {
                 window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.replace('/index.html','').split('/').pop());
                 doNotShowPage = true;
                 found = true;

@@ -58,8 +58,8 @@ function confCloudJS() {
           if (pathnameSplit.length > 1) {
             
             $.each(viewportList.members, function(key,val) {
-              if ((val.prefix != 'Home') && (val.prefix == pathnameSplit[1])) {
-                newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.pop();
+              if (val.prefix == pathnameSplit[1]) {
+                newPath = '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.slice(-1)[0];
                 if (newPath != window.location.pathname) {
                   found = true;
                   doNotShowPage = true;
@@ -71,13 +71,13 @@ function confCloudJS() {
 
             if (!found) {
               // if space doesn't have version but still long URL
-              $.each(viewportList.members, function(key,val) {
+/*              $.each(viewportList.members, function(key,val) {
                 if (val.prefix == pathnameSplit[1]) {
                   found = true;
                   doNotShowPage = false;
                   return false;
                 }
-              });
+              }); */
               if (pathnameSplit[1] != 'Home') {
                 window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
                 doNotShowPage = true;
@@ -128,7 +128,7 @@ function confCloudJS() {
             let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
             let newURL = '/' + prefixList[0].redirect + '/';
             for (const match of window.location.pathname.matchAll(regexp)) {
-              newURL += match[1] + '/' + match[2].replace('index.html','').split('/').pop();
+              newURL += match[1] + '/' + match[2].replace('index.html','').split('/').slice(-1)[0];
               found = true;
               doNotShowPage = true;
               window.location.replace('https://' + window.location.hostname + newURL);

@@ -300,6 +300,7 @@ function confCloudJS() {
 
 
       $('#main-content figure').each(function() {
+        fixImageSizes(this);
         fixInlineImages(this);
       });
   //            fixTabs(); Do not use due to Cors proxy security issues
@@ -751,15 +752,6 @@ function confCloudJS() {
       let maxThumbnailWidth = 30;
       let maxThumbnailHeight = 30; 
 
-      $('[data-width]').each(function() { 
-        if (!$(this).attr('height')) { 
-          $(this).css('width',$(this).attr('data-width') + 'px');
-        }
-        else {
-          $(this).css('height',$(this).attr('height') + 'px');
-        }
-      });
-
       if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
         $(figureToFix).addClass('image-inline');
         let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
@@ -794,7 +786,15 @@ function confCloudJS() {
       }
     }
 
-
+    // Fix images Sizes
+    function fixImageSizes(figureToFix) {
+      if (!$(figureToFix).attr('height')) { 
+        $(figureToFix).css('width',$(figureToFix).attr('data-width') + 'px');
+      }
+      else {
+        $(figureToFix).css('height',$(figureToFix).attr('height') + 'px');
+      }
+    }
     $.fn.isInViewport = function(elementOffset) {
       var elementTop = $(this).offset().top - elementOffset;
       var elementBottom = elementTop + $(this).outerHeight();

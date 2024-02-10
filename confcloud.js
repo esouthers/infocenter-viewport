@@ -41,7 +41,11 @@ function confCloudJS() {
     let page404 = ($('[i18nkey="page.error.status.404.label"]').length > 0);
     let pageSearch = (window.location.pathname == '/search.html');
     let doNotShowPage = false;
-    if (pageSearch || page404) {
+    // Redirect to homepage
+    if (window.location.pathname == '/') {
+      window.location.replace('https://' + window.location.hostname + '/Home');
+    }
+    else if (pageSearch || page404) {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
@@ -257,11 +261,7 @@ function confCloudJS() {
 
       }
     }
-    // Redirect to homepage
-    else if (window.location.pathname == '/') {
-      window.location.replace('https://' + window.location.hostname + '/Home');
-    }
-    else {
+    else {  // Regular page
       var removeBetaSpace = new MutationObserver(function(mutations) {
         $('.vp-picker__menu__item').each(function() {
           if ($(this).text().indexOf('Beta') >= 0) {

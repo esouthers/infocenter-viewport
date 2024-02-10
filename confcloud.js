@@ -103,7 +103,7 @@ function confCloudJS() {
           if (pathnameSplit.length > 1) {
             let viewportList = parseViewportData();
             $.each(viewportList.members, function(key,val) {
-              if (val.prefix == pathnameSplit[1]) {
+              if ((val.prefix != 'Home') && (val.prefix == pathnameSplit[1])) {
                 found = true;
                 doNotShowPage = true;
                 window.location.replace('https://' + window.location.hostname + '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.pop());

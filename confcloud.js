@@ -130,6 +130,7 @@ function confCloudJS() {
           return found;
         }
         function forwardNestedURL(pathname) {
+          let found = false;
           let pathnameSplit = window.location.pathname.split('/');
           if (pathnameSplit.length > 1) {
             $.each(viewportList.members, function(key,val) {

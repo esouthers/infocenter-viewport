@@ -115,7 +115,7 @@ function confCloudJS() {
               }
             });
             let lastofPath = path.split('/').pop();
-            if (lastofPath.indexOf('latest') < 0) {
+            if ((lastofPath.indexOf('latest') < 0) && (lastofPath != '')) {
               newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
             }
             else {

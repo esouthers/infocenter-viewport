@@ -77,7 +77,7 @@ function confCloudJS() {
             if (!found) {
               // if space doesn't have version but still long URL
               if (pathnameSplit[1] != 'Home') {
-                window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname.split('/').pop());
+                window.location.replace('https://' + window.location.hostname + '/Home' + '/' + window.location.pathname.split('/').pop());
                 doNotShowPage = true;
                 found = true;
               }

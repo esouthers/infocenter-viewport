@@ -105,6 +105,7 @@ function confCloudJS() {
             $.each(viewportList.members, function(key,val) {
               if (val.prefix == pathnameSplit[1]) {
                 found = true;
+                doNotShowPage = true;
                 window.location.replace('https://' + window.location.hostname + '/' + val.prefix + '/' + pathnameSplit[2] + '/' + pathnameSplit.pop());
                 return false;
               }

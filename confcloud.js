@@ -116,10 +116,10 @@ function confCloudJS() {
             });
             let lastofPath = path.split('/').pop();
             if (lastofPath.indexOf('latest') < 0) {
-              let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
+              newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer + '/' + lastofPath;
             }
             else {
-              let newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer
+              newPath = 'https://' + window.location.hostname + '/' + productPrefix + '/' + latestVer
             }
             window.location.replace(newPath);
             doNotShowPage = true;

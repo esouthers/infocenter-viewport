@@ -1,7 +1,7 @@
 {
   "Command360": [
     {
-      "redirect": "FOO"
+      "redirect": "Command360"
     }
   ],
   "CDVR": [
@@ -86,37 +86,32 @@
   ],
   "MakitoXEnc": [
     {
-      "redirect": "FOO"
+      "redirect": "MakitoXEnc"
     }
   ],
   "MFXE": [
     {
-      "redirect": "FOO"
+      "redirect": "MFXE"
     }
   ],
   "MakitoX1Enc": [
     {
-      "redirect": "FOO"
+      "redirect": "MakitoX1Enc"
     }
   ],
   "MakitoX4Dec": [
     {
-      "redirect": "FOO"
+      "redirect": "MakitoX4Dec"
     }
   ],
   "MakitoX4Enc": [
     {
-      "redirect": "FOO"
+      "redirect": "MakitoX4Enc"
     }
   ],
   "Mantaray": [
     {
       "redirect": "Mantaray"
-    }
-  ],
-  "MCSYNC": [
-    {
-      "redirect": "FOO"
     }
   ],
   "MJPiOS": [
@@ -136,7 +131,7 @@
   ],
   "PlayProiOS": [
     {
-      "redirect": "FOO"
+      "redirect": "PlayProiOS"
     }
   ],
   "STB": [

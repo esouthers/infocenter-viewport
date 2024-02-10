@@ -111,7 +111,7 @@ function confCloudJS() {
               }
             });
             if (!found) {
-              if (pathnameSplit[1] != Home) {
+              if (pathnameSplit[1] != 'Home') {
                 window.location.replace('https://' + window.location.hostname + '/Home' + window.location.pathname);
                 doNotShowPage = true;
                 found = true;

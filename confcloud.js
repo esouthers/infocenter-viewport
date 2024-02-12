@@ -1369,6 +1369,9 @@ function confCloudJS() {
           if (e.ctrlKey && e.altKey && map[79]) { // Go to the page in Confl Cloud
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
           }
+          if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac
+            window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
+          }
           if (map[188] || map[190]) {   // ,/. goes to previous/next topic
             if ($(e.target).is('section *')) { return; } // Ignore if inside search or text box
             if ($(e.target).is('form *')) { return; }

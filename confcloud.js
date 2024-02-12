@@ -286,6 +286,7 @@ function confCloudJS() {
       updateFooter();
       updateBreadcrumbs();
       updatePaginationLinks();
+      keyboardShortcuts();
       // Search box placeholder
       $('.vp-search-input > input').attr('placeholder','How can we help you?');
       // Fix alerts

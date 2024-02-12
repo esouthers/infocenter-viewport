@@ -1366,7 +1366,7 @@ function confCloudJS() {
       $(document).keydown(function(e) { 
         if (e.keyCode in map) {
           map[e.keyCode] = true;
-          if (map[17] && map[18] && map[79]) { // Go to the page in Confl Cloud
+          if (e.ctrlKey && e.altKey && map[79]) { // Go to the page in Confl Cloud
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
           }
           if (map[188] || map[190]) {   // ,/. goes to previous/next topic

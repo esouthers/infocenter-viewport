@@ -1366,7 +1366,7 @@ function confCloudJS() {
       $(document).keydown(function(e) { 
         if (e.keyCode in map) {
           map[e.keyCode] = true;
-          if ((e.ctrlKey || e.metaKey) && e.altKey && map[79]) // Go to the page in Confl Cloud
+          if ((e.ctrlKey || e.metaKey) && e.altKey && map[79]) { // Go to the page in Confl Cloud
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
           }
           if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac

@@ -1355,6 +1355,38 @@ function confCloudJS() {
         }
       }
     }
+
+    // Ctrl(17)+Alt(18)+O(79) to go to page in Confl Cloud
+    // C: 67, L: 76, O: 79, U: 85, 
+    // , or . go to previous or next topic
+    function keyboardShortcuts() {
+      // For other keycode values: http://www.javascripter.net/faq/keycodes.htm
+      var map = {17: false, 18: false, 67: false, 76: false, 79: false, 85: false, 188: false, 190: false};
+      $(document).keydown(function(e) { 
+        if (e.keyCode in map) {
+          map[e.keyCode] = true;
+          if (map[17] && map[18] && map[79]) { // Go to the page in Confl Cloud
+            window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
+          }
+          if (map[188] || map[190]) {   // ,/. goes to previous/next topic
+            if ($(e.target).is('section *')) { return; } // Ignore if inside search or text box
+            if ($(e.target).is('form *')) { return; }
+            if (map[188]) { // ,<
+              newlink = $($('vp-article-pagination')[0].shadowRoot).find('a[rel="prev"]').attr('href');
+              if(newlink) { window.location = newlink; }
+            }
+            else if (map[190]) { // .>
+              newlink = $($('vp-article-pagination')[0].shadowRoot).find('a[rel="next"]').attr('href');
+              if(newlink) { window.location = newlink; }
+            }
+          }
+        }
+      }).keyup(function(e) {
+          if (e.keyCode in map) {
+            map[e.keyCode] = false;
+          }
+      });
+    }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
     function gaSetup() {
        if (window.location.hostname == "doc.haivision.com") {  // Don't log analytics on Sandbox.

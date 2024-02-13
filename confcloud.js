@@ -590,7 +590,8 @@ function confCloudJS() {
           let path = window.location.pathname.split('/')[1];
           $('.vp-tree-item__header__title', productList).each(function() { 
             if ($(this).attr('href')) {
-              if ($(this).attr('href').indexOf(path) >= 0) { 
+//              if ($(this).attr('href').indexOf(path) >= 0) { 
+                if ($(this).attr('href').replace('/','') == path) { 
                 $(this).addClass('current');
                 let currentParent = $(this).parents('ul').first();
                 if (currentParent.hasClass('vp-tree-item__children')) {

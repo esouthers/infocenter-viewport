@@ -846,7 +846,9 @@ main.error-page .scroll-viewport-attribution {
   --_button-border-color: transparent;
   --_button-border-color-expanded: transparent;
 }
-
+.vp-picker__menu__item--selected:before {
+  display: none;
+}
 .vp-picker__menu__item--selected:after {
     width: 16px;
     height: 16px;

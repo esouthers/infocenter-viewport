@@ -346,8 +346,8 @@ function confCloudJS() {
       let versionsAirPro3Rack3 = ["5.3.1"];
       let versionsPro43Rack4 = ["3.0"];
       if (currentlyViewing.name == "Air, Pro & Rack") {
-        let variantViewing = currentlyViewing.variants.current;
-        let versionViewing = currentlyViewing.versions.current;
+        let variantViewing = currentlyViewing.variants.current.name;
+        let versionViewing = currentlyViewing.versions.current.name;
         $('.header__navigation--heading').text(variantViewing + ' ' + versionViewing);
         if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
           if (versionsAirPro3Rack3.size == 1) {

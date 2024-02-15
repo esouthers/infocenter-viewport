@@ -248,6 +248,9 @@ function confCloudJS() {
               $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
               $('.vp-search-result__labels', this).remove();
             });
+            waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
+              $('li[data-value="inclib"]').remove();
+            });
           });
           $('.vp-pagination__inner button').on('click', function(e){
             waitForElm('.search-results__results__label').then((elm) => {

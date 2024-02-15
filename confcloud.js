@@ -29,7 +29,8 @@ function confCloudJS() {
     var viewportList = parseViewportData();    
 
     function parseViewportData() {
-      return $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
+//      return $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
+      return window.scrollHelpCenter.collection;
     }
 
     $(window).resize(function() {

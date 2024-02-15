@@ -398,6 +398,7 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
 .vp-picker__menu__item {
   color: var(--haiui-gray-00);
   padding-right: 8px;
+  min-height: 30px;
 }
 }
 .vp-picker__menu__item--selected {

@@ -280,6 +280,7 @@ function confCloudJS() {
           }
         });
       });
+      updateAirProRack();
       addModifiedDate();
       updateHeader();
       updateSidebar();
@@ -306,6 +307,7 @@ function confCloudJS() {
         $(this).text('');
         $(this).prepend('<span class="expand-title">' + expandTitle + '</span>').append(expandIcon);
       });
+
 
       $('body').show();
 
@@ -337,6 +339,27 @@ function confCloudJS() {
     if (!doNotShowPage) {  $('body').addClass('show'); }
 
 
+    function updateAirProRack() {
+      $('.vp-variant-picker').remove();
+      let currentlyViewing = viewportList.currentContentSource;
+      let versionsAirPro3Rack3 = ["5.3.1"];
+      let versionsPro43Rack4 = ["3.0"];
+      if (currentlyViewing.name == "Air, Pro & Rack") {
+        let variantViewing = currentlyViewing.variants.current;
+        let versionViewing = currentlyViewing.versions.current;
+        $('.header__navigation--heading').text(variantViewing + ' ' + versionViewing);
+        if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
+          if (versionsAirPro3Rack3.size == 1) {
+            $('#vp-js-desktop__navigation__picker').remove();
+          }
+        }
+        else {
+          if (versionsPro43Rack4.size == 1) {
+            $('#vp-js-desktop__navigation__picker').remove();
+          }
+        }
+      }
+    }
     function updatePaginationLinks() {
       // Apply styling to next/prev links at bottom of page
       $('vp-article-pagination').each(function() {

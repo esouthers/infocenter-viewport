@@ -863,6 +863,11 @@ main.error-page .scroll-viewport-attribution {
     mask-size: contain;
     mask-repeat: no-repeat;
 }
+
+.vp-dropdown--simple .vp-dropdown__options {
+  overflow-y: auto;
+}
+
 .vp-breadcrumbs { 
   max-width: fit-content; 
 }

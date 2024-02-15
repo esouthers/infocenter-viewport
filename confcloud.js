@@ -228,8 +228,8 @@ function confCloudJS() {
             $('[data-vp-id="search-page-results"]').hide();  
           });
 
-          waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
-            $('li[data-value="inclib"]').remove();
+          waitForElm('li[data-value="inclib"]').then((elm) => {
+            elm.remove();
           });
           waitForElm('.search-results__results__label').then((elm) => {
             $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');

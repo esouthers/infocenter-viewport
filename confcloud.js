@@ -393,7 +393,7 @@ function confCloudJS() {
         $('vp-article-pagination').removeAttr('hidden');
         let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
         let hiddenPage = $(paginationRoot).find('a[rel="next"]');
-        let firstPage = $('.vp-tree__container li').first()
+        let firstPage = $('.vp-tree__container li > div').first()
         $(hiddenPage).parent().removeAttr('hidden');
         $(hiddenPage).attr('href',$('a', firstPage).attr('href'));
         $('div.description',hiddenPage).text($(firstPage).first().text());

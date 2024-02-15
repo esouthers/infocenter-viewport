@@ -350,12 +350,12 @@ function confCloudJS() {
         let versionViewing = currentlyViewing.versions.current.name;
         $('.header__navigation--heading').text(variantViewing);
         if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
-          if (versionsAirPro3Rack3.size == 1) {
+          if (versionsAirPro3Rack3.length == 1) {
             $('#vp-js-desktop__navigation__picker').remove();
           }
         }
         else {
-          if (versionsPro43Rack4.size == 1) {
+          if (versionsPro43Rack4.length == 1) {
             $('#vp-js-desktop__navigation__picker').remove();
           }
         }

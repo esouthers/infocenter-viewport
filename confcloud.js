@@ -396,7 +396,7 @@ function confCloudJS() {
         let firstPage = $('.vp-tree__container li').first()
         $(hiddenPage).parent().removeAttr('hidden');
         $(hiddenPage).attr('href',$('a', firstPage).attr('href'));
-        $('div.description',hiddenPage).text($(firstPage).text());
+        $('div.description',hiddenPage).text($(firstPage).first().text());
       }
       else {  // we aren't
         let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
@@ -404,7 +404,7 @@ function confCloudJS() {
         if (hiddenPage.length > 0) { // We are at the first or last child page of space
           if ($('a', hiddenPage).attr('rel') == "prev") { // We are the the first child page
             $('a', hiddenPage).attr('href',$('[name="repository-base-url"]').attr('content'));
-            $('div.description', hiddenPage).text($('.header__navigation--heading').text());
+            $('div.description', hiddenPage).text($('.header__navigation--heading').first().text());
             $(hiddenPage).removeAttr('hidden');
           }
           else { // we are at the end with no next page

@@ -5,6 +5,10 @@
       "name": "Kraken Video Transcoder"
     },
     {
+      "url": "/MFXE",
+      "name": "Makito FX Video Encoder"
+    },
+    {
       "url": "/MakitoX4Enc",
       "name": "Makito X4 Video Encoder"
     },
@@ -15,10 +19,6 @@
     {
       "url": "/MakitoXEnc",
       "name": "Makito X Video Encoder"
-    },
-    {
-      "url": "/MFXE",
-      "name": "Makito FX Video Encoder"
     },
     {
       "url": "/MobileIPVideo",

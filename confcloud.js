@@ -189,9 +189,9 @@ function confCloudJS() {
               searchedSpaceName = val.name;
             }
           });
-          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
           let exitSearchText = 'Exit Search Results';
           let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
+          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href',exitSearchLink);
           $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
             '<div data-item-id="" class="vp-tree-item__header relative flex items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + exitSearchLink + '">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
             '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');

@@ -693,6 +693,9 @@ function confCloudJS() {
           collapseOpenSidebar();
         }
 
+        /* Scroll sidebar to currently viewed page */
+        $('.vp-desktop-navigation__page-tree').scrollTop($('.vp-tree-item--active').offset().top - $('.vp-desktop-navigation__page-tree').offset().top - 25);
+
         /* Sidebar event listeners */
         $('.ht-menu-button').click(function() {
           collapseOpenSidebar();

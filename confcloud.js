@@ -694,7 +694,7 @@ function confCloudJS() {
         }
 
         /* Scroll sidebar to currently viewed page */
-        if ($('.vp-tree-item--active').isInViewport(0)) {
+        if (!$('.vp-tree-item--active').isInViewport(0)) {
           $('.vp-desktop-navigation__page-tree').scrollTop($('.vp-tree-item--active').offset().top - $('.vp-desktop-navigation__page-tree').offset().top - 100);
         }
 

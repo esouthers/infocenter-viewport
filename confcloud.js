@@ -425,7 +425,7 @@ function confCloudJS() {
         type: 'info',
         body: message + dnsMsg
       });
-      if (!isPlayPro()) {
+      if ((!isPlayPro()) && (!isQwantBrowser())) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
           $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
         }
@@ -450,7 +450,7 @@ function confCloudJS() {
     // GDPR cookie popup
     // Show a popup if user hasn't been here before and accepted cookie message
     function cookieSetup() {
-      if (!isPlayPro()) {
+      if ((!isPlayPro()) && (!isQwantBrowser())) {
         if (!(getLocalStorageWithExpiry('acceptedCookie'))) {
           var cookieFlag = AJS.flag({
             type: 'success',
@@ -1009,7 +1009,7 @@ function confCloudJS() {
       $('.versionIcon').tooltip({gravity: 'nw'});
       $('.aui-tooltip').addClass('hidden');
       newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
-      if (!isPlayPro()) { 
+      if ((!isPlayPro()) && (!isQwantBrowser())) { 
         if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
             addBanner(newMsg, true, expDays);
         } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
@@ -1268,6 +1268,10 @@ function confCloudJS() {
       if (navigator.userAgent.indexOf('HaivisionPlayPro') >= 0) { return true; }
       else { return false; }
     }
+    function isQwantBrowser() {
+      if (navigator.userAgent.indexOf('QwantMobile') >= 0) { return true; }
+      else { return false; }
+    }
 
     // User Preferences - Brightness/Contrast & Image Hover Zoom
     function userPreferences() {
@@ -1296,7 +1300,7 @@ function confCloudJS() {
         $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
 //        addEventTrackingUserPrefs("Close dialog", window.location.href);
       });
-      if (!isPlayPro()) {
+      if ((!isPlayPro()) && (!isQwantBrowser())) {
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
           $('#ic-settings').css({opacity: 1.0, visibility: "visible"});
           var userBrightness = getLocalStorageWithExpiry('ICbrightness');

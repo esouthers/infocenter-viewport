@@ -21,16 +21,16 @@
       "name": "Makito X Video Encoder"
     },
     {
+      "url": "/Hardware",
+      "name": "Makito MB6/MB21 Chassis"
+    },
+    {
       "url": "/MobileIPVideo",
       "name": "Haivision Rack Video Encoder"
     },
     {
       "url": "/EMS",
       "name": "Haivision EMS Device Manager"
-    },
-    {
-      "url": "/Hardware",
-      "name": "Makito MB6/MB21 Chassis"
     }
   ],
   "Video Transmitter": [

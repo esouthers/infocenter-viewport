@@ -968,7 +968,9 @@ function confCloudJS() {
             buttonLabel.text("Beta");
           }
         });
-        updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button span'), {attributes: false, childList: true, characterData: false, subtree:true});
+        if (document.querySelector('.vp-picker__button span')) {
+          updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button span'), {attributes: false, childList: true, characterData: false, subtree:true});
+        }
       }
       else if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
         // Add content to popup window and show it

@@ -1945,9 +1945,11 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
     top: 20px !important;
     transform: unset;
   }
-  button.primary, button.secondary, button.ghost, button.danger,
-  button.btn-sm.primary, button.btn-sm.secondary {
+  button.primary, button.secondary, button.ghost, button.danger {
     min-width: 100px;
+  }
+  button.btn-sm.primary, button.btn-sm.secondary {
+    min-width: 80px;
   }
   .card .card-footer, .hai-dialog .aui-dialog2-footer {
     justify-content: center;

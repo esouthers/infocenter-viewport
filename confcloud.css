@@ -1937,7 +1937,7 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   transform: translate(-50%, -50%);
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
   .card, .hai-dialog {
     padding: 20px 7px 20px 17px;
     width: calc(100% - 40px);

@@ -1940,10 +1940,17 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
 @media (max-width: 640px) {
   .card, .hai-dialog {
     padding: 20px 7px 20px 17px;
-    width: calc(100% - 180px);
+    width: calc(100% - 100px);
     left: 20px !important;
     top: 20px !important;
     transform: unset;
+  }
+  button.primary, button.secondary, button.ghost, button.danger,
+  button.btn-sm.primary, button.btn-sm.secondary {
+    min-width: 100px;
+  }
+  .card .card-footer, .hai-dialog .aui-dialog2-footer {
+    justify-content: center;
   }
 }
 

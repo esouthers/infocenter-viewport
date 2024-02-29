@@ -1951,9 +1951,6 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   button.btn-sm.primary, button.btn-sm.secondary {
     min-width: 80px;
   }
-  .card .card-footer, .hai-dialog .aui-dialog2-footer {
-    justify-content: center;
-  }
 }
 
 .aui-dialog2-content {

@@ -1323,6 +1323,10 @@ figure.image-inline {
 [i18nkey="page.article.pagination.label"] a {
   column-gap: 0px;
 }
+[i18nkey="page.article.pagination.label"] .cta {
+  block-size: unset;
+  width: 28px;
+}
 
 a .description, a:is(:hover, :focus-visible) .description {
   text-decoration: none;

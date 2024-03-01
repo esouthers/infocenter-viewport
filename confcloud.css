@@ -1951,6 +1951,12 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   button.btn-sm.primary, button.btn-sm.secondary {
     min-width: 80px;
   }
+  #vp-js-desktop__navigation:not(.vp-article__aside-left__inner--collapsed) {
+    width: 100vh !important;
+  }
+  #sidebar-dragbar {
+    display: none;
+  } 
 }
 
 .aui-dialog2-content {

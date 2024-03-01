@@ -1978,6 +1978,7 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   }
   .header__navigation--logo {
     margin-top: 25px !important;
+    margin-bottom: 15px !important;
   }
   .vp-article__aside-left__inner--collapsed .top-bar-left ul, .ht-menu-button {
     margin-bottom: 25px !important;

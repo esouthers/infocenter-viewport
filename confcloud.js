@@ -794,9 +794,8 @@ function confCloudJS() {
         $('#sidebar-dragbar').addClass('hidden');
         $('.header__navigation--logo img.logo-large').hide();
         $('.header__navigation--logo svg.logo-small').show();
-        if ($(window).width() <= 640) {
-          $('#article-content').show();
-        }
+        $('#article-content').show();
+
       }
       else {
         // open sidebar

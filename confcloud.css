@@ -1973,6 +1973,9 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   .card p {
     margin-bottom: 10px !important;
   }
+  .aui-dialog2-header {
+    height: 32px !important;
+  }
 }
 
 

@@ -1968,7 +1968,10 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
     transform: unset;
   }
   .card .card-body .control-container, .card .card-body .slidecontainer, .card .card-footer, .hai-dialog .aui-dialog2-footer {
-    margin-top: 10px;
+    margin-top: 10px !important;
+  }
+  .card p {
+    margin-bottom: 10px !important;
   }
 }
 

@@ -1982,6 +1982,9 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   .vp-article__aside-left__inner--collapsed .top-bar-left ul, .ht-menu-button {
     margin-bottom: 25px !important;
   }
+  .vp-article__aside-left .vp-desktop-navigation__page-tree {
+    height: 100% !important;
+  }
 }
 
 

@@ -794,6 +794,9 @@ function confCloudJS() {
         $('#sidebar-dragbar').addClass('hidden');
         $('.header__navigation--logo img.logo-large').hide();
         $('.header__navigation--logo svg.logo-small').show();
+        if ($(window).width() <= 640) {
+          $('#article-content').show();
+        }
       }
       else {
         // open sidebar
@@ -802,6 +805,9 @@ function confCloudJS() {
         $('#sidebar-dragbar').removeClass('hidden');
         $('.header__navigation--logo img.logo-large').show();
         $('.header__navigation--logo svg.logo-small').hide();
+        if ($(window).width() <= 640) {
+          $('#article-content').hide();
+        }
       }
     }
 

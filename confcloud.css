@@ -1727,7 +1727,7 @@ h2 {
     right: 10px;
   }
   #aui-flag-container .aui-flag {
-    width: 300px;
+/*    width: 300px; */
   }
 }
 #aui-flag-container .cookieAccept, #aui-flag-container .cookieReject {

@@ -689,7 +689,7 @@ function confCloudJS() {
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
-        if (getLocalStorageWithExpiry('collapsed-sidebar') == 'true') {
+        if (($(window).width() <= 640) || (getLocalStorageWithExpiry('collapsed-sidebar') == 'true')) {
           collapseOpenSidebar();
         }
 

@@ -900,9 +900,6 @@ a:hover {
 .vp-breadcrumbs a:hover, #article-inner-content a:not(.js-enlargeOnClick):hover, vp-article-pagination a:hover .description {
   border-bottom: 2px solid var(--K15t-link);
 }
-vp-article-pagination a {
-  column-gap: 0px;
-}
 /* Tables */
 .article__content code, 
 .toggle:is(:hover, :focus-visible), 
@@ -1323,6 +1320,10 @@ figure.image-inline {
 [i18nkey="page.article.pagination.label"] .label {
   display: none;
 }
+[i18nkey="page.article.pagination.label"] a {
+  column-gap: 0px;
+}
+
 a .description, a:is(:hover, :focus-visible) .description {
   text-decoration: none;
   color: var(--K15t-link);

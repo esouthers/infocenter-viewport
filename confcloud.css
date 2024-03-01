@@ -1976,6 +1976,12 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   .aui-dialog2-header {
     height: 32px !important;
   }
+  .header__navigation--logo {
+    margin-top: 25px !important;
+  }
+  .vp-article__aside-left__inner--collapsed .top-bar-left ul, .ht-menu-button {
+    margin-bottom: 25px !important;
+  }
 }
 
 

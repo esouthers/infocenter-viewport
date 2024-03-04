@@ -717,10 +717,7 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
 }
 .article__content .panel-macro .vp-accordion-link-group {
   margin-top: -30px;
-}
-.article__content .vp-accordion-link-group__item {
-/*  display: list-item;
-  margin-left: 2em; */
+  max-width: 100vh !important;
 }
 .article__content div.vp-accordion-link-group__item {
   display: list-item;
@@ -729,6 +726,7 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
 }
 .vp-accordion-link-group__item--disclosure .vp-accordion-link-group__summary {
   flex-direction: row-reverse;
+  align-items: flex-start;
   justify-content: flex-end;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1375,9 +1373,10 @@ a.article__content__anchor {
 .vp-accordion-link-group__summary .expand-title,
 .expand-container .expand-control .expand-title {
   border-bottom: 2px solid transparent;
-  white-space: nowrap;
+/*  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
+  height: fit-content;
 }
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;

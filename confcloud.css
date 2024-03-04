@@ -1377,6 +1377,7 @@ a.article__content__anchor {
   border-bottom: 2px solid transparent;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;

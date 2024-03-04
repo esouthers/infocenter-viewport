@@ -1375,6 +1375,7 @@ a.article__content__anchor {
 .vp-accordion-link-group__summary .expand-title,
 .expand-container .expand-control .expand-title {
   border-bottom: 2px solid transparent;
+  text-wrap: nowrap;
 }
 details.vp-disclosure .vp-disclosure-icon {
   width: 17px;

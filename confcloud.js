@@ -390,13 +390,15 @@ function confCloudJS() {
       let baseURL = $('[name="repository-base-url"]').attr('content').replaceAll('../','').replaceAll('/','');
       let path = window.location.pathname.replaceAll('/','');
       if (baseURL === path) {   // we are on the homepage of the space so add next button
-        $('vp-article-pagination').removeAttr('hidden');
-        let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
-        let hiddenPage = $(paginationRoot).find('a[rel="next"]');
         let firstPage = $('.vp-tree__container li > div').first()
-        $(hiddenPage).parent().removeAttr('hidden');
-        $(hiddenPage).attr('href',$('a', firstPage).attr('href'));
-        $('div.description',hiddenPage).text($(firstPage).first().text());
+        if (firstPage.length > 0) {
+          $('vp-article-pagination').removeAttr('hidden');
+          let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
+          let hiddenPage = $(paginationRoot).find('a[rel="next"]');
+          $(hiddenPage).parent().removeAttr('hidden');
+          $(hiddenPage).attr('href',$('a', firstPage).attr('href'));
+          $('div.description',hiddenPage).text($(firstPage).first().text());
+        }
       }
       else {  // we aren't
         let paginationRoot = $('vp-article-pagination')[0].shadowRoot;

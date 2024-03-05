@@ -215,7 +215,7 @@ function confCloudJS() {
 
           var updateSearchResults = new MutationObserver(function(mutations) {
             waitForElm('.vp-search-page__loading').then((elm) => {
-              $('.vp-search-result').hide();
+              $('.vp-search-result, .vp-search-page__pagination').hide();
               pollVisibility();
             })
           });
@@ -228,7 +228,7 @@ function confCloudJS() {
                 $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
                 $('.vp-search-result__labels', this).remove();
               });
-              $('.vp-search-result').show();
+              $('.vp-search-result, .vp-search-page__pagination').show();
               $('[data-vp-id="search-page-results"]').show();
               $('#searchTerm').text($('.vp-search-input__input').val());
               let numResultsonPage = $('.vp-search-result').length;

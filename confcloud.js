@@ -235,8 +235,8 @@ function confCloudJS() {
             if (searchedSpaceName == 'Search all') {
               searchedSpaceName = "InfoCenter";
             }
-            let searchedSpacePrefix = $('[data-vp-id="search-page-horizontal-filter-content"]~[form="search-form"][type="hidden"]').attr('value');
-            let searchedVersion = $('[data-vp-id="search-page-horizontal-filter-versions"]~[form="search-form"][type="hidden"]').attr('value');
+            let searchedSpacePrefix = $('#search-form [name="s"]').attr('value');
+            let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
             if (searchedVersion != '') {
               $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
               $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);

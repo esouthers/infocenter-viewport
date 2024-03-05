@@ -847,9 +847,11 @@ function confCloudJS() {
               $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
             }
             else {
-              textNode = $(figureToFix)[0].nextSibling.nodeValue;
-              $(figureToFix)[0].nextSibling.nodeValue = '';
-              $(figureToFix).append(textNode);
+              if ($(figureToFix)[0].nodeName != 'FIGURE') {
+                textNode = $(figureToFix)[0].nextSibling.nodeValue;
+                $(figureToFix)[0].nextSibling.nodeValue = '';
+                $(figureToFix).append(textNode);
+              }
             }
           }
         }

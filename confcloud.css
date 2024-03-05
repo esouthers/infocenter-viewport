@@ -2198,3 +2198,7 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
 svg.article__content__anchor--link-icon {
   display: none;
 }
+
+[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="inclib"] {
+  display: none;
+}

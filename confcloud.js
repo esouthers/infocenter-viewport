@@ -229,10 +229,14 @@ function confCloudJS() {
             else                  { $('.search-header-text').show(); }
 
             let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
+            if (searchedSpaceName == 'Search all') {
+              searchedSpaceName = "InfoCenter";
+            }
             let searchedSpacePrefix = $('[data-vp-id="search-page-horizontal-filter-content"]~[form="search-form"][type="hidden"]').attr('value');
-            $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
+            let searchedVersion = $('[data-vp-id="search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
+            $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix);
             $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
-            $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
+            $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix);
           });
           
           $('.vp-pagination__inner button').click(function() {

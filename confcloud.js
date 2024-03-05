@@ -224,9 +224,11 @@ function confCloudJS() {
             if (!$('.vp-search-page__loading').is(":visible")) {
               $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
               $('.vp-search-result').each(function() {
-                let tempText = $('.vp-search-result__content-source', this).text();
-                $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
-                $('.vp-search-result__labels', this).remove();
+                if ($('.vp-search-result__labels', this).length > 0) {
+                  let tempText = $('.vp-search-result__content-source', this).text();
+                  $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+                  $('.vp-search-result__labels', this).remove();
+                }
               });
               $('.vp-search-result, .vp-search-page__pagination').show();
               $('[data-vp-id="search-page-results"]').show();

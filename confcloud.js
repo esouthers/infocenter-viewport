@@ -200,6 +200,9 @@ function confCloudJS() {
 
           updateBreadcrumbs();
 
+          waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
+            $('[data-value="inclib"]').remove();
+          });
           var updateSearchIndexes = new MutationObserver(function(mutations) {
             let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);

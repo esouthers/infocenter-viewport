@@ -227,6 +227,11 @@ function confCloudJS() {
             }
             if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
             else                  { $('.search-header-text').show(); }
+
+            let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
+            let searchedSpacePrefix = $('[data-vp-id="search-page-horizontal-filter-content"]~[form="search-form"][type="hidden"]').attr('value');
+            $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
+            $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
           });
           
           $('.vp-pagination__inner button').click(function() {

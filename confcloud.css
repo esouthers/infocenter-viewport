@@ -2202,3 +2202,6 @@ svg.article__content__anchor--link-icon {
 [data-vp-id="search-page-horizontal-filter-content-options"] [data-value="inclib"] {
   display: none;
 }
+.vp-search-result__labels {
+  display: none;
+}

@@ -836,7 +836,7 @@ function confCloudJS() {
         $('a', figureToFix).css('display','inline');
         if ($(figureToFix)[0].nextSibling) {
           if ($(figureToFix)[0].nextSibling.nodeType == 3) {
-            if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
+            if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1) && ($(figureToFix)[0].previousSibling.nodeName != 'BR')) {
               textNode = $(figureToFix)[0].nextSibling.nodeValue;
               $(figureToFix)[0].nextSibling.nodeValue = '';
               $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();

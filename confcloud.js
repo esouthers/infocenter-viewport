@@ -204,7 +204,7 @@ function confCloudJS() {
             
           });
           waitForElm('.vp-search-page__loading').then((elm) => {
-            $('[data-vp-id="search-page-results"]').hide();
+//            $('[data-vp-id="search-page-results"]').hide();
           });
           var updateSearchIndexes = new MutationObserver(function(mutations) {
             let searchIdx = getSearchIndexes(numResults);

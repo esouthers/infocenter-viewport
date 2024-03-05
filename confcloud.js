@@ -233,12 +233,11 @@ function confCloudJS() {
               $('#searchTerm').text($('.vp-search-input__input').val());
               let numResultsonPage = $('.vp-search-result').length;
               let numResults = $('.search-results__results__label').text().split(' result')[0];
-              $('#numResults').text(numResults);
               if (numResultsonPage < 10) {
                 $('#stopIdx').text(numResults);
               }
-              if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
-              else                  { $('.search-header-text').show(); }
+              if (numResultsonPage == 0)  { $('#numResults').text('0'); $('.search-header-text').hide(); }
+              else                  {       $('#numResults').text(numResults); $('.search-header-text').show(); }
 
               let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
               if (searchedSpaceName == 'Search all') {

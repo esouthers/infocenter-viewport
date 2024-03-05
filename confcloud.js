@@ -33,6 +33,8 @@ function confCloudJS() {
       return window.scrollHelpCenter.collection;
     }
 
+    debugger;
+    
     $(window).resize(function() {
       testWindowSize();
     });
@@ -180,6 +182,7 @@ function confCloudJS() {
         updateSidebar();
 
         processSearchPage();
+
         function processSearchPage() {
           let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";

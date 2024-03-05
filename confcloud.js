@@ -182,7 +182,7 @@ function confCloudJS() {
 
         processSearchPage();
 
-        function processSearchPage() {
+        function processSearchPage() { 
           let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
           let searchedSpaceName = '';

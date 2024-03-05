@@ -214,41 +214,50 @@ function confCloudJS() {
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
           var updateSearchResults = new MutationObserver(function(mutations) {
-            $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
-            $('.vp-search-result').each(function() {
-              let tempText = $('.vp-search-result__content-source', this).text();
-              $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
-              $('.vp-search-result__labels', this).remove();
-            });
-            $('[data-vp-id="search-page-results"]').show();
-            $('#searchTerm').text($('.vp-search-input__input').val());
-            let numResultsonPage = $('.vp-search-result').length;
-            let numResults = $('.search-results__results__label').text().split(' result')[0];
-            $('#numResults').text(numResults);
-            if (numResultsonPage < 10) {
-              $('#stopIdx').text(numResults);
-            }
-            if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
-            else                  { $('.search-header-text').show(); }
-
-            let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
-            if (searchedSpaceName == 'Search all') {
-              searchedSpaceName = "InfoCenter";
-            }
-            let searchedSpacePrefix = $('#search-form [name="s"]').attr('value');
-            let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
-            if (searchedVersion != '') {
-              $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
-              $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
-              $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
-            }
-            else {
-              $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
-              $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
-              $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
-            }
+            waitForElm('.vp-search-page__loading').then((elm) => {
+              pollVisibility();
+            })
           });
           
+          function pollVisibility() {
+            if (!$('.vp-search-page__loading').is(":visible")) {
+              $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
+              $('.vp-search-result').each(function() {
+                let tempText = $('.vp-search-result__content-source', this).text();
+                $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+                $('.vp-search-result__labels', this).remove();
+              });
+              $('[data-vp-id="search-page-results"]').show();
+              $('#searchTerm').text($('.vp-search-input__input').val());
+              let numResultsonPage = $('.vp-search-result').length;
+              let numResults = $('.search-results__results__label').text().split(' result')[0];
+              $('#numResults').text(numResults);
+              if (numResultsonPage < 10) {
+                $('#stopIdx').text(numResults);
+              }
+              if (numResultsonPage == 0)  { $('.search-header-text').hide(); }
+              else                  { $('.search-header-text').show(); }
+
+              let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
+              if (searchedSpaceName == 'Search all') {
+                searchedSpaceName = "InfoCenter";
+              }
+              let searchedSpacePrefix = $('#search-form [name="s"]').attr('value');
+              let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
+              if (searchedVersion != '') {
+                $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
+                $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
+                $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpacePrefix + '/' + searchedVersion);
+              }
+              else {
+                $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
+                $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
+                $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
+              }
+            } else {
+              setTimeout(pollVisibility, 500);
+            }
+          }
           $('.vp-pagination__inner button').click(function() {
             $('[data-vp-id="search-page-results"]').hide();  
           });

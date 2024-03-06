@@ -200,12 +200,6 @@ function confCloudJS() {
 
           updateBreadcrumbs();
 
-          waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
-            
-          });
-          waitForElm('.vp-search-page__loading').then((elm) => {
-//            $('[data-vp-id="search-page-results"]').hide();
-          });
           var updateSearchIndexes = new MutationObserver(function(mutations) {
             let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);
@@ -261,7 +255,7 @@ function confCloudJS() {
             if (!$(selector).is(":visible")) {
               functionToCall();
             } else {
-              setTimeout(pollVisibility, 500);
+              setTimeout(pollVisibility(selector, functionToCall), 500);
             }
           }
 

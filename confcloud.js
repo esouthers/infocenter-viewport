@@ -226,7 +226,12 @@ function confCloudJS() {
               $('.vp-search-result').each(function() {
                 if ($('.vp-search-result__labels', this).length > 0) {
                   let tempText = $('.vp-search-result__content-source', this).text();
-                  $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+                  if ($('.vp-search-result__labels .aui-lozenge', this).length > 1) {
+                    $('.vp-search-result__content-source', this).text($('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text());
+                  }
+                  else {
+                    $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+                  }
                   $('.vp-search-result__labels', this).remove();
                 }
               });
@@ -270,8 +275,6 @@ function confCloudJS() {
 
             $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             updateSearchResults.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
-  //          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
-  //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
             let searchTerm = $('.vp-search-input__input').val();
             if ($(elm).text().indexOf('no matches') >= 0) { numResults = 0; }
             else {                                          numResults = $(elm).text().split(' result')[0]; }

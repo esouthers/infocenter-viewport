@@ -209,7 +209,7 @@ function confCloudJS() {
             }
           }
           var updateSearchIndexes = new MutationObserver(function(mutations) {
-            updateSearchIndexesFN();
+//            updateSearchIndexesFN();
           });
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 

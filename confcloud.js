@@ -213,9 +213,17 @@ function confCloudJS() {
           });
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
+          $('#search-form').on('submit', function() {
+            waitForElm('.vp-search-page__loading').then((elm) => {
+              $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
+              $('#searchTerm').text()
+              pollVisibility(); // Wait until loading finishes
+            })
+          });
           var updateSearchResults = new MutationObserver(function(mutations) {
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
+              $('#searchTerm').text()
               pollVisibility(); // Wait until loading finishes
             })
           });
@@ -278,7 +286,6 @@ function confCloudJS() {
 
             $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             updateSearchResults.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
-//            updateSearchResults.observe(document.querySelector('.vp-search-page__loading'), {childList: true, characterData: false, subtree:true});
             let searchTerm = $('.vp-search-input__input').val();
             if ($(elm).text().indexOf('no matches') >= 0) { numResults = 0; }
             else {                                          numResults = $(elm).text().split(' result')[0]; }

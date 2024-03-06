@@ -214,14 +214,7 @@ function confCloudJS() {
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
           var updateSearchResults = new MutationObserver(function(mutations) {
-            waitForElm('.vp-search-page__loading').then((elm) => {
-              $('.vp-search-result, .vp-search-page__pagination').hide();
-              pollVisibility();
-            })
-          });
-          
-          function pollVisibility() {
-            if (!$('.vp-search-page__loading').is(":visible")) {
+            var updateSearchResultsContinue = function() {
               $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
               $('.vp-search-result').each(function() {
                 if ($('.vp-search-result__labels', this).length > 0) {
@@ -257,10 +250,21 @@ function confCloudJS() {
                 $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
                 $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
               }
+            }
+            waitForElm('.vp-search-page__loading').then((elm) => {
+              $('.vp-search-result, .vp-search-page__pagination').hide();
+              pollVisibility('.vp-search-page__loading',updateSearchResultsContinue); // Wait until loading finishes
+            })
+          });
+          
+          function pollVisibility(selector, functionToCall) {
+            if (!$(selector).is(":visible")) {
+              functionToCall();
             } else {
               setTimeout(pollVisibility, 500);
             }
           }
+
           $('.vp-pagination__inner button').click(function() {
             $('[data-vp-id="search-page-results"]').hide();  
           });

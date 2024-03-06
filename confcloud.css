@@ -874,6 +874,7 @@ main.error-page .scroll-viewport-attribution {
 .vp-dropdown__option.is-selected:after {
   margin-left: 0px;
   margin-right: 5px;
+  margin-top: 7px;
 }
 .vp-dropdown__option {
   justify-content: space-between;

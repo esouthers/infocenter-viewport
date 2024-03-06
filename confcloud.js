@@ -200,12 +200,6 @@ function confCloudJS() {
 
           updateBreadcrumbs();
 
-          waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
-            
-          });
-          waitForElm('.vp-search-page__loading').then((elm) => {
-//            $('[data-vp-id="search-page-results"]').hide();
-          });
           var updateSearchIndexes = new MutationObserver(function(mutations) {
             let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);
@@ -265,7 +259,8 @@ function confCloudJS() {
             $('[data-vp-id="search-page-results"]').hide();  
           });
 
-          waitForElm('.search-results__results__label').then((elm) => {
+          waitForElm('.search-results__results__label', '.vp-search-page__main-inner [role="log"]').then((elm) => {
+            
             $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             updateSearchResults.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
   //          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});

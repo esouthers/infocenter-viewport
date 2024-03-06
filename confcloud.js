@@ -278,6 +278,7 @@ function confCloudJS() {
 
             $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             updateSearchResults.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
+            updateSearchResults.observe(document.querySelector('.vp-search-page__loading'), {attributeFilter: false, childList: true, characterData: false, subtree:true});
             let searchTerm = $('.vp-search-input__input').val();
             if ($(elm).text().indexOf('no matches') >= 0) { numResults = 0; }
             else {                                          numResults = $(elm).text().split(' result')[0]; }

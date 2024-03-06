@@ -200,13 +200,16 @@ function confCloudJS() {
 
           updateBreadcrumbs();
 
-          var updateSearchIndexes = new MutationObserver(function(mutations) {
+          function updateSearchIndexesFN() {
             let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);
             $('#stopIdx').text(searchIdx[1]);
             if (searchIdx[1] > 0) {
               $('.search-header-text').show();
             }
+          }
+          var updateSearchIndexes = new MutationObserver(function(mutations) {
+            updateSearchIndexesFN();
           });
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 
@@ -254,6 +257,7 @@ function confCloudJS() {
                 $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__title').attr('href','/' + searchedSpacePrefix);
                 $('.breadcrumbs a[rel="prev"]').text(searchedSpaceName).attr('href','/' + searchedSpacePrefix);
               }
+              updateSearchIndexesFN();
             } else {
               setTimeout(pollVisibility, 500);
             }

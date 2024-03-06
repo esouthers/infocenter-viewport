@@ -201,7 +201,7 @@ function confCloudJS() {
           updateBreadcrumbs();
 
           function updateSearchIndexesFN() {
-            let searchIdx = getSearchIndexes(numResults);
+            let searchIdx = getSearchIndexes($('#numResults').text());
             $('#startIdx').text(searchIdx[0]);
             $('#stopIdx').text(searchIdx[1]);
             if (searchIdx[1] > 0) {

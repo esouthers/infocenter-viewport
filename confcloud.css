@@ -848,7 +848,7 @@ main.error-page .scroll-viewport-attribution {
 .vp-picker__menu__item--selected:before { 
   display: none;
 }
-.vp-picker__menu__item--selected:after, .vp-dropdown__option:after {
+.vp-picker__menu__item--selected:after, .vp-dropdown__option.is-selected:after {
     width: 16px;
     height: 16px;
     display: inline-block;

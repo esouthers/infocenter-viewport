@@ -204,6 +204,9 @@ function confCloudJS() {
             let searchIdx = getSearchIndexes(numResults);
             $('#startIdx').text(searchIdx[0]);
             $('#stopIdx').text(searchIdx[1]);
+            if (searchIdx[1] > 0) {
+              $('.search-header-text').show();
+            }
           });
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
 

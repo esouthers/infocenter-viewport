@@ -177,6 +177,7 @@ function confCloudJS() {
       }
 
       if (pageSearch) {
+        $('title').text($('.vp-search-input__input').val() + ' - Search');
         updateHeader();
         updateSidebar();
 

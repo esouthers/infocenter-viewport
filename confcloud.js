@@ -216,10 +216,8 @@ function confCloudJS() {
           $('#search-form').on('submit', function() {
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
-              $('#searchTerm').text();
               $('#titleBreadcrumb').text($('h1.search-header').text());
               $('title').text($('#searchTerm').text() + ' - Search');
-
               pollVisibility(); // Wait until loading finishes
             })
           });

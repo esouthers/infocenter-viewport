@@ -614,7 +614,13 @@ function confCloudJS() {
             $(this).text(spaceName + ' ' + versionNum);
           }
           // Update page title to include space name and version
-          $('title').text($('title').text() + ' - ' + $(this).text());
+
+          if (pageSearch) {
+
+          }
+          else {
+            $('title').text($('title').text() + ' - ' + $(this).text());
+          }
         }
 
       });

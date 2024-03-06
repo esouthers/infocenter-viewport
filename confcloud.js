@@ -208,15 +208,11 @@ function confCloudJS() {
               $('.search-header-text').show();
             }
           }
-/*          var updateSearchIndexes = new MutationObserver(function(mutations) {
-//            updateSearchIndexesFN();
-          });
-          updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
-*/
           $('#search-form').on('submit', function() {
+            $('#titleBreadcrumb').text($('h1.search-header').text());
+            $('title').text($('.vp-search-input__input').val() + ' - Search');
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
-              $('#titleBreadcrumb').text($('h1.search-header').text());
               pollVisibility(); // Wait until loading finishes
             })
           });
@@ -248,7 +244,6 @@ function confCloudJS() {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').show();
               $('[data-vp-id="search-page-results"]').show();
               $('#searchTerm').text($('.vp-search-input__input').val());
-              $('title').text($('.vp-search-input__input').val() + ' - Search');
               let numResultsonPage = $('.vp-search-result').length;
               let numResults = $('.search-results__results__label').text().split(' result')[0];
               if (numResultsonPage < 10) {

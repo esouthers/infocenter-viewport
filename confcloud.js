@@ -208,11 +208,11 @@ function confCloudJS() {
               $('.search-header-text').show();
             }
           }
-          var updateSearchIndexes = new MutationObserver(function(mutations) {
+/*          var updateSearchIndexes = new MutationObserver(function(mutations) {
 //            updateSearchIndexesFN();
           });
           updateSearchIndexes.observe(document.querySelector('#search-form'), {attributeFilter: ["value"], childList: true, characterData: false, subtree:true});
-
+*/
           $('#search-form').on('submit', function() {
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();

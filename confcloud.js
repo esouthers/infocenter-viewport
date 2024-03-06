@@ -1,5 +1,4 @@
 function confCloudJS() { 
-  debugger;
   var link = document.createElement("LINK");
   link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
   link.rel = 'stylesheet';

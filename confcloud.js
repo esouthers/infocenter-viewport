@@ -266,8 +266,8 @@ function confCloudJS() {
   //          updateSearchResults.observe(document.querySelector('[data-vp-id="search-page-results"]'), {attributes: false, childList: true, characterData: false, subtree:false});
   //          updateSearchResults.observe(document.querySelector('.vp-search-result__title'), {attributeFilter: ["href"], childList: false, characterData: false, subtree:false});
             let searchTerm = $('.vp-search-input__input').val();
-            if ($(elm).text().indexOf('no matches') >= 0) { let numResults = 0; }
-            else {                                          let numResults = $(elm).text().split(' result')[0]; }
+            if ($(elm).text().indexOf('no matches') >= 0) { numResults = 0; }
+            else {                                          numResults = $(elm).text().split(' result')[0]; }
             let plural = '';
             if ((numResults > 1) || (numResults == 0)) { plural = 's';}
             $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');

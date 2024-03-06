@@ -871,6 +871,13 @@ main.error-page .scroll-viewport-attribution {
 .vp-dropdown__option:before {
   display: none;
 }
+.vp-dropdown__option.is-selected:after {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.vp-dropdown__option {
+  justify-content: space-between;
+}
 
 .vp-breadcrumbs { 
   max-width: fit-content; 

@@ -208,9 +208,14 @@ function confCloudJS() {
               $('.search-header-text').show();
             }
           }
-          var updatePageTitle = new MutationObserver(function(mutations) {
-       //     $('title').text($('.vp-search-input__input').val() + ' - Search');
-          });
+          var updatePageTitle = new MutationObserver(mutationCallback);
+          function mutationCallback(mutations) {
+            updatePageTitle.disconnect();
+            $('title').text($('.vp-search-input__input').val() + ' - Search');
+            updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
+          };
+
+          updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
           $('#search-form').on('submit', function() {
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
@@ -280,7 +285,6 @@ function confCloudJS() {
           $('.vp-pagination__inner button').click(function() {
             $('[data-vp-id="search-page-results"]').hide();  
           });
-          updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
 
           waitForElm('.search-results__results__label, .vp-search-page__main-inner [role="log"]').then((elm) => {
 

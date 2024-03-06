@@ -226,7 +226,7 @@ function confCloudJS() {
           
           function updateEachResult() {
             $('.vp-search-result').each(function() {
-              if ($('.vp-search-result__labels', this).length > 0) {
+              if (($('.vp-search-result__labels', this).length > 0) && !($('.vp-search-result__content-source', this).hasClass('done'))) {
                 let tempText = $('.vp-search-result__content-source', this).text();
                 if ($('.vp-search-result__labels .aui-lozenge', this).length > 1) {
                   $('.vp-search-result__content-source', this).text($('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text());
@@ -235,6 +235,7 @@ function confCloudJS() {
                   $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
                 }
                 $('.vp-search-result__labels', this).remove();
+                $('.vp-search-result__content-source', this).addClass('done');
               }
             });
           }

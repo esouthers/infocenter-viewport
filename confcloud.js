@@ -268,8 +268,8 @@ function confCloudJS() {
             let searchTerm = $('.vp-search-input__input').val();
             let numResults = $(elm).text().split(' result')[0];
             let plural = '';
-            if (numResults > 1) { plural = 's';}
-            $(elm).before('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
+            if ((numResults > 1) || (numResults == 0)) { plural = 's';}
+            $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + searchTerm + '</span>\' returned <span id="numResults">' + numResults + '</span> result' + plural + '.');
             $('#titleBreadcrumb').text($('.search-header').text());
 
             let searchIdx = getSearchIndexes(numResults);

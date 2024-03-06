@@ -423,7 +423,9 @@ function confCloudJS() {
     }
     function updatePaginationLinks() {
       // Apply styling to next/prev links at bottom of page
+      console.log('updating pagination...');
       $('vp-article-pagination').each(function() {
+        console.log('iterating pagination...');
         let style =  document.createElement( 'style' );
         style.innerHTML = 'a { max-width: unset; } .description, a:is(:hover, :focus-visible) .description { color: var(--haiui-blue-03); } a:is(:hover, :focus-visible, :active) .cta, .cta {color: var(--haiui-blue-03); background-color: transparent;}';
         $(this)[0].shadowRoot.appendChild(style);
@@ -431,8 +433,10 @@ function confCloudJS() {
       let baseURL = $('[name="repository-base-url"]').attr('content').replaceAll('../','').replaceAll('/','');
       let path = window.location.pathname.replaceAll('/','');
       if (baseURL === path) {   // we are on the homepage of the space so add next button
+        console.log('on home page...');
         let firstPage = $('.vp-tree__container li > div').first()
         if (firstPage.length > 0) {
+          console.log('more than just the home page available...');
           $('vp-article-pagination').removeAttr('hidden');
           let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
           let hiddenPage = $(paginationRoot).find('a[rel="next"]');
@@ -442,19 +446,25 @@ function confCloudJS() {
         }
       }
       else {  // we aren't
+        console.log('NOT on home page...')
         let paginationRoot = $('vp-article-pagination')[0].shadowRoot;
         let hiddenPage = $(paginationRoot).find('li[hidden]');
         if (hiddenPage.length > 0) { // We are at the first or last child page of space
+          console.log('On first or last child page of space...')
           if ($('a', hiddenPage).attr('rel') == "prev") { // We are the the first child page
             $('a', hiddenPage).attr('href',$('[name="repository-base-url"]').attr('content'));
             $('div.description', hiddenPage).text($('.header__navigation--heading').first().text());
             $(hiddenPage).removeAttr('hidden');
+
           }
           else { // we are at the end with no next page
             // do nothing
+            console.log('No next page...')
+
           }
         }
-      } 
+      }
+      console.log('don pagination!')
     }
     function addBanner(message, hideOption, expireDays) {
       let dnsMsg = '';

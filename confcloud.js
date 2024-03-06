@@ -208,8 +208,10 @@ function confCloudJS() {
               $('.search-header-text').show();
             }
           }
-          $('#search-form').on('submit', function() {
+          var updatePageTitle = new MutationObserver(function(mutations) {
             $('title').text($('.vp-search-input__input').val() + ' - Search');
+          });
+          $('#search-form').on('submit', function() {
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
               pollVisibility(); // Wait until loading finishes
@@ -277,6 +279,7 @@ function confCloudJS() {
           $('.vp-pagination__inner button').click(function() {
             $('[data-vp-id="search-page-results"]').hide();  
           });
+          updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
 
           waitForElm('.search-results__results__label, .vp-search-page__main-inner [role="log"]').then((elm) => {
 

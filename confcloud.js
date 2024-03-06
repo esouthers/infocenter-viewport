@@ -209,7 +209,7 @@ function confCloudJS() {
 
           var updateSearchResults = new MutationObserver(function(mutations) {
             waitForElm('.vp-search-page__loading').then((elm) => {
-              $('.vp-search-result, .vp-search-page__pagination').hide();
+              $('.vp-search-result, .vp-search-page__pagination, .search-header').hide();
               pollVisibility(); // Wait until loading finishes
             })
           });
@@ -224,7 +224,7 @@ function confCloudJS() {
                   $('.vp-search-result__labels', this).remove();
                 }
               });
-              $('.vp-search-result, .vp-search-page__pagination').show();
+              $('.vp-search-result, .vp-search-page__pagination, .search-header').show();
               $('[data-vp-id="search-page-results"]').show();
               $('#searchTerm').text($('.vp-search-input__input').val());
               let numResultsonPage = $('.vp-search-result').length;

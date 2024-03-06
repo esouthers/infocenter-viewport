@@ -1536,7 +1536,7 @@ h1.search-header {
 .vp-search-page__results-header p {
   margin-bottom: 5px;
 }
-.search-results__results__label {
+.search-results__results__label, .vp-search-page__results-header {
   display: none;
 }
 

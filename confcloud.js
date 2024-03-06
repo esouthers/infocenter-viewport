@@ -218,6 +218,7 @@ function confCloudJS() {
 
           updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
           $('#search-form').on('submit', function() {
+            $('.vp-search-result__content-source.done').text('').removeClass('done');
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
               pollVisibility(); // Wait until loading finishes

@@ -209,7 +209,7 @@ function confCloudJS() {
             }
           }
           var updatePageTitle = new MutationObserver(function(mutations) {
-            $('title').text($('.vp-search-input__input').val() + ' - Search');
+       //     $('title').text($('.vp-search-input__input').val() + ' - Search');
           });
           $('#search-form').on('submit', function() {
             waitForElm('.vp-search-page__loading').then((elm) => {

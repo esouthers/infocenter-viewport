@@ -617,7 +617,7 @@ function confCloudJS() {
           // Update page title to include space name and version
 
           if (pageSearch) {
-
+            $('title').text($('title').text().replace(' — Public Documentation',''));
           }
           else {
             $('title').text($('title').text() + ' - ' + $(this).text());

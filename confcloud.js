@@ -209,7 +209,6 @@ function confCloudJS() {
             }
           }
           $('#search-form').on('submit', function() {
-            $('#titleBreadcrumb').text($('h1.search-header').text());
             $('title').text($('.vp-search-input__input').val() + ' - Search');
             waitForElm('.vp-search-page__loading').then((elm) => {
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').hide();
@@ -251,6 +250,8 @@ function confCloudJS() {
               }
               if (numResultsonPage == 0)  { $('#numResults').text('0'); $('.search-header-text').hide(); }
               else                  {       $('#numResults').text(numResults); $('.search-header-text').show(); }
+
+              $('#titleBreadcrumb').text($('h1.search-header').text());
 
               let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
               if (searchedSpaceName == 'Search all') {

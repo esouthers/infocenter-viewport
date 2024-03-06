@@ -274,9 +274,8 @@ function confCloudJS() {
             $('#titleBreadcrumb').text($('.search-header').text());
 
             let searchIdx = getSearchIndexes(numResults);
-            if (numResults > 0) {
-              $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
-            }
+            $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
+            if (numResults == 0) { $('.search-header-text').hide();  }
             $('.search-results__results__label').hide();
 
             $('.vp-search-result').each(function() {

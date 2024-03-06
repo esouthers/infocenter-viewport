@@ -848,7 +848,7 @@ main.error-page .scroll-viewport-attribution {
 .vp-picker__menu__item--selected:before { 
   display: none;
 }
-.vp-picker__menu__item--selected:after {
+.vp-picker__menu__item--selected:after, .vp-dropdown__option:after {
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -867,6 +867,9 @@ main.error-page .scroll-viewport-attribution {
 
 .vp-dropdown--simple .vp-dropdown__options {
   overflow-y: auto;
+}
+.vp-dropdown__option:before {
+  display: none;
 }
 
 .vp-breadcrumbs { 

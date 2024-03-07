@@ -2220,14 +2220,12 @@ svg.article__content__anchor--link-icon {
 }
 
 .mdi-filter-variant:before {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     display: inline-block;
     content: "";
-/*    margin-top: 2px;
-    margin-left: 5px;
-    float: right; */
-    background-color: var(--haiui-green-01);
+    margin-top: 10px;
+    background-color: var(--haiui-gray-01);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 48 48' class='HaiIcon' iconname='Filter' subtype='filter' theme='argon' type='actions'%3E%3Cpath d='m6,14h36c1.1,0,2-.9,2-2s-.9-2-2-2H6c-1.1,0-2,.9-2,2s.9,2,2,2Z'%3E%3C/path%3E%3Cpath d='m36,22H12c-1.1,0-2,.9-2,2s.9,2,2,2h24c1.1,0,2-.9,2-2s-.9-2-2-2Z'%3E%3C/path%3E%3Cpath d='m30,34h-12c-1.1,0-2,.9-2,2s.9,2,2,2h12c1.1,0,2-.9,2-2s-.9-2-2-2Z'%3E%3C/path%3E%3C/svg%3E");  
     -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;

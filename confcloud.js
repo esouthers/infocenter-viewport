@@ -209,6 +209,7 @@ function confCloudJS() {
               $('.search-header-text').show();
             }
           }
+
           var updatePageTitle = new MutationObserver(mutationCallback);
           function mutationCallback(mutations) {
             updatePageTitle.disconnect();
@@ -346,6 +347,23 @@ function confCloudJS() {
       updateBreadcrumbs();
       updatePaginationLinks();
       keyboardShortcuts();
+
+      var updatePageTitle = new MutationObserver(mutationCallback);
+      function mutationCallback(mutations) {
+        updatePageTitle.disconnect();
+        $('title').text($('.vp-search-input__input').val() + ' - Search');
+        updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
+      };
+
+      var updateSidebar = new MutationObserver(function(mutations) {
+        if (getLocalStorageWithExpiry('collapsed-sidebar') != 'true') {
+          updateSidebar.disconnect();
+          $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
+          updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributeFilter: ["class"], childList: false, characterData: false, subtree:false});
+        }
+      });
+      updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributeFilter: ["class"], childList: false, characterData: false, subtree:false});
+
       // Search box placeholder
       $('.vp-search-input > input').attr('placeholder','How can we help you?');
       // Fix alerts

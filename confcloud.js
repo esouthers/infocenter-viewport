@@ -341,6 +341,7 @@ function confCloudJS() {
       updateAirProRack();
       addModifiedDate();
       updateHeader();
+      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
       updateSidebar();
 console.log('finished sidebar...')
 

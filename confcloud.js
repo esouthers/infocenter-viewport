@@ -385,9 +385,11 @@ function confCloudJS() {
 
       var updateSidebar = new MutationObserver(function(mutations) {
         if (getLocalStorageWithExpiry('collapsed-sidebar') != 'true') {
-          updateSidebar.disconnect();
-          $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-          updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributeFilter: ["class"], childList: false, characterData: false, subtree:false});
+          if ($(window).width > 640) {
+            updateSidebar.disconnect();
+            $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
+            updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributeFilter: ["class"], childList: false, characterData: false, subtree:false});
+          }
         }
       });
       updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributeFilter: ["class"], childList: false, characterData: false, subtree:false});

@@ -685,7 +685,7 @@ function confCloudJS() {
 
       // Update sidebar sections
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
-      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
+//      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
 
         // Update page tree section
         $(elm).wrap('<div class="sidebar-section"></div>');
@@ -805,7 +805,7 @@ function confCloudJS() {
         });
 
         $('body').removeClass('min-h-screen');
-        $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
+//        $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';

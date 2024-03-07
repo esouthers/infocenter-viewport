@@ -867,6 +867,8 @@ main.error-page .scroll-viewport-attribution {
 
 .vp-dropdown--simple .vp-dropdown__options {
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 .vp-dropdown__option:before {
   display: none;

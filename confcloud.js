@@ -308,17 +308,7 @@ function confCloudJS() {
             updateEachResult();
 
 
-            $('[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
-              waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
-                sortProductSearch();
-              });
-            });
-            var sortProductList = new MutationObserver(function(mutations) {
-              sortProductList.disconnect();
-              sortProductSearch();
-              sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
-            });
-            sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
+            sortProductSearch();
 
           });
           function sortProductSearch() {
@@ -331,7 +321,7 @@ function confCloudJS() {
             }).appendTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
             $('[data-vp-id="search-page-horizontal-filter-content-item"]').each(function() {
               if ($(this).attr('data-value') == '') {
-                $(this).prependTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
+                $(this).css('order', -1);
               }
             });
           }

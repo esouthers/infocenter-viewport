@@ -342,6 +342,8 @@ function confCloudJS() {
       addModifiedDate();
       updateHeader();
       updateSidebar();
+console.log('finished sidebar...')
+
       updateFooter();
       updateBreadcrumbs();
       updatePaginationLinks();
@@ -593,7 +595,7 @@ function confCloudJS() {
       });
     }
     function updateSidebar() {
-
+console.log('fixing sidebar start...')
       $('.vp-desktop-navigation__page-tree').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
 //            let bgImgSrc = $('footer img').attr('src');
       let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
@@ -631,6 +633,7 @@ function confCloudJS() {
 
       // Update sidebar sections
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+console.log('page tree loaded...')
 
         // Update page tree section
         $(elm).wrap('<div class="sidebar-section"></div>');
@@ -714,6 +717,7 @@ function confCloudJS() {
         }
 
         // Add User Preferences, and Support to sidebar
+console.log('adding user prefs/support...')
         let prefSupportHTML = '<div class="sidebar-section"> \
               <div id="ic-settings" class="heading">' + svgPrefs + '<h3 class="haiui-label-01-med ic-settings">User Preferences</h3></div></div> \
             <div class="sidebar-section"> \
@@ -727,6 +731,7 @@ function confCloudJS() {
         userPreferences();
 
         // Add sidebar dragbar
+console.log('adding dragbar...')
         let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
         $('main').append(dragbarToAdd);
         $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
@@ -750,6 +755,7 @@ function confCloudJS() {
         });
 
 
+console.log('adding logo...')
         $('body').removeClass('min-h-screen');
         $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');

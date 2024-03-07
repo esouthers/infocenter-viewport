@@ -307,33 +307,36 @@ function confCloudJS() {
             $('.search-results__results__label').hide();
             updateEachResult();
 
-            $('[data-vp-id="search-page-horizontal-filter-content-item"]').on('focus', function() {
-                $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
-                  if (a.textContent < b.textContent) {
-                    return -1;
-                  } else {
-                    return 1;
-                  }
-                }).appendTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
-            });
 
             $('[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
               waitForElm('[data-vp-id="search-page-horizontal-filter-content-options"]').then((elm) => {
-                $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
-                  if (a.textContent < b.textContent) {
-                    return -1;
-                  } else {
-                    return 1;
-                  }
-                }).appendTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
-                $('[data-vp-id="search-page-horizontal-filter-content-item"]').each(function() {
-                  if ($(this).attr('data-value') == '') {
-                    $(this).prependTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
-                  }
-                });
+                sortProductSearch();
               });
             });
+            var sortProductList = new MutationObserver(function(mutations) {
+              sortProductList.disconnect();
+              sortProductSearch();
+              sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
+            });
+            sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
+
           });
+          function sortProductSearch() {
+            $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
+              if (a.textContent < b.textContent) {
+                return -1;
+              } else {
+                return 1;
+              }
+            }).appendTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
+            $('[data-vp-id="search-page-horizontal-filter-content-item"]').each(function() {
+              if ($(this).attr('data-value') == '') {
+                $(this).prependTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
+              }
+            });
+          }
+
+
           $('.vp-pagination__inner button').on('click', function(e){
             waitForElm('.search-results__results__label').then((elm) => {
               let searchIdx = getSearchIndexes($('#numResults').text());

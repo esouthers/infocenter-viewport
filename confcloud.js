@@ -1358,7 +1358,7 @@ console.log('adding logo...')
       else { return false; }
     }
     function isQwantBrowser() {
-      if (navigator.userAgent.indexOf('QwantMobile') >= 0) { return true; }
+      if (navigator.userAgent.indexOf('QwantMobile') >= 0) { alert('Qwant browser!'); return true; }
       else { return false; }
     }
 

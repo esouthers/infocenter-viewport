@@ -312,13 +312,16 @@ function confCloudJS() {
 
           });
           function sortProductSearch() {
-            $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
+            let sorted = $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
               if (a.textContent < b.textContent) {
                 return -1;
               } else {
                 return 1;
               }
-            }).appendTo('[data-vp-id="search-page-horizontal-filter-content-options"]');
+            })
+            sorted.each(function(i,j) {
+              $('[data-value="' + j.getAttribute('data-value') + '"]').css('order', i + 1);
+            });
             $('[data-vp-id="search-page-horizontal-filter-content-item"]').each(function() {
               if ($(this).attr('data-value') == '') {
                 $(this).css('order', -1);

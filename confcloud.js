@@ -341,7 +341,6 @@ function confCloudJS() {
       updateAirProRack();
       addModifiedDate();
       updateHeader();
-      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
       updateSidebar();
 console.log('finished sidebar...')
 
@@ -528,6 +527,12 @@ console.log('finished sidebar...')
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
             cookieFlag.close();
             setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
+            if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+              setLocalStorageWithExpiry('collapsed-sidebar', 'true', 3650);
+            }
+            else {
+              setLocalStorageWithExpiry('collapsed-sidebar', 'false', 3650);
+            }
             $('#userprefs .cookieContainer').removeClass('hidden');
             $('#userprefs .cookieDisabledNote').addClass('hidden');
             // Setup Google Analytics
@@ -634,6 +639,7 @@ console.log('fixing sidebar start...')
 
       // Update sidebar sections
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
+      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
 console.log('page tree loaded...')
 
         // Update page tree section

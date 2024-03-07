@@ -342,8 +342,6 @@ function confCloudJS() {
       addModifiedDate();
       updateHeader();
       updateSidebar();
-console.log('finished sidebar...')
-
       updateFooter();
       updateBreadcrumbs();
       updatePaginationLinks();
@@ -601,7 +599,6 @@ console.log('finished sidebar...')
       });
     }
     function updateSidebar() {
-console.log('fixing sidebar start...')
       $('.vp-desktop-navigation__page-tree').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');
 //            let bgImgSrc = $('footer img').attr('src');
       let bgImgSrc = 'https://esouthers.github.io/infocenter-viewport/assets/info-center-nav-bg.png';
@@ -640,7 +637,6 @@ console.log('fixing sidebar start...')
       // Update sidebar sections
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
       $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-console.log('page tree loaded...')
 
         // Update page tree section
         $(elm).wrap('<div class="sidebar-section"></div>');
@@ -724,7 +720,6 @@ console.log('page tree loaded...')
         }
 
         // Add User Preferences, and Support to sidebar
-console.log('adding user prefs/support...')
         let prefSupportHTML = '<div class="sidebar-section"> \
               <div id="ic-settings" class="heading">' + svgPrefs + '<h3 class="haiui-label-01-med ic-settings">User Preferences</h3></div></div> \
             <div class="sidebar-section"> \
@@ -738,7 +733,6 @@ console.log('adding user prefs/support...')
         userPreferences();
 
         // Add sidebar dragbar
-console.log('adding dragbar...')
         let dragbarToAdd = '<div id="sidebar-dragbar"><div class="sidebar-drag-handle"><span class="drag-handle-1"></span><span class="drag-handle-2"></span><span class="drag-handle-3"></span></div></div>';
         $('main').append(dragbarToAdd);
         $('#sidebar-dragbar').on('mousedown touchstart', function (e) {
@@ -761,8 +755,6 @@ console.log('adding dragbar...')
           });
         });
 
-
-console.log('adding logo...')
         $('body').removeClass('min-h-screen');
         $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
@@ -1364,7 +1356,7 @@ console.log('adding logo...')
       else { return false; }
     }
     function isQwantBrowser() {
-      if (navigator.userAgent.indexOf('Qwant') >= 0) { alert('Qwant browser!'); return true; }
+      if (navigator.userAgent.indexOf('Qwant') >= 0) { return true; }
       else { return false; }
     }
 

@@ -318,7 +318,7 @@ function confCloudJS() {
           });
           function sortProductSearch() {
             let sorted = $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
-              if (a.textContent < b.textContent) {
+              if (a.textContent.toLowerCase() < b.textContent.toLowerCase()) {
                 return -1;
               } else {
                 return 1;

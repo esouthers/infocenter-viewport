@@ -308,7 +308,12 @@ function confCloudJS() {
             updateEachResult();
 
 
-            sortProductSearch();
+            var sortProductList = new MutationObserver(function(mutations) {
+              sortProductList.disconnect();
+              sortProductSearch();
+              sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
+            });
+            sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
 
           });
           function sortProductSearch() {

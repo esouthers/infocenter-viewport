@@ -325,11 +325,11 @@ function confCloudJS() {
               }
             })
             sorted.each(function(i,j) {
-              $('[data-value="' + j.getAttribute('data-value') + '"]').css('order', i + 1);
-            });
-            $('[data-vp-id="search-page-horizontal-filter-content-item"]').each(function() {
-              if ($(this).attr('data-value') == '') {
-                $(this).css('order', -1);
+              if (j.getAttribute('data-value') == '') {
+                $('[data-value=""]').css('order', -1);
+              }
+              else {
+                $('[data-value="' + j.getAttribute('data-value') + '"]').css('order', i + 1);
               }
             });
           }

@@ -243,7 +243,7 @@ function confCloudJS() {
               $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             }
           });
-          showSearchFilters.observer(document.querySelector('.vp-search-page__subgrid'), {childList: true, characterData: false, subtree:true});
+          showSearchFilters.observe(document.querySelector('.vp-search-page__subgrid'), {childList: true, characterData: false, subtree:true});
           function updateEachResult() {
             $('.vp-search-result').each(function() {
               if (($('.vp-search-result__labels', this).length > 0) && !($('.vp-search-result__content-source', this).hasClass('done'))) {

@@ -318,14 +318,14 @@ function confCloudJS() {
             $('.search-results__results__label').hide();
             updateEachResult();
 
-
+/*
             var sortProductList = new MutationObserver(function(mutations) {
               sortProductList.disconnect();
               sortProductSearch();
               sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
             });
             sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
-
+*/
           });
           function sortProductSearch() {
             let sorted = $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {

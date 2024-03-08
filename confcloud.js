@@ -4,10 +4,11 @@ function confCloudJS() {
   link.rel = 'stylesheet';
   document.head.appendChild(link);
   function compare( a, b ) {
-    if ( a.name.toLowerCase() < b.name.toLowerCase() ){ return -1; }
-    if ( a.name.toLowerCase() > b.name.toLowerCase() ){ return 1;  }
+    if ( a.name.toLowerCase() < b.name.toLowerCase() ){  return -1; }
+    if ( a.name.toLowerCase() > b.name.toLowerCase() ){  return 1;  }
     return 0;
   }
+
   scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
 
   var script = document.createElement("SCRIPT");
@@ -312,6 +313,9 @@ function confCloudJS() {
             if (numResults == 0) { $('.search-header-text').hide();  }
             $('.search-results__results__label').hide();
             updateEachResult();
+
+          });
+
 
           $('.vp-pagination__inner button').on('click', function(e){
             waitForElm('.search-results__results__label').then((elm) => {

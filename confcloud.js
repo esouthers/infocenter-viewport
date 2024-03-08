@@ -42,7 +42,11 @@ function confCloudJS() {
 
     $(window).resize(function() {
       testWindowSize();
-    });
+      $('.vp-search-result').each(function() {
+        if ($('.vp-search-result__content-source', this).text() != $('.vp-search-result__content-source .texttemp', this).text()) {
+          $('.vp-search-result__content-source', this).text($('.vp-search-result__content-source .texttemp', this).text());
+        }
+      });
     cookieSetup();
 
     // Start of processing depending on page type
@@ -244,15 +248,19 @@ function confCloudJS() {
             }
           });
           showSearchFilters.observe(document.querySelector('.vp-search-page__subgrid'), {childList: true, characterData: false, subtree:true});
-          function updateEachResult() {
+          function updateEachResultSpaceVersion() {
             $('.vp-search-result').each(function() {
               if (($('.vp-search-result__labels', this).length > 0) && !($('.vp-search-result__content-source', this).hasClass('done'))) {
                 let tempText = $('.vp-search-result__content-source', this).text();
                 if ($('.vp-search-result__labels .aui-lozenge', this).length > 1) {
-                  $('.vp-search-result__content-source', this).text($('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text());
+                  let spacePlusVersion = $('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text();
+                  $('.vp-search-result__content-source', this).text(spacePlusVersion);
+                  $(this).append('<div class="texttemp" sylte="display:none;">' + spacePlusVersion + '</div>');
                 }
                 else {
-                  $('.vp-search-result__content-source', this).text(tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text());
+                  let spacePlusVersion = tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text();
+                  $('.vp-search-result__content-source', this).text(spacePlusVersion);
+                  $(this).append('<div class="texttemp" sylte="display:none;">' + spacePlusVersion + '</div>');
                 }
                 $('.vp-search-result__labels', this).remove();
                 $('.vp-search-result__content-source', this).addClass('done');
@@ -262,7 +270,7 @@ function confCloudJS() {
           function pollVisibility() {
             if (!$('.vp-search-page__loading').is(":visible")) {
               $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
-              updateEachResult();
+              updateEachResultSpaceVersion();
               $('.vp-search-result, .vp-search-page__pagination, .search-header, .search-header-text').show();
               $('[data-vp-id="search-page-results"]').show();
               $('#searchTerm').text($('.vp-search-input__input').val());
@@ -324,7 +332,7 @@ function confCloudJS() {
             $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx">' + searchIdx[0] + '</span> to <span id="stopIdx">' + searchIdx[1] + '</span>.</p>');
             if (numResults == 0) { $('.search-header-text').hide();  }
             $('.search-results__results__label').hide();
-            updateEachResult();
+            updateEachResultSpaceVersion();
 
           });
 

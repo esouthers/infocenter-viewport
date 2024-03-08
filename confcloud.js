@@ -4,8 +4,8 @@ function confCloudJS() {
   link.rel = 'stylesheet';
   document.head.appendChild(link);
   function compare( a, b ) {
-    if ( a.name < b.name ){ return -1; }
-    if ( a.name > b.name ){ return 1;  }
+    if ( a.name.toLowerCase() < b.name.toLowerCase() ){ return -1; }
+    if ( a.name.toLowerCase() > b.name.toLowerCase() ){ return 1;  }
     return 0;
   }
   scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );

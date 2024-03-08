@@ -1755,6 +1755,8 @@ h2 {
   #aui-flag-container .aui-flag {
     width: 370px;
   }
+}
+@media screen and (max-width: 1024px) {
   .vp-search-page__search-bar {
     display: flex;
     flex-direction: row-reverse;

@@ -250,14 +250,13 @@ function confCloudJS() {
                 let tempText = $('.vp-search-result__content-source', this).text();
                 if ($('.vp-search-result__labels .aui-lozenge', this).length > 1) {
                   let spacePlusVersion = $('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text();
-                  $('.vp-search-result__content-source', this).text(spacePlusVersion);
-                  $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>');
+                  $('.vp-search-result__content-source', this).text(spacePlusVersion);                  
                 }
                 else {
                   let spacePlusVersion = tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text();
                   $('.vp-search-result__content-source', this).text(spacePlusVersion);
-                  $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>');
                 }
+                if ($('.texttemp', this).length < 0) { $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>'); }
                 $('.vp-search-result__labels', this).remove();
                 $('.vp-search-result__content-source', this).addClass('done');
                 var fixSearchLabels = new MutationObserver(function(mutations) {

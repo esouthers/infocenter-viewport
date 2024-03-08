@@ -8,7 +8,6 @@ function confCloudJS() {
     if ( a.name.toLowerCase() > b.name.toLowerCase() ){  return 1;  }
     return 0;
   }
-
   scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
 
   var script = document.createElement("SCRIPT");

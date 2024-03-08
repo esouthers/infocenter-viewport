@@ -1763,6 +1763,7 @@ h2 {
   }
   .vp-search-bar {
     min-width: unset;
+    margin-right: 5px
   }
   .vp-search-input__input {
     padding-inline-start: 5px;

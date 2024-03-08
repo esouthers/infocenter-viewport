@@ -1770,6 +1770,12 @@ h2 {
     padding-top: 3px;
     padding-bottom: 3px;
   }
+  h1.search-header {
+    margin-left: 10px;
+  }
+  .search-header-text {
+    margin-left: 10px;
+  }
 }
 
 #aui-flag-container .cookieAccept, #aui-flag-container .cookieReject {

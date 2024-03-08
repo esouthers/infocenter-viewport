@@ -223,16 +223,6 @@ function confCloudJS() {
             updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
           };
 
-          var fixSearchLabels = new MutationObserver(function(mutations) {
-            fixSearchLabels.disconnect();
-            $('.vp-search-result').each(function() {
-              if ($('.vp-search-result__content-source', this).text() != $('.vp-search-result__content-source .texttemp', this).text()) {
-                $('.vp-search-result__content-source', this).text($('.vp-search-result__content-source .texttemp', this).text());
-              }
-            });
-            fixSearchLabels.observe(document.querySelector('.vp-search-result__content-source.done'), {childList: true, characterData: false, subtree:true});
-          });
-          fixSearchLabels.observe(document.querySelector('.vp-search-result__content-source.done'), {childList: true, characterData: false, subtree:true});
           updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
           $('#search-form').on('submit', function() {
             $('.vp-search-result__content-source.done').text('').removeClass('done');
@@ -272,6 +262,16 @@ function confCloudJS() {
                 $('.vp-search-result__content-source', this).addClass('done');
               }
             });
+            var fixSearchLabels = new MutationObserver(function(mutations) {
+              fixSearchLabels.disconnect();
+              $('.vp-search-result').each(function() {
+                if ($('.vp-search-result__content-source', this).text() != $('.vp-search-result__content-source .texttemp', this).text()) {
+                  $('.vp-search-result__content-source', this).text($('.vp-search-result__content-source .texttemp', this).text());
+                }
+              });
+              fixSearchLabels.observe(document.querySelector('.vp-search-result__content-source.done'), {childList: true, characterData: false, subtree:true});
+            });
+            fixSearchLabels.observe(document.querySelector('.vp-search-result__content-source.done'), {childList: true, characterData: false, subtree:true});
           }
           function pollVisibility() {
             if (!$('.vp-search-page__loading').is(":visible")) {

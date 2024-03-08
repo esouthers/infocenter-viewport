@@ -276,7 +276,14 @@ function confCloudJS() {
 
               $('#titleBreadcrumb').text($('h1.search-header').text());
 
-              let searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
+              let searchedSpaceName = '';
+              if ($('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').length > 0) {
+                searchedSpaceName = $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text();
+              }
+              else {
+                searchedSpaceName = $('[data-vp-id="search-page-vertical-filter-content-items"] button[aria-checked="true"]').text();
+              }
+              
               if (searchedSpaceName == 'Search all') {
                 searchedSpaceName = "InfoCenter";
               }

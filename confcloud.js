@@ -256,7 +256,7 @@ function confCloudJS() {
                   let spacePlusVersion = tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text();
                   $('.vp-search-result__content-source', this).text(spacePlusVersion);
                 }
-                if ($('.texttemp', this).length < 0) { $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>'); }
+                if ($('.texttemp', this).length == 0) { $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>'); }
                 $('.vp-search-result__labels', this).remove();
                 $('.vp-search-result__content-source', this).addClass('done');
                 var fixSearchLabels = new MutationObserver(function(mutations) {

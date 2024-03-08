@@ -3,6 +3,17 @@ function confCloudJS() {
   link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
   link.rel = 'stylesheet';
   document.head.appendChild(link);
+  function compare( a, b ) {
+    if ( a.name < b.name ){
+      return -1;
+    }
+    if ( a.name > b.name ){
+      return 1;
+    }
+    return 0;
+  }
+
+  scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
 
   var script = document.createElement("SCRIPT");
   script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';

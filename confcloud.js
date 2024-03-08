@@ -4,15 +4,10 @@ function confCloudJS() {
   link.rel = 'stylesheet';
   document.head.appendChild(link);
   function compare( a, b ) {
-    if ( a.name < b.name ){
-      return -1;
-    }
-    if ( a.name > b.name ){
-      return 1;
-    }
+    if ( a.name < b.name ){ return -1; }
+    if ( a.name > b.name ){ return 1;  }
     return 0;
   }
-
   scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
 
   var script = document.createElement("SCRIPT");
@@ -317,34 +312,6 @@ function confCloudJS() {
             if (numResults == 0) { $('.search-header-text').hide();  }
             $('.search-results__results__label').hide();
             updateEachResult();
-
-/*
-            var sortProductList = new MutationObserver(function(mutations) {
-              sortProductList.disconnect();
-              sortProductSearch();
-              sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
-            });
-            sortProductList.observe(document.querySelector('[data-vp-id="search-page-horizontal-filter-content"]'), {attributes: false, childList: true, characterData: false, subtree:true});
-*/
-          });
-          function sortProductSearch() {
-            let sorted = $('[data-vp-id="search-page-horizontal-filter-content-item"]').sort(function(a, b) {
-              if (a.textContent.toLowerCase() < b.textContent.toLowerCase()) {
-                return -1;
-              } else {
-                return 1;
-              }
-            })
-            sorted.each(function(i,j) {
-              if (j.getAttribute('data-value') == '') {
-                $('[data-value=""]').css('order', -1);
-              }
-              else {
-                $('[data-value="' + j.getAttribute('data-value') + '"]').css('order', i + 1);
-              }
-            });
-          }
-
 
           $('.vp-pagination__inner button').on('click', function(e){
             waitForElm('.search-results__results__label').then((elm) => {

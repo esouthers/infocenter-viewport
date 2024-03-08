@@ -248,12 +248,13 @@ function confCloudJS() {
             $('.vp-search-result').each(function() {
               if (($('.vp-search-result__labels', this).length > 0) && !($('.vp-search-result__content-source', this).hasClass('done'))) {
                 let tempText = $('.vp-search-result__content-source', this).text();
+                let spacePlusVersion = '';
                 if ($('.vp-search-result__labels .aui-lozenge', this).length > 1) {
-                  let spacePlusVersion = $('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text();
+                  spacePlusVersion = $('.vp-search-result__labels .aui-lozenge', this).last().text() + ' ' + $('.vp-search-result__labels .aui-lozenge', this).first().text();
                   $('.vp-search-result__content-source', this).text(spacePlusVersion);                  
                 }
                 else {
-                  let spacePlusVersion = tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text();
+                  spacePlusVersion = tempText + ' ' + $('.vp-search-result__labels .aui-lozenge', this).text();
                   $('.vp-search-result__content-source', this).text(spacePlusVersion);
                 }
                 if ($('.texttemp', this).length == 0) { $(this).append('<div class="texttemp" style="display:none;">' + spacePlusVersion + '</div>'); }

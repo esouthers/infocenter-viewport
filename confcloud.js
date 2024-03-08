@@ -47,6 +47,7 @@ function confCloudJS() {
           $('.vp-search-result__content-source', this).text($('.vp-search-result__content-source .texttemp', this).text());
         }
       });
+    });
     cookieSetup();
 
     // Start of processing depending on page type

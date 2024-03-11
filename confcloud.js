@@ -458,6 +458,7 @@ function confCloudJS() {
     function updateAirProRack() {
       $('.vp-variant-picker').remove();
       let currentlyViewing = viewportList.currentContentSource;
+      if (!currentlyViewing) { return false;}
       let versionsAirPro3Rack3 = ["5.3.1"];
       let versionsPro4Rack4 = ["3.0"];
       if (currentlyViewing.name == "Air, Pro & Rack") {

@@ -50,14 +50,14 @@ function confCloudJS() {
     let pageSearch = (window.location.pathname == '/search.html');
     let doNotShowPage = false;
     // Redirect to homepage
-    if (window.location.pathname == '/') {
+    if ((window.location.hostname.indexOf('beta') < 0) && (window.location.pathname == '/')) {
       window.location.replace('https://' + window.location.hostname + '/Home');
     }
     else if (pageSearch || page404) {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-        if (window.location.hostname.indexOf('beta') > 0) {
+        if (window.location.hostname.indexOf('beta') < 0) {
           process404pages();
         }
       }

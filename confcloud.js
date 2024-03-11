@@ -577,9 +577,6 @@ function confCloudJS() {
               '<li><a class="cookieReject">Reject Optional Cookies</a></li>' +
               '</ul>' 
           });
-          if ($('.cookieAccept').is(':visible')) {
-            alert('Qwant Browser');
-          }
           $('#aui-flag-container .cookieAccept').on('click', function() {
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
             cookieFlag.close();

@@ -1779,9 +1779,6 @@ h2 {
   }
 }
 
-#aui-flag-container .cookieAccept, #aui-flag-container .cookieReject {
-  cursor: pointer;
-}
 #cookieconsent .confluence-information-macro {
   position:relative;
   padding: 0px !important;

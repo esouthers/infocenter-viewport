@@ -486,7 +486,7 @@ function confCloudJS() {
             if (versionsPro4Rack4.indexOf($(this).text()) >= 0) {
               $(this).remove();
             }
-          });
+          }); 
         });
         if ($('.vp-version-picker').length > 0) {
           removeUnusedVersions.observe(document.querySelector('.vp-version-picker'), {attributes: false, childList: true, characterData: false, subtree:true});

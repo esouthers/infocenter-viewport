@@ -34,6 +34,7 @@ function confCloudJS() {
     var productRedirectJSON = '{"Command360":[{"redirect":"Command360"}],"CDVR":[{"redirect":"CDVR"}],"CS":[{"redirect":"CoolSign"}],"EMS":[{"redirect":"EMS"}],"Furnace":[{"redirect":"Furnace"}],"hai1000":[{"redirect":"hai1000"}],"HaiHelper":[{"redirect":"Helper"}],"HMG":[{"redirect":"HMG"}],"HMP":[{"redirect":"HMP"}],"Hub":[{"redirect":"Hub"}],"Hub360":[{"redirect":"Hub360"}],"KB":[{"redirect":"KB"}],"Kraken":[{"redirect":"Kraken"}],"LightFlow":[{"redirect":"LightFlow"}],"MakitoDec":[{"redirect":"MakitoDec"}],"MakitoEnc":[{"redirect":"MakitoEnc"}],"MakitoXDec":[{"redirect":"MakitoXDec"}],"MakitoXEnc":[{"redirect":"MakitoXEnc"}],"MFXE":[{"redirect":"MFXE"}],"MakitoX1Enc":[{"redirect":"MakitoX1Enc"}],"MakitoX4Dec":[{"redirect":"MakitoX4Dec"}],"MakitoX4Enc":[{"redirect":"MakitoX4Enc"}],"Mantaray":[{"redirect":"Mantaray"}],"MJPiOS":[{"redirect":"MJPiOS"}],"HPM":[{"redirect":"HPM"}],"HPPM":[{"redirect":"HPPM"}],"PlayProiOS":[{"redirect":"PlayProiOS"}],"STB":[{"redirect":"Play1000STB"}],"Play20004000STB":[{"redirect":"Play20004000STB"}],"Stingray":[{"redirect":"Stingray"}],"StreamHub":[{"redirect":"StreamHub"}],"Torpedo":[{"redirect":"Torpedo"}]}';
     var viewportList = parseViewportData();    
 
+    $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
     function parseViewportData() {
 //      return $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
       return window.scrollHelpCenter.collection;

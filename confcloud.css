@@ -139,10 +139,10 @@ body {
   overflow-y: auto;
   min-height: 100vh;
 }
-body.flex {
+html {
   display: none;
 }
-body.flex.show {
+html.show {
   display: unset;
 }
 body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu {

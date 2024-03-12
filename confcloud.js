@@ -118,7 +118,7 @@ function confCloudJS() {
 //          function processProductPrefix(jsonObject) {
         let found = false;
         $.each(jsonObject, function(oldPrefix,prefixList) {
-          $('body').removeClass('show')
+          $('html').removeClass('show')
           let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
           let newURL = '/' + prefixList[0].redirect + '/';
           for (const match of window.location.pathname.matchAll(regexp)) {
@@ -427,7 +427,7 @@ function confCloudJS() {
       });
 
 
-      $('body').show();
+//      $('body').show();
 
       // Fix table cell background colors
       $("[data-highlight-colour='yellow']").css('background-color','lightyellow');
@@ -454,7 +454,7 @@ function confCloudJS() {
     let sidebarWidth = getLocalStorageWithExpiry('sidebar-width');
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
-    if (!doNotShowPage) {  $('body').addClass('show'); }
+    if (!doNotShowPage) {  $('html').addClass('show'); }
 
 
     function updateAirProRack() {

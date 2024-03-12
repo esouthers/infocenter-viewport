@@ -190,7 +190,9 @@ function confCloudJS() {
         updateSidebar();
 
         processSearchPage();
-
+        if (window.location.host.indexOf('beta') >= 0) {
+          $('body').addClass('beta');
+        }
         function processSearchPage() { 
           let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
@@ -245,9 +247,7 @@ function confCloudJS() {
               $('[data-vp-id="search-page-horizontal-filter"]').removeClass('hidden');
             }
           });
-          if (window.location.host.indexOf('beta') < 0) {
-            showSearchFilters.observe(document.querySelector('.vp-search-page__subgrid'), {childList: true, characterData: false, subtree:true});
-          }
+          showSearchFilters.observe(document.querySelector('.vp-search-page__subgrid'), {childList: true, characterData: false, subtree:true});
           function updateEachResultSpaceVersion() {
             $('.vp-search-result').each(function() {
               if (($('.vp-search-result__labels', this).length > 0) && !($('.vp-search-result__content-source', this).hasClass('done'))) {

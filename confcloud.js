@@ -50,7 +50,7 @@ function confCloudJS() {
     let pageSearch = (window.location.pathname == '/search.html');
     let doNotShowPage = false;
     // Redirect to homepage
-    if ((window.location.hostname.indexOf('beta') < 0) && (window.location.pathname == '/')) {
+    if (window.location.pathname == '/') {
       window.location.replace('https://' + window.location.hostname + '/Home');
     }
     else if (pageSearch || page404) {

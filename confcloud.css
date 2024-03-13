@@ -2258,6 +2258,3 @@ svg.article__content__anchor--link-icon {
 body.beta .vp-search-page__filter-horizontal {
   display: none;
 }
-body.beta [data-vp-id="vp-search-form"] {
-  display: none;
-}

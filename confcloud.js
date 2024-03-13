@@ -706,8 +706,10 @@ function confCloudJS() {
 
         // Update page tree section
         $(elm).wrap('<div class="sidebar-section"></div>');
-        let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
-        $(elm).parent().prepend(pageTreeHTML);
+        if (!((isBetaSite) && ($('.vp-tree__container').children().length == 0))) {
+          let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
+          $(elm).parent().prepend(pageTreeHTML);
+        }
 
         if (!isBetaSite) {
           // Add Products lists to the sidebar

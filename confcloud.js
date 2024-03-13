@@ -576,12 +576,14 @@ function confCloudJS() {
     function cookieSetup() {
       if ((!isPlayPro()) && (!isQwantBrowser())) {
         if (!(getLocalStorageWithExpiry('acceptedCookie'))) {
+          var cookieViewLink = isBetaSite ? '' : '<li><a href="/Home/privacy-and-cookies">View</a></li>';
+          var cookieViewText = isBetaSite ? '' : 'Click <strong>View</strong> to read more.';
           var cookieFlag = AJS.flag({
             type: 'success',
-            body: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. Click <strong>View</strong> to read more.' +
+            body: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. ' + cookieViewText + 
               '<ul class="aui-nav-actions-list">' +
               '<li><a class="cookieAccept">Accept</a></li>' +
-              '<li><a href="/Home/privacy-and-cookies">View</a></li>' +
+              cookieViewLink + 
               '<li><a class="cookieReject">Reject Optional Cookies</a></li>' +
               '</ul>' 
           });

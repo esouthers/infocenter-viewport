@@ -702,12 +702,12 @@ function confCloudJS() {
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
 //      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
 
-        if (!isBetaSite) {
-          // Update page tree section
-          $(elm).wrap('<div class="sidebar-section"></div>');
-          let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
-          $(elm).parent().prepend(pageTreeHTML);
+        // Update page tree section
+        $(elm).wrap('<div class="sidebar-section"></div>');
+        let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
+        $(elm).parent().prepend(pageTreeHTML);
 
+        if (!isBetaSite) {
           // Add Products lists to the sidebar
           let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
           $('.vp-desktop-navigation__page-tree').append(productsHTML);

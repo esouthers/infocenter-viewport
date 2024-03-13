@@ -33,6 +33,7 @@ function confCloudJS() {
     var svgCheckFilled = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="HaiIcon fixedSize" iconname="CheckmarkCircle" subtype="checkmark-circle" theme="argon" type="toggle"><path d="M8,0C3.58,0,0,3.58,0,8s3.58,8,8,8,8-3.58,8-8S12.42,0,8,0Zm3.9,5.33l-3.48,6.95c-.16,.33-.48,.55-.85,.6-.05,0-.1,0-.15,0-.31,0-.62-.13-.83-.37l-2.82-3.15c-.2-.22-.3-.5-.28-.8s.15-.57,.37-.76c.2-.18,.47-.28,.74-.28,.32,0,.62,.13,.83,.37l1.73,1.93,2.75-5.49c.19-.38,.57-.61,.99-.61,.17,0,.34,.04,.5,.12,.27,.13,.46,.36,.56,.64,.09,.28,.07,.58-.06,.85Z"></path></svg>';
     var productRedirectJSON = '{"Command360":[{"redirect":"Command360"}],"CDVR":[{"redirect":"CDVR"}],"CS":[{"redirect":"CoolSign"}],"EMS":[{"redirect":"EMS"}],"Furnace":[{"redirect":"Furnace"}],"hai1000":[{"redirect":"hai1000"}],"HaiHelper":[{"redirect":"Helper"}],"HMG":[{"redirect":"HMG"}],"HMP":[{"redirect":"HMP"}],"Hub":[{"redirect":"Hub"}],"Hub360":[{"redirect":"Hub360"}],"KB":[{"redirect":"KB"}],"Kraken":[{"redirect":"Kraken"}],"LightFlow":[{"redirect":"LightFlow"}],"MakitoDec":[{"redirect":"MakitoDec"}],"MakitoEnc":[{"redirect":"MakitoEnc"}],"MakitoXDec":[{"redirect":"MakitoXDec"}],"MakitoXEnc":[{"redirect":"MakitoXEnc"}],"MFXE":[{"redirect":"MFXE"}],"MakitoX1Enc":[{"redirect":"MakitoX1Enc"}],"MakitoX4Dec":[{"redirect":"MakitoX4Dec"}],"MakitoX4Enc":[{"redirect":"MakitoX4Enc"}],"Mantaray":[{"redirect":"Mantaray"}],"MJPiOS":[{"redirect":"MJPiOS"}],"HPM":[{"redirect":"HPM"}],"HPPM":[{"redirect":"HPPM"}],"PlayProiOS":[{"redirect":"PlayProiOS"}],"STB":[{"redirect":"Play1000STB"}],"Play20004000STB":[{"redirect":"Play20004000STB"}],"Stingray":[{"redirect":"Stingray"}],"StreamHub":[{"redirect":"StreamHub"}],"Torpedo":[{"redirect":"Torpedo"}]}';
     var viewportList = parseViewportData();    
+    var isBetaSite = window.location.host.indexOf('beta') >= 0 ? true : false;
 
 //    $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
     function parseViewportData() {
@@ -59,7 +60,7 @@ function confCloudJS() {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-        if (window.location.hostname.indexOf('beta') < 0) {
+        if (!isBetaSite) {
           process404pages();
         }
       }
@@ -192,7 +193,7 @@ function confCloudJS() {
         updateSidebar();
 
         processSearchPage();
-        if (window.location.host.indexOf('beta') >= 0) {
+        if (isBetaSite) {
           $('body').addClass('beta');
         }
         function processSearchPage() { 
@@ -701,21 +702,23 @@ function confCloudJS() {
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
 //      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
 
-        // Update page tree section
-        $(elm).wrap('<div class="sidebar-section"></div>');
-        let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
-        $(elm).parent().prepend(pageTreeHTML);
+        if (!isBetaSite) {
+          // Update page tree section
+          $(elm).wrap('<div class="sidebar-section"></div>');
+          let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
+          $(elm).parent().prepend(pageTreeHTML);
 
-        // Add Products lists to the sidebar
-        let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
-        $('.vp-desktop-navigation__page-tree').append(productsHTML);
+          // Add Products lists to the sidebar
+          let productsHTML = '<div class="sidebar-section"><div id="ic-products" class="heading">' + svgProducts + '<h3 class="haiui-label-01-med">Products</h3></div><div class="sort-items sort-products hidden"><div class="products-by-type">Type</div><div class="products-by-family">Family</div></div></div>';
+          $('.vp-desktop-navigation__page-tree').append(productsHTML);
 
-        $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
-          .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
-        });
-        $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbyfamily.json', function(data) { processProductsByFamily(data); })
-          .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
-        });
+          $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbytype.json', function(data) { processProductsByType(data); })
+            .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
+          });
+          $.getJSON('https://esouthers.github.io/infocenter-viewport/productsbyfamily.json', function(data) { processProductsByFamily(data); })
+            .fail(function(error) { console.error('Error fetching "product by family" JSON:', error);
+          });
+        }
         function processProductsByType(data) {
           let productsTypeHTML = '<ul class="ic-products-top productlist-type hidden vp-tree__container relative m-0 outline-none" role="tree">';
           productsTypeHTML = buildSidebarList(data,productsTypeHTML,'type');

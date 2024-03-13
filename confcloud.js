@@ -709,6 +709,7 @@ function confCloudJS() {
         if (!((isBetaSite) && ($('.vp-tree__container').children().length == 0))) {
           let pageTreeHTML = '<div id="ic-pagetree" class="heading current">' + svgPageTree + '<h3 class="haiui-label-01-med">Page Tree</h3></div>';
           $(elm).parent().prepend(pageTreeHTML);
+          $('[data-vp-id="vp-search-form"]').hide();
         }
 
         if (!isBetaSite) {

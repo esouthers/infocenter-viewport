@@ -403,7 +403,7 @@ function confCloudJS() {
           if ($(window).width() > 640) {
             updateSidebar.disconnect();
             $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-//            updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributes: true, childList: false, characterData: false, subtree:false});
+            updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributes: true, childList: false, characterData: false, subtree:false});
           }
         }
       });

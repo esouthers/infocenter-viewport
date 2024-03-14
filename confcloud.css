@@ -2281,3 +2281,6 @@ body.beta .vp-search-page__filter-horizontal {
   --border-radius: var(--__vp-sb-border-radius-inner);
   --border-width: 0px;
 }
+[data-vp-component="search-input"] {
+  display: none;
+}

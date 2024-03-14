@@ -236,7 +236,7 @@ function confCloudJS() {
               let count = 0;
               let pageNum = 1;
               while (count < data.total) {
-                if ((count >= data.start) && (count <= data.start + data.max + 1)) {
+                if ((count >= data.start) && (count < data.start + data.max)) {
                   newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                 }
                 else {
@@ -245,6 +245,7 @@ function confCloudJS() {
 
                 $('#custom-search-page-pagination .vp-pagination__items').append(newPage)
                 count += data.max;
+                pageNum++;
               }
             }
           })

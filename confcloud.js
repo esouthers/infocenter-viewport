@@ -197,6 +197,7 @@ function confCloudJS() {
         processSearchPage();
         function processSearchPage() { 
           // $('[data-vp-id="search-page-results"]').remove();
+          // $('[data-vp-id="search-page-pagination"]').remove();
           let url = window.location.href;
           let params = new URLSearchParams(url.split('?')[1]);
           let paramsGetL     =  params.get('l') !== null ? params.get('l') : "";
@@ -208,7 +209,7 @@ function confCloudJS() {
           let paramsGetQ     =  params.get('q') !== null ? params.get('q') : "";
           let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
-          $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style="display: none;"></ul>');
+          $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');
           $.get( '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa, function(data, status, jqXHR) {
             $('#custom-search-page-results li').remove();
             var numResults = data.total;
@@ -224,7 +225,7 @@ function confCloudJS() {
               });
             }
             if (numResults > data.max) {
-              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style="display:none;"><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav>';
+              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style=""><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav>';
               $('.vp-search-page__pagination').append(pagination);
               if (data.start == 0) {
                 $('button.vp-pagination__action--prev').attr('disabled','');

@@ -272,6 +272,7 @@ function confCloudJS() {
                 $('#stopIdx').text(data.start + data.max);
               }
               if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
+              $('#numResults').text(data.total);
               if (data.total == 0) { $('.search-header-text').hide(); }
 
             });

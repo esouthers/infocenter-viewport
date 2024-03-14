@@ -211,6 +211,11 @@ function confCloudJS() {
           $('.hc-main-wrapper').append(newForm);
           $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');
           let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa;
+
+          $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + paramsGetS + '</span>\' returned <span id="numResults"></span> result<span id="pluralResults"></span>.');
+          $('#titleBreadcrumb').text($('.search-header').text());
+          $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx"></span> to <span id="stopIdx"></span>.</p>');
+
           $('#searchTerm').text(paramsGetS);
           $('#startIdx').text(paramsGetStart);
           newSearch(searchURL);
@@ -266,6 +271,9 @@ function confCloudJS() {
               else {
                 $('#stopIdx').text(data.start + data.max);
               }
+              if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
+              if (data.total == 0) { $('.search-header-text').hide(); }
+
             });
           }
 

@@ -463,7 +463,7 @@ function confCloudJS() {
       $('.top-bar-right .my-auto').last().append(searchBox);
       let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"></ul>';
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
-      var debounce = function(func, wait) {
+/*      var debounce = function(func, wait) {
           var timeout;
           var result;
           return function() {
@@ -476,8 +476,14 @@ function confCloudJS() {
             timeout = setTimeout(debounced, wait);
             return result;
           };
+        }; */
+      function debounce(func, wait) {
+        let timeout;
+        return function() {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, arguments), wait);
         };
-
+      }
       function debouncedSearch(inputString) {
         debounce(doSearch(inputString), 1000);
       }

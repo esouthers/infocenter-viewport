@@ -514,11 +514,13 @@ function confCloudJS() {
           $('#suggestionList li').remove();
           if ($(data.hits).length > 0) {
             $(data.hits).each(function(i,val){
-              let version = val.versionName === undefined ? '' : ' ' + val.versionName;
-              let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
-              searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
-              searchSuggestion += version + '</span></div></a></li>';
-              $('#suggestionList').append(searchSuggestion);
+              if (val.contentSourceName != 'Inclusion Library') {
+                let version = val.versionName === undefined ? '' : ' ' + val.versionName;
+                let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
+                searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+                searchSuggestion += version + '</span></div></a></li>';
+                $('#suggestionList').append(searchSuggestion);
+              }
             });
             let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
             let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + data.total + ' results</a></li>';

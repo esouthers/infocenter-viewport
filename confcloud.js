@@ -216,7 +216,7 @@ function confCloudJS() {
           $('#titleBreadcrumb').text($('.search-header').text());
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx"></span> to <span id="stopIdx"></span>.</p>');
 
-          $('#searchTerm').text(paramsGetS);
+          $('#searchTerm').text(paramsGetQ);
           $('#startIdx').text(parseInt(paramsGetStart) + 1);
           newSearch(searchURL);
           function newSearch(restURL) {

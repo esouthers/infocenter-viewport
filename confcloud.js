@@ -487,7 +487,7 @@ function confCloudJS() {
         };
       } */
       function debouncedSearch(inputString) {
-        debounce(doSearch(inputString), 1000);
+        debounce(doSearch(inputString), 99999000);
       }
       $('#custom-search-form input').on('input', function() {
         var str = $(this).val().trim();
@@ -509,7 +509,6 @@ function confCloudJS() {
             $('#custom-search-form input[name="va"]').attr('value',viewportList.currentContentSource.variants.current.name);
           }
         }
-
         
         $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+'&s='+spaceSearched+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li').remove();
@@ -517,13 +516,8 @@ function confCloudJS() {
             $(data.hits).each(function(i,val){
               let version = val.versionName === undefined ? '' : ' ' + val.versionName;
               let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
-              if (val.variantName !== undefined) {
-                searchSuggestion += val.variantName;
-              }
-              else {
-                searchSuggestion += val.contentSourceName;
-              }
-                searchSuggestion += version + '</span></div></a></li>';
+              searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+              searchSuggestion += version + '</span></div></a></li>';
               $('#suggestionList').append(searchSuggestion);
             });
             let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';

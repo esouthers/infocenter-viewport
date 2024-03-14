@@ -517,7 +517,6 @@ function confCloudJS() {
         fixImageSizes(this);
         fixInlineImages(this);
       });
-  //            fixTabs(); Do not use due to Cors proxy security issues
       convertExpandsToTabs();
 //********************
       let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
@@ -1371,113 +1370,6 @@ function confCloudJS() {
     /* Searching */
     /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
     // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
-
-    // Do not use due to Cors proxy security issues
-    // Temp fix for Adaptavist's Tabs macros
-    function fixTabs() {
-      // Aui tabs
-      // 1. Search page for auitabs jscript.
-      // 2. If found get page id and macro ids
-      var pageID = $('body').attr('pageid');
-      $('.ap-container script').each( function(index) {
-        var that = this;
-        var tabsIndex = index;
-        pageID = $(that).text().split('page.id\\":\\"')[1].split('\\')[0];
-        var macroID = $(that).text().split('macro.id\\":\\"')[1].split('\\')[0];
-        $(that).parent('.ap-container').after('<div id="aui-tabs' + tabsIndex + '" class="contentf aui-tabs horizontal-tabs" role="application"><ul class="tabs-menu" role="tablist"></ul></div>');
-        // https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/36049353/history/0/macro/id/834c47c9-9e12-4588-94ae-db701689f010/convert/view 
-        $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID + "/convert/view", function( data ) {
-          // Gets the tabs container content. Must loop through this content looking for macro-id's for the tabs page macros
-          var tabMacroIDs = data.value.split('data-macro-id=\"');
-          var tabPageTitles = [];
-          for (var i = 1; i < tabMacroIDs.length; i++) {
-            tabMacroIDs[i] = tabMacroIDs[i].split('\"')[0];
-            var tabMacroID = tabMacroIDs[i];
-            $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabMacroID + '-tab"></a></li>');
-            $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID, function( data ) {
-              var tabPageTitle = data.parameters.title.value;
-              var tabPageTitleNoSpaces = data.parameters.title.value.replaceAll(' ','').replaceAll('/','');
-              var tabMacroID = $(this)[0].url.split('macro/id/')[1].split('/')[0];
-//                  $('#aui-tabs' + tabsIndex + ' .tabs-menu').append('<li class="menu-item"><a id="' + tabPageTitleNoSpaces + '-tab" href="#' + tabPageTitleNoSpaces + '">' + tabPageTitle + '</a></li>');
-//                  href="#' + tabPageTitleNoSpaces + 
-              $('#' + tabMacroID + '-tab').attr('id',tabPageTitleNoSpaces + '-tab').attr('data-href','#' + tabPageTitleNoSpaces).text(tabPageTitle);
-              $('#aui-tabs' + tabsIndex + ' .menu-item').first().addClass('active-tab');
-              $('#aui-tabs' + tabsIndex).append('<div id="' + tabPageTitleNoSpaces + '" data-pane-title="' + tabPageTitle + '" class="cfm tabs-pane" role="tabpanel" loaded="true" style="display: none;"></div>');
-/* Update these 2 lines to add support for tabs in URL feature */
-              let firstTab = $('#aui-tabs' + tabsIndex + ' .tabs-menu .menu-item').first().children('a').attr('data-href');
-              $('#aui-tabs' + tabsIndex + ' ' + firstTab).addClass('active-pane').show();
-
-              addTabEventListener($('#' + tabPageTitleNoSpaces + '-tab'));
-              $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + tabMacroID + "/convert/view", function( data ) {
-                $('#' + tabPageTitleNoSpaces).append(data.value);
-                renderTab($('#' + tabPageTitleNoSpaces));
-              });
-            });
-          }
-        });
-      });
-      function addTabEventListener(tab) {
-        $(tab).click(function() {
-          $(tab).parents('.tabs-menu').first().children('li').removeClass('active-tab');
-          $(tab).parent().addClass('active-tab');
-          $(tab).parents('.aui-tabs').first().children('.tabs-pane').removeClass('active-pane').hide();
-          $($(tab).attr('data-href')).addClass('active-pane').show();
-        });
-      }
-      function renderTab(tabContent) {
-        $('.confluence-embedded-file-wrapper', tabContent).each(function() {
-          fixInlineImages(this);
-        });
-        $('a', tabContent).each(function() {
-          let pageID = $(this).attr('data-linked-resource-id');
-          let pageHREF  = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').attr('href');
-          let pageTitle = $('.vp-desktop-navigation__page-tree__tree [data-id=' + pageID + '] a').text();
-          $(this).attr('data-href', pageHREF).text(pageTitle);
-          /**************
-           * Issue here with links that don't appear yet in the sidebar. See P2P Analytics tab at https://haivision-infocenter.scrollhelp.site/HMP/3.9/reports-and-logs
-           * ************/
-        });
-        $('img', tabContent).each(function() {
-          let imgPageID = $(this).attr('data-linked-resource-container-id');
-          let imgID = $(this).attr('data-media-id');
-          let imgNameTemp = $(this).attr('src').split('/');
-          let imgName = imgNameTemp[imgNameTemp.length - 1].split('?')[0];
-          $(this).attr('src','../../__attachments/' + imgPageID + '/' + imgName + '?' + imgID);
-          $(this).attr('width',$(this).attr('height'));
-          /*********** 
-           * Add inline image fix for icons in tabs: https://haivision-infocenter.scrollhelp.site/HMP/3.9/security-settings#Appliance
-           * /
-        });
-        $('table-wrap', tabContent).each(function() {
-/* Add enlarge functionality to tables in tabs
-          $(this).prepend('<button type="button" aria-hidden="true" class="button enlarge-table-button" data-open="js-table-overlay"><svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 11.7 11.7" xml:space="preserve"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.239 2.963h1.4v1.5M4.539 8.663h-1.5v-1.6M8.739 7.163v1.5h-1.6M3.039 4.563v-1.5h1.6"></path></svg></button>');
-          '<div class="table-overlay full reveal article__content" data-vp-id="js-table-overlay" style="display: block;"> \
-          <i18n-message i18nkey="modal.cta.close.label" attribute="title"><button class="close-button table-overlay__close" data-close="" title="Close modal" type="button"> \
-          <span aria-hidden="true">×</span></button></i18n-message><div class="table-overlay__content"><div class="article">' + + '</div></div></div>';
-          $('vp-article-pagination').before(this);
-          $('button', this).click(function() {
-
-          });
-*/
-        });
-        /* Add fix for draw.io images */
-          $('[data-macro-name="drawio"]', tabContent).each(function() {
-            let macroID = $(this).attr('data-macro-id');
-            let that = this;
-            $.get("https://corsproxy.io/?https://haivisioninfocenter.atlassian.net/wiki/rest/api/content/" + pageID + "/history/0/macro/id/" + macroID, function( data ) {
-              let imgName = data.parameters.diagramName.value + '.png';
-              let imgSize = data.parameters.size?.value;
-              let imgWidth = '';
-              if (imgSize !== undefined) {
-                imgWidth = ' width="' + imgSize + '"';
-              }
-              let img = '<img' + imgWidth + ' src="https://haivisioninfocenter.atlassian.net/wiki/download/attachments/' + pageID + '/' + imgName + '?api=v2">';
-              $(that).append(img);
-            });
-          });
-
-      }
-    }
 
     function getSearchIndexes(numResults) {
       let startIdx = parseInt($('#search-form [name="start"]').attr('value')) + 1;

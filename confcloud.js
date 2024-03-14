@@ -236,7 +236,14 @@ function confCloudJS() {
               let count = 0;
               let pageNum = 1;
               while (count + data.max < data.total) {
-                let newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                if ((count >= data.start) && (count <= data.start + data.max + 1)) {
+                  let newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                }
+                else {
+                  let newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                }
+
+                $('#custom-search-page-pagination .vp-pagination__items').append(newPage)
                 count += data.max;
               }
             }

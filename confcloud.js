@@ -466,38 +466,20 @@ function confCloudJS() {
       $('#custom-search-form').append(hiddenInputs);
       let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"></ul>';
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
-      var debounce = function(func, wait) {
-          var timeout;
-          var result;
-          return function() {
-            var args = arguments;
-            var context = this;
-            var dt = new Date();
-            console.log(dt.getTime())
-            var debounced = function() {
-                result = func.apply(context, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(debounced, wait);
-            return result;
-          };
-        };
-/*      function debounce(func, wait) {
-        let timeout;
-        return function() {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => func.apply(this, arguments), wait);
-        };
-      } */
-      function debouncedSearch(inputString) {
-        debounce(doSearch(inputString), 99999000);
-      }
+      
+      let timeout;
       $('#custom-search-form input').on('input', function() {
         var str = $(this).val().trim();
+        clearTimeout(timeout);
         if (str.length >= 3) {
-          debouncedSearch(str);
+          timeout = setTimeout(function() {
+              // Your code to handle the debounced input event goes here
+              doSearch(str)
+              console.log('Input value:', $(this).val());
+          }.bind(this), 300); // Adjust the delay (in milliseconds) as needed
         }
       });
+
       function doSearch(str) {
         var searchTerm = str;
 //        let spaceSearched = viewportList.currentContentSource.prefix;

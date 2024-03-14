@@ -248,7 +248,7 @@ function confCloudJS() {
                 count += data.max;
                 pageNum++;
               }
-              $('#custom-search-page-pagination .vp-pagination__items button').on('click', function() {
+              $('#custom-search-page-pagination button').on('click', function() {
                 var href = new URL(window.location.href);
                 href.searchParams.set('start', $(this).attr('value'));
                 window.location.href = href;

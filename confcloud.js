@@ -255,9 +255,16 @@ function confCloudJS() {
                 window.location.href = href;
               });
             }
-          })
+            if (data.start + data.max > data.total) {
+              $('#stopIdx').text(data.total);
+            }
+            else {
+              $('#stopIdx').text(data.start + data.max);
+            }
+          });
 
-
+          $('#searchTerm').text(paramsGetS);
+          $('#startIdx').text(paramsGetStart);
 
           let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
@@ -275,7 +282,7 @@ function confCloudJS() {
             '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
 
           updateBreadcrumbs();
-
+/*
           function updateSearchIndexesFN() {
             let searchIdx = getSearchIndexes(parseInt($('#numResults').text()));
             $('#startIdx').text(searchIdx[0]);
@@ -421,7 +428,7 @@ function confCloudJS() {
               $(elm).remove();
             });
           });
-        }
+        } */
 
       }
     }

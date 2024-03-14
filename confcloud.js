@@ -501,10 +501,10 @@ function confCloudJS() {
         let spaceSearched = scrollHelpCenter.collection.currentContentSource.prefix;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         $('#custom-search-form input[name="s"]').attr('value',scrollHelpCenter.collection.currentContentSource.prefix);
-        if (scrollHelpCenter.collection.currentContentSource.versions.current) {
+        if (scrollHelpCenter.collection.currentContentSource.versions !== undefined) {
           $('#custom-search-form input[name="v"]').attr('value',scrollHelpCenter.collection.currentContentSource.versions.current.name);
         }
-        if (scrollHelpCenter.collection.currentContentSource.variants.current) {
+        if (scrollHelpCenter.collection.currentContentSource.variants !== undefined) {
           $('#custom-search-form input[name="va"]').attr('value',scrollHelpCenter.collection.currentContentSource.variants.current.name);
         }
 

@@ -512,7 +512,8 @@ function confCloudJS() {
         
         $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+'&s='+spaceSearched+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li').remove();
-          if ($(data.hits).length > 0) {
+          var numResults = data.total;
+          if (numResults > 0) {
             $(data.hits).each(function(i,val){
               if (val.contentSourceName != 'Inclusion Library') {
                 let version = val.versionName === undefined ? '' : ' ' + val.versionName;
@@ -521,12 +522,15 @@ function confCloudJS() {
                 searchSuggestion += version + '</span></div></a></li>';
                 $('#suggestionList').append(searchSuggestion);
               }
+              else { numResults -= 1}
             });
-            let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
-            let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + data.total + ' results</a></li>';
-            $('#suggestionList').append(searchSuggestionAll);
+            if (numResults > 0) {
+              let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
+              let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
+              $('#suggestionList').append(searchSuggestionAll);
+            }
           }
-          else {
+          if (numResults == 0) {
             let noResults = '<li id="" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><div class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" tabindex="-1"><span class="vp-search-suggestion-option__label">Your search returned no matches.</span><div class="vp-search-suggestion-option__info-container"></div></div></li>';
             $('#suggestionList').append(noResults);
           }

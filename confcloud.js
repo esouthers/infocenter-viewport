@@ -243,10 +243,15 @@ function confCloudJS() {
                   newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                 }
 
-                $('#custom-search-page-pagination .vp-pagination__items').append(newPage)
+                $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
                 count += data.max;
                 pageNum++;
               }
+              $('#custom-search-page-pagination .vp-pagination__items button').on('click', function() {
+                var href = new URL(window.location.href);
+                href.searchParams.set('start', $(this).attr('value'));
+                window.location.href = href;
+              });
             }
           })
 

@@ -203,21 +203,21 @@ function confCloudJS() {
           let paramsGetL     =  params.get('l') !== null ? params.get('l') : "";
           let paramsGetStart =  params.get('start') !== null ? params.get('start') : "";
           let paramsGetMax   =  params.get('max') !== null ? params.get('max') : "";
-          let paramsGetS     =  params.get('s') !== null ? '&s=' + params.get('s') : "";
+          let paramsGetS     =  params.get('s') !== null ? params.get('s') : "";
           let paramsGetV     = (params.get('v') !== null && params.get('v') !== '') ? '&v=' + params.get('v') : "";
           let paramsGetVa    = (params.get('va') !== null && params.get('va') !== '') ? '&va=' + params.get('va') : "";
           let paramsGetQ     =  params.get('q') !== null ? params.get('q') : "";
-          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
+          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV.replace('&v=','') + '"><input type="hidden" name="va" value="' + paramsGetVa.replace('&va=','') + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
           $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');
-          let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa;
+          let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + '&s=' + paramsGetS + paramsGetV + paramsGetVa;
 
           $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + paramsGetS + '</span>\' returned <span id="numResults"></span> result<span id="pluralResults"></span>.');
           $('#titleBreadcrumb').text($('.search-header').text());
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx"></span> to <span id="stopIdx"></span>.</p>');
 
           $('#searchTerm').text(paramsGetS);
-          $('#startIdx').text(paramsGetStart);
+          $('#startIdx').text(parseInt(paramsGetStart) + 1);
           newSearch(searchURL);
           function newSearch(restURL) {
             $.get(restURL, function(data, status, jqXHR) {

@@ -419,17 +419,6 @@ function confCloudJS() {
         updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
       };
 
-/*      var updateSidebar = new MutationObserver(function(mutations) {
-        if (getLocalStorageWithExpiry('collapsed-sidebar') != 'true') {
-          if ($(window).width() > 640) {
-            updateSidebar.disconnect();
-            $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
-            updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributes: true, childList: false, characterData: false, subtree:false});
-          }
-        }
-      });
-      updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributes: true, childList: false, characterData: false, subtree:false});
-*/
       // Search box placeholder
       $('.vp-search-input > input').attr('placeholder','How can we help you?');
       // Fix alerts
@@ -501,8 +490,10 @@ function confCloudJS() {
       $(document).mouseup(function(e) {
           var container = $('#suggestionList');
           // if the target of the click isn't the container nor a descendant of the container
-          if (!container.is(e.target) && container.has(e.target).length === 0) 
-          { $('#suggestionList li').remove(); $('#suggestionList').hide(); }
+          if (!container.is(e.target) && container.has(e.target).length === 0 && !$(e.target).hasClass('vp-search-input__input')) { 
+            $('#suggestionList li').remove(); 
+            $('#suggestionList').hide();
+          }
       });
       function doSearch(str) {
         var searchTerm = str;

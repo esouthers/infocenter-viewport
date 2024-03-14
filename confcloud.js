@@ -235,7 +235,7 @@ function confCloudJS() {
               $('button.vp-pagination__action--next').attr('value',data.start + data.max);
               let count = 0;
               let pageNum = 1;
-              while (count + data.max < data.total) {
+              while (count < data.total) {
                 if ((count >= data.start) && (count <= data.start + data.max + 1)) {
                   newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                 }

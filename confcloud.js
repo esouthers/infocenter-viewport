@@ -481,8 +481,10 @@ function confCloudJS() {
       function debouncedSearch(inputString) {
         debounce(doSearch(inputString), 1000);
       }
-      $('#custom-search-form input').on('submit', function() {
-        window.location.href = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + scrollHelpCenter.collection.currentContentSource.prefix +'&start=0';
+      $('#custom-search-form input').on('keydown', function(e) {
+        if (e.keyCode == 13){
+          window.location.href = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + scrollHelpCenter.collection.currentContentSource.prefix +'&start=0';
+        }
       });
       $('#custom-search-form input').on('input', function() {
         var str = $(this).val().trim();

@@ -206,9 +206,9 @@ function confCloudJS() {
           let paramsGetV     = (params.get('v') !== null && params.get('v') !== '') ? '&v=' + params.get('v') : "";
           let paramsGetVa    = (params.get('va') !== null && params.get('va') !== '') ? '&va=' + params.get('va') : "";
           let paramsGetQ     =  params.get('q') !== null ? params.get('q') : "";
-          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" data-vp-id="vp-search-form" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
+          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
-          $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none"></ul>');
+          $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style="display: none;"></ul>');
           $.get( '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa, function(data, status, jqXHR) {
             $('#custom-search-page-results li').remove();
             var numResults = data.total;

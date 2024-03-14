@@ -498,14 +498,14 @@ function confCloudJS() {
       function doSearch(str) {
         var searchTerm = str;
 //        let spaceSearched = viewportList.currentContentSource.prefix;
-        let spaceSearched = scrollHelpCenter.collection.currentContentSource.prefix;
+        let spaceSearched = viewportList.currentContentSource.prefix;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-        $('#custom-search-form input[name="s"]').attr('value',scrollHelpCenter.collection.currentContentSource.prefix);
-        if (scrollHelpCenter.collection.currentContentSource.versions !== undefined) {
-          $('#custom-search-form input[name="v"]').attr('value',scrollHelpCenter.collection.currentContentSource.versions.current.name);
+        $('#custom-search-form input[name="s"]').attr('value',viewportList.currentContentSource.prefix);
+        if (viewportList.currentContentSource.versions !== undefined) {
+          $('#custom-search-form input[name="v"]').attr('value',viewportList.currentContentSource.versions.current.name);
         }
-        if (scrollHelpCenter.collection.currentContentSource.variants !== undefined) {
-          $('#custom-search-form input[name="va"]').attr('value',scrollHelpCenter.collection.currentContentSource.variants.current.name);
+        if (viewportList.currentContentSource.variants !== undefined) {
+          $('#custom-search-form input[name="va"]').attr('value',viewportList.currentContentSource.variants.current.name);
         }
 
         
@@ -517,7 +517,7 @@ function confCloudJS() {
               let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">' + val.contentSourceName + version + '</span></div></a></li>';
               $('#suggestionList').append(searchSuggestion);
             });
-            let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + scrollHelpCenter.collection.currentContentSource.prefix +'&start=0';
+            let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
             let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + data.total + ' results</a></li>';
             $('#suggestionList').append(searchSuggestionAll);
           }

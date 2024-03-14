@@ -221,7 +221,24 @@ function confCloudJS() {
                   searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
                   $('#custom-search-page-results').append(searchResult);
                 }
-              })
+              });
+            }
+            if (numResults > data.max) {
+              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style="display:none;"><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span></div><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></nav>';
+              $('.vp-search-page__pagination').append(pagination);
+              if (data.start == 0) {
+                $('button.vp-pagination__action--prev').attr('disabled','');
+              }
+              if (data.start + data.max > data.total) {
+                $('button.vp-pagination__action--next').attr('disabled','');
+              }
+              $('button.vp-pagination__action--next').attr('value',data.start + data.max);
+              let count = 0;
+              let pageNum = 1;
+              while (count + data.max < data.total) {
+                let newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                count += data.max;
+              }
             }
           })
 

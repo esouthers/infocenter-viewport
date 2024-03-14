@@ -217,21 +217,24 @@ function confCloudJS() {
                 if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { 
                   let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                   let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
-                  searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
-                  searchSuggestion += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description"></p></div></li>';
+                  searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+                  searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description"></p></div></li>';
                   $('#custom-search-page-results').append(searchResult);
                 }
               })
             }
           })
-          let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
+
+
+
+/*          let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
           let searchedSpaceName = '';
           $.each(viewportList.members, function(key,val) {
             if (val.prefix == searchedSpaceKey) {
               searchedSpaceName = val.name;
             }
-          });
+          }); */
           let exitSearchText = 'Exit Search Results';
           let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
           $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href',exitSearchLink);

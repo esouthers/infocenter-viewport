@@ -218,7 +218,7 @@ function confCloudJS() {
                   let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                   let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
                   searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
-                  searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description"></p></div></li>';
+                  searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
                   $('#custom-search-page-results').append(searchResult);
                 }
               })

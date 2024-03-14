@@ -549,7 +549,7 @@ function confCloudJS() {
         if (str.length >= 3) {
           timeout = setTimeout(function() {
               doSearch(str)
-          }.bind(this), 200); // Adjust the delay (in milliseconds) as needed
+          }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
         }
       });
       $(document).mouseup(function(e) {
@@ -1365,11 +1365,6 @@ function confCloudJS() {
         });
       });
     }
-
-
-    /* Searching */
-    /* https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7 */
-    // https://haivision-infocenter.scrollhelp.site/__search?l=en&max=6&ol=false&q=config&s=HMP&start=0&v=3.7&v=3.8
 
     function getSearchIndexes(numResults) {
       let startIdx = parseInt($('#search-form [name="start"]').attr('value')) + 1;

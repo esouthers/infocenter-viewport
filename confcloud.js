@@ -505,7 +505,9 @@ function confCloudJS() {
           $('#custom-search-form input[name="v"]').attr('value',viewportList.currentContentSource.versions.current.name);
         }
         if (viewportList.currentContentSource.variants !== undefined) {
-          $('#custom-search-form input[name="va"]').attr('value',viewportList.currentContentSource.variants.current.name);
+          if (viewportList.currentContentSource.variants.name !== undefined) {
+            $('#custom-search-form input[name="va"]').attr('value',viewportList.currentContentSource.variants.current.name);
+          }
         }
 
         

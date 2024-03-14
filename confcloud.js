@@ -38,9 +38,7 @@ function confCloudJS() {
       $('body').addClass('beta');
     }
 
-//    $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
     function parseViewportData() {
-//      return $.parseJSON($('script').first().text().split('JSON.parse(')[1].split('),')[0].replace(/\\/g,'').replaceAll("'",''));
       return window.scrollHelpCenter.collection;
     }
 
@@ -398,7 +396,7 @@ function confCloudJS() {
         updatePageTitle.observe(document.querySelector('title'), {childList: true, characterData: false, subtree:true});
       };
 
-      var updateSidebar = new MutationObserver(function(mutations) {
+/*      var updateSidebar = new MutationObserver(function(mutations) {
         if (getLocalStorageWithExpiry('collapsed-sidebar') != 'true') {
           if ($(window).width() > 640) {
             updateSidebar.disconnect();
@@ -408,7 +406,7 @@ function confCloudJS() {
         }
       });
       updateSidebar.observe(document.querySelector('#vp-js-desktop__navigation'), {attributes: true, childList: false, characterData: false, subtree:false});
-
+*/
       // Search box placeholder
       $('.vp-search-input > input').attr('placeholder','How can we help you?');
       // Fix alerts
@@ -591,7 +589,7 @@ function confCloudJS() {
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
             cookieFlag.close();
             setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
-            if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+            if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
               setLocalStorageWithExpiry('collapsed-sidebar', 'true', 3650);
             }
             else {
@@ -702,7 +700,6 @@ function confCloudJS() {
 
       // Update sidebar sections
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {
-//      $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
 
         // Update page tree section
         $(elm).wrap('<div class="sidebar-section"></div>');
@@ -829,7 +826,6 @@ function confCloudJS() {
         });
 
         $('body').removeClass('min-h-screen');
-//        $('#vp-js-desktop__navigation').removeClass('vp-article__aside-left__inner--collapsed');
         $('.header__navigation--logo img').addClass('logo-large').attr('src','https://esouthers.github.io/infocenter-viewport/assets/InfoCenterLogo.svg');
         $('.header__navigation--logo img').parent().prepend(svgSmallLogo);
         var articleLeft = '';
@@ -867,7 +863,7 @@ function confCloudJS() {
         });
 
         $('#ic-pagetree').click(function() {
-          if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+          if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
             $('.ht-menu-button').click(); // If sidebar collapsed, open it
 //            $('.vp-desktop-navigation__page-tree__tree').removeClass('hidden');
 //            $(this).addClass('current');
@@ -886,7 +882,7 @@ function confCloudJS() {
           }
         });
         $('#ic-products').click(function() {
-          if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+          if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
             $('.ht-menu-button').click(); // If sidebar collapsed, open it
           }
           if ($('.sort-items').hasClass('hidden')) {
@@ -930,8 +926,8 @@ function confCloudJS() {
     }
 
     function collapseOpenSidebar() {
-      $('#vp-js-desktop__navigation').toggleClass('vp-article__aside-left__inner--collapsed');
-      if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+      $('#vp-js-desktop__navigation').toggleClass('sidebar-collapsed');
+      if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
         // close sidebar 96px
         setDragbar(96);
         setLocalStorageWithExpiry('collapsed-sidebar','true', 3650);
@@ -1026,7 +1022,7 @@ function confCloudJS() {
     function setDragbar(val) {
       if (!val)val = 320;
       let val10 = val - 22;
-      if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+      if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
         $('#vp-js-desktop__navigation').width(val + "px");
       }
       else {
@@ -1356,7 +1352,7 @@ function confCloudJS() {
         setDragbar(newWidth);
       }
       if (width < 800) { 
-        if (!($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed'))) {
+        if (!($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed'))) {
           $('.ht-menu-button').click();
         }
       }
@@ -1367,7 +1363,7 @@ function confCloudJS() {
           setLocalStorageWithExpiry('sidebar-width',newWidth,14)
           setDragbar(newWidth);
         }
-        if ($('#vp-js-desktop__navigation').hasClass('vp-article__aside-left__inner--collapsed')) {
+        if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
           $('.ht-menu-button').click();
         }          
       }

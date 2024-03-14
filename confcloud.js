@@ -210,61 +210,66 @@ function confCloudJS() {
           let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
           $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');
-          $.get( '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa, function(data, status, jqXHR) {
-            $('#custom-search-page-results li').remove();
-            var numResults = data.total;
-            if (numResults > 0) {
-              $(data.hits).each(function(i,val){
-                if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { 
-                  let version = val.versionName === undefined ? '' : ' ' + val.versionName;
-                  let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
-                  searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
-                  searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
-                  $('#custom-search-page-results').append(searchResult);
-                }
-              });
-            }
-            if (numResults > data.max) {
-              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style=""><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav>';
-              $('.vp-search-page__pagination').append(pagination);
-              if (data.start == 0) {
-                $('button.vp-pagination__action--prev').attr('disabled','');
-              }
-              if (data.start + data.max > data.total) {
-                $('button.vp-pagination__action--next').attr('disabled','');
-              }
-              $('button.vp-pagination__action--prev').attr('value',data.start - data.max);
-              $('button.vp-pagination__action--next').attr('value',data.start + data.max);
-              let count = 0;
-              let pageNum = 1;
-              while (count < data.total) {
-                if ((count >= data.start) && (count < data.start + data.max)) {
-                  newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                }
-                else {
-                  newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                }
-
-                $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
-                count += data.max;
-                pageNum++;
-              }
-              $('#custom-search-page-pagination button:not([aria-current="true"])').on('click', function() {
-                var href = new URL(window.location.href);
-                href.searchParams.set('start', $(this).attr('value'));
-                window.location.href = href;
-              });
-            }
-            if (data.start + data.max > data.total) {
-              $('#stopIdx').text(data.total);
-            }
-            else {
-              $('#stopIdx').text(data.start + data.max);
-            }
-          });
-
+          let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa;
           $('#searchTerm').text(paramsGetS);
           $('#startIdx').text(paramsGetStart);
+          newSearch(searchURL);
+          function newSearch(restURL) {
+            $.get(restURL, function(data, status, jqXHR) {
+              $('#custom-search-page-results li').remove();
+              var numResults = data.total;
+              if (numResults > 0) {
+                $(data.hits).each(function(i,val){
+                  if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { 
+                    let version = val.versionName === undefined ? '' : ' ' + val.versionName;
+                    let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
+                    searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+                    searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
+                    $('#custom-search-page-results').append(searchResult);
+                  }
+                });
+              }
+              if (numResults > data.max) {
+                let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style=""><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav>';
+                $('.vp-search-page__pagination').append(pagination);
+                if (data.start == 0) {
+                  $('button.vp-pagination__action--prev').attr('disabled','');
+                }
+                if (data.start + data.max > data.total) {
+                  $('button.vp-pagination__action--next').attr('disabled','');
+                }
+                $('button.vp-pagination__action--prev').attr('value',data.start - data.max);
+                $('button.vp-pagination__action--next').attr('value',data.start + data.max);
+                let count = 0;
+                let pageNum = 1;
+                while (count < data.total) {
+                  if ((count >= data.start) && (count < data.start + data.max)) {
+                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                  }
+                  else {
+                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                  }
+
+                  $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
+                  count += data.max;
+                  pageNum++;
+                }
+                $('#custom-search-page-pagination button:not([aria-current="true"])').on('click', function() {
+                  var href = new URL(window.location.href);
+                  href.searchParams.set('start', $(this).attr('value'));
+                  window.location.href = href;
+                });
+              }
+              if (data.start + data.max > data.total) {
+                $('#stopIdx').text(data.total);
+              }
+              else {
+                $('#stopIdx').text(data.start + data.max);
+              }
+            });
+          }
+
+
 
           let searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
@@ -428,8 +433,9 @@ function confCloudJS() {
               $(elm).remove();
             });
           });
-        } */
-
+        } 
+*/
+        }
       }
     }
     else {  // Regular page

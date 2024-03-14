@@ -2266,3 +2266,6 @@ body.beta .vp-search-page__filter-horizontal {
 [data-vp-id="search-page-results"], [data-vp-id="search-page-pagination"] {
   display: none !important;
 }
+.vp-pagination {
+  margin-bottom: 30px;
+}

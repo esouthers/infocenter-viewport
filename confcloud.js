@@ -224,7 +224,7 @@ function confCloudJS() {
               });
             }
             if (numResults > data.max) {
-              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style="display:none;"><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span></div><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></nav>';
+              let pagination = '<nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style="display:none;"><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav>';
               $('.vp-search-page__pagination').append(pagination);
               if (data.start == 0) {
                 $('button.vp-pagination__action--prev').attr('disabled','');

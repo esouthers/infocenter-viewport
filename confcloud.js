@@ -196,24 +196,31 @@ function confCloudJS() {
 
         processSearchPage();
         function processSearchPage() { 
+          // $('[data-vp-id="search-page-results"]').remove();
           let url = window.location.href;
           let params = new URLSearchParams(url.split('?')[1]);
-          let paramsGetL = params.get('l') !== null ? params.get('l') : "";
-          let paramsGetStart = params.get('start') !== null ? params.get('start') : "";
-          let paramsGetMax = params.get('max') !== null ? params.get('max') : "";
-          let paramsGetS = params.get('s') !== null ? '&s=' + params.get('s') : "";
-          let paramsGetV = params.get('v') !== null ? '&v=' + params.get('v') : "";
-          let paramsGetVa = params.get('va') !== null ? '&va=' + params.get('va') : "";
-          let paramsGetQ = params.get('q') !== null ? params.get('q') : "";
+          let paramsGetL     =  params.get('l') !== null ? params.get('l') : "";
+          let paramsGetStart =  params.get('start') !== null ? params.get('start') : "";
+          let paramsGetMax   =  params.get('max') !== null ? params.get('max') : "";
+          let paramsGetS     =  params.get('s') !== null ? '&s=' + params.get('s') : "";
+          let paramsGetV     = (params.get('v') !== null && params.get('v') !== '') ? '&v=' + params.get('v') : "";
+          let paramsGetVa    = (params.get('va') !== null && params.get('va') !== '') ? '&va=' + params.get('va') : "";
+          let paramsGetQ     =  params.get('q') !== null ? params.get('q') : "";
           let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" data-vp-id="vp-search-form" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV + '"><input type="hidden" name="va" value="' + paramsGetVa + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
-          $('[data-vp-id="search-page-results"]').remove();
+          $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none"></ul>');
           $.get( '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=true&q=' + paramsGetQ + paramsGetS + paramsGetV + paramsGetVa, function(data, status, jqXHR) {
-            $('#suggestionList li').remove();
+            $('#custom-search-page-results li').remove();
             var numResults = data.total;
             if (numResults > 0) {
               $(data.hits).each(function(i,val){
-                if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { }
+                if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { 
+                  let version = val.versionName === undefined ? '' : ' ' + val.versionName;
+                  let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
+                  searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+                  searchSuggestion += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description"></p></div></li>';
+                  $('#custom-search-page-results').append(searchResult);
+                }
               })
             }
           })

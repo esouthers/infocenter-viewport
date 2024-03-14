@@ -470,13 +470,20 @@ function confCloudJS() {
           let spaceSearched = scrollHelpCenter.collection.currentContentSource.prefix;
           $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+'&s='+spaceSearched+'&start=0', function(data, status, jqXHR) {
             $('#suggestionList li').remove();
-            $(data.hits).each(function(i,val){
-              let version = val.versionName === undefined ? '' : ' ' + val.versionName;
-              let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">' + val.contentSourceName + version + '</span></div></a></li>';
-              $('#suggestionList').append(searchSuggestion);
-            });
-            let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + data.total + ' results</a></li>';
-            $('#suggestionList').append(searchSuggestionAll);
+            if ($(data.hits).length > 0) {
+              $(data.hits).each(function(i,val){
+                let version = val.versionName === undefined ? '' : ' ' + val.versionName;
+                let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">' + val.contentSourceName + version + '</span></div></a></li>';
+                $('#suggestionList').append(searchSuggestion);
+              });
+              let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + scrollHelpCenter.collection.currentContentSource.prefix +'&start=0';
+              let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + data.total + ' results</a></li>';
+              $('#suggestionList').append(searchSuggestionAll);
+            }
+            else {
+              let noResults = '<li id="" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><div class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" tabindex="-1"><span class="vp-search-suggestion-option__label">Your search returned no matches.</span><div class="vp-search-suggestion-option__info-container"></div></div></li>';
+              $('#suggestionList').append(noResults);
+            }
             $('#suggestionList').show();
           }).fail(function() {
             // error handler

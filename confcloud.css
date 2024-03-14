@@ -2269,3 +2269,15 @@ body.beta .vp-search-page__filter-horizontal {
 .vp-pagination {
   margin-bottom: 30px;
 }
+[data-vp-component=search-bar][data-vp-variant=large] [data-vp-component=custom-search-input] {
+  --padding-inline: 12px;
+}
+[data-vp-component=custom-search-input][data-vp-variant=border] {
+  --_border-width: var(--border-width);
+  --border-style: solid;
+}
+[data-vp-component=search-bar] [data-vp-component=custom-search-input] {
+  --height: 100%;
+  --border-radius: var(--__vp-sb-border-radius-inner);
+  --border-width: 0px;
+}

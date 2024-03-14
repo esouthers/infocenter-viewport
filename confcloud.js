@@ -233,6 +233,7 @@ function confCloudJS() {
               if (data.start + data.max > data.total) {
                 $('button.vp-pagination__action--next').attr('disabled','');
               }
+              $('button.vp-pagination__action--prev').attr('value',data.start - data.max);
               $('button.vp-pagination__action--next').attr('value',data.start + data.max);
               let count = 0;
               let pageNum = 1;

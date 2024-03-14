@@ -463,8 +463,35 @@ function confCloudJS() {
       $('.top-bar-right .my-auto').last().append(searchBox);
       let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"></ul>';
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
+      var debounce = function(func, wait) {
+          var timeout;
+          var result;
+          return function() {
+            var args = arguments;
+            var context = this;
+            var debounced = function() {
+                result = func.apply(context, args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(debounced, wait);
+            return result;
+          };
+        };
+
+      function debouncedSearch(inputString) {
+        debounce(doSearch(inputString), 1000);
+      }
+      $('#custom-search-form input').on('submit', function() {
+        window.location.href = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + scrollHelpCenter.collection.currentContentSource.prefix +'&start=0';
+      });
       $('#custom-search-form input').on('input', function() {
-        var searchTerm = $(this).val();
+        var str = $(this).val().trim();
+        if (str.length >= 3) {
+          debouncedSearch(str);
+        }
+      });
+      function doSearch(str) {
+        var searchTerm = str;
         if (searchTerm.length > 3) {
 //          let spaceSearched = viewportList.currentContentSource.prefix;
           let spaceSearched = scrollHelpCenter.collection.currentContentSource.prefix;
@@ -488,8 +515,8 @@ function confCloudJS() {
           }).fail(function() {
             // error handler
           });
-        }
-      });
+        }        
+      }
 
     }
     function updateAirProRack() {

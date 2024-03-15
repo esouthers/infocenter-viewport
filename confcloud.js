@@ -404,10 +404,10 @@ function confCloudJS() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('va', $(this).attr('data-value'));
-            if (href.searchParams.has('s') == 'Transmitters') {
+            if (href.searchParams.get('s')== 'Transmitters') {
               $.each(transmittersVariants, function(i,j) {
                 if ($(this).attr('data-value') == j.variant) {
-                  if (href.searchParams.has('v')) { href.searchParams.set('v', j.versions[0]); }
+                  href.searchParams.set('v', j.versions[0]);
                 }
               });
             }

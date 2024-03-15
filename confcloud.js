@@ -339,6 +339,7 @@ function confCloudJS() {
           $('ul [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
 
+        // Products Dropdown
           // Show product dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-content"] button[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').show();
@@ -352,6 +353,7 @@ function confCloudJS() {
             console.log('search with new product');
           });
 
+        // Versions Dropdown
           // Show versions dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-versions"] button[data-vp-id="search-page-horizontal-filter-versions-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-versions-options"]').show();
@@ -365,6 +367,7 @@ function confCloudJS() {
             console.log('search with new version');
           });
 
+        // Variants Dropdown
           // Show variants dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-variants-options"]').show();
@@ -384,7 +387,6 @@ function confCloudJS() {
               selector.hide();
             }
           }
-
 
           let exitSearchText = 'Exit Search Results';
           let exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;

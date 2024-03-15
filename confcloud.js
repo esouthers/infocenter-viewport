@@ -314,7 +314,7 @@ function confCloudJS() {
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
             if (val.prefix == searchedSpaceKey) {
               if (val.versions !== undefined) {
-                if (val.versions.available.length > 0) {
+                if (val.versions.available.length > 1) {
                   let valVersions = val.versions.available;
                   $.each(valVersions, function(verKey,verVal) {
                     let verToAdd = '<li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="' + verVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-ver' + verKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + verVal.name + '</span></li>';
@@ -324,7 +324,7 @@ function confCloudJS() {
                 }
               }
               if (val.variants !== undefined) {
-                if (val.variants.available.length > 0) {
+                if (val.variants.available.length > 1) {
                   let valVariants = val.variants.available;
                   $.each(valVariants, function(varKey,varVal) {
 //*******************************************//

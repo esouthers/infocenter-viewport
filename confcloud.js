@@ -388,7 +388,7 @@ function confCloudJS() {
           $(document).mouseup(function(e) {
             hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'), e);
           });
-          $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(.is-selected)').on('click', function() {
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('va', $(this).attr('data-value'));

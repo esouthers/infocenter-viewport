@@ -350,7 +350,7 @@ function confCloudJS() {
                           $('[data-vp-id="search-page-horizontal-filter-versions-item"][data-value="' + $(this).attr['data-value'] + '"]').show();
                         })
                       }
-                    }
+                    });
 
 //*******************************************//
                     let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';

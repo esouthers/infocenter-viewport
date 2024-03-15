@@ -346,8 +346,8 @@ function confCloudJS() {
                     $.each(transmittersVariants, function(i,variantToTest) {
                       if (variantToTest.variant == searchedVariant ) {
                         $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
-                        $('[data-vp-id="search-page-horizontal-filter-versions-item"]').each(function() {
-                          $('[data-vp-id="search-page-horizontal-filter-versions-item"][data-value="' + $(this).attr['data-value'] + '"]').show();
+                        $.each(variantToTest.versions, function(i,version) {
+                          $('[data-vp-id="search-page-horizontal-filter-versions-item"][data-value="' + version + '"]').show();
                         })
                       }
                     });

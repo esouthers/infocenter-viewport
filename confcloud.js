@@ -287,6 +287,7 @@ function confCloudJS() {
 
           var searchedSpaceKey = $('#search-form [name="s"]').attr('value');
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
+          let searchedVariant = $('#search-form [name="va"]').attr('value') !== undefined ? $('#search-form [name="va"]').attr('value') : "";
           let searchedSpaceName = '';
           $.each(viewportList.members, function(key,val) {
             if (val.prefix == searchedSpaceKey) {
@@ -334,6 +335,9 @@ function confCloudJS() {
           // Indicate selected version
           $('ul [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');
+          // Indicate selected variant
+          $('ul [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
 
           // Show product dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-content"] button[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
@@ -347,6 +351,7 @@ function confCloudJS() {
             // Perform new search
             console.log('search with new product');
           });
+
           // Show versions dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-versions"] button[data-vp-id="search-page-horizontal-filter-versions-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-versions-options"]').show();
@@ -359,6 +364,20 @@ function confCloudJS() {
             // Perform new search
             console.log('search with new version');
           });
+
+          // Show variants dropdown
+          $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
+            $('ul[data-vp-id="search-page-horizontal-filter-variants-options"]').show();
+          });
+          // Hide variants dropdown
+          $(document).mouseup(function(e) {
+            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'));
+          });
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(".is-selected")').on('click', function() {
+            // Perform new search
+            console.log('search with new variant');
+          });
+
           function hideDropdown(selector) {
             // if the target of the click isn't the container nor a descendant of the container
             if (!selector.is(e.target) && selector.has(e.target).length === 0) { 

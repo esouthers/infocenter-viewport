@@ -391,6 +391,33 @@ function confCloudJS() {
             window.location.href = href;
           });
 
+        // Variants Dropdown
+          // Show variants dropdown
+          $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
+            $('ul[data-vp-id="search-page-horizontal-filter-variants-options"]').show();
+          });
+          // Hide variants dropdown
+          $(document).mouseup(function(e) {
+            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'), e);
+          });
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] li:not(.is-selected)').on('click', function() {
+            // Perform new search
+            var href = new URL(window.location.href);
+            href.searchParams.set('va', $(this).attr('data-value'));
+            if (href.searchParams.has('s') == 'Transmitters') {
+              $.each(transmittersVariants, function(i,j) {
+                if ($(this).attr('data-value') == j.variant) {
+                  if (href.searchParams.has('v')) { href.searchParams.set('v', j.versions[0]); }
+                }
+              });
+            }
+            else {
+              if (href.searchParams.has('v')) { href.searchParams.set('v', ''); }
+            }
+            if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
+            window.location.href = href;
+          });
+
         // Versions Dropdown
           // Show versions dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-versions"] button[data-vp-id="search-page-horizontal-filter-versions-button"]').on('click', function() {
@@ -408,23 +435,6 @@ function confCloudJS() {
             window.location.href = href;
           });
 
-        // Variants Dropdown
-          // Show variants dropdown
-          $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
-            $('ul[data-vp-id="search-page-horizontal-filter-variants-options"]').show();
-          });
-          // Hide variants dropdown
-          $(document).mouseup(function(e) {
-            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'), e);
-          });
-          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] li:not(.is-selected)').on('click', function() {
-            // Perform new search
-            var href = new URL(window.location.href);
-            href.searchParams.set('va', $(this).attr('data-value'));
-            if (href.searchParams.has('v')) { href.searchParams.set('v', ''); }
-            if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
-            window.location.href = href;
-          });
 
           function hideDropdown(selector, element) {
             // if the target of the click isn't the container nor a descendant of the container

@@ -285,7 +285,7 @@ function confCloudJS() {
             });
           }
 
-          var searchedSpaceKey = $('#search-form [name="s"]').attr('value');
+          var searchedSpaceKey = $('#search-form [name="s"]').attr('value') !== undefined ? $('#search-form [name="s"]').attr('value') : "";
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
           let searchedVariant = $('#search-form [name="va"]').attr('value') !== undefined ? $('#search-form [name="va"]').attr('value') : "";
           let searchedSpaceName = '';

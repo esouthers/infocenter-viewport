@@ -254,15 +254,25 @@ function confCloudJS() {
                 $('button.vp-pagination__action--next').attr('value',data.start + data.max);
                 let count = 0;
                 let pageNum = 1;
+                let pageNumToShow = data.start / data.max + 1;
                 while (count < data.total) {
-                  if ((count >= data.start) && (count < data.start + data.max)) {
+                  let newPage = '';
+                  if (((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5)) || ((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5))) {
+                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                  }
+                  else if (pageNu == pageNumToShow) {
+                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                  }
+/*                  if ((count >= data.start) && (count < data.start + data.max)) {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                   }
                   else {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                   }
-
-                  $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
+*/
+                  if (newPage != '') {                  
+                    $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
+                  }
                   count += data.max;
                   pageNum++;
                 }

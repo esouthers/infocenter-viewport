@@ -354,7 +354,13 @@ function confCloudJS() {
           $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
             var href = new URL(window.location.href);
-            href.searchParams.set('s', $(this).attr('data-value')).set('v', '').set('va', '');
+            href.searchParams.set('s', $(this).attr('data-value'));
+            if (href.searchParams.has('v')) {
+              href.searchParams.set('v', '');
+            }
+            if (href.searchParams.has('va')) {
+              href.searchParams.set('va', '');
+            }
             window.location.href = href;
           });
 
@@ -370,7 +376,10 @@ function confCloudJS() {
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
             var href = new URL(window.location.href);
-            href.searchParams.set('v', $(this).attr('data-value')).set('va', '');
+            href.searchParams.set('v', $(this).attr('data-value'));
+            if (href.searchParams.has('va')) {
+              href.searchParams.set('va', '');
+            }
             window.location.href = href;
           });
 

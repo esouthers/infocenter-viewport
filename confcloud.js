@@ -355,12 +355,8 @@ function confCloudJS() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('s', $(this).attr('data-value'));
-            if (href.searchParams.has('v')) {
-              href.searchParams.set('v', '');
-            }
-            if (href.searchParams.has('va')) {
-              href.searchParams.set('va', '');
-            }
+            if (href.searchParams.has('v')) {  href.searchParams.set('v', '');  }
+            if (href.searchParams.has('va')) { href.searchParams.set('va', ''); }
             window.location.href = href;
           });
 
@@ -377,9 +373,7 @@ function confCloudJS() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('v', $(this).attr('data-value'));
-            if (href.searchParams.has('va')) {
-              href.searchParams.set('va', '');
-            }
+            if (href.searchParams.has('va')) { href.searchParams.set('va', ''); }
             window.location.href = href;
           });
 

@@ -2284,3 +2284,6 @@ body.beta .vp-search-page__filter-horizontal {
 .vp-search-page [data-vp-component="search-input"] {
   display: none;
 }
+.vp-dropdown__option:hover {
+  background: var(--haiui-gray-11);
+}

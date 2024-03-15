@@ -301,7 +301,7 @@ function confCloudJS() {
           $('.vp-search-page__subgrid').prepend('<fieldset data-vp-id="custom-search-page-horizontal-filter" class="vp-search-page__filter-horizontal lg:flex flex flex-row gap-4 p-0 m-0 border-0"><legend class="sr-only">Filter</legend></fieldset');
           $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(versionsFilter).append(versionsFilter);
 
-          // Populate products dropdown
+          // Populate dropdowns
           $.each(viewportList.members, function(key,val) {
             let productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-v' + key + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + val.name + '</span></li>';
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
@@ -346,7 +346,7 @@ function confCloudJS() {
           });
           // Hide product dropdown
           $(document).mouseup(function(e) {
-            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'));
+            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'), e);
           });
           $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
@@ -360,7 +360,7 @@ function confCloudJS() {
           });
           // Hide versions dropdown
           $(document).mouseup(function(e) {
-            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-versions-options"]'));
+            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-versions-options"]'), e);
           });
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options] li:not(.is-selected)').on('click', function() {
             // Perform new search
@@ -374,16 +374,16 @@ function confCloudJS() {
           });
           // Hide variants dropdown
           $(document).mouseup(function(e) {
-            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'));
+            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'), e);
           });
           $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(.is-selected)').on('click', function() {
             // Perform new search
             console.log('search with new variant');
           });
 
-          function hideDropdown(selector) {
+          function hideDropdown(selector, element) {
             // if the target of the click isn't the container nor a descendant of the container
-            if (!selector.is(e.target) && selector.has(e.target).length === 0) { 
+            if (!selector.is(element.target) && selector.has(element.target).length === 0) { 
               selector.hide();
             }
           }

@@ -2257,7 +2257,7 @@ svg.article__content__anchor--link-icon {
     mask-repeat: no-repeat;
 }
 body.beta .vp-search-page__filter-horizontal {
-  display: none;
+/*  display: none; */
 }
 .vp-search-suggestion-option:before {
   display: none;

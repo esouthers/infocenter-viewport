@@ -347,7 +347,7 @@ function confCloudJS() {
           $(document).mouseup(function(e) {
             hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'));
           });
-          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(".is-selected")').on('click', function() {
+          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
             console.log('search with new product');
           });
@@ -360,7 +360,7 @@ function confCloudJS() {
           $(document).mouseup(function(e) {
             hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-versions-options"]'));
           });
-          $('ul[data-vp-id="search-page-horizontal-filter-versions-options] li:not(".is-selected")').on('click', function() {
+          $('ul[data-vp-id="search-page-horizontal-filter-versions-options] li:not(.is-selected)').on('click', function() {
             // Perform new search
             console.log('search with new version');
           });
@@ -373,7 +373,7 @@ function confCloudJS() {
           $(document).mouseup(function(e) {
             hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'));
           });
-          $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(".is-selected")').on('click', function() {
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(.is-selected)').on('click', function() {
             // Perform new search
             console.log('search with new variant');
           });

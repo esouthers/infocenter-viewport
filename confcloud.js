@@ -257,14 +257,17 @@ function confCloudJS() {
                 let pageNumToShow = data.start / data.max + 1;
                 while (count < data.total) {
                   let newPage = '';
-                  if (((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5)) || ((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5))) {
+                  if (((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5)) || ((pageNum > pageNumToShow) && (pageNum < pageNumToShow + 5))) {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                   }
                   else if (pageNum == pageNumToShow) {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                   }
-                  else if (1==2) {
-
+                  else if (pageNum < pageNumToShow) {
+                    newPage = '<li><button type="button" class="vp-pagination__item vp-button" disabled>...</button></li>';
+                  }
+                  else if (pageNum > pageNumToShow) {
+                    newPage = '<li><button type="button" class="vp-pagination__item vp-button" disabled>...</button></li>';
                   }
 /*                  if ((count >= data.start) && (count < data.start + data.max)) {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';

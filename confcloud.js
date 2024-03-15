@@ -406,7 +406,7 @@ function confCloudJS() {
             href.searchParams.set('va', $(this).attr('data-value'));
             if (href.searchParams.get('s')== 'Transmitters') {
               $.each(transmittersVariants, function(i,j) {
-                if ($(this).attr('data-value') == j.variant) {
+                if (href.searchParams.get('va') == j.variant) {
                   href.searchParams.set('v', j.versions[0]);
                 }
               });

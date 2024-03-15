@@ -305,6 +305,7 @@ function confCloudJS() {
               productToAdd += ' is-selected'
             } 
             productToAdd += val.name + '"></span></li>';
+            $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
           });
           $('[data-vp-id="custom-search-page-horizontal-filter-content"] button[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').show();

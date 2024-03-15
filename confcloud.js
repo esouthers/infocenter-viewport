@@ -282,7 +282,7 @@ function confCloudJS() {
                   count += data.max;
                   pageNum++;
                 }
-                $('#custom-search-page-pagination button:not([aria-current="true"])').on('click', function() {
+                $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
                   var href = new URL(window.location.href);
                   href.searchParams.set('start', $(this).attr('value'));
                   window.location.href = href;

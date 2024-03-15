@@ -224,7 +224,7 @@ function confCloudJS() {
 
           let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ;
           if (paramsGetS != '') { searchURL += '&s='; }
-          searchURL += + paramsGetS + paramsGetV + paramsGetVa;
+          searchURL += paramsGetS + paramsGetV + paramsGetVa;
           newSearch(searchURL);
           function newSearch(restURL) {
             $.get(restURL, function(data, status, jqXHR) {

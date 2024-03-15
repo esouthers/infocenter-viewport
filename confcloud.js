@@ -300,13 +300,11 @@ function confCloudJS() {
           $('.vp-search-page__subgrid').prepend('<fieldset data-vp-id="custom-search-page-horizontal-filter" class="vp-search-page__filter-horizontal lg:flex flex flex-row gap-4 p-0 m-0 border-0"><legend class="sr-only">Filter</legend></fieldset');
           $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(versionsFilter).append(versionsFilter);
           $.each(viewportList.members, function(key,val) {
-            let productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option is-selected" id="headlessui-listbox-option-v' + key + '" role="option" tabindex="-1" aria-selected="true" data-headlessui-state="selected"><span class="vp-dropdown__option-label';
-            if (val.prefix == searchedSpaceKey) {
-              productToAdd += ' is-selected'
-            } 
-            productToAdd += val.name + '"></span></li>';
+            let productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-v' + key + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + val.name + '</span></li>';
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
           });
+          $('ul [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
           $('[data-vp-id="custom-search-page-horizontal-filter-content"] button[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').show();
           });

@@ -697,7 +697,7 @@ function confCloudJS() {
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
       
       let timeout;
-      $('#custom-search-form input').on('input mouseup', function() {
+      $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('#suggestionList').show();
         var str = $(this).val().trim();
         clearTimeout(timeout);

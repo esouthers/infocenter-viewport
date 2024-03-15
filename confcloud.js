@@ -222,9 +222,9 @@ function confCloudJS() {
           $('#startIdx').text(parseInt(paramsGetStart) + 1);
 
 
-
-
-          let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ + '&s=' + paramsGetS + paramsGetV + paramsGetVa;
+          let searchURL = '/__search?l=' + paramsGetL + '&start=' + paramsGetStart + '&max=' + paramsGetMax + '&ol=false&q=' + paramsGetQ;
+          if (paramsGetS != '') { searchURL += '&s='; }
+          searchURL += + paramsGetS + paramsGetV + paramsGetVa;
           newSearch(searchURL);
           function newSearch(restURL) {
             $.get(restURL, function(data, status, jqXHR) {

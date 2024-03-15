@@ -264,10 +264,10 @@ function confCloudJS() {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
                   }
                   else if ((pageNum < pageNumToShow) && ($('.pagination-ellipsis-before').length == 0)) {
-                    newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-before">...</button></li>';
+                    newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-before" disabled>...</button></li>';
                   }
                   else if ((pageNum > pageNumToShow) && ($('.pagination-ellipsis-after').length == 0)) {
-                    newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-after">...</button></li>';
+                    newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-after" disabled>...</button></li>';
                   }
 /*                  if ((count >= data.start) && (count < data.start + data.max)) {
                     newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';

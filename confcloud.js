@@ -353,9 +353,9 @@ function confCloudJS() {
           });
           $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
-            $('#search-form input[name="s"]').attr('value', $(this).attr('data-value'));
-            $('[data-vp-id="custom-search-page-horizontal-filter-content"]').next().attr('value', $(this).attr('data-value'));
-            $('#search-form').trigger('submit');
+            var href = new URL(window.location.href);
+            href.searchParams.set('s', $(this).attr('data-value')).set('v', '').set('va', '');
+            window.location.href = href;
           });
 
         // Versions Dropdown
@@ -369,7 +369,9 @@ function confCloudJS() {
           });
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
-            console.log('search with new version');
+            var href = new URL(window.location.href);
+            href.searchParams.set('v', $(this).attr('data-value')).set('va', '');
+            window.location.href = href;
           });
 
         // Variants Dropdown
@@ -383,7 +385,9 @@ function confCloudJS() {
           });
           $('ul[data-vp-id="search-page-horizontal-filter-variants-options] li:not(.is-selected)').on('click', function() {
             // Perform new search
-            console.log('search with new variant');
+            var href = new URL(window.location.href);
+            href.searchParams.set('va', $(this).attr('data-value'));
+            window.location.href = href;
           });
 
           function hideDropdown(selector, element) {

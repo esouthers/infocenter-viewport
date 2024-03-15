@@ -304,9 +304,23 @@ function confCloudJS() {
           $.each(viewportList.members, function(key,val) {
             let productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-v' + key + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + val.name + '</span></li>';
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
+            if ((val.prefix == searchedSpaceKey) && (val.versions !== undefined)) {
+              if (val.versions.available.length > 0) {
+                let valVersions = val.versions.available;
+                $.each(valVersions, function(verKey,verVal) {
+                  let verToAdd = '<li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="' + verVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-ver' + verKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + verVal.name + '</span></li>';
+                  $('[data-vp-id="custom-search-page-horizontal-filter-versions"] ul').append(verToAdd);
+                });
+              }
+            }
           });
+          // Indicate selected product
           $('ul [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
+          // Indicate selected version
+          $('ul [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');
+          
           $('[data-vp-id="custom-search-page-horizontal-filter-content"] button[data-vp-id="search-page-horizontal-filter-content-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').show();
           });

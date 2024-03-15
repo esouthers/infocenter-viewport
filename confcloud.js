@@ -330,14 +330,14 @@ function confCloudJS() {
             } 
           });
           // Indicate selected product
-          $('ul [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
-          $('ul [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
           // Indicate selected version
-          $('ul [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
-          $('ul [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');
           // Indicate selected variant
-          $('ul [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
-          $('ul [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
 
         // Products Dropdown
           // Show product dropdown

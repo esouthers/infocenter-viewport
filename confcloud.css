@@ -2287,3 +2287,13 @@ body.beta .vp-search-page__filter-horizontal {
 .vp-dropdown__option:hover {
   background: var(--haiui-gray-11);
 }
+
+li.search-options-text {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+li.search-options {
+  display: flex;
+  column-gap: 15px;
+  font-size: 12px;
+}

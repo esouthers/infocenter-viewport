@@ -372,7 +372,7 @@ function confCloudJS() {
 //          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
 
           if (searchedSpaceKey == 'Transmitters') { 
-            $('[data-vp-id="search-page-horizontal-filter-content-button"]').text(searchedVariant); 
+            $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text(searchedVariant); 
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
           }

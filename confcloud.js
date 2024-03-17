@@ -708,7 +708,7 @@ function confCloudJS() {
           }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
         }
       });
-      $('#custom-search-form #soAllVer, #custom-search-form #soAllProd').on('input', function() {
+      $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
         doSearch($('.vp-search-input__input').val(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $(document).mouseup(function(e) {

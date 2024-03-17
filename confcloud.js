@@ -345,7 +345,7 @@ function confCloudJS() {
               if (val.variants !== undefined) {
                 if (val.variants.available.length > 1) {
                   let valVariants = val.variants.available;
-                  $.each(valVariants, function(varKey,varVal) { */
+                  $.each(valVariants, function(varKey,varVal) {
 //*******************************************//
 // Insert Transmitters exception logic here! //
                     $.each(transmittersVariants, function(i,variantToTest) {
@@ -1024,9 +1024,9 @@ function confCloudJS() {
         }
         $('.breadcrumbs-wrapper').addClass('hidden-mdlg hidden-md hidden-sm');
         // Show title in the breadcrumbs if title isn't shown when scrolling
-        $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>')
-          if ($('.search-header').length > 0) { that = $('.search-header'); }
-          else                                { that = $('h1.vp-article__heading'); }
+        $('.breadcrumbs li').last().append('<span id="titleBreadcrumbSlash" style="display: none;" aria-hidden="true">/</span>');
+        if ($('.search-header').length > 0) { that = $('.search-header'); }
+        else                                { that = $('h1.vp-article__heading'); }
         let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + that.text() + '</li>'
         $('.breadcrumbs').append(titleBreadcrumb);
         $(window).on('resize scroll', function() {

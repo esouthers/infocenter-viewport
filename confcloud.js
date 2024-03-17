@@ -710,6 +710,12 @@ function confCloudJS() {
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
         doSearch($('.vp-search-input__input').val(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
+        if (($(this).hasClass('soTProd')) && ($('#custom-search-form .soAllProd').is(':checked'))) {
+          $('#custom-search-form .soAllVer').prop('checked', true).prop('disabled','true');
+        }
+        else {
+          $('#custom-search-form .soAllVer').prop('disabled', false);
+        }
       });
       $(document).mouseup(function(e) {
           var container = $('#suggestionList');
@@ -727,14 +733,20 @@ function confCloudJS() {
         let versionSearched = viewportList.currentContentSource.versions.available.length == 0 ? '' : viewportList.currentContentSource.versions.current.name;
         let variantSearched = viewportList.currentContentSource.variants.available.length == 0 ? '' : viewportList.currentContentSource.variants.current.name;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-        if (!searchAllProducts) { $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
-                                  spaceString = '&s='+spaceSearched;   }
-        else {                    $('#custom-search-form input[name="s"]').attr('value',''); 
-                                  spaceString = '';  }
-        if (!searchAllVersions) { $('#custom-search-form input[name="v"]').attr('value',versionSearched); 
+        if (!searchAllProducts) { 
+          $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
+          spaceString = '&s='+spaceSearched;
+          if (!searchAllVersions) { $('#custom-search-form input[name="v"]').attr('value',versionSearched); 
                                   versionString = '&v='+versionSearched; }
-        else {                    $('#custom-search-form input[name="v"]').attr('value',''); 
+          else {                    $('#custom-search-form input[name="v"]').attr('value',''); 
                                   versionString = '';  }
+        }
+        else {  // Searching all products (and versions)
+          $('#custom-search-form input[name="s"]').attr('value',''); 
+          spaceString = '';
+          $('#custom-search-form input[name="v"]').attr('value',''); 
+          versionString = '';
+        }
         if (viewportList.currentContentSource.variants !== undefined) {
           if (viewportList.currentContentSource.variants.name !== undefined) { 
             $('#custom-search-form input[name="va"]').attr('value',variantSearched);

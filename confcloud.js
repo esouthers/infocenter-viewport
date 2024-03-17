@@ -753,7 +753,7 @@ function confCloudJS() {
           }
         }
 
-        $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
+        $.get( '/__search?l=en&max=5&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
           var numResults = data.total;
           if (numResults > 0) {
@@ -768,7 +768,7 @@ function confCloudJS() {
               else { numResults -= 1}
             });
             if (numResults > 0) {
-              let searchPageLink = '/search.html?l=en&max=10&ol=&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
+              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
               let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
               $('#suggestionList').append(searchSuggestionAll);
             }

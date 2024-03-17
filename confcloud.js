@@ -703,7 +703,6 @@ function confCloudJS() {
         clearTimeout(timeout);
         if (str.length >= 3) {
           timeout = setTimeout(function() {
-//********* show loading icon
             doSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'))
           }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
         }
@@ -726,6 +725,7 @@ function confCloudJS() {
           }
       });
       function doSearch(str, searchAllVersions, searchAllProducts) {
+//********* show loading icon
         searchAllVersions = searchAllVersions || false;
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;

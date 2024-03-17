@@ -695,7 +695,13 @@ function confCloudJS() {
       $('#custom-search-form').append(hiddenInputs);
       let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li><li class="searchSpinner"><div class="HaiSpinner" style="display:none;" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
-      
+      if (viewportList.currentContentSource.prefix == 'HOME') {
+        $('input.soAllProd').prop('checked','true');
+      }
+      if (viewportList.currentContentSource.versions == undefined) {
+        $('.soTVer').remove();
+      }
+
       let timeout;
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('#suggestionList').show();
@@ -730,8 +736,8 @@ function confCloudJS() {
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
-        let versionSearched = viewportList.currentContentSource.versions.available.length == 0 ? '' : viewportList.currentContentSource.versions.current.name;
-        let variantSearched = viewportList.currentContentSource.variants.available.length == 0 ? '' : viewportList.currentContentSource.variants.current.name;
+        let versionSearched = viewportList.currentContentSource.versions == undefined ? '' : viewportList.currentContentSource.versions.current.name;
+        let variantSearched = viewportList.currentContentSource.variants == undefined ? '' : viewportList.currentContentSource.variants.current.name;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 

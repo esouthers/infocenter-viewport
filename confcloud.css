@@ -455,6 +455,8 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
   padding: 5px;
   margin-top: 0px;
   background-color: var(--haiui-white);
+  max-height: 300px;
+  overflow: auto;
 }
 .vp-search-suggestion-option {
   font-size: 14px;

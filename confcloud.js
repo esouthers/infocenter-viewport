@@ -709,7 +709,7 @@ function confCloudJS() {
         clearTimeout(timeout);
         if (str.length >= 3) {
           timeout = setTimeout(function() {
-            doSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'))
+            doSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
           }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
         }
       });
@@ -774,7 +774,19 @@ function confCloudJS() {
               else { numResults -= 1}
             });
             if (numResults > 0) {
-              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + '&s=' + viewportList.currentContentSource.prefix +'&start=0';
+              if ($('#custom-search-form .soAllVer').is(':checked') || $('#custom-search-form .soAllProd').is(':checked')) {
+                searchSpaceStr = '';
+                searchVersionStr = '';
+              }
+              else if ($('#custom-search-form .soAllVer').is(':checked')) {
+                searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
+                searchVersionStr = '';
+              }
+              else {
+                searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
+                searchVersionStr = viewportList.currentContentSource.versions == undefined ? '' : '&s=' + viewportList.currentContentSource.versions.current.name;
+              }
+              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + searchSpaceStr + searchVersionStr + '&start=0';
               let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
               $('#suggestionList').append(searchSuggestionAll);
             }

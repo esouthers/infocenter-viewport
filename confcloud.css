@@ -2298,4 +2298,7 @@ li.search-options {
   column-gap: 15px;
   font-size: 12px;
   color: var(--haiui-gray-00);
+  border-bottom: 1px solid var(--haiui-gray-08);
+  padding-bottom: 5px;
+  margin-bottom: 3px;
 }

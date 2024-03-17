@@ -2311,7 +2311,7 @@ li.searchSpinner {
   position: relative;
   width: auto;
   height: auto;
-  margin: 150px 3px 0px 3px;
+  margin: 0px 3px 0px 3px;
   display: flex;
   align-items: center;
   justify-content: center;

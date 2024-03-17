@@ -324,7 +324,15 @@ function confCloudJS() {
 
           // Populate dropdowns
           $.each(viewportList.members, function(key,val) {
-            let productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + val.name + '</span></li>';
+            let productToAdd = ''
+            if (val.prefix == 'Transmitters') {
+              $.each(transmittersVariants, function (i,j) {
+                productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.variant + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.variant + '</span></li>';
+              }
+            }
+            else {
+              productToAdd = '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + val.name + '</span></li>';
+            }
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').append(productToAdd);
             if (val.prefix == searchedSpaceKey) {
               if (val.versions !== undefined) {

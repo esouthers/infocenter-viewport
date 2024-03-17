@@ -394,13 +394,24 @@ function confCloudJS() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('s', $(this).attr('data-value'));
+      // ******** EXCEPTION FOR TRANSMITTERS ******* //
+            let transmitterProduct = $(this).attr('data-variant');
             if ($(this).attr('data-transmitters') == 'true') {
-              href.searchParams.set('va', $(this).attr('data-variant'));
+              href.searchParams.set('va', transmitterProduct);
             }
             else {
               if (href.searchParams.has('va')) {  href.searchParams.set('va', '');  }
             }
-            if (href.searchParams.has('v')) {  href.searchParams.set('v', '');  }
+            if ($(this).attr('data-transmitters') == 'true') {
+              $.each(transmittersVariants, function(i,j) {
+                if (j.variant == transmitterProduct) {
+                  href.searchParams.set('v', j.versions[0]);
+                }
+              });
+            }
+            else {
+              if (href.searchParams.has('v')) {  href.searchParams.set('v', '');  }
+            }
             if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
             window.location.href = href;
           });

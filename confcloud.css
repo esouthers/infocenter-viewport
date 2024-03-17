@@ -2302,3 +2302,25 @@ li.search-options {
   padding-bottom: 5px;
   margin-bottom: 3px;
 }
+li.searchSpinner {
+  padding-top: 5px;
+}
+.HaiSpinner[data-theme=argon] {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 150px 3px 0px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.HaiSpinner[data-theme=argon] div.spinner-border {
+  position: relative;
+  height: 1.058rem;
+  width: 1.058rem;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border-color: var(--haiui-blue-04) transparent;
+  border-style: solid;
+  border-width: 2px;
+}

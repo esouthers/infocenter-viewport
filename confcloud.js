@@ -753,11 +753,10 @@ function confCloudJS() {
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
           spaceString = '&s='+spaceSearched;
-          if (!searchAllVersions) { $('#custom-search-form input[name="v"]').attr('value',versionSearched); 
-                                  versionString = '&v='+versionSearched; }
-          else {                    $('#custom-search-form input[name="v"]').attr('value',''); 
-                                  versionString = '';  }
-        }
+          if (versionSearched != '') {
+            $('#custom-search-form input[name="v"]').attr('value',versionSearched);
+            versionString = '&v='+versionSearched;
+          }
         else {  // Searching all products (and versions)
           $('#custom-search-form input[name="s"]').attr('value',''); 
           spaceString = '';

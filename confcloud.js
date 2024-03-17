@@ -738,8 +738,19 @@ function confCloudJS() {
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
-        let versionSearched = viewportList.currentContentSource.versions == undefined ? '' : viewportList.currentContentSource.versions.current.name;
-        let variantSearched = viewportList.currentContentSource.variants == undefined ? '' : viewportList.currentContentSource.variants.current.name;
+        if (viewportList.currentContentSource.versions == undefined) { versionSearched = ''; }
+        else {
+          if (viewportList.currentContentSource.versions.available.length == 0) { versionSearched = ''; }
+          else { versionSearched = viewportList.currentContentSource.versions.current.name; }
+        }
+        if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }
+        else {
+          if (viewportList.currentContentSource.variants.available.length == 0) { variantSearched = ''; }
+          else { variantSearched = viewportList.currentContentSource.variants.current.name; }
+        }
+
+
+        }
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 

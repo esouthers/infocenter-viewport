@@ -342,13 +342,13 @@ function confCloudJS() {
                   $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                 }
               }
-/*              if (val.variants !== undefined) {
+              if (val.variants !== undefined) {
                 if (val.variants.available.length > 1) {
                   let valVariants = val.variants.available;
                   $.each(valVariants, function(varKey,varVal) { */
 //*******************************************//
 // Insert Transmitters exception logic here! //
-/*                    $.each(transmittersVariants, function(i,variantToTest) {
+                    $.each(transmittersVariants, function(i,variantToTest) {
                       if (variantToTest.variant == searchedVariant ) {
                         $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
                         $.each(variantToTest.versions, function(i,version) {
@@ -356,14 +356,14 @@ function confCloudJS() {
                         })
                       }
                     });
-*/
+
 //*******************************************//
-/*                    let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';
-                    $('[data-vp-id="custom-search-page-horizontal-filter-variants"] ul').append(varToAdd);
+//                    let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';
+//                    $('[data-vp-id="custom-search-page-horizontal-filter-variants"] ul').append(varToAdd);
                   });
-                  $('[data-vp-id="custom-search-page-horizontal-filter-variants"]').show();
+//                  $('[data-vp-id="custom-search-page-horizontal-filter-variants"]').show();
                 }
-              } */
+              }
 
             } 
           });

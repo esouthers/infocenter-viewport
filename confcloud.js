@@ -749,8 +749,6 @@ function confCloudJS() {
           else { variantSearched = viewportList.currentContentSource.variants.current.name; }
         }
 
-
-        }
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 

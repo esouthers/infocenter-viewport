@@ -371,15 +371,16 @@ function confCloudJS() {
           if (searchedVersion == '') { $('[data-vp-id="search-page-horizontal-filter-versions-button"] .vp-dropdown__button-label').text('All versions'); }
 //          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
 
+          // Indicate selected product
           if (searchedSpaceKey == 'Transmitters') { 
             $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text(searchedVariant); 
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
             $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
           }
-
-          // Indicate selected product
-          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
-          $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
+          else {
+            $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+            $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');
+          }
           // Indicate selected version
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');

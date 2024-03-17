@@ -705,7 +705,7 @@ function confCloudJS() {
       let timeout;
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('#suggestionList').show();
-        debouncedSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
+        debouncedSearch($(this).val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
         debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));

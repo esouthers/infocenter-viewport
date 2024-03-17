@@ -693,7 +693,7 @@ function confCloudJS() {
       $('.top-bar-right .my-auto').last().append(searchBox);
       let hiddenInputs = '<input type="hidden" name="l" value="en"><input type="hidden" name="max" value="10"><input type="hidden" name="ol" value=""><input type="hidden" name="q" value=""><input type="hidden" name="s" value=""><input type="hidden" name="v" value=""><input type="hidden" name="va" value=""><input type="hidden" name="start" value="0">';
       $('#custom-search-form').append(hiddenInputs);
-      let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li></ul>';
+      let searchSuggestionsContainer = '<ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li><li class="searchSpinner"><div class="HaiSpinner" style="display:none;" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
       $('#custom-search-form .has-suggestions').append(searchSuggestionsContainer);
       
       let timeout;
@@ -724,7 +724,7 @@ function confCloudJS() {
           }
       });
       function doSearch(str, searchAllVersions, searchAllProducts) {
-//********* show loading icon
+        $('.searchSpinner').show();
         $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container');
         searchAllVersions = searchAllVersions || false;
         searchAllProducts = searchAllProducts || false;
@@ -753,7 +753,7 @@ function confCloudJS() {
           }
         }
 
-        $.get( '/__search?l=en&max=5&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
+        $.get( '/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
           var numResults = data.total;
           if (numResults > 0) {
@@ -777,8 +777,8 @@ function confCloudJS() {
             let noResults = '<li id="" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><div class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" tabindex="-1"><span class="vp-search-suggestion-option__label">Your search returned no matches.</span><div class="vp-search-suggestion-option__info-container"></div></div></li>';
             $('#suggestionList').append(noResults);
           }
-//*********  hide loading icon
-          $('#suggestionList').show();
+          $('.searchSpinner').hide();
+//          $('#suggestionList').show();
         }).fail(function() {
           // error handler
         });

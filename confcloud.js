@@ -314,13 +314,14 @@ function confCloudJS() {
 
           let productsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-content"  class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open"><label class="sr-only" id="headlessui-listbox-label-1" data-headlessui-state="open">Content</label><button data-vp-id="search-page-horizontal-filter-content-button" class="vp-dropdown__button" id="headlessui-listbox-button-2" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-1 headlessui-listbox-button-2" data-headlessui-state="open" aria-controls="headlessui-listbox-options"><span class="vp-dropdown__button-label">' + searchedSpaceName + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-content-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-1" aria-orientation="vertical" id="headlessui-listbox-options-113" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-prodAll" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">Search all</span></li></ul></div><input type="hidden" form="search-form" name="s" value=""><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
           let versionsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-versions" class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open" style="display:none;"><label class="sr-only" id="headlessui-listbox-label-3" data-headlessui-state="open">Versions</label><button data-vp-id="search-page-horizontal-filter-versions-button" class="vp-dropdown__button" id="headlessui-listbox-button-4" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-3 headlessui-listbox-button-4" data-headlessui-state="open" aria-controls="headlessui-listbox-options-7"><span class="vp-dropdown__button-label">' + searchedVersion + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-versions-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-3" aria-orientation="vertical" id="headlessui-listbox-options-7" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-verall" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">All versions</span></li></ul></div><input type="hidden" form="search-form" name="v"><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
-          let variantsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-variants" class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open" style="display:none;"><label class="sr-only" id="headlessui-listbox-label-5" data-headlessui-state="open">Variants</label><button data-vp-id="search-page-horizontal-filter-variants-button" class="vp-dropdown__button" id="headlessui-listbox-button-6" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-5 headlessui-listbox-button-6" data-headlessui-state="open" aria-controls="headlessui-listbox-options-11"><span class="vp-dropdown__button-label">' + searchedVariant + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-variants-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-5" aria-orientation="vertical" id="headlessui-listbox-options-11" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-varall" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">All variants</span></li></ul></div><input type="hidden" form="search-form" name="va"><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
+//          let variantsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-variants" class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open" style="display:none;"><label class="sr-only" id="headlessui-listbox-label-5" data-headlessui-state="open">Variants</label><button data-vp-id="search-page-horizontal-filter-variants-button" class="vp-dropdown__button" id="headlessui-listbox-button-6" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-5 headlessui-listbox-button-6" data-headlessui-state="open" aria-controls="headlessui-listbox-options-11"><span class="vp-dropdown__button-label">' + searchedVariant + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-variants-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-5" aria-orientation="vertical" id="headlessui-listbox-options-11" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-varall" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">All variants</span></li></ul></div><input type="hidden" form="search-form" name="va"><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
           $('.vp-search-page__subgrid').prepend('<fieldset data-vp-id="custom-search-page-horizontal-filter" class="vp-search-page__filter-horizontal lg:flex flex flex-row gap-4 p-0 m-0 border-0"><legend class="sr-only">Filter</legend></fieldset');
-          $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(variantsFilter).append(versionsFilter); 
+//          $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(variantsFilter).append(versionsFilter); 
+          $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(versionsFilter); 
 
           if (searchedSpaceKey == '') { $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text('Search all'); }
           if (searchedVersion == '') { $('[data-vp-id="search-page-horizontal-filter-versions-button"] .vp-dropdown__button-label').text('All versions'); }
-          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
+//          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
 
           // Populate dropdowns
           $.each(viewportList.members, function(key,val) {
@@ -345,13 +346,13 @@ function confCloudJS() {
                   $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                 }
               }
-              if (val.variants !== undefined) {
+/*              if (val.variants !== undefined) {
                 if (val.variants.available.length > 1) {
                   let valVariants = val.variants.available;
-                  $.each(valVariants, function(varKey,varVal) {
+                  $.each(valVariants, function(varKey,varVal) { */
 //*******************************************//
 // Insert Transmitters exception logic here! //
-                    $.each(transmittersVariants, function(i,variantToTest) {
+/*                    $.each(transmittersVariants, function(i,variantToTest) {
                       if (variantToTest.variant == searchedVariant ) {
                         $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
                         $.each(variantToTest.versions, function(i,version) {
@@ -359,14 +360,14 @@ function confCloudJS() {
                         })
                       }
                     });
-
+*/
 //*******************************************//
-                    let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';
+/*                    let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';
                     $('[data-vp-id="custom-search-page-horizontal-filter-variants"] ul').append(varToAdd);
                   });
                   $('[data-vp-id="custom-search-page-horizontal-filter-variants"]').show();
                 }
-              }
+              } */
 
             } 
           });
@@ -377,8 +378,8 @@ function confCloudJS() {
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] [data-value="' + searchedVersion + '"] .vp-dropdown__option-label').addClass('is-selected');
           // Indicate selected variant
-          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
-          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
+/*          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+          $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] [data-value="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected'); */
 
         // Products Dropdown
           // Show product dropdown
@@ -393,19 +394,24 @@ function confCloudJS() {
             // Perform new search
             var href = new URL(window.location.href);
             href.searchParams.set('s', $(this).attr('data-value'));
+            if ($(this).attr('data-transmitters') == 'true') {
+              href.searchParams.set('va', $(this).attr('data-variant'));
+            }
+            else {
+              if (href.searchParams.has('va')) {  href.searchParams.set('va', '');  }
+            }
             if (href.searchParams.has('v')) {  href.searchParams.set('v', '');  }
-            if (href.searchParams.has('va')) { href.searchParams.set('va', ''); }
             if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
             window.location.href = href;
           });
 
         // Variants Dropdown
           // Show variants dropdown
-          $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
+/*          $('[data-vp-id="custom-search-page-horizontal-filter-variants"] button[data-vp-id="search-page-horizontal-filter-variants-button"]').on('click', function() {
             $('ul[data-vp-id="search-page-horizontal-filter-variants-options"]').show();
-          });
+          }); */
           // Hide variants dropdown
-          $(document).mouseup(function(e) {
+/*          $(document).mouseup(function(e) {
             hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-variants-options"]'), e);
           });
           $('ul[data-vp-id="search-page-horizontal-filter-variants-options"] li:not(.is-selected)').on('click', function() {
@@ -425,7 +431,7 @@ function confCloudJS() {
             if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
             window.location.href = href;
           });
-
+*/
         // Versions Dropdown
           // Show versions dropdown
           $('[data-vp-id="custom-search-page-horizontal-filter-versions"] button[data-vp-id="search-page-horizontal-filter-versions-button"]').on('click', function() {

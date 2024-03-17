@@ -730,9 +730,15 @@ function confCloudJS() {
         if (!searchAllProducts) {
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched);
         }
+        else {
+          $('#custom-search-form input[name="s"]').attr('value','');
+        }
         if (viewportList.currentContentSource.versions !== undefined) {
           if (!searchAllVersions) {
             $('#custom-search-form input[name="v"]').attr('value',versionSearched);
+          }
+          else {
+            $('#custom-search-form input[name="v"]').attr('value','');
           }
         }
         if (viewportList.currentContentSource.variants !== undefined) {
@@ -744,7 +750,7 @@ function confCloudJS() {
         if (!searchAllProducts) { spaceString = '&s='+spaceSearched; } else { spaceString = '';}
         if (!searchAllVersions) { versionString = '&v='+versionSearched; } else { versionString = '';}
 
-        $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+'&s='+spaceSearched+'&start=0', function(data, status, jqXHR) {
+        $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+spaceString+versionString'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
           var numResults = data.total;
           if (numResults > 0) {

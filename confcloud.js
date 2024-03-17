@@ -741,7 +741,7 @@ function confCloudJS() {
           }
         }
 
-        $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+spaceString+versionString'&start=0', function(data, status, jqXHR) {
+        $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
           var numResults = data.total;
           if (numResults > 0) {

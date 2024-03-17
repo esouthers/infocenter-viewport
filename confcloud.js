@@ -705,16 +705,10 @@ function confCloudJS() {
       let timeout;
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('#suggestionList').show();
-        var str = $(this).val().trim();
-        clearTimeout(timeout);
-        if (str.length >= 3) {
-          timeout = setTimeout(function() {
-            doSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
-          }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
-        }
+        debouncedSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
-        doSearch($('.vp-search-input__input').val(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
+        debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
         if (($(this).hasClass('soTProd')) && ($('#custom-search-form .soAllProd').is(':checked'))) {
           $('#custom-search-form .soAllVer').prop('checked', true).prop('disabled','true');
         }
@@ -729,6 +723,14 @@ function confCloudJS() {
             $('#suggestionList').hide();
           }
       });
+      function debouncedSearch(str, searchAllVersions, searchAllProducts) {
+        clearTimeout(timeout);
+        if (str.length >= 3) {
+          timeout = setTimeout(function() {
+            doSearch(str, searchAllVersions, searchAllProducts);
+          }.bind(this), 300); // Adjust the delay (in milliseconds) as needed
+        }
+      }
       function doSearch(str, searchAllVersions, searchAllProducts) {
         $('.searchSpinner').show();
         $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container');

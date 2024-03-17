@@ -733,7 +733,7 @@ function confCloudJS() {
       }
       function doSearch(str, searchAllVersions, searchAllProducts) {
         $('.searchSpinner').show();
-        $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container');
+        $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
         searchAllVersions = searchAllVersions || false;
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;

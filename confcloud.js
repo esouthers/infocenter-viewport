@@ -720,12 +720,12 @@ function confCloudJS() {
           var container = $('#suggestionList');
           // if the target of the click isn't the container nor a descendant of the container
           if (!container.is(e.target) && container.has(e.target).length === 0 && !$(e.target).hasClass('vp-search-input__input')) { 
-            $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove(); 
             $('#suggestionList').hide();
           }
       });
       function doSearch(str, searchAllVersions, searchAllProducts) {
 //********* show loading icon
+        $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container');
         searchAllVersions = searchAllVersions || false;
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;

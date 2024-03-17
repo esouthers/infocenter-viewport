@@ -757,6 +757,7 @@ function confCloudJS() {
             $('#custom-search-form input[name="v"]').attr('value',versionSearched);
             versionString = '&v='+versionSearched;
           }
+        }
         else {  // Searching all products (and versions)
           $('#custom-search-form input[name="s"]').attr('value',''); 
           spaceString = '';

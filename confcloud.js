@@ -727,28 +727,19 @@ function confCloudJS() {
         let versionSearched = viewportList.currentContentSource.versions.available.length == 0 ? '' : viewportList.currentContentSource.versions.current.name;
         let variantSearched = viewportList.currentContentSource.variants.available.length == 0 ? '' : viewportList.currentContentSource.variants.current.name;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-        if (!searchAllProducts) {
-          $('#custom-search-form input[name="s"]').attr('value',spaceSearched);
-        }
-        else {
-          $('#custom-search-form input[name="s"]').attr('value','');
-        }
-        if (viewportList.currentContentSource.versions !== undefined) {
-          if (!searchAllVersions) {
-            $('#custom-search-form input[name="v"]').attr('value',versionSearched);
-          }
-          else {
-            $('#custom-search-form input[name="v"]').attr('value','');
-          }
-        }
+        if (!searchAllProducts) { $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
+                                  spaceString = '&s='+spaceSearched;   }
+        else {                    $('#custom-search-form input[name="s"]').attr('value',''); 
+                                  spaceString = '';  }
+        if (!searchAllVersions) { $('#custom-search-form input[name="v"]').attr('value',versionSearched); 
+                                  versionString = '&v='+versionSearched; }
+        else {                    $('#custom-search-form input[name="v"]').attr('value',''); 
+                                  versionString = '';  }
         if (viewportList.currentContentSource.variants !== undefined) {
           if (viewportList.currentContentSource.variants.name !== undefined) { 
             $('#custom-search-form input[name="va"]').attr('value',variantSearched);
           }
         }
-
-        if (!searchAllProducts) { spaceString = '&s='+spaceSearched; } else { spaceString = '';}
-        if (!searchAllVersions) { versionString = '&v='+versionSearched; } else { versionString = '';}
 
         $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+spaceString+versionString'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();

@@ -319,12 +319,6 @@ function confCloudJS() {
 //          $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(variantsFilter).append(versionsFilter); 
           $('fieldset[data-vp-id="custom-search-page-horizontal-filter"]').append(productsFilter).append(versionsFilter);
 
-          if (searchedSpaceKey == 'Transmitters') { $('[data-vp-id="search-page-horizontal-filter-content-button"]').text(searchedVariant); }
-
-          if (searchedSpaceKey == '') { $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text('Search all'); }
-          if (searchedVersion == '') { $('[data-vp-id="search-page-horizontal-filter-versions-button"] .vp-dropdown__button-label').text('All versions'); }
-//          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
-
           // Populate dropdowns
           $.each(viewportList.members, function(key,val) {
             let productToAdd = ''
@@ -373,6 +367,16 @@ function confCloudJS() {
 
             } 
           });
+          if (searchedSpaceKey == '') { $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text('Search all'); }
+          if (searchedVersion == '') { $('[data-vp-id="search-page-horizontal-filter-versions-button"] .vp-dropdown__button-label').text('All versions'); }
+//          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
+
+          if (searchedSpaceKey == 'Transmitters') { 
+            $('[data-vp-id="search-page-horizontal-filter-content-button"]').text(searchedVariant); 
+            $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
+            $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
+          }
+
           // Indicate selected product
           $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
           $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"] .vp-dropdown__option-label').addClass('is-selected');

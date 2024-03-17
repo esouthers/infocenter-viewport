@@ -704,15 +704,12 @@ function confCloudJS() {
         if (str.length >= 3) {
           timeout = setTimeout(function() {
 //********* show loading icon
-            doSearch(str)
+            doSearch(str, $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'))
           }.bind(this), 100); // Adjust the delay (in milliseconds) as needed
         }
       });
-      $('#custom-search-form #soAllProdSpan').on('input', function() {
-
-      });
-      $('#custom-search-form #soAllProdSpan').on('input', function() {
-
+      $('#custom-search-form #soAllVer, #custom-search-form #soAllProd').on('input', function() {
+        doSearch($('.vp-search-input__input').val(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $(document).mouseup(function(e) {
           var container = $('#suggestionList');
@@ -722,20 +719,31 @@ function confCloudJS() {
             $('#suggestionList').hide();
           }
       });
-      function doSearch(str) {
+      function doSearch(str, searchAllVersions, searchAllProducts) {
+        searchAllVersions = searchAllVersions || false;
+        searchAllProducts = searchAllProducts || false;
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
+        let versionSearched = viewportList.currentContentSource.versions.current.name;
+        let variantSearched = viewportList.currentContentSource.variants.current.name;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-        $('#custom-search-form input[name="s"]').attr('value',viewportList.currentContentSource.prefix);
+        if (!searchAllProducts) {
+          $('#custom-search-form input[name="s"]').attr('value',spaceSearched);
+        }
         if (viewportList.currentContentSource.versions !== undefined) {
-          $('#custom-search-form input[name="v"]').attr('value',viewportList.currentContentSource.versions.current.name);
+          if (!searchAllVersions) {
+            $('#custom-search-form input[name="v"]').attr('value',versionSearched);
+          }
         }
         if (viewportList.currentContentSource.variants !== undefined) {
           if (viewportList.currentContentSource.variants.name !== undefined) { 
-            $('#custom-search-form input[name="va"]').attr('value',viewportList.currentContentSource.variants.current.name);
+            $('#custom-search-form input[name="va"]').attr('value',variantSearched);
           }
         }
-        
+
+        if (!searchAllProducts) { spaceString = '&s='+spaceSearched; } else { spaceString = '';}
+        if (!searchAllVersions) { versionString = '&v='+versionSearched; } else { versionString = '';}
+
         $.get( '/__search?l=en&max=5&ol=true&q='+searchTerm+'&s='+spaceSearched+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
           var numResults = data.total;

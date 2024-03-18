@@ -667,31 +667,25 @@ function confCloudJS() {
         let spaceSearched = viewportList.currentContentSource.prefix;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         if (!searchAllProducts) { 
-          $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
           spaceString = '&s='+spaceSearched;
           if (!searchAllVersions) {
             if (getVersionSearched() != '') {
-              $('#custom-search-form input[name="v"]').attr('value',getVersionSearched());
               versionString = '&v='+getVersionSearched();
             }
             else {
-              $('#custom-search-form input[name="v"]').attr('value','');
               versionString = ''; 
             }
             if (getVariantSearched() != '') {
-              $('#custom-search-form input[name="va"]').attr('value',getVariantSearched());
               variantString = '&va='+getVariantSearched();
             }
             else {
-              $('#custom-search-form input[name="v"]').attr('value','');
               versionString = ''; 
-              $('#custom-search-form input[name="va"]').attr('value','');
               variantString = '';
             }
           }
           else {
-            $('#custom-search-form input[name="va"]').attr('value','');
-            variantString = '';            
+            variantString = '';
+            versionString = '';
           }
         }
         else {  // Searching all products (and versions)

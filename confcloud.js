@@ -200,14 +200,18 @@ function confCloudJS() {
           // $('[data-vp-id="search-page-results"]').remove();
           // $('[data-vp-id="search-page-pagination"]').remove();
           let url = window.location.href;
-          let params = new URLSearchParams(url.split('?')[1]);
-          let paramsGetL     =  params.get('l') !== null ? params.get('l') : "";
-          let paramsGetStart =  params.get('start') !== null ? params.get('start') : "";
-          let paramsGetMax   =  params.get('max') !== null ? params.get('max') : "";
-          let paramsGetS     =  params.get('s') !== null ? params.get('s') : "";
-          let paramsGetV     = (params.get('v') !== null && params.get('v') !== '') ? '&v=' + params.get('v') : "";
-          let paramsGetVa    = (params.get('va') !== null && params.get('va') !== '') ? '&va=' + params.get('va') : "";
-          let paramsGetQ     =  params.get('q') !== null ? params.get('q') : "";
+          function paramsGet(name, prefix) {
+            let params = new URLSearchParams(url.split('?')[1]);
+            if (prefix) { return (params.get(name) !== null && params.get(name) !== '') ? '&' + name + '=' + params.get(name) : "" }
+            else {        return params.get(name) !== null ? params.get(name) : ""; }
+          }
+          let paramsGetL     = paramsGet('l', false);
+          let paramsGetStart = paramsGet('start', false);
+          let paramsGetMax   = paramsGet('max', false);
+          let paramsGetS     = paramsGet('s', false);
+          let paramsGetV     = paramsGet('v', true);
+          let paramsGetVa    = paramsGet('va', true);
+          let paramsGetQ     = paramsGet('q', false);
           let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV.replace('&v=','') + '"><input type="hidden" name="va" value="' + paramsGetVa.replace('&va=','') + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
           $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');

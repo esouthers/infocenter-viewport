@@ -599,6 +599,7 @@ function confCloudJS() {
       $('#custom-search-form .has-suggestions').append(searchOptionsSuggestionsContainer);
       if (viewportList.currentContentSource.prefix == 'Home') {
         $('input.soAllProd').prop('checked',true);
+        $('#custom-search-form [name="s"]').attr('value','');
       }
       if (viewportList.currentContentSource.versions == undefined) {
         $('.soTVer').remove();

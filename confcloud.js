@@ -215,7 +215,6 @@ function confCloudJS() {
           $('[data-vp-component="custom-search-input"] input').val(paramsGetQ);
 
           $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + paramsGetS + '</span>\' returned <span id="numResults"></span> result<span id="pluralResults"></span>.');
-          $('#titleBreadcrumb').text($('.search-header').text());
           $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx"></span> to <span id="stopIdx"></span>.</p>');
           $('#searchTerm').text(paramsGetQ);
           $('#startIdx').text(parseInt(paramsGetStart) + 1);
@@ -296,7 +295,7 @@ function confCloudJS() {
               if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
               $('#numResults').text(data.total);
               if (data.total == 0) { $('.search-header-text').hide(); }
-
+              $('#titleBreadcrumb').text($('.search-header').text());
             });
           }
 

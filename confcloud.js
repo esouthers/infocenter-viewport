@@ -614,7 +614,7 @@ function confCloudJS() {
         }
         else {
           $('#custom-search-form .soAllVer').prop('disabled', false);
-          if (($(this).hasClass('soTVer')) && ($('#custom-search-form .soTVer').is(':checked'))) {
+          if (($(this).hasClass('soTVer')) && ($('#custom-search-form .soAllVer').is(':checked'))) {
             $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
             $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
             $('#custom-search-form [name="v"]').attr('value','');

@@ -605,7 +605,6 @@ function confCloudJS() {
         debouncedSearch($(this).val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
-        debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
         if (($(this).hasClass('soTProd')) && ($('#custom-search-form .soAllProd').is(':checked'))) {
           $('#custom-search-form .soAllVer').prop('checked', true).prop('disabled','true');
           $('#custom-search-form [name="s"]').attr('value','');
@@ -624,6 +623,7 @@ function confCloudJS() {
             $('#custom-search-form [name="v"]').attr('value',getVersionSearched());
           }
         }
+        debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       function getVariantSearched() {
         if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }
@@ -689,11 +689,8 @@ function confCloudJS() {
           }
         }
         else {  // Searching all products (and versions)
-          $('#custom-search-form input[name="s"]').attr('value',''); 
           spaceString = '';
-          $('#custom-search-form input[name="va"]').attr('value',''); 
           variantString = '';
-          $('#custom-search-form input[name="v"]').attr('value',''); 
           versionString = '';
         }
 

@@ -727,7 +727,8 @@ function confCloudJS() {
                 searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
                 searchVersionStr = viewportList.currentContentSource.versions == undefined ? '' : '&s=' + viewportList.currentContentSource.versions.current.name;
               }
-              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + searchSpaceStr + searchVersionStr + '&start=0';
+//              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + searchSpaceStr + searchVersionStr + '&start=0';
+              let searchPageLink = '/search.html?' + searchURL.split('?')[1];
               let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
               $('#suggestionList').append(searchSuggestionAll);
             }

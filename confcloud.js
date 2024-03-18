@@ -617,13 +617,12 @@ function confCloudJS() {
         }
         else {
           $('#custom-search-form .soAllVer').prop('disabled', false);
+          $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
+          $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
           if (($(this).hasClass('soTVer')) && ($('#custom-search-form .soAllVer').is(':checked'))) {
-            $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
-            $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
             $('#custom-search-form [name="v"]').attr('value','');
           }
           else {
-            $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
             $('#custom-search-form [name="v"]').attr('value',getVersionSearched());
           }
         }

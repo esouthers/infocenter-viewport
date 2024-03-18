@@ -604,6 +604,9 @@ function confCloudJS() {
       if (viewportList.currentContentSource.versions == undefined) {
         $('.soTVer').remove();
       }
+      else if (viewportList.currentContentSource.versions.available.length == 1) {
+        $('.soTVer').remove();
+      }
 
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('.search-options-container, #suggestionList').show();

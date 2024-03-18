@@ -595,7 +595,6 @@ function confCloudJS() {
       $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
       $('#custom-search-form [name="v"]').attr('value',getVersionSearched());
 
-
       let searchOptionsSuggestionsContainer = '<div class="search-options-container" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li></div><ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="searchSpinner" style="display:none;"><div class="HaiSpinner" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
       $('#custom-search-form .has-suggestions').append(searchOptionsSuggestionsContainer);
       if (viewportList.currentContentSource.prefix == 'Home') {

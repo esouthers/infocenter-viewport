@@ -690,7 +690,7 @@ function confCloudJS() {
           versionString = '';
         }
 
-        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm + spaceString + variantStrin + versionString;
+        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm + spaceString + variantString + versionString;
         $.get(searchURL, function(data, status, jqXHR) {
 //        $.get('/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li:not(.searchSpinner)').remove();

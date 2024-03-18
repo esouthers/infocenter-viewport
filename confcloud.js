@@ -309,6 +309,7 @@ function confCloudJS() {
               searchedSpaceName = val.name;
             }
           });
+          if (searchedSpaceName = '') { searchedSpaceName = 'InfoCenter'; }
 
           let productsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-content"  class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open"><label class="sr-only" id="headlessui-listbox-label-1" data-headlessui-state="open">Content</label><button data-vp-id="search-page-horizontal-filter-content-button" class="vp-dropdown__button" id="headlessui-listbox-button-2" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-1 headlessui-listbox-button-2" data-headlessui-state="open" aria-controls="headlessui-listbox-options"><span class="vp-dropdown__button-label">' + searchedSpaceName + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-content-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-1" aria-orientation="vertical" id="headlessui-listbox-options-113" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-prodAll" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">Search all</span></li></ul></div><input type="hidden" form="search-form" name="s" value=""><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
           let versionsFilter = '<div><div data-vp-id="custom-search-page-horizontal-filter-versions" class="vp-dropdown vp-dropdown--simple" data-vp-component="dropdown" data-vp-variant="simple" data-headlessui-state="open" style="display:none;"><label class="sr-only" id="headlessui-listbox-label-3" data-headlessui-state="open">Versions</label><button data-vp-id="search-page-horizontal-filter-versions-button" class="vp-dropdown__button" id="headlessui-listbox-button-4" type="button" aria-haspopup="true" aria-expanded="true" aria-labelledby="headlessui-listbox-label-3 headlessui-listbox-button-4" data-headlessui-state="open" aria-controls="headlessui-listbox-options-7"><span class="vp-dropdown__button-label">' + searchedVersion + '</span><span class="vp-dropdown__button-icon vp-dropdown__button-icon--chevron"><svg data-vp-id="chevron-right-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg></span></button><ul data-vp-id="search-page-horizontal-filter-versions-options" class="vp-dropdown__options direction-down" style="display: none;" aria-labelledby="headlessui-listbox-label-3" aria-orientation="vertical" id="headlessui-listbox-options-7" role="listbox" tabindex="0" data-headlessui-state="open"><li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="" class="vp-dropdown__option" id="headlessui-listbox-option-verall" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">All versions</span></li></ul></div><input type="hidden" form="search-form" name="v"><input type="submit" hidden="" aria-hidden="true" form="search-form"></div>';
@@ -480,7 +481,8 @@ function confCloudJS() {
             exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
           }
           else {
-            exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion;
+            exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;
+
           }
           $('.header__navigation--heading').attr('href',exitSearchLink);
           $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
@@ -700,7 +702,6 @@ function confCloudJS() {
         var searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
         searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
         $.get(searchURL, function(data, status, jqXHR) {
-//        $.get('/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li:not(.searchSpinner)').remove();
           var numResults = data.total;
           if (numResults > 0) {

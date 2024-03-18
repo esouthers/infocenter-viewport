@@ -666,7 +666,7 @@ function confCloudJS() {
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-        if (!searchAllProducts) { 
+/*        if (!searchAllProducts) { 
           spaceString = '&s='+spaceSearched;
           if (!searchAllVersions) {
             if (getVersionSearched() != '') {
@@ -693,7 +693,7 @@ function confCloudJS() {
           variantString = '';
           versionString = '';
         }
-
+*/
         let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
         searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
         $.get(searchURL, function(data, status, jqXHR) {

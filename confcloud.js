@@ -581,7 +581,7 @@ function confCloudJS() {
       if (prefix) { return (params.get(name) !== null && params.get(name) !== '') ? '&' + name + '=' + params.get(name) : "" }
       else {        return params.get(name) !== null ? params.get(name) : ""; }
     }
-    formGet(name, prefix) {
+    function formGet(name, prefix) {
       if (prefix) { return $('#custom-search-form [name="' + name + '"]').length == 0 ? '' : '&' + name + '=' + $('#custom-search-form [name="' + name + '"]').attr('value'); }
       else {        return $('#custom-search-form [name="' + name + '"]').length == 0 ? '' : $('#custom-search-form [name="' + name + '"]').attr('value'); }
     }

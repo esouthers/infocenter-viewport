@@ -35,7 +35,7 @@ function confCloudJS() {
     var viewportList = parseViewportData();
     var hiddenSpaces = ['Inclusion Library'];
     var transmittersVariants = [{'variant' : 'Air', 'versions' : ['5.3.1']}, {'variant' : 'Pro3', 'versions' : ['5.3.1']}, {'variant' : 'Rack200 & Rack300', 'versions' : ['5.3.1']}, {'variant' : 'Pro460', 'versions' : ['3.0']}, {'variant' : 'Rack400', 'versions' : ['3.0']}];
-    var isBetaSite = window.location.host.indexOf('beta') >= 0 ? true : false;
+    var isBetaSite = window.location.host.split('.')[0].indexOf('beta') >= 0 ? true : false;
     if (isBetaSite) {
       $('body').addClass('beta');
     }

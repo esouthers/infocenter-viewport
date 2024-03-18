@@ -580,10 +580,6 @@ function confCloudJS() {
       if (prefix) { return (params.get(name) !== null && params.get(name) !== '') ? '&' + name + '=' + params.get(name) : "" }
       else {        return params.get(name) !== null ? params.get(name) : ""; }
     }
-    function formGet(name, prefix) {
-      if (prefix) { return $('#custom-search-form [name="' + name + '"]').length == 0 ? '' : '&' + name + '=' + $('#custom-search-form [name="' + name + '"]').attr('value'); }
-      else {        return $('#custom-search-form [name="' + name + '"]').length == 0 ? '' : $('#custom-search-form [name="' + name + '"]').attr('value'); }
-    }
     function addCustomSearch() {
       $('[data-vp-id="vp-search-form"]').remove();
       let searchBox = '<form role="search" id="custom-search-form" method="GET" action="/search.html" data-vp-id="custom-search-form" class="flex w-full justify-center"><div data-vp-component="search-bar" data-vp-variant="" class="vp-search-bar has-suggestions"><div class="vp-search-bar__input-container"><div data-vp-component="search-input" class="vp-search-input"><input role="combobox" aria-controls="suggestionList" aria-expanded="false" aria-autocomplete="list" required="" type="search" autocomplete="off" aria-label="Search" class="vp-search-input__input" placeholder="How can we help you?"><div class="vp-search-input__slot"></div><button type="submit" aria-label="Submit" class="vp-search-input__submit vp-search-input__icon"><svg data-vp-id="magnifier-icon" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8.99452 14.5C10.5121 14.5 11.809 13.9669 12.8854 12.9007C13.9618 11.8345 14.5 10.5361 14.5 9.00548C14.5 7.48794 13.9631 6.19097 12.8893 5.11458C11.8155 4.03819 10.519 3.5 9 3.5C7.46786 3.5 6.16816 4.0369 5.1009 5.11071C4.03363 6.18453 3.5 7.48096 3.5 9C3.5 10.5321 4.0331 11.8318 5.09929 12.8991C6.1655 13.9664 7.46391 14.5 8.99452 14.5ZM9 16C8.02913 16 7.11974 15.816 6.27185 15.4479C5.42395 15.0799 4.68056 14.5799 4.04167 13.9479C3.40278 13.316 2.90278 12.576 2.54167 11.728C2.18056 10.88 2 9.97053 2 8.99956C2 8.04152 2.18403 7.13542 2.55208 6.28125C2.92014 5.42708 3.41864 4.68387 4.04758 4.0516C4.67653 3.41935 5.41569 2.91935 6.26508 2.5516C7.11449 2.18387 8.02548 2 8.99806 2C9.95769 2 10.8646 2.18403 11.7188 2.55208C12.5729 2.92014 13.316 3.42014 13.9479 4.05208C14.5799 4.68403 15.0799 5.42612 15.4479 6.27835C15.816 7.13058 16 8.0381 16 9.00094C16 9.83365 15.8615 10.6213 15.5846 11.3638C15.3078 12.1062 14.9254 12.7836 14.4375 13.3958L18 16.9583L16.9375 18L13.375 14.4583C12.7668 14.9459 12.0939 15.3247 11.3564 15.5948C10.6188 15.8649 9.83333 16 9 16Z" fill="currentColor"></path></svg></button></div></div></div></form>';
@@ -694,8 +690,7 @@ function confCloudJS() {
           versionString = '';
         }
 
-        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
-        searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
+        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm + spaceString + variantStrin + versionString;
         $.get(searchURL, function(data, status, jqXHR) {
 //        $.get('/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li:not(.searchSpinner)').remove();

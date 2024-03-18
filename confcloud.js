@@ -199,7 +199,6 @@ function confCloudJS() {
         function processSearchPage() { 
           // $('[data-vp-id="search-page-results"]').remove();
           // $('[data-vp-id="search-page-pagination"]').remove();
-          let url = window.location.href;
           let paramsGetL     = paramsGet('l', false);
           let paramsGetStart = paramsGet('start', false);
           let paramsGetMax   = paramsGet('max', false);
@@ -577,7 +576,7 @@ function confCloudJS() {
 
 
     function paramsGet(name, prefix) {
-      let params = new URLSearchParams(url.split('?')[1]);
+      let params = new URLSearchParams(window.location.href.split('?')[1]);
       if (prefix) { return (params.get(name) !== null && params.get(name) !== '') ? '&' + name + '=' + params.get(name) : "" }
       else {        return params.get(name) !== null ? params.get(name) : ""; }
     }

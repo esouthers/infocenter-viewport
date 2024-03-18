@@ -608,7 +608,7 @@ function confCloudJS() {
         }
       });
       $(document).mouseup(function(e) {
-          var container = $('#suggestionList');
+          var container = $('.search-options-container, #suggestionList');
           // if the target of the click isn't the container nor a descendant of the container
           if (!container.is(e.target) && container.has(e.target).length === 0 && !$(e.target).hasClass('vp-search-input__input')) { 
             $('.search-options-container, #suggestionList').hide();

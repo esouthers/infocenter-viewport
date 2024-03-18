@@ -584,7 +584,7 @@ function confCloudJS() {
       $('.top-bar-right .my-auto').last().append(searchBox);
       let hiddenInputs = '<input type="hidden" name="l" value="en"><input type="hidden" name="max" value="10"><input type="hidden" name="ol" value=""><input type="hidden" name="q" value=""><input type="hidden" name="s" value=""><input type="hidden" name="v" value=""><input type="hidden" name="va" value=""><input type="hidden" name="start" value="0">';
       $('#custom-search-form').append(hiddenInputs);
-      let searchOptionsSuggestionsContainer = '<div class="search-options-container"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li></div><ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="searchSpinner" style="display:none;"><div class="HaiSpinner" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
+      let searchOptionsSuggestionsContainer = '<div class="search-options-container" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li></div><ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="searchSpinner" style="display:none;"><div class="HaiSpinner" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
       $('#custom-search-form .has-suggestions').append(searchOptionsSuggestionsContainer);
       if (viewportList.currentContentSource.prefix == 'Home') {
         $('input.soAllProd').prop('checked',true);
@@ -595,7 +595,7 @@ function confCloudJS() {
 
       let timeout;
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
-        $('#suggestionList').show();
+        $('.search-options-container, #suggestionList').show();
         debouncedSearch($(this).val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
@@ -611,7 +611,7 @@ function confCloudJS() {
           var container = $('#suggestionList');
           // if the target of the click isn't the container nor a descendant of the container
           if (!container.is(e.target) && container.has(e.target).length === 0 && !$(e.target).hasClass('vp-search-input__input')) { 
-            $('#suggestionList').hide();
+            $('.search-options-container, #suggestionList').hide();
           }
       });
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {

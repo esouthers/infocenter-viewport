@@ -670,34 +670,6 @@ function confCloudJS() {
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-/*        if (!searchAllProducts) { 
-          spaceString = '&s='+spaceSearched;
-          if (!searchAllVersions) {
-            if (getVersionSearched() != '') {
-              versionString = '&v='+getVersionSearched();
-            }
-            else {
-              versionString = ''; 
-            }
-            if (getVariantSearched() != '') {
-              variantString = '&va='+getVariantSearched();
-            }
-            else {
-              versionString = ''; 
-              variantString = '';
-            }
-          }
-          else {
-            variantString = '';
-            versionString = '';
-          }
-        }
-        else {  // Searching all products (and versions)
-          spaceString = '';
-          variantString = '';
-          versionString = '';
-        }
-*/
         var searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
         searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
         $.get(searchURL, function(data, status, jqXHR) {
@@ -941,7 +913,7 @@ function confCloudJS() {
         if (breadcrumbs.length > 4) {
           for (var i = 2; i < breadcrumbs.length-2; i++) {
             let tempTitle = breadcrumbs.eq(i).children('a').text();
-            breadcrumbs.eq(i).children('a').attr('data-title',tempTitle).text('...');
+            breadcrumbs.eq(i).children('a').attr('data-title',tempTitle).attr('title',tempTitle).text('...');
           }
         }
         // Add version number to breadcrumbs

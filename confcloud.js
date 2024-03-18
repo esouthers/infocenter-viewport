@@ -609,7 +609,7 @@ function confCloudJS() {
         debouncedSearch($(this).val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form .soTVer, #custom-search-form .soTProd').on('input', function() {
-        if (($(this).hasClass('soTProd')) && ($('#custom-search-form .soAllProd').is(':checked'))) {
+        if ($('#custom-search-form .soAllProd').is(':checked')) {
           $('#custom-search-form .soAllVer').prop('checked', true).prop('disabled','true');
           $('#custom-search-form [name="s"]').attr('value','');
           $('#custom-search-form [name="va"]').attr('value','');
@@ -619,7 +619,7 @@ function confCloudJS() {
           $('#custom-search-form .soAllVer').prop('disabled', false);
           $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
           $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
-          if (($(this).hasClass('soTVer')) && ($('#custom-search-form .soAllVer').is(':checked'))) {
+          if ($('#custom-search-form .soAllVer').is(':checked')) {
             $('#custom-search-form [name="v"]').attr('value','');
           }
           else {

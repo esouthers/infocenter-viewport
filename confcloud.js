@@ -697,7 +697,7 @@ function confCloudJS() {
           versionString = '';
         }
 */
-        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
+        var searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
         searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
         $.get(searchURL, function(data, status, jqXHR) {
 //        $.get('/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {

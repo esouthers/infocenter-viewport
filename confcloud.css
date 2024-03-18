@@ -495,9 +495,6 @@ li.searchSpinner {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-.vp-search-suggestion-panel li {
-  padding: 5px;
-}
 .vp-search-suggestion-option {
   font-size: 14px;
 }

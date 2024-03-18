@@ -2299,7 +2299,7 @@ svg.article__content__anchor--link-icon {
     mask-repeat: no-repeat;
 }
 body.beta .vp-search-page__filter-horizontal, body.beta .search-options-container {
-  display: none;
+  display: none !important;
 }
 body.beta .vp-search-suggestion-panel {
   top: 40px;

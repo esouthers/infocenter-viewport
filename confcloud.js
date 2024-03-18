@@ -602,11 +602,39 @@ function confCloudJS() {
         debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
         if (($(this).hasClass('soTProd')) && ($('#custom-search-form .soAllProd').is(':checked'))) {
           $('#custom-search-form .soAllVer').prop('checked', true).prop('disabled','true');
+          $('#custom-search-form [name="s"]').attr('value','');
+          $('#custom-search-form [name="va"]').attr('value','');
+          $('#custom-search-form [name="v"]').attr('value','');
         }
         else {
           $('#custom-search-form .soAllVer').prop('disabled', false);
+          if (($(this).hasClass('soTVer')) && ($('#custom-search-form .soTVer').is(':checked'))) {
+            $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
+            $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
+            $('#custom-search-form [name="v"]').attr('value','');
+          }
+          else {
+            $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
+            $('#custom-search-form [name="v"]').attr('value',getVersionSearched());
+          }
         }
       });
+      function getVariantSearched() {
+        if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }
+        else {
+          if (viewportList.currentContentSource.variants.available.length == 0) { variantSearched = ''; }
+          else { variantSearched = viewportList.currentContentSource.variants.current.name; }
+        }
+        return variantSearched;
+      }
+      function getVersionSearched() {
+        if (viewportList.currentContentSource.versions == undefined) { versionSearched = ''; }
+        else {
+          if (viewportList.currentContentSource.versions.available.length == 0) { versionSearched = ''; }
+          else { versionSearched = viewportList.currentContentSource.versions.current.name; }
+        }
+        return versionSearched;
+      }
       $(document).mouseup(function(e) {
           var container = $('.search-options-container, #suggestionList');
           // if the target of the click isn't the container nor a descendant of the container
@@ -630,27 +658,16 @@ function confCloudJS() {
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;
         let spaceSearched = viewportList.currentContentSource.prefix;
-        if (viewportList.currentContentSource.versions == undefined) { versionSearched = ''; }
-        else {
-          if (viewportList.currentContentSource.versions.available.length == 0) { versionSearched = ''; }
-          else { versionSearched = viewportList.currentContentSource.versions.current.name; }
-        }
-        if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }
-        else {
-          if (viewportList.currentContentSource.variants.available.length == 0) { variantSearched = ''; }
-          else { variantSearched = viewportList.currentContentSource.variants.current.name; }
-        }
-
         $('#custom-search-form input[name="q"]').attr('value',searchTerm);
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
           spaceString = '&s='+spaceSearched;
-          if (versionSearched != '') {
-            $('#custom-search-form input[name="v"]').attr('value',versionSearched);
-            versionString = '&v='+versionSearched;
+          if (getVersionSearched() != '') {
+            $('#custom-search-form input[name="v"]').attr('value',getVersionSearched());
+            versionString = '&v='+getVersionSearched();
           }
           else {
-            versionString = versionSearched;
+            versionString = getVersionSearched();
           }
         }
         else {  // Searching all products (and versions)
@@ -661,11 +678,15 @@ function confCloudJS() {
         }
         if (viewportList.currentContentSource.variants !== undefined) {
           if (viewportList.currentContentSource.variants.name !== undefined) { 
-            $('#custom-search-form input[name="va"]').attr('value',variantSearched);
+            $('#custom-search-form input[name="va"]').attr('value',getVariantSearched());
           }
         }
 
-        $.get( '/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
+        let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
+        if (paramsGetS != '') { searchURL += '&s='; }
+        searchURL += paramsGetS + paramsGetV + paramsGetVa;
+        $.get(searchURL, function(data, status, jqXHR) {
+//        $.get('/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
           $('#suggestionList li:not(.searchSpinner)').remove();
           var numResults = data.total;
           if (numResults > 0) {

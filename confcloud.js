@@ -612,6 +612,7 @@ function confCloudJS() {
           // if the target of the click isn't the container nor a descendant of the container
           if (!container.is(e.target) && container.has(e.target).length === 0 && !$(e.target).hasClass('vp-search-input__input')) { 
             $('.search-options-container, #suggestionList').hide();
+            $('#suggestionList li').remove();
           }
       });
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
@@ -624,7 +625,7 @@ function confCloudJS() {
       }
       function doSearch(str, searchAllVersions, searchAllProducts) {
         $('.searchSpinner').show();
-        $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
+        $('#suggestionList li').remove();
         searchAllVersions = searchAllVersions || false;
         searchAllProducts = searchAllProducts || false;
         var searchTerm = str;
@@ -665,7 +666,7 @@ function confCloudJS() {
         }
 
         $.get( '/__search?l=en&max=10&ol=false&q='+searchTerm+spaceString+versionString+'&start=0', function(data, status, jqXHR) {
-          $('#suggestionList li.vp-search-suggestion-option-container, #suggestionList li.vp-search-suggestion-action-container').remove();
+          $('#suggestionList li').remove();
           var numResults = data.total;
           if (numResults > 0) {
             $(data.hits).each(function(i,val){

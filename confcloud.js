@@ -591,6 +591,11 @@ function confCloudJS() {
       $('.top-bar-right .my-auto').last().append(searchBox);
       let hiddenInputs = '<input type="hidden" name="l" value="en"><input type="hidden" name="max" value="10"><input type="hidden" name="ol" value=""><input type="hidden" name="q" value=""><input type="hidden" name="s" value=""><input type="hidden" name="v" value=""><input type="hidden" name="va" value=""><input type="hidden" name="start" value="0">';
       $('#custom-search-form').append(hiddenInputs);
+      $('#custom-search-form [name="s"]').attr('value',viewportList.currentContentSource.prefix);
+      $('#custom-search-form [name="va"]').attr('value',getVariantSearched());
+      $('#custom-search-form [name="v"]').attr('value',getVersionSearched());
+
+
       let searchOptionsSuggestionsContainer = '<div class="search-options-container" style="display:none;"><li class="search-options-text">Change filter to include:</li><li class="search-options"><label class="soTVer"><input class="soAllVer" type="checkbox" name="so-version" value="all" aria-labelledby="soTitle soAllVerSpan"><span id="soAllVerSpan">All Versions</span></label><label class="soTProd"><input class="soAllProd" type="checkbox" name="so-product" value="all" aria-labelledby="soTitle soAllProdSpan"><span id="soAllProdSpan">All Products</span></label></li></div><ul id="suggestionList" data-vp-component="search-suggestion" class="vp-search-suggestion-panel" role="listbox" aria-label="Search suggestions" tabindex="-1" style="display:none;"><li class="searchSpinner" style="display:none;"><div class="HaiSpinner" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></li></ul>';
       $('#custom-search-form .has-suggestions').append(searchOptionsSuggestionsContainer);
       if (viewportList.currentContentSource.prefix == 'Home') {

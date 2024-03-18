@@ -2301,6 +2301,9 @@ svg.article__content__anchor--link-icon {
 body.beta .vp-search-page__filter-horizontal, body.beta .search-options-container {
   display: none;
 }
+body.beta .vp-search-suggestion-panel {
+  top: 40px;
+}
 .vp-search-suggestion-option:before {
   display: none;
 }

@@ -450,13 +450,21 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
   width: 25px;
   height: 25px;
 }
-/*Search results dropdown */
-.vp-search-suggestion-panel {
+/*Search options/results dropdown */
+.search-options-container {
+  position: absolute;
+  top: 40px;
+  height: 48px;
+}
+.search-options-container, .vp-search-suggestion-panel {
   padding: 5px;
   margin-top: 0px;
   background-color: var(--haiui-white);
+}
+.vp-search-suggestion-panel {
   max-height: 300px;
   overflow: auto;
+  top: 88px;
 }
 .vp-search-suggestion-option {
   font-size: 14px;

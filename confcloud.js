@@ -600,7 +600,6 @@ function confCloudJS() {
         $('.soTVer').remove();
       }
 
-      let timeout;
       $('#custom-search-form input.vp-search-input__input').on('input mouseup', function() {
         $('.search-options-container, #suggestionList').show();
         debouncedSearch($(this).val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
@@ -650,6 +649,7 @@ function confCloudJS() {
             $('#suggestionList li:not(.searchSpinner)').remove();
           }
       });
+      let timeout;
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
         clearTimeout(timeout);
         if (str.length >= 3) {
@@ -669,24 +669,38 @@ function confCloudJS() {
         if (!searchAllProducts) { 
           $('#custom-search-form input[name="s"]').attr('value',spaceSearched); 
           spaceString = '&s='+spaceSearched;
-          if (getVersionSearched() != '') {
-            $('#custom-search-form input[name="v"]').attr('value',getVersionSearched());
-            versionString = '&v='+getVersionSearched();
+          if (!searchAllVersions) {
+            if (getVersionSearched() != '') {
+              $('#custom-search-form input[name="v"]').attr('value',getVersionSearched());
+              versionString = '&v='+getVersionSearched();
+            }
+            else {
+              $('#custom-search-form input[name="v"]').attr('value','');
+              versionString = ''; 
+            }
+            if (getVariantSearched() != '') {
+              $('#custom-search-form input[name="va"]').attr('value',getVariantSearched());
+              variantString = '&va='+getVariantSearched();
+            }
+            else {
+              $('#custom-search-form input[name="v"]').attr('value','');
+              versionString = ''; 
+              $('#custom-search-form input[name="va"]').attr('value','');
+              variantString = '';
+            }
           }
           else {
-            versionString = getVersionSearched();
+            $('#custom-search-form input[name="va"]').attr('value','');
+            variantString = '';            
           }
         }
         else {  // Searching all products (and versions)
           $('#custom-search-form input[name="s"]').attr('value',''); 
           spaceString = '';
+          $('#custom-search-form input[name="va"]').attr('value',''); 
+          variantString = '';
           $('#custom-search-form input[name="v"]').attr('value',''); 
           versionString = '';
-        }
-        if (viewportList.currentContentSource.variants !== undefined) {
-          if (viewportList.currentContentSource.variants.name !== undefined) { 
-            $('#custom-search-form input[name="va"]').attr('value',getVariantSearched());
-          }
         }
 
         let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;

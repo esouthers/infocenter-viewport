@@ -485,7 +485,7 @@ li.search-options {
   color: var(--haiui-gray-00);
 }
 li.searchSpinner {
-  padding-top: 5px;
+  padding: 5px;
 }
 .vp-search-suggestion-panel {
   max-height: 300px;

@@ -484,6 +484,9 @@ li.search-options {
   font-size: 12px;
   color: var(--haiui-gray-00);
 }
+li.search-options span {
+  vertical-align: top;
+}
 li.searchSpinner {
   padding: 5px;
 }

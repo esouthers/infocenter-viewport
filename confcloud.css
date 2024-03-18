@@ -2298,8 +2298,8 @@ svg.article__content__anchor--link-icon {
     mask-size: contain;
     mask-repeat: no-repeat;
 }
-body.beta .vp-search-page__filter-horizontal {
-/*  display: none; */
+body.beta .vp-search-page__filter-horizontal, body.beta .search-options-container {
+  display: none;
 }
 .vp-search-suggestion-option:before {
   display: none;

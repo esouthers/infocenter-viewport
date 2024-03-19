@@ -1344,7 +1344,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         let modDay = modDate.split('-')[2].split('T')[0];
         let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         let modDateHTML = '<p class="modified-date">Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
-        let pageactionsHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span><span title="Contact Sales" id="talk-to-sales">' + svgSales + '</span><span title="Print Page" id="print-article">' + svgPrint + '</span></p>';
+        let pageactionsHTML = '<p class="page-actions"><span data-original-title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span><span data-original-title="Contact Sales" id="talk-to-sales">' + svgSales + '</span><span data-original-title="Print Page" id="print-article">' + svgPrint + '</span></p>';
         $('.article-header').append(modDateHTML).append(pageactionsHTML); 
         window.ATL_JQ_PAGE_PROPS = {
           "triggerFunction": function(showCollectorDialog) {

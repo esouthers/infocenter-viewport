@@ -196,6 +196,7 @@ function confCloudJS() {
         updateSidebar();
 
         processSearchPage();
+        updateFooter();
         function processSearchPage() { 
           // $('[data-vp-id="search-page-results"]').remove();
           // $('[data-vp-id="search-page-pagination"]').remove();

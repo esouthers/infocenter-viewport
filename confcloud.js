@@ -530,6 +530,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       keyboardShortcuts();
       addCustomSearch();
 
+      // open pdfs in new tab
+      $('a[data-linked-resource-content-type="application/pdf"]').attr('target','_blank')
+
       var updatePageTitle = new MutationObserver(mutationCallback);
       function mutationCallback(mutations) {
         updatePageTitle.disconnect();

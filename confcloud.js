@@ -1220,6 +1220,14 @@ function confCloudJS() {
       <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
       <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
       $('main').append(footerToAdd);
+      window.ATL_JQ_PAGE_PROPS = {
+        "triggerFunction": function(showCollectorDialog) {
+          $(".scroll-viewport-attribution").click(function(e) {
+            e.preventDefault();
+            showCollectorDialog();
+          });
+        }
+      };  
     }
 
       // Fix inline images

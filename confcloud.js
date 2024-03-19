@@ -1228,7 +1228,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('main').append(footerToAdd);
       window.ATL_JQ_PAGE_PROPS = {
         "triggerFunction": function(showCollectorDialog) {
-          $(".scroll-viewport-attribution").click(function(e) {
+          $('.scroll-viewport-attribution, #ht-footer').click(function(e) {
             e.preventDefault();
             showCollectorDialog();
           });

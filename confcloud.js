@@ -1315,7 +1315,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         if ($('.breadcrumbs li').length > 3) {
           let addDots = $('.breadcrumbs li').eq(1);
           if (!(addDots.hasClass('hidden'))) {
-            addDots.addClass('hidden').attr('data-title',$('a', addDots).text()).attr('title',$('a', addDots).text());
+            addDots.addClass('hidden').attr('data-title',$('a', addDots).text());
+            $('a', addDots).attr('title',$('a', addDots).text())
             $('a', addDots).text('...');
           }
         }

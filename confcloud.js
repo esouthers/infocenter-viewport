@@ -1333,7 +1333,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }  
       else {
         $('#vp-js-desktop__navigation__picker').removeClass('hidebefore');
-      }
+      } 
     }
     // Adds modified date under page title
     function addModifiedDate() {

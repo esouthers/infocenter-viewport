@@ -1324,7 +1324,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
       if ($('#article-content').width() < 500) {
         $('#vp-js-desktop__navigation__picker').addClass('hidebefore');
-      }
+      } 
       else {
         $('#vp-js-desktop__navigation__picker').removeClass('hidebefore');
       }
@@ -1338,7 +1338,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         let modDay = modDate.split('-')[2].split('T')[0];
         let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         let modDateHTML = '<p class="modified-date">Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
-        let feedbackHTML = '<p title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</p>';
+        let feedbackHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span></p>';
         $('.article-header').append(modDateHTML).append(feedbackHTML); 
         window.ATL_JQ_PAGE_PROPS = {
           "triggerFunction": function(showCollectorDialog) {

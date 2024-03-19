@@ -1,21 +1,26 @@
 function confCloudJS() { 
-  var link = document.createElement("LINK");
-  link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
-  function compare( a, b ) {
-    if ( a.name.toLowerCase() < b.name.toLowerCase() ){  return -1; }
-    if ( a.name.toLowerCase() > b.name.toLowerCase() ){  return 1;  }
-    return 0;
-  }
-  scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
+var link = document.createElement("LINK");
+link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+link.rel = 'stylesheet';
+document.head.appendChild(link);
+function compare( a, b ) {
+  if ( a.name.toLowerCase() < b.name.toLowerCase() ){  return -1; }
+  if ( a.name.toLowerCase() > b.name.toLowerCase() ){  return 1;  }
+  return 0;
+}
+scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
+
+ var script = document.createElement("SCRIPT");
+ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
+ script.type = 'text/javascript';
+ script.onload = function() {
+
+  $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
 
   var script = document.createElement("SCRIPT");
-  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
+  script.src = 'https://haivision.jira.com/s/d41d8cd98f00b204e9800998ecf8427e-T/-t2deah/b/11/e73395c53c3b10fde2303f4bf74ffbf6/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=99991144';
   script.type = 'text/javascript';
   script.onload = function() {
-
-   $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
 
    var script = document.createElement("SCRIPT");
    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/aui/9.10.0/aui/aui-prototyping.min.js';
@@ -1822,6 +1827,8 @@ function confCloudJS() {
     // End of must edit for GA
    }
    document.head.appendChild(script); 
-  };
-  document.head.appendChild(script);
+  }
+  document.head.appendChild(script); 
+ };
+ document.head.appendChild(script);
 }

@@ -836,10 +836,10 @@ h1.vp-article__heading {
   font-size: 10px;
   margin-bottom: 0px;
 }
-#page-actions span {
+.page-actions span {
   fill: var(--haiui-gray-07);
 }
-#page-actions span:hover, #page-actions span:focus {
+.page-actions span:hover, .page-actions span:focus {
   fill: var(--haiui-blue-04);
 }
 main > header {

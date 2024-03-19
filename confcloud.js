@@ -70,9 +70,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-        if (!isBetaSite) {
+//        if (!isBetaSite) {
           process404pages();
-        }
+//        }
       }
       function process404pages() {
         let pathname = window.location.pathname;
@@ -92,9 +92,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           let page404content = '<div class="ht-error-message">' + 
             '<img height="50px" src="' + hvLogoImgSrc + '">' +
             '<h1>This page has been devoured</h1><h2>404 — Page Not Found</h2><h3>The page you are looking for might have been removed,<br> may be temporarily unavailable, or was dragged to a watery demise.</h3>' +
-            '<button onclick="window.location = \'https://doc.haivision.com\';" class="primary">Back to Home</button></div>';
+            '<button onclick="" class="primary">Back to Home</button></div>';
           $('main h1, main h2, main p, main .error--search').remove();
           $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
+          $('.ht-error-message button').attr('onclick','window.location = "' + window.location.hostname + '"');
           updateHeader();
           updateSidebar();
           updateFooter();

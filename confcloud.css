@@ -836,6 +836,10 @@ h1.vp-article__heading {
   font-size: 10px;
   margin-bottom: 0px;
 }
+.page-actions {
+  display: flex;
+  column-gap: 10px;
+}
 .page-actions span {
   fill: var(--haiui-gray-07);
 }

@@ -1325,7 +1325,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
       if ($('#article-content').width() < 500) {
         $('#vp-js-desktop__navigation__picker').addClass('hidebefore');
-      } 
+      }  
       else {
         $('#vp-js-desktop__navigation__picker').removeClass('hidebefore');
       }

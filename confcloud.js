@@ -95,7 +95,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             '<button onclick="" class="primary">Back to Home</button></div>';
           $('main h1, main h2, main p, main .error--search').remove();
           $('main').prepend(page404content).removeClass('px-2 md:px-4 mx-auto max-w-grid w-full');
-          $('.ht-error-message button').attr('onclick','window.location = "' + window.location.hostname + '"');
+          $('.ht-error-message button').attr('onclick','window.location = "https://' + window.location.hostname + '"');
           updateHeader();
           updateSidebar();
           updateFooter();

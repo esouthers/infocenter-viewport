@@ -1229,7 +1229,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('main').append(footerToAdd);
       window.ATL_JQ_PAGE_PROPS = {
         "triggerFunction": function(showCollectorDialog) {
-          $('.scroll-viewport-attribution').click(function(e) {
+          $('#prodvide-feedback').click(function(e) {
             e.preventDefault();
             showCollectorDialog();
           });

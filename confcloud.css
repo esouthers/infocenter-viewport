@@ -2352,3 +2352,8 @@ body.beta .vp-search-suggestion-panel {
   border-style: solid;
   border-width: 2px;
 }
+@media print {
+  #aui-flag-container, .vp-article__aside-left {
+    display: none;
+  }
+}

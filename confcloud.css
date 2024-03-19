@@ -2365,7 +2365,7 @@ body.beta .vp-search-suggestion-panel {
   border-width: 2px;
 }
 @media print {
-  #aui-flag-container, .vp-article__aside-left, #sidebar-dragbar, .page-actions, header {
+  #aui-flag-container, .vp-article__aside-left, #sidebar-dragbar, .page-actions, header, footer {
     display: none;
   }
   #article-content {

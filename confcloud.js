@@ -1354,7 +1354,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             });
           }
         };
-//        $('.page-actions span').attr('data-original-title', newMsg).attr('title', newMsg);
+        $('.page-actions span').attr('title', $('.page-actions span').attr('data-original-title'));
         $('.page-actions span').on('mouseenter', function() {
           waitForElm('.aui-tooltip').then((elm) => {
             $('.aui-tooltip').css('margin-top','100px');

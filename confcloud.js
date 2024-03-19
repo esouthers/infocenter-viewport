@@ -37,6 +37,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     var svgInfoFilled= '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48" class="HaiIcon" iconname="InformationFilled" subtype="information-filled" theme="argon" type="actions"><path d="M24,0C10.75,0,0,10.75,0,24s10.75,24,24,24,24-10.75,24-24S37.25,0,24,0Zm2,33.97c0,1.12-.9,2.03-2,2.03s-2-.91-2-2.03v-11.94c0-1.12,.9-2.03,2-2.03s2,.91,2,2.03v11.94Zm-2-17.97c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Z"></path></svg>';
     var svgCheckFilled = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="HaiIcon fixedSize" iconname="CheckmarkCircle" subtype="checkmark-circle" theme="argon" type="toggle"><path d="M8,0C3.58,0,0,3.58,0,8s3.58,8,8,8,8-3.58,8-8S12.42,0,8,0Zm3.9,5.33l-3.48,6.95c-.16,.33-.48,.55-.85,.6-.05,0-.1,0-.15,0-.31,0-.62-.13-.83-.37l-2.82-3.15c-.2-.22-.3-.5-.28-.8s.15-.57,.37-.76c.2-.18,.47-.28,.74-.28,.32,0,.62,.13,.83,.37l1.73,1.93,2.75-5.49c.19-.38,.57-.61,.99-.61,.17,0,.34,.04,.5,.12,.27,.13,.46,.36,.56,.64,.09,.28,.07,.58-.06,.85Z"></path></svg>';
     var svgFeedback = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="HaiIcon" iconname="FeedbackFilled" subtype="feedback-filled" theme="argon" type="actions" style="height: 16px; width: 16px;"><path d="M44,0H4C1.79,0,0,1.79,0,4v30c0,2.21,1.79,4,4,4h30.34c1.06,0,2.08,.42,2.83,1.17l7.41,7.41c1.26,1.26,3.41,.37,3.41-1.41V4C48,1.79,46.21,0,44,0ZM24,30c-1.1,0-2-.9-2-2s.9-2,2-2,2,.9,2,2-.9,2-2,2Zm2-10c0,1.1-.9,2-2,2s-2-.9-2-2V10c0-1.1,.9-2,2-2s2,.9,2,2v10Z"></path></svg>';
+    var svgSales = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="HaiIcon" iconname="HelpCenter" subtype="help-center" theme="argon" type="label" style="height: 16px; width: 16px;"><path d="M42,14h-2.53c-1.78-6.89-8.03-12-15.47-12S10.31,7.11,8.53,14h-2.53c-3.31,0-6,2.69-6,6v4c0,3.31,2.69,6,6,6h2c0,1.1,.9,2,2,2s2-.9,2-2v-12c0-6.62,5.38-12,12-12s12,5.38,12,12v12c0,6.62-5.38,12-12,12-1.1,0-2,.9-2,2s.9,2,2,2c8.82,0,16-7.18,16-16h2c3.31,0,6-2.69,6-6v-4c0-3.31-2.69-6-6-6ZM6,26c-1.1,0-2-.9-2-2v-4c0-1.1,.9-2,2-2h2v8h-2Zm38-2c0,1.1-.9,2-2,2h-2v-8h2c1.1,0,2,.9,2,2v4Z"></path><path d="M31.41,31.41c.77-.77,.77-2.01,.01-2.79-.76-.79-2.02-.8-2.82-.06-.06,.06-1.57,1.44-4.61,1.44s-4.51-1.34-4.61-1.43c-.78-.76-2.04-.76-2.81,.02-.78,.78-.78,2.05,0,2.83,.26,.26,2.72,2.59,7.41,2.59s7.15-2.32,7.41-2.59Z"></path></svg>';
     var productRedirectJSON = '{"Command360":[{"redirect":"Command360"}],"CDVR":[{"redirect":"CDVR"}],"CS":[{"redirect":"CoolSign"}],"EMS":[{"redirect":"EMS"}],"Furnace":[{"redirect":"Furnace"}],"hai1000":[{"redirect":"hai1000"}],"HaiHelper":[{"redirect":"Helper"}],"HMG":[{"redirect":"HMG"}],"HMP":[{"redirect":"HMP"}],"Hub":[{"redirect":"Hub"}],"Hub360":[{"redirect":"Hub360"}],"KB":[{"redirect":"KB"}],"Kraken":[{"redirect":"Kraken"}],"LightFlow":[{"redirect":"LightFlow"}],"MakitoDec":[{"redirect":"MakitoDec"}],"MakitoEnc":[{"redirect":"MakitoEnc"}],"MakitoXDec":[{"redirect":"MakitoXDec"}],"MakitoXEnc":[{"redirect":"MakitoXEnc"}],"MFXE":[{"redirect":"MFXE"}],"MakitoX1Enc":[{"redirect":"MakitoX1Enc"}],"MakitoX4Dec":[{"redirect":"MakitoX4Dec"}],"MakitoX4Enc":[{"redirect":"MakitoX4Enc"}],"Mantaray":[{"redirect":"Mantaray"}],"MJPiOS":[{"redirect":"MJPiOS"}],"HPM":[{"redirect":"HPM"}],"HPPM":[{"redirect":"HPPM"}],"PlayProiOS":[{"redirect":"PlayProiOS"}],"STB":[{"redirect":"Play1000STB"}],"Play20004000STB":[{"redirect":"Play20004000STB"}],"Stingray":[{"redirect":"Stingray"}],"StreamHub":[{"redirect":"StreamHub"}],"Torpedo":[{"redirect":"Torpedo"}]}';
     var viewportList = parseViewportData();
     var hiddenSpaces = ['Inclusion Library'];
@@ -1338,8 +1339,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         let modDay = modDate.split('-')[2].split('T')[0];
         let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         let modDateHTML = '<p class="modified-date">Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
-        let feedbackHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span></p>';
-        $('.article-header').append(modDateHTML).append(feedbackHTML); 
+        let pageactionsHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span><span title="Contact Sales" id="talk-to-sales">' + svgSales + '</span></p>';
+        $('.article-header').append(modDateHTML).append(pageactionsHTML); 
         window.ATL_JQ_PAGE_PROPS = {
           "triggerFunction": function(showCollectorDialog) {
             $('#provide-feedback').click(function(e) {
@@ -1347,7 +1348,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               showCollectorDialog();
             });
           }
-        };  
+        };
+        $('#talk-to-sales').on('click', function() {
+            window.open('https://www.haivision.com/contact/', '_blank');
+        });
       }
     }
     function buildSidebarList(jsonObject,htmltoBuild,listType) {

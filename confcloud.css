@@ -840,7 +840,7 @@ h1.vp-article__heading {
   fill: var(--haiui-gray-07);
 }
 .page-actions span:hover, .page-actions span:focus {
-  fill: var(--haiui-blue-04);
+  fill: var(--haiui-blue-03);
   cursor: pointer;
 }
 main > header {

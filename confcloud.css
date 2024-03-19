@@ -260,6 +260,12 @@ body, #vp-js-desktop__navigation, #vp-js-desktop__navigation h3,.vp-picker__menu
   color: var(--haiui-white);
   border: none;
 }
+button.vp-tree-item__header__expand-button.rotate-90 {
+  transform: rotate(90deg);
+}
+button.vp-tree-item__header__expand-button {
+  transition: transform .2s ease;
+}
 #vp-js-desktop__navigation .vp-tree-item--with-hover-effect .vp-tree-item__header .vp-tree-item__header__expand-button:hover,
 #vp-js-desktop__navigation .vp-tree-item--with-hover-effect .vp-tree-item__header .vp-tree-item__header__expand-button:focus,
 #vp-js-desktop__navigation .vp-tree-item--with-hover-effect .vp-tree-item__header .vp-tree-item__header__expand-button:active {

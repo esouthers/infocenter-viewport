@@ -837,6 +837,9 @@ h1.vp-article__heading {
   margin-bottom: 0px;
 }
 #provide-feedback {
+  fill: var(--haiui-gray-07);
+}
+#provide-feedback:hover, #provide-feedback:focus {
   fill: var(--haiui-blue-04);
 }
 main > header {

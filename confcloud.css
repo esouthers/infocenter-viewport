@@ -2376,3 +2376,9 @@ body.beta .vp-search-suggestion-panel {
     max-width: 100% !important;
   }
 }
+.aui-tooltip {
+  display: none;
+}
+.aui-tooltip[data-popper-placement] {
+  display: block;
+}

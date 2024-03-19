@@ -814,7 +814,7 @@ details.vp-disclosure summary {
 }
 .vp-accordion-link-group a, .vp-accordion-link-group a:is(:hover,:focus,:focus-visible) {
   text-decoration: none;
-  color: var(--K15t-link);
+  color: var(--K15t-link); 
 }
 .vp-accordion-link-group__summary:where(:hover,:focus,:focus-visible,:focus-within) {
   background-color: transparent;
@@ -830,7 +830,7 @@ h1.vp-article__heading {
   margin-bottom: 0px;
   font-size: 24px;
   font-weight: normal;
-  line-height: 1.25;
+  line-height: 1.25; 
 }
 .article-header p.modified-date {
   font-size: 10px;

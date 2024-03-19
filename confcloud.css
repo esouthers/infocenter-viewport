@@ -2357,7 +2357,14 @@ body.beta .vp-search-suggestion-panel {
   border-width: 2px;
 }
 @media print {
-  #aui-flag-container, .vp-article__aside-left {
+  #aui-flag-container, .vp-article__aside-left, #sidebar-dragbar {
     display: none;
+  }
+  #article-content {
+    left: 0px !important;
+    width: 100% !important;
+  }
+  #article-inner-content {
+    max-width: 100% !important;
   }
 }

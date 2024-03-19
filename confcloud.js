@@ -1227,14 +1227,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       <small><span class="scroll-viewport-attribution">Powered by <a href="https://www.atlassian.com" target="_blank">Atlassian Confluence</a> and <a href="https://www.k15t.com/go/scroll-viewport" target="_blank">Scroll Viewport</a>.</span></small> \
       <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a></footer>';
       $('main').append(footerToAdd);
-      window.ATL_JQ_PAGE_PROPS = {
-        "triggerFunction": function(showCollectorDialog) {
-          $('#prodvide-feedback').click(function(e) {
-            e.preventDefault();
-            showCollectorDialog();
-          });
-        }
-      };  
     }
 
       // Fix inline images
@@ -1345,8 +1337,17 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         let modMonth = modDate.split('-')[1];
         let modDay = modDate.split('-')[2].split('T')[0];
         let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        let modDateHTML = '<p class="modified-date"><span title="Provide Feedback" id="prodvide-feedback">' + svgFeedback + '</span> Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
-        $('.article-header').append(modDateHTML); 
+        let modDateHTML = '<p class="modified-date">Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
+        let feedbackHTML = '<p title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</p>';
+        $('.article-header').append(modDateHTML).append(feedbackHTML); 
+        window.ATL_JQ_PAGE_PROPS = {
+          "triggerFunction": function(showCollectorDialog) {
+            $('#provide-feedback').click(function(e) {
+              e.preventDefault();
+              showCollectorDialog();
+            });
+          }
+        };  
       }
     }
     function buildSidebarList(jsonObject,htmltoBuild,listType) {

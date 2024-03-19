@@ -1345,7 +1345,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         let modMonth = modDate.split('-')[1];
         let modDay = modDate.split('-')[2].split('T')[0];
         let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        let modDateHTML = '<p class="modified-date"><span id="prodvide-feedback">' + svgFeedback + '</span> Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
+        let modDateHTML = '<p class="modified-date"><span title="Provide Feedback" id="prodvide-feedback">' + svgFeedback + '</span> Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
         $('.article-header').append(modDateHTML);
       }
     }

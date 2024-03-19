@@ -1366,7 +1366,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         $('.page-actions span').on('mouseleave', function() {
           $('.aui-tooltip').css('z-index','unset').css('margin-top','100px').addClass('hidden').fadeOut(1000);
         });
-        $('.page-actions span').tooltip({gravity: 'nw'});
+        $('.page-actions span').each(function() {
+          $(this).tooltip({gravity: 'nw'});
+        });
         $('.aui-tooltip').addClass('hidden');
         $('#talk-to-sales').on('click', function() {
             window.open('https://www.haivision.com/contact/', '_blank');

@@ -1354,6 +1354,20 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             });
           }
         };
+//        $('.page-actions span').attr('data-original-title', newMsg).attr('title', newMsg);
+        $('.page-actions span').on('mouseenter', function() {
+          waitForElm('.aui-tooltip').then((elm) => {
+            $('.aui-tooltip').css('margin-top','100px');
+            setTimeout(function() { 
+              $('.aui-tooltip').css('z-index',125).css('margin-top','unset').removeClass('hidden').fadeIn(1000);
+            }, 500);
+          });
+        });
+        $('.page-actions span').on('mouseleave', function() {
+          $('.aui-tooltip').css('z-index','unset').css('margin-top','100px').addClass('hidden').fadeOut(1000);
+        });
+        $('.page-actions span').tooltip({gravity: 'nw'});
+        $('.aui-tooltip').addClass('hidden');
         $('#talk-to-sales').on('click', function() {
             window.open('https://www.haivision.com/contact/', '_blank');
         });

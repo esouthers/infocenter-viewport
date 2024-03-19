@@ -1358,12 +1358,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           waitForElm('.aui-tooltip').then((elm) => {
             $('.aui-tooltip').css('margin-top','100px');
             setTimeout(function() { 
-              $('.aui-tooltip').css('z-index',125).css('margin-top','unset').removeClass('hidden').fadeIn(1000);
+              $('.aui-tooltip').css('z-index',125).css('margin-top','unset').removeClass('hidden').fadeIn(250);
             }, 500);
           });
         });
         $('.page-actions span').on('mouseleave', function() {
-          $('.aui-tooltip').css('z-index','unset').css('margin-top','100px').addClass('hidden').fadeOut(1000);
+//          $('.aui-tooltip').css('z-index','unset').css('margin-top','100px').addClass('hidden').fadeOut(250);
+          $('.aui-tooltip').addClass('hidden').fadeOut(250);
         });
         $('.page-actions span').each(function() {
           $(this).tooltip({gravity: 'nw'});

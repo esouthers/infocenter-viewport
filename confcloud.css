@@ -841,6 +841,7 @@ h1.vp-article__heading {
 }
 .page-actions span:hover, .page-actions span:focus {
   fill: var(--haiui-blue-04);
+  cursor: pointer;
 }
 main > header {
   display: flex;

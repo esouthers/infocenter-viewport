@@ -1376,6 +1376,22 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         $('#print-article').on('click', function() {
             window.print();
         });
+        window.onbeforeprint = (event) => {
+          console.log('test');
+          
+          $('.vp-tree-item--active .vp-tree-item__children li').each(function() {
+            $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
+              var el = $( '<div></div>' );
+              el.html(data);
+              $('figure', el).each(function() {
+                fixInlineImages(this);
+              });
+              $('#article-inner-content').append($('#article-inner-content', el));
+            });
+          });
+          $(#article-inner-content)
+          
+        }
       }
     }
     function buildSidebarList(jsonObject,htmltoBuild,listType) {
@@ -1425,7 +1441,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           updateVersionButtonLabel.observe(document.querySelector('.vp-picker__button span'), {attributes: false, childList: true, characterData: false, subtree:true});
         }
       }
-      else if ((latestVer != '') && (curVer != latestVer)) { // Test if we aren't viewing the latest version
+      else if ((latestVer != '') && (curVer.toLowerCase() != latestVer.toLowerCase())) { // Test if we aren't viewing the latest version
         // Add content to popup window and show it
         let flagID = 'flagOldVer';
         newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';

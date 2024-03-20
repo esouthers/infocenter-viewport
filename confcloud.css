@@ -845,6 +845,8 @@ h1.vp-article__heading {
 .page-actions {
   display: flex;
   column-gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 .page-actions span {
   fill: var(--haiui-gray-07);

@@ -1389,7 +1389,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               $('#article-inner-content').append($('#article-inner-content', el));
             });
           });
-          $(#article-inner-content)
  */         
         }
       }

@@ -1376,7 +1376,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         $('#print-article').on('click', function() {
             window.print();
         });
-        window.onbeforeprint = (event) => {
+        window.onbeforeprint = (event) => { 
 //          console.log('test');
           
 /*          $('.vp-tree-item--active .vp-tree-item__children li').each(function() {

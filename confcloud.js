@@ -1377,9 +1377,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.print();
         });
         window.onbeforeprint = (event) => {
-          console.log('test');
+//          console.log('test');
           
-          $('.vp-tree-item--active .vp-tree-item__children li').each(function() {
+/*          $('.vp-tree-item--active .vp-tree-item__children li').each(function() {
             $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
               var el = $( '<div></div>' );
               el.html(data);
@@ -1390,7 +1390,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             });
           });
           $(#article-inner-content)
-          
+ */         
         }
       }
     }

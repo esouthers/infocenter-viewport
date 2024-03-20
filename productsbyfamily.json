@@ -1,8 +1,8 @@
 {
-  "Air": [
+  "Air Video Transmitter": [
     {
       "url": "/MobileIPVideo/haivision-air",
-      "name": "Air"
+      "name": "Air Video Transmitter"
     }
   ],
   "BeOnAir": [
@@ -103,13 +103,13 @@
       "name": "Play Set-Top Boxes"
     }
   ],
-  "MoJoPro": [
+  "MoJoPro Live Broadcast App": [
     {
       "url": "/MJPiOS",
-      "name": "MoJoPro"
+      "name": "MoJoPro Live Broadcast App"
     }
   ],
-  "Pro": [
+  "Pro Video Transmitter": [
     {
       "url": "/MobileIPVideo/haivision-pro",
       "name": "Pro 3 (340, 360-5G, 380)"

@@ -36,11 +36,11 @@
   "Video Transmitter": [
     {
       "url": "/MobileIPVideo/haivision-pro",
-      "name": "Pro"
+      "name": "Pro Video Transmitter"
     },
     {
       "url": "/MobileIPVideo/haivision-air",
-      "name": "Air"
+      "name": "Air Video Transmitter"
     },
     {
       "url": "/MobileIPVideo/haivision-rack",
@@ -48,7 +48,7 @@
     },
     {
       "url": "/MJPiOS",
-      "name": "MoJoPro Mobile App"
+      "name": "MoJoPro Live Broadcast App"
     },
     {
       "url": "/MobileIPVideo/haivision-quad",

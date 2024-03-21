@@ -1377,30 +1377,11 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.print();
         });
         window.onbeforeprint = (event) => { 
-/*          console.log('Start print');
-        
-          const delay = ms => new Promise(res => setTimeout(res, ms));
-          const wait5secs = async () => {
-            await delay(10000);
-          };
-          $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
-            $('#article-inner-content').append('<div id="nextPage-'+i+'" class="forPrint"></div>');
-            $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
-              var el = $('<div></div>');
-              el.html(data);
-              $('figure', el).each(function() {
-                fixInlineImages(this);
-              });
-              $('#nextPage-' + i).append($('#article-inner-content', el));
-            });
-          });
-          wait5secs();
-*/         
         }
         window.onafterprint = (event) => { 
-/*          console.log('Stop print');
+          console.log('Stop print');
           $('.forPrint').remove();
-*/
+
         }
       }
     }
@@ -1792,6 +1773,40 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           map[e.keyCode] = true;
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[79]) { // Go to the page in Confl Cloud
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
+          }
+          if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
+            console.log('Start print');
+            var doneArray = [];
+            $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
+              $('#article-inner-content').append('<div id="nextPage-'+i+'" class="forPrint"></div>');
+              doneArray.push(false);
+              $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
+                var el = $('<div></div>');
+                el.html(data);
+                $('figure', el).each(function() {
+                  fixImageSizes(this);
+                  fixInlineImages(this);
+                });
+                $('#nextPage-' + i).append($('#article-inner-content', el));
+                doneArray[i] = true;
+              });
+            });
+            var checkFlag = setInterval(function() {
+              var restCompleted = false;
+              $.each(doneArray, function(i,v) {
+                if (v == false) {
+                  return false;
+                }
+                else if (i == doneArray.length - 1) {
+                  restCompleted = true;
+                }
+              });
+              if (restCompleted) {
+                  clearInterval(checkFlag);
+                  // Open the print dialog here
+                  window.print();
+              }
+            }, 100);
           }
           if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');

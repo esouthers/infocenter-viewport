@@ -1377,26 +1377,30 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.print();
         });
         window.onbeforeprint = (event) => { 
-          console.log('Start print');
-/*        
+/*          console.log('Start print');
+        
+          const delay = ms => new Promise(res => setTimeout(res, ms));
+          const wait5secs = async () => {
+            await delay(10000);
+          };
           $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
-            $('#article-inner-content').append('<div id="nextPage-'+i+'"></div>');
-            console.log(i)
+            $('#article-inner-content').append('<div id="nextPage-'+i+'" class="forPrint"></div>');
             $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
-              var el = $('<div class="forPrint"></div>');
+              var el = $('<div></div>');
               el.html(data);
               $('figure', el).each(function() {
                 fixInlineImages(this);
               });
-              console.log(i)
               $('#nextPage-' + i).append($('#article-inner-content', el));
             });
           });
-*/          
+          wait5secs();
+*/         
         }
         window.onafterprint = (event) => { 
-          console.log('Stop print');
+/*          console.log('Stop print');
           $('.forPrint').remove();
+*/
         }
       }
     }

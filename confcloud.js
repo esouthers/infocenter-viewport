@@ -1237,43 +1237,46 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 
       // Fix inline images
     function fixInlineImages(figureToFix) {
-      let maxThumbnailWidth = 30;
-      let maxThumbnailHeight = 30; 
 
-      if ((($('img', figureToFix).height() != 0) && ($('img', figureToFix).height() < maxThumbnailHeight)) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
-        $(figureToFix).addClass('image-inline');
-        let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
-        if (vpLBToggle.length > 0) {
-          $(vpLBToggle[0].shadowRoot).find('button').remove();
-        }
-        $('a', figureToFix).css('display','inline');
-        if ($(figureToFix)[0].nextSibling) {
-          if ($(figureToFix)[0].nextSibling.nodeType == 3) {
-            if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1) && ($(figureToFix)[0].previousSibling.nodeName != 'BR')) {
-              textNode = $(figureToFix)[0].nextSibling.nodeValue;
-              $(figureToFix)[0].nextSibling.nodeValue = '';
-              $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
-            }
-            else {
-              if ($(figureToFix)[0].nodeName != 'FIGURE') {
+      $('img', figureToFix).on('load', function() {
+        let maxThumbnailWidth = 30;
+        let maxThumbnailHeight = 30; 
+        if ((($(this).height() != 0) && ($(this).height() < maxThumbnailHeight)) || ($(this).attr('width') < maxThumbnailWidth) || ($(this).attr('data-width') < maxThumbnailWidth)) {
+          $(figureToFix).addClass('image-inline');
+          let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
+          if (vpLBToggle.length > 0) {
+            $(vpLBToggle[0].shadowRoot).find('button').remove();
+          }
+          $('a', figureToFix).css('display','inline');
+          if ($(figureToFix)[0].nextSibling) {
+            if ($(figureToFix)[0].nextSibling.nodeType == 3) {
+              if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1) && ($(figureToFix)[0].previousSibling.nodeName != 'BR')) {
                 textNode = $(figureToFix)[0].nextSibling.nodeValue;
                 $(figureToFix)[0].nextSibling.nodeValue = '';
-                $(figureToFix).append(textNode);
+                $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
               }
+              else {
+                if ($(figureToFix)[0].nodeName != 'FIGURE') {
+                  textNode = $(figureToFix)[0].nextSibling.nodeValue;
+                  $(figureToFix)[0].nextSibling.nodeValue = '';
+                  $(figureToFix).append(textNode);
+                }
+              }
+            }
+          }
+          else {
+            if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
+              $(figureToFix).prev().append($(figureToFix)).contents().unwrap();
             }
           }
         }
         else {
-          if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
-            $(figureToFix).prev().append($(figureToFix)).contents().unwrap();
-          }
+  //                let style =  document.createElement( 'style' );
+  //                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
+  //                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
         }
-      }
-      else {
-//                let style =  document.createElement( 'style' );
-//                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
-//                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
-      }
+      });
+
     }
 
     // Fix images Sizes

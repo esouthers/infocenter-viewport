@@ -1238,10 +1238,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       // Fix inline images
     function fixInlineImages(figureToFix) {
 
-      $('img', figureToFix).on('load', function() {
+//      $('img', figureToFix).on('load', function() {
         let maxThumbnailWidth = 30;
         let maxThumbnailHeight = 30; 
-        if ((($(this).height() != 0) && ($(this).height() < maxThumbnailHeight)) || ($(this).attr('width') < maxThumbnailWidth) || ($(this).attr('data-width') < maxThumbnailWidth)) {
+        if ((($('img', figureToFix).height() != 0) && ($('img', figureToFix).height() < maxThumbnailHeight)) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
           $(figureToFix).addClass('image-inline');
           let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
           if (vpLBToggle.length > 0) {
@@ -1275,7 +1275,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
   //                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
   //                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
         }
-      });
+//      });
 
     }
 

@@ -1377,7 +1377,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.print();
         });
         window.onbeforeprint = (event) => { 
-          console.log('print');
+          console.log('Start print');
 /*        
           $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
             $('#article-inner-content').append('<div id="nextPage-'+i+'"></div>');
@@ -1394,7 +1394,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           });
 */          
         }
-        window.onbeforeprint = (event) => { 
+        window.onafterprint = (event) => { 
+          console.log('Stop print');
           $('.forPrint').remove();
         }
       }

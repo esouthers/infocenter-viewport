@@ -1377,19 +1377,24 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.print();
         });
         window.onbeforeprint = (event) => { 
-//          console.log('test');
-          
-/*          $('.vp-tree-item--active .vp-tree-item__children li').each(function() {
+/*        
+          $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
+            $('#article-inner-content').append('<div id="nextPage-'+i+'"></div>');
+            console.log(i)
             $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
-              var el = $( '<div></div>' );
+              var el = $('<div class="forPrint"></div>');
               el.html(data);
               $('figure', el).each(function() {
                 fixInlineImages(this);
               });
-              $('#article-inner-content').append($('#article-inner-content', el));
+              console.log(i)
+              $('#nextPage-' + i).append($('#article-inner-content', el));
             });
           });
- */          
+*/          
+        }
+        window.onbeforeprint = (event) => { 
+          $('.forPrint').remove();
         }
       }
     }

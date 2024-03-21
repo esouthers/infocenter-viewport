@@ -569,9 +569,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $("[data-highlight-colour='blue']").css('background-color','lightblue');
 
 
+      $('#main-content figure img').on('load', function() {
+        fixInlineImages($(this).parents('figure'));
+        console.log('loaded! ' + $(this).height());
+      });
+
       $('#main-content figure').each(function() {
         fixImageSizes(this);
-        fixInlineImages(this);
+//        fixInlineImages(this);
       });
       convertExpandsToTabs();
 //********************
@@ -1238,9 +1243,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       // Fix inline images
     function fixInlineImages(figureToFix) {
 
-      $('img', figureToFix).on('load', function() {
-        console.log('loaded! ' + $(this).height());
-      });
         let maxThumbnailWidth = 30;
         let maxThumbnailHeight = 30; 
         if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {

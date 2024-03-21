@@ -569,14 +569,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $("[data-highlight-colour='blue']").css('background-color','lightblue');
 
 
-      $('#main-content figure img').on('load', function() {
-        fixInlineImages($(this).parents('figure'));
-        console.log('loaded! ' + $(this).height());
-      });
-
       $('#main-content figure').each(function() {
         fixImageSizes(this);
-//        fixInlineImages(this);
+        fixInlineImages(this);
       });
       convertExpandsToTabs();
 //********************
@@ -1240,46 +1235,57 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('main').append(footerToAdd);
     }
 
+
+    function waitForImageLoad(imgElement, callback) {
+        var checkLoaded = setInterval(function() {
+            if (imgElement.complete) {
+                clearInterval(checkLoaded); // Stop checking
+                callback(); // Call the callback function
+            }
+        }, 100); // Check every 100 milliseconds
+    }
       // Fix inline images
     function fixInlineImages(figureToFix) {
 
         let maxThumbnailWidth = 30;
         let maxThumbnailHeight = 30; 
-        if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
-          $(figureToFix).addClass('image-inline');
-          let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
-          if (vpLBToggle.length > 0) {
-            $(vpLBToggle[0].shadowRoot).find('button').remove();
-          }
-          $('a', figureToFix).css('display','inline');
-          if ($(figureToFix)[0].nextSibling) {
-            if ($(figureToFix)[0].nextSibling.nodeType == 3) {
-              if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1) && ($(figureToFix)[0].previousSibling.nodeName != 'BR')) {
-                textNode = $(figureToFix)[0].nextSibling.nodeValue;
-                $(figureToFix)[0].nextSibling.nodeValue = '';
-                $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
-              }
-              else {
-                if ($(figureToFix)[0].nodeName != 'FIGURE') {
+        waitForImageLoad($('img', figureToFix)[0], function() {
+          if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
+            $(figureToFix).addClass('image-inline');
+            let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
+            if (vpLBToggle.length > 0) {
+              $(vpLBToggle[0].shadowRoot).find('button').remove();
+            }
+            $('a', figureToFix).css('display','inline');
+            if ($(figureToFix)[0].nextSibling) {
+              if ($(figureToFix)[0].nextSibling.nodeType == 3) {
+                if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1) && ($(figureToFix)[0].previousSibling.nodeName != 'BR')) {
                   textNode = $(figureToFix)[0].nextSibling.nodeValue;
                   $(figureToFix)[0].nextSibling.nodeValue = '';
-                  $(figureToFix).append(textNode);
+                  $(figureToFix).prev().append($(figureToFix)).append(textNode).contents().unwrap();
                 }
+                else {
+                  if ($(figureToFix)[0].nodeName != 'FIGURE') {
+                    textNode = $(figureToFix)[0].nextSibling.nodeValue;
+                    $(figureToFix)[0].nextSibling.nodeValue = '';
+                    $(figureToFix).append(textNode);
+                  }
+                }
+              }
+            }
+            else {
+              if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
+                $(figureToFix).prev().append($(figureToFix)).contents().unwrap();
               }
             }
           }
           else {
-            if (($(figureToFix)[0].previousSibling) && ($(figureToFix)[0].previousSibling.nodeType == 1)) {
-              $(figureToFix).prev().append($(figureToFix)).contents().unwrap();
-            }
+    //                let style =  document.createElement( 'style' );
+    //                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
+    //                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
           }
-        }
-        else {
-  //                let style =  document.createElement( 'style' );
-  //                style.innerHTML = 'button:is(:hover, :focus-visible), button { background-color: var(--haiui-gray-11); }';
-  //                $('vp-lightbox-toggle', figureToFix)[0].shadowRoot.appendChild(style);
-        }
-//      });
+        });
+
 
     }
 

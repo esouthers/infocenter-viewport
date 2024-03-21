@@ -2369,11 +2369,11 @@ body.beta .vp-search-suggestion-panel {
   box-sizing: border-box;
   border-radius: 50%;
   border-color: var(--haiui-blue-04) transparent;
-  border-style: solid;
+  border-style: solid; 
   border-width: 2px;
 }
 @media print {
-  #aui-flag-container, .vp-article__aside-left, #sidebar-dragbar, .page-actions, header.header, footer, .aui-tooltip {
+  #aui-flag-container, .vp-article__aside-left, #sidebar-dragbar, .page-actions, header.header, footer, .aui-tooltip, vp-article-pagination {
     display: none !important;
   }
   #article-content {

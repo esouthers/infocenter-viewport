@@ -1238,10 +1238,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       // Fix inline images
     function fixInlineImages(figureToFix) {
 
-//      $('img', figureToFix).on('load', function() {
+      $('img', figureToFix).on('load', function() {
+        console.log('loaded! ' + $(this).height());
+      });
         let maxThumbnailWidth = 30;
         let maxThumbnailHeight = 30; 
-        if ((($('img', figureToFix).height() != 0) && ($('img', figureToFix).height() < maxThumbnailHeight)) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
+        if (($('img', figureToFix).height() < maxThumbnailHeight) || ($('img', figureToFix).attr('width') < maxThumbnailWidth) || ($('img', figureToFix).attr('data-width') < maxThumbnailWidth)) {
           $(figureToFix).addClass('image-inline');
           let vpLBToggle = $('vp-lightbox-toggle', figureToFix);
           if (vpLBToggle.length > 0) {

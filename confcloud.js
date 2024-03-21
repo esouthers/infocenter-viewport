@@ -1804,7 +1804,24 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               if (restCompleted) {
                   clearInterval(checkFlag);
                   // Open the print dialog here
-                  window.print();
+                  var images = $('.forPrint img'); // Select all images
+                  var checkImages = setInterval(function() {
+                      var allLoaded = true;
+                      images.each(function() {
+                          if (!this.complete) {
+                              allLoaded = false;
+                              return false; // Exit the loop early if any image is not loaded
+                          }
+                      });
+
+                      if (allLoaded) {
+                          clearInterval(checkImages); // Stop checking once all images are loaded
+                          console.log('All images loaded');
+                          // Your code to trigger when all images are displayed
+                          window.print();
+                      }
+                  }, 100);
+                
               }
             }, 100);
           }

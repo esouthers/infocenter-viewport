@@ -1767,7 +1767,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     // , or . go to previous or next topic
     function keyboardShortcuts() {
       // For other keycode values: http://www.javascripter.net/faq/keycodes.htm
-      var map = {17: false, 18: false, 67: false, 76: false, 79: false, 85: false, 188: false, 190: false};
+      var map = {17: false, 18: false, 67: false, 76: false, 79: false, 80: false, 85: false, 188: false, 190: false};
       $(document).keydown(function(e) { 
         if (e.keyCode in map) {
           map[e.keyCode] = true;

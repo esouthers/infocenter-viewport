@@ -572,12 +572,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         fixInlineImages(this);
       });
       convertExpandsToTabs();
-//********************
       let verIcon = '<div class="versionIcon" style="display: none;" data-original-title="" original-title="">' + svgInfoFilled + '</div>';
       $('#vp-js-desktop__navigation__picker').before(verIcon);
       warningMessage();
-//*****************************
-      
+
+      if (window.location.hash !== '') {
+        window.scrollTo(0, $(window.location.hash).position().top)
+      }      
     } // End of processing depending on page type
 
 

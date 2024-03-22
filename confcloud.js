@@ -576,9 +576,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('#vp-js-desktop__navigation__picker').before(verIcon);
       warningMessage();
 
-      if (window.location.hash !== '') {
-        window.scrollTo(0, $(window.location.hash).position().top)
-      }      
     } // End of processing depending on page type
 
 
@@ -586,6 +583,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
     if (!doNotShowPage) {  $('html').addClass('show'); }
+    if (window.location.hash !== '') {
+      window.scrollTo(0, $(window.location.hash).position().top)
+    }      
 
 
     function paramsGet(name, prefix) {

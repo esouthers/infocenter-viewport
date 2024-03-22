@@ -71,9 +71,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
       if (page404) {
-//        if (!isBetaSite) {
-          process404pages();
-//        }
+        process404pages();
       }
       function process404pages() {
         let pathname = window.location.pathname;
@@ -1430,7 +1428,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       var newMsg = '';
      
       
-      if (window.location.pathname.split('/')[2].indexOf('Beta') >= 0) {
+      if ((isBetaSite) || (window.location.pathname.split('/')[2].indexOf('Beta') >= 0)) {
         let flagID = 'flagBeta';
         newMsg = 'BETA VERSION – FOR TEST PURPOSES ONLY';
         addIconNextToVersion(newMsg, flagID, 14);

@@ -583,8 +583,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     if (!sidebarWidth) { sidebarWidth = 320; setLocalStorageWithExpiry('sidebar-width',sidebarWidth,14); }
     setDragbar(sidebarWidth);
     if (!doNotShowPage) {  $('html').addClass('show'); }
-    if (window.location.hash !== '') {
-      window.scrollTo(0, $(window.location.hash).position().top)
+    if (window.location.hash !== '') { 
+      window.scrollTo(0, $(window.location.hash).position().top);
     }      
 
 

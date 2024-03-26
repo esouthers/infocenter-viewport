@@ -1457,7 +1457,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
       if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
         let flagID = 'flagMakitoDec';
-        newMsg = 'Documentation for Makito X Decoder versions 2.5.3 is the same as version 2.5.2.';
+        newMsg = 'Documentation for Makito X Decoder version 2.5.3 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
 

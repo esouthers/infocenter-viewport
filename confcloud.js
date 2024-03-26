@@ -1455,12 +1455,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-/*      if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
+      if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
         let flagID = 'flagMakitoDec';
-        newMsg = 'Documentation for Makito X Decoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
+        newMsg = 'Documentation for Makito X Decoder versions 2.5.3 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-*/
+
       // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
       // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
       //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)

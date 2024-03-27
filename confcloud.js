@@ -688,14 +688,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let timeout;
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
         clearTimeout(timeout);
-//        if (str.length >= 3) {
-          $('#search-tooltip').remove();
+        if (str.length >= 1) {
           $('#custom-search-form input[name="q"]').attr('value',$('.vp-search-input__input').val().trim());
-          $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
+//          $('#search-tooltip').remove();
+//          $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
           timeout = setTimeout(function() {
             doSearch(str, searchAllVersions, searchAllProducts);
           }.bind(this), 300); // Adjust the delay (in milliseconds) as needed
-//        }
+        }
       }
       function doSearch(str, searchAllVersions, searchAllProducts) {
         $('.searchSpinner').show();

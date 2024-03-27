@@ -307,6 +307,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             });
           }
 
+          $('#custom-search-form').on('submit', function() {
+/*            if ($('input.vp-search-input__input', this).val().trim().length < 3) {
+              // Add tooltip
+              $('input.vp-search-input__input', this).attr('title','Please enter 3 or more characters.');
+              $('body').append('<div id="search-tooltip" class="aui-tooltip" role="tooltip" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(2248.67px, 51.3333px, 0px);" data-popper-placement="bottom-start"><p class="aui-tooltip-content" style="max-width: 200px;">Please enter 3 or more characters.</p></div>');
+              return false;
+            } */
+          });
           var searchedSpaceKey = $('#search-form [name="s"]').attr('value') !== undefined ? $('#search-form [name="s"]').attr('value') : "";
           let searchedVersion = $('#search-form [name="v"]').attr('value') !== undefined ? $('#search-form [name="v"]').attr('value') : "";
           let searchedVariant = $('#search-form [name="va"]').attr('value') !== undefined ? $('#search-form [name="va"]').attr('value') : "";
@@ -649,7 +657,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           // Add tooltip
           $('input.vp-search-input__input', this).attr('title','Please enter 3 or more characters.');
           $('body').append('<div id="search-tooltip" class="aui-tooltip" role="tooltip" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(2248.67px, 51.3333px, 0px);" data-popper-placement="bottom-start"><p class="aui-tooltip-content" style="max-width: 200px;">Please enter 3 or more characters.</p></div>');
-          $('.aui-tooltip');
           return false;
         }
       });
@@ -681,14 +688,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let timeout;
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
         clearTimeout(timeout);
-        if (str.length >= 3) {
+//        if (str.length >= 3) {
           $('#search-tooltip').remove();
           $('#custom-search-form input[name="q"]').attr('value',$('.vp-search-input__input').val().trim());
           $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
           timeout = setTimeout(function() {
             doSearch(str, searchAllVersions, searchAllProducts);
           }.bind(this), 300); // Adjust the delay (in milliseconds) as needed
-        }
+//        }
       }
       function doSearch(str, searchAllVersions, searchAllProducts) {
         $('.searchSpinner').show();

@@ -648,7 +648,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         if ($('input.vp-search-input__input', this).val().trim().length < 3) {
           // Add tooltip
           $('input.vp-search-input__input', this).attr('title','Please enter 3 or more characters.');
-          $('input.vp-search-input__input', this).tooltip({gravity: 'nw'});
+          $('body').append('<div id="search-tooltip" class="aui-tooltip" role="tooltip" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(2248.67px, 51.3333px, 0px);" data-popper-placement="bottom-start"><p class="aui-tooltip-content" style="max-width: 200px;">Please enter 3 or more characters.</p></div>');
+          $('.aui-tooltip');
           return false;
         }
       });
@@ -680,6 +681,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
         clearTimeout(timeout);
         if (str.length >= 3) {
+          $('#search-tooltip').remove();
           $('#custom-search-form input[name="q"]').attr('value',searchTerm);
           $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
           timeout = setTimeout(function() {

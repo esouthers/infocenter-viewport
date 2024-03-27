@@ -682,7 +682,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         clearTimeout(timeout);
         if (str.length >= 3) {
           $('#search-tooltip').remove();
-          $('#custom-search-form input[name="q"]').attr('value',searchTerm);
+          $('#custom-search-form input[name="q"]').attr('value',$('.vp-search-input__input').val().trim());
           $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
           timeout = setTimeout(function() {
             doSearch(str, searchAllVersions, searchAllProducts);

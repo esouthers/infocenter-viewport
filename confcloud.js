@@ -647,7 +647,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('#custom-search-form').on('submit', function() {
         if ($('input.vp-search-input__input', this).val().trim().length < 3) {
           // Add tooltip
-          $(this).attr('title','Please enter 3 or more characters.');
+          $('input.vp-search-input__input', this).attr('title','Please enter 3 or more characters.');
           $('input.vp-search-input__input', this).tooltip({gravity: 'nw'});
           return false;
         }

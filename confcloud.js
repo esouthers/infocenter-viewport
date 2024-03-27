@@ -644,6 +644,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         }
         debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
+      $('#custom-search-form').on('submit', function() {
+        if ($('.input.vp-search-input__input', this).val().trim().length < 3) {
+          // Add tooltip
+          $('.input.vp-search-input__input', this).tooltip({gravity: 'nw'});
+          return false;
+        }
+      });
       function getVariantSearched() {
         if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }
         else {
@@ -672,6 +679,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       function debouncedSearch(str, searchAllVersions, searchAllProducts) {
         clearTimeout(timeout);
         if (str.length >= 3) {
+          $('#custom-search-form input[name="q"]').attr('value',searchTerm);
+          $('#custom-search-form .input.vp-search-input__input').tooltip('destroy');
           timeout = setTimeout(function() {
             doSearch(str, searchAllVersions, searchAllProducts);
           }.bind(this), 300); // Adjust the delay (in milliseconds) as needed

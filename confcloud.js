@@ -653,12 +653,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form').on('submit', function() {
-        if ($('input.vp-search-input__input', this).val().trim().length < 3) {
+/*        if ($('input.vp-search-input__input', this).val().trim().length < 3) {
           // Add tooltip
           $('input.vp-search-input__input', this).attr('title','Please enter 3 or more characters.');
           $('body').append('<div id="search-tooltip" class="aui-tooltip" role="tooltip" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(2248.67px, 51.3333px, 0px);" data-popper-placement="bottom-start"><p class="aui-tooltip-content" style="max-width: 200px;">Please enter 3 or more characters.</p></div>');
           return false;
-        }
+        } */
       });
       function getVariantSearched() {
         if (viewportList.currentContentSource.variants == undefined) { variantSearched = ''; }

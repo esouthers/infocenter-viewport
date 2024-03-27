@@ -645,7 +645,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         debouncedSearch($('.vp-search-input__input').val().trim(), $('#custom-search-form .soAllVer').is(':checked'), $('#custom-search-form .soAllProd').is(':checked'));
       });
       $('#custom-search-form').on('submit', function() {
-        if ($('.input.vp-search-input__input', this).val().trim().length < 3) {
+        if ($('input.vp-search-input__input', this).val().trim().length < 3) {
           // Add tooltip
           $(this).attr('title','Please enter 3 or more characters.');
           $('input.vp-search-input__input', this).tooltip({gravity: 'nw'});

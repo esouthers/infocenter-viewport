@@ -234,8 +234,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           searchURL += paramsGetS + paramsGetV + paramsGetVa;
           newSearch(searchURL);
           function newSearch(restURL) {
+            $('#custom-search-page-results li').remove();
             $.get(restURL, function(data, status, jqXHR) {
-              $('#custom-search-page-results li').remove();
               var numResults = data.total;
               if (numResults > 0) {
                 $(data.hits).each(function(i,val){
@@ -524,7 +524,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 
           let exitSearchText = 'Exit Search Results';
           if (searchedVariant != '') {
-            exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
+            if (searchedVersion != '') {
+              exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
+            }
+            else {
+              exitSearchLink = '/' + searchedSpaceKey;
+            }
           }
           else {
             exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;

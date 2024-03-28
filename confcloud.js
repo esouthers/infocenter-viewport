@@ -635,7 +635,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       else {        return (($('#custom-search-form [name="' + name + '"]').length == 0) || ($('#custom-search-form [name="' + name + '"]').attr('value') == '')) ? '' : $('#custom-search-form [name="' + name + '"]').attr('value'); }
     }
     function buildSearchURL() {
-      let searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + formGet('q', false) + formGet('s', true) + formGet('v', true) + formGet('va', true) + formGet('start', true) + formGet('max',true);
+      let searchURL = '/__search?l=en&ol=false&q=' + formGet('q', false) + formGet('s', true) + formGet('v', true) + formGet('va', true) + formGet('start', true) + formGet('max',true);
       return searchURL;
     }
     function addCustomSearch() {

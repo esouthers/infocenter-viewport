@@ -485,10 +485,21 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           });
           $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li:not(.is-selected)').on('click', function() {
             // Perform new search
-            var href = new URL(window.location.href);
+/*            var href = new URL(window.location.href);
             href.searchParams.set('v', $(this).attr('data-value'));
             if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
             window.location.href = href;
+*/
+            $('#custom-search-form input[name="v"]').attr('value',$(this).attr('data-value'));
+            $('#custom-search-form input[name="start"]').attr('value','0');
+            $('.vp-search-page__pagination').remove();
+            const url = new URL(location);
+            url.searchParams.set('v', $(this).attr('data-value'))
+            url.searchParams.set('start','0');
+            history.pushState({}, '', url);
+            let searchURL = buildSearchURL();
+            newSearch(searchURL);
+            return false;
           });
 
 

@@ -1479,6 +1479,7 @@ details.vp-disclosure .vp-disclosure-icon {
   width: 100%;
   position: relative;
   list-style: none;
+  font-size: 14px;
 }
 
 .aui-tabs.horizontal-tabs > .tabs-menu > .menu-item:first-child {

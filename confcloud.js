@@ -257,7 +257,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 if (data.start + data.max >= data.total) {
                   $('button.vp-pagination__action--next').attr('disabled','');
                 }
-                $('button.vp-pagination__action--prev').attr('value',data.start - data.max);
+                if (data.start - data.max < 0) { $('button.vp-pagination__action--prev').attr('value','0');  }
+                else {                           $('button.vp-pagination__action--prev').attr('value',data.start - data.max);  }
                 $('button.vp-pagination__action--next').attr('value',data.start + data.max);
                 let count = 0;
                 let pageNum = 1;
@@ -276,13 +277,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   else if ((pageNum > pageNumToShow) && ($('.pagination-ellipsis-after').length == 0)) {
                     newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-after" disabled>...</button></li>';
                   }
-/*                  if ((count >= data.start) && (count < data.start + data.max)) {
-                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                  }
-                  else {
-                    newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                  }
-*/
                   if (newPage != '') {                  
                     $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
                   }
@@ -290,9 +284,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   pageNum++;
                 }
                 $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
-//                  var href = new URL(window.location.href);
-//                  href.searchParams.set('start', $(this).attr('value'));
-//                  window.location.href = href;
                   $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
                   $('.vp-search-page__pagination').remove();
                   $(window).scrollTop(0);

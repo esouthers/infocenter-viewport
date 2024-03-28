@@ -1515,10 +1515,22 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
+      if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
+        window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
+        return false;
+      }
+      if (window.location.pathname.indexOf('MakitoXEnc/2.5.3') >= 0) {
+        window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
+        return false;
+      }
       if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
         let flagID = 'flagMakito';
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
+      }
+      if (window.location.pathname.indexOf('MakitoXDec/2.5.3') >= 0) {
+        window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
+        return false;
       }
       if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
         let flagID = 'flagMakitoDec';

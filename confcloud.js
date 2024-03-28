@@ -295,6 +295,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 //                  window.location.href = href;
                   $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
                   $('.vp-search-page__pagination').remove();
+                  $(window).scrollTop(0);
                   const url = new URL(location);
                   url.searchParams.set('start',$(this).attr('value'));
                   history.pushState({}, '', url);

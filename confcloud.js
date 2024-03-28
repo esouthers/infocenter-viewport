@@ -294,7 +294,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   window.location.href = href;
                 });
               }
-              $('#searchTerm').text(paramsGetQ);
               $('#startIdx').text(data.start + 1);
               if (data.start + data.max > data.total) {
                 $('#stopIdx').text(data.total);
@@ -315,7 +314,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $('#custom-search-form').on('submit', function() {
             let searchURL = buildSearchURL();
             $('.vp-search-page__pagination').remove();
-            $('#searchTerm').text($('.vp-search-input__input').val().trim());
+            let searchTerm = $('.vp-search-input__input').val().trim();
+            $('#searchTerm').text(searchTerm);
+            const url = new URL(location);
+            url.searchParams.set('q', searchTerm)
+            url.searchParams.set('start','0');
+            history.pushState({}, '', url);
             newSearch(searchURL);
             return false;
           });

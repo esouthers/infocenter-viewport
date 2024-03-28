@@ -502,7 +502,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
               $('.vp-dropdown__option-label', this).addClass('is-selected');
               $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
-
             }
           });
 

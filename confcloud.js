@@ -67,8 +67,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       window.location.replace('https://' + window.location.hostname + '/Home');
       return false;
     }
-    else if (window.location.pathname.indexOf('index.html') >= 0) {
-      window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('index.html',''));
+    else if (window.location.pathname.indexOf('/index.html') >= 0) {
+      window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('/index.html',''));
       return false;
     }
     else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {

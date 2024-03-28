@@ -301,6 +301,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   history.pushState({}, '', url);
                   let searchURL = buildSearchURL();
                   newSearch(searchURL);
+                  addVersionToBreadcrumbs();
                 });
               }
               $('#startIdx').text(data.start + 1);
@@ -510,6 +511,15 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
               $('.vp-dropdown__option-label', this).addClass('is-selected');
               $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
+              let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
+              let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
+              if (searchedVersion != 'All versions') {
+                $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion);
+              }
+              else {
+                $('.header__navigation--heading').text(searchedSpaceName);
+              }
+              addVersionToBreadcrumbs();
             }
           });
 
@@ -987,10 +997,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             breadcrumbs.eq(i).children('a').attr('data-title',tempTitle).attr('title',tempTitle).text('...');
           }
         }
-        // Add version number to breadcrumbs
-        $('.breadcrumbs li').first().children('a').text($('.header__navigation--heading').text());
+        addVersionToBreadcrumbs();
         hideShowBreadcrumbs(parseInt($('#vp-js-desktop__navigation').css('width')));
       });
+    }
+    function addVersionToBreadcrumbs() {
+      // Add version number to breadcrumbs
+      $('.breadcrumbs li').first().children('a').text($('.header__navigation--heading').text());
     }
     function updateSidebar() {
       $('.vp-desktop-navigation__page-tree').addClass('vp-scrollable-container--show-scrollbars').removeClass('vp-scrollable-container--hidden-scrollbars');

@@ -67,6 +67,18 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       window.location.replace('https://' + window.location.hostname + '/Home');
       return false;
     }
+    else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
+      window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
+      return false;
+    }
+    else if (window.location.pathname.indexOf('MakitoXEnc/2.5.3') >= 0) {
+      window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
+      return false;
+    }
+    else if (window.location.pathname.indexOf('MakitoXDec/2.5.3') >= 0) {
+      window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
+      return false;
+    }
     else if (pageSearch || page404) {
       let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
       $('#content').before(sidebar);
@@ -1515,22 +1527,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
         addIconNextToVersion(newMsg, flagID, 14);
       }
-      if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
-        window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
-        return false;
-      }
-      if (window.location.pathname.indexOf('MakitoXEnc/2.5.3') >= 0) {
-        window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
-        return false;
-      }
       if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
         let flagID = 'flagMakito';
         newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
         addIconNextToVersion(newMsg, flagID, 14);
-      }
-      if (window.location.pathname.indexOf('MakitoXDec/2.5.3') >= 0) {
-        window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
-        return false;
       }
       if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
         let flagID = 'flagMakitoDec';

@@ -214,7 +214,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           let paramsGetV     = paramsGet('v', true);
           let paramsGetVa    = paramsGet('va', true);
           let paramsGetQ     = paramsGet('q', false);
-          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV.replace('&v=','') + '"><input type="hidden" name="va" value="' + paramsGetVa.replace('&va=','') + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
+          let newForm = '<form role="search" id="custom-search-form" method="GET" action="/search.html" class=""><input type="hidden" name="s" value="' + paramsGetS + '"><input type="hidden" name="v" value="' + paramsGetV.replace('&v=','') + '"><input type="hidden" name="va" value="' + paramsGetVa.replace('&va=','') + '"><input type="hidden" name="start" value="' + paramsGetStart + '"><input type="hidden" name="max" value="' + paramsGetMax + '"><input type="hidden" name="l" value="' + paramsGetL + '"><input type="hidden" name="q" value="' + paramsGetQ + '"><input type="hidden" name="inAppHelp"><input type="hidden" name="referrer"></form>';
           $('.hc-main-wrapper').append(newForm);
           $('.vp-search-page__main-inner').append('<ul aria-label="Search results" id="custom-search-page-results" class="contents m-0 p-0 list-none" style=""></ul>');
           $('[data-vp-component="search-input"]').remove();
@@ -308,6 +308,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             });
           }
 
+          $('.vp-search-input__input').on('input', function() {
+            $('#custom-search-form input[name="q"]').attr('value',$('.vp-search-input__input').val().trim());
+          });
           $('#custom-search-form').on('submit', function() {
             let searchURL = buildSearchURL();
             $('.vp-search-page__pagination').remove();

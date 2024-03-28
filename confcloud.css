@@ -1565,6 +1565,9 @@ details.vp-disclosure .vp-disclosure-icon {
 .vp-search-page__main-inner {
   width: 100%;
 }
+.vp-search-page__main-inner [role="log"] {
+  display: none;
+}
 .vp-search-page__subgrid {
   margin: 2rem 0;
   justify-content: start;

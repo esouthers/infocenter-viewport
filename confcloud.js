@@ -254,7 +254,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 if (data.start == 0) {
                   $('button.vp-pagination__action--prev').attr('disabled','');
                 }
-                if (data.start + data.max > data.total) {
+                if (data.start + data.max >= data.total) {
                   $('button.vp-pagination__action--next').attr('disabled','');
                 }
                 $('button.vp-pagination__action--prev').attr('value',data.start - data.max);

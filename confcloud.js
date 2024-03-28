@@ -290,9 +290,16 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   pageNum++;
                 }
                 $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
-                  var href = new URL(window.location.href);
-                  href.searchParams.set('start', $(this).attr('value'));
-                  window.location.href = href;
+//                  var href = new URL(window.location.href);
+//                  href.searchParams.set('start', $(this).attr('value'));
+//                  window.location.href = href;
+                  $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
+                  $('.vp-search-page__pagination').remove();
+                  const url = new URL(location);
+                  url.searchParams.set('start',$(this).attr('value'));
+                  history.pushState({}, '', url);
+                  let searchURL = buildSearchURL();
+                  newSearch(searchURL);
                 });
               }
               $('#startIdx').text(data.start + 1);

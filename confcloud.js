@@ -304,8 +304,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               }
               if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
               $('#numResults').text(data.total);
-              if (data.total == 0) { $('.search-header-text').hide(); $('.search-header-text').removeClass('hidden'); }
-              else { $('.search-header-text').show(); $('.search-header-text').addClass('hidden'); }
+              if (data.total == 0) { $('.search-header-text').hide(); $('.noResults').removeClass('hidden'); }
+              else { $('.search-header-text').show(); $('.noResults').addClass('hidden'); }
               $('#titleBreadcrumb').text($('.search-header').text());
             });
           }

@@ -67,6 +67,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       window.location.replace('https://' + window.location.hostname + '/Home');
       return false;
     }
+    else if (window.location.pathname.indexOf('index.html') >= 0) {
+      window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('index.html',''));
+      return false;
+    }
     else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
       window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
       return false;
@@ -137,10 +141,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
       function forwardIfProdVer(path) {
         let jsonObject = $.parseJSON(productRedirectJSON);
-//          $.getJSON('https://esouthers.github.io/infocenter-viewport/productprefixredirect.json', function(data) { processProductPrefix(data); })
-//            .fail(function(error) { console.error('Error fetching "product by type" JSON:', error);
-//          });
-//          function processProductPrefix(jsonObject) {
         let found = false;
         $.each(jsonObject, function(oldPrefix,prefixList) {
           $('html').removeClass('show')

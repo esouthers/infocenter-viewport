@@ -499,7 +499,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             history.pushState({}, '', url);
             let searchURL = buildSearchURL();
             newSearch(searchURL);
-            hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-versions-options"]'), e);
+            $('ul[data-vp-id="search-page-horizontal-filter-versions-options"]').hide();
             $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li.is-selected').removeClass('is-selected');
             $(this).addClass('is-selected');
             $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text($(this).attr('data-value'));

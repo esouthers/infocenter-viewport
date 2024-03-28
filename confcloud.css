@@ -1504,7 +1504,7 @@ details.vp-disclosure .vp-disclosure-icon {
 }
 .aui-tabs > .tabs-menu .menu-item a, .aui-tabs > .tabs-menu .menu-item a:link, .aui-tabs > .tabs-menu .menu-item a:visited, .aui-tabs > .tabs-menu .menu-item a:hover {
   font-weight: 500;
-  color: var(--haiui-gray-07);
+  color: var(--haiui-gray-06);
   padding-bottom: 10px !important;
   padding-top: 0px !important;
 }
@@ -1532,7 +1532,7 @@ details.vp-disclosure .vp-disclosure-icon {
   bottom: 0;
   content: "";
   display: block;
-  height: 2px;
+  height: 3px;
   position: absolute;
   right: 10px;
   width: auto;

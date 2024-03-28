@@ -286,7 +286,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
                   $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
                   $('.vp-search-page__pagination').remove();
-                  $('html, body').animate({scrollTop:0}, 'slow');
+                  $('html, body').animate({scrollTop:0}, 'fast');
                   const url = new URL(location);
                   url.searchParams.set('start',$(this).attr('value'));
                   history.pushState({}, '', url);

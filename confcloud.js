@@ -575,7 +575,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           }
         });
       });
-      updateAirProRack();
+      if (viewportList.currentContentSource.name == "Transmitters") {
+        updateAirProRack();
+      }
       addModifiedDate();
       updateHeader();
       updateSidebar();
@@ -813,7 +815,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 /*      let versionsAirPro3Rack3 = ["5.3.1"];
       let versionsPro4Rack4 = ["3.5"]; */
       var versionsValid = [];
-      if (currentlyViewing.name == "Transmitters") {
         let variantViewing = currentlyViewing.variants.current.name;
         let versionViewing = currentlyViewing.versions.current.name;
         $.each(transmittersVariants, function(i,variantToTest) {
@@ -852,7 +853,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         if ($('.vp-version-picker').length > 0) {
           removeUnusedVersions.observe(document.querySelector('.vp-version-picker'), {attributes: false, childList: true, characterData: false, subtree:true});
         }
-      }
     }
     function updatePaginationLinks() {
       waitForElm('.vp-desktop-navigation__page-tree__tree').then((elm) => {

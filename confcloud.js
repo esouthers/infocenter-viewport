@@ -1938,7 +1938,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         }
       }).keyup(function(e) {
           if (e.keyCode in map) {
-            map[e.keyCode] = false;
+            $.each(map, function(i,j) {
+              map[i] = false;
+            });
           }
       });
     }

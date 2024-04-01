@@ -812,9 +812,15 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       if (!currentlyViewing) { return false;}
       let versionsAirPro3Rack3 = ["5.3.1"];
       let versionsPro4Rack4 = ["3.5"];
-      if (currentlyViewing.name == "Air, Pro & Rack") {
-        let variantViewing = currentlyViewing.variants.current.name;
-        let versionViewing = currentlyViewing.versions.current.name;
+      let variantViewing = currentlyViewing.variants.current.name;
+      let versionViewing = currentlyViewing.versions.current.name;
+      if (currentlyViewing.name == "Transmitters") {
+/*        $.each(transmittersVariants, function(i,variantToTest) {
+          if (variantToTest.variant == variantViewing ) {
+            
+          }
+        });
+*/
         $('.header__navigation--heading').text(variantViewing);
         if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
           if (versionsAirPro3Rack3.length == 1) {

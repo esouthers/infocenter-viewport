@@ -844,7 +844,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         } */
         var removeUnusedVersions = new MutationObserver(function(mutations) {
           $('.vp-picker__menu__item').each(function() {
-            if (versionsValid.indexOf($(this).text()) >= 0) {
+            if (versionsValid.indexOf($(this).text()) < 0) {
               $(this).remove();
             }
           }); 

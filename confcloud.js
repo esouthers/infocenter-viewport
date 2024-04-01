@@ -814,14 +814,18 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let versionsPro4Rack4 = ["3.5"];
       let variantViewing = currentlyViewing.variants.current.name;
       let versionViewing = currentlyViewing.versions.current.name;
+      var versionsValid = [];
       if (currentlyViewing.name == "Transmitters") {
-/*        $.each(transmittersVariants, function(i,variantToTest) {
+        $.each(transmittersVariants, function(i,variantToTest) {
           if (variantToTest.variant == variantViewing ) {
-            
+            if (variantToTest.versions.length == 1) {
+              $('#vp-js-desktop__navigation__picker').remove();
+            }
+            versionsValid = variantToTest.versions;
+            $('.header__navigation--heading').text(variantViewing);
           }
         });
-*/
-        $('.header__navigation--heading').text(variantViewing);
+/*
         if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
           if (versionsAirPro3Rack3.length == 1) {
             $('#vp-js-desktop__navigation__picker').remove();
@@ -837,10 +841,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           else {
             var versionsToRemove = versionsAirPro3Rack3;
           }
-        }
+        } */
         var removeUnusedVersions = new MutationObserver(function(mutations) {
           $('.vp-picker__menu__item').each(function() {
-            if (versionsPro4Rack4.indexOf($(this).text()) >= 0) {
+            if (versionsValid.indexOf($(this).text()) >= 0) {
               $(this).remove();
             }
           }); 

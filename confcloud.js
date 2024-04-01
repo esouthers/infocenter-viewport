@@ -811,7 +811,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       let currentlyViewing = viewportList.currentContentSource;
       if (!currentlyViewing) { return false;}
       let versionsAirPro3Rack3 = ["5.3.1"];
-      let versionsPro4Rack4 = ["3.0"];
+      let versionsPro4Rack4 = ["3.5"];
       if (currentlyViewing.name == "Air, Pro & Rack") {
         let variantViewing = currentlyViewing.variants.current.name;
         let versionViewing = currentlyViewing.versions.current.name;

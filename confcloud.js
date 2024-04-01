@@ -810,12 +810,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       $('.vp-variant-picker').remove();
       let currentlyViewing = viewportList.currentContentSource;
       if (!currentlyViewing) { return false;}
-      let versionsAirPro3Rack3 = ["5.3.1"];
-      let versionsPro4Rack4 = ["3.5"];
-      let variantViewing = currentlyViewing.variants.current.name;
-      let versionViewing = currentlyViewing.versions.current.name;
+/*      let versionsAirPro3Rack3 = ["5.3.1"];
+      let versionsPro4Rack4 = ["3.5"]; */
       var versionsValid = [];
       if (currentlyViewing.name == "Transmitters") {
+        let variantViewing = currentlyViewing.variants.current.name;
+        let versionViewing = currentlyViewing.versions.current.name;
         $.each(transmittersVariants, function(i,variantToTest) {
           if (variantToTest.variant == variantViewing ) {
             if (variantToTest.versions.length == 1) {

@@ -2050,6 +2050,162 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   transform: translate(-50%, -50%);
 }
 
+
+
+/******************** PDF Export Dialog ****************/
+#pdf-dialog {
+  height: auto;
+}
+
+.aui-icon-medium {
+  width: 22px;
+  height: 24px;
+}
+.hai-dialog .aui-dialog2-header {
+  padding: 0px;
+  border-radius: 0px;
+  justify-content: space-around;
+  border: none;
+}
+.hai-dialog .aui-icon {
+  padding: 0px;
+}
+
+.hai-dialog .hai-icon-info {
+  -webkit-mask: url("../images/icons/actions/AR_information.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/actions/AR_information.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.hai-dialog .hai-icon-download {
+  -webkit-mask: url("../images/icons/actions/AR_download.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/actions/AR_download.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+/*  margin-left: 16px;
+  margin-top: 16px; */
+}
+.hai-dialog .aui-dialog2-header-main {
+  margin-right: auto;
+/*  margin-top: 16px; */
+}
+.hai-dialog .aui-dialog2-header h2 {
+  text-shadow: 0 1px 0 transparent;
+  font-size: 24px;
+  line-height: unset;
+  text-align: center;
+  font-weight: normal;
+  margin-left: 20px;
+}
+.hai-dialog .hai-icon-download-close, .aui-close-button {
+  -webkit-mask: url("../images/icons/actions/AR_close.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/actions/AR_close.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  margin-bottom: 16px;
+}
+.hai-dialog .hai-icon-close:before {
+  content: url("../images/icons/actions/AR_download.svg");
+/*  -webkit-mask: url("../images/icons/actions/AR_download.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/actions/AR_download.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain; */
+}
+
+.hai-dialog .aui-dialog2-content {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 0px 0px 0px;
+  margin-right: 20px;
+  min-height: auto;
+}
+.hai-dialog .status-message {
+  line-height: 22px;
+  list-style: none;
+}
+.hai-dialog .status-message .aui-icon {
+  padding-right: 5px;
+}
+.hai-dialog .hai-icon-checkmark {
+  -webkit-mask: url("../images/icons/toggle/AR_checkmark.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/toggle/AR_checkmark.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.hai-dialog .status-message .pdfStepPending, .hai-dialog .status-message .pdfStepWaiting {
+  padding-left: 0px;
+}
+.hai-dialog .status-message .pdfStepPending .aui-icon {
+  visibility: hidden;
+}
+.hai-dialog .status-message .pdfStepDone {
+  padding-left: 0px;
+}
+
+.hai-dialog .status-done,
+.hai-dialog .status-error {
+  margin: 0px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.hai-dialog .hai-icon-status-ok {
+  -webkit-mask: url("../images/icons/status/AR_status_ok.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/status/AR_status_ok.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-color: var(--haiui-green-01);
+  min-width: 32px;
+}
+.hai-dialog .hai-icon-status-error {
+  -webkit-mask: url("../images/icons/status/AR_status_error.svg") no-repeat 50% 50%;
+  mask: url("../images/icons/status/AR_status_error.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-color: var(--haiui-red-01);
+  min-width: 32px;
+}
+.hai-dialog .done-text, .hai-dialog .error-text {
+  margin-left: 10px;
+}
+.hai-dialog .aui-dialog2-footer {
+  border-radius: 0px;
+  border-top: 0px;
+  height: auto;
+}
+
+@media (max-width: 620px) {
+  .card, .hai-dialog {
+    padding: 15px 15px 20px 15px;
+  }
+  .hai-dialog .aui-dialog2-content {
+    margin-right: 0px;
+  }
+  .card .card-footer, .hai-dialog .aui-dialog2-footer {
+    margin-top: 20px;
+  }
+}
+@media (max-height: 500px) {
+  .aui-dialog2-medium.aui-layer {
+    bottom: unset;
+  }
+  .card, .hai-dialog {
+    padding: 15px 15px 20px 15px;
+  }
+  .hai-dialog .aui-dialog2-content {
+    margin-right: 0px;
+  }
+  .status-message {
+    display: none;
+  }
+  .card .card-footer, .hai-dialog .aui-dialog2-footer {
+    margin-top: 10px;
+  }
+}
+/******************************************************** ******************/
+
 @media screen and (max-width: 640px) {
   .card, .hai-dialog {
     padding: 20px 7px 20px 17px;

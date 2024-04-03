@@ -1911,6 +1911,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking
                         console.log('url: ' + data.downloadUrl); // Call the callback function
+                        window.open(data.downloadUrl);
                       }
                     }
                   });

@@ -1881,60 +1881,42 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           }
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
             console.log('Start print');
-            var doneArray = [];
-            if ($('.vp-tree-item--active').length == 0) {
-              that = $('.vp-desktop-navigation__page-tree__tree');
-            }
-            else {
-              that = $('.vp-tree-item--active');
-            }
-            $('li', that).each(function(i) {
-              $('#article-inner-content').append('<div id="nextPage-'+i+'" class="forPrint"></div>');
-              doneArray.push(false);
-              $.get($('div a', this).attr('href'), function(data, status, jqXHR) {
-                var el = $('<div></div>');
-                el.html(data);
-                $('figure', el).each(function() {
-                  fixImageSizes(this);
-                  fixInlineImages(this);
-                });
-                $('#nextPage-' + i).append($('#article-inner-content', el));
-                doneArray[i] = true;
-              });
-            });
-            var checkFlag = setInterval(function() {
-              var restCompleted = false;
-              $.each(doneArray, function(i,v) {
-                if (v == false) {
-                  return false;
-                }
-                else if (i == doneArray.length - 1) {
-                  restCompleted = true;
-                }
-              });
-              if (restCompleted) {
-                  clearInterval(checkFlag);
-                  // Open the print dialog here
-                  var images = $('.forPrint img'); // Select all images
-                  var checkImages = setInterval(function() {
-                      var allLoaded = true;
-                      images.each(function() {
-                          if (!this.complete) {
-                              allLoaded = false;
-                              return false; // Exit the loop early if any image is not loaded
-                          }
-                      });
-
-                      if (allLoaded) {
-                          clearInterval(checkImages); // Stop checking once all images are loaded
-                          console.log('All images loaded');
-                          // Your code to trigger when all images are displayed
-                          window.print();
+            $.ajax({
+              url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
+              headers: {
+                  'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
+              },
+              method: 'POST',
+              dataType: 'json',
+              contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({
+                'pageId': $('body').attr('pageid'),
+                'scope': 'current',
+                'templateId': 'a6bf7e10-a3df-44a7-9bf7-1e53ecd038ce',
+                'locale': 'en-US',
+                'timeZone': 'Europe/Berlin'
+              }),
+              success: function(data){
+                console.log('succes: '+data.jobId);
+                let jobID = data.jobId;
+                var checkDone = setInterval(function() {
+                  $.ajax({
+                    url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
+                    headers: {
+                        'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
+                    },
+                    method: 'GET',
+                    success: function(data, status, jqXHR) {
+                      console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
+                      if (data.status == 'complete') {
+                        clearInterval(checkDone); // Stop checking
+                        console.log('url: ' + data.downloadUrl); // Call the callback function
                       }
-                  }, 100);
-                
+                    }
+                  });
+                }, 1000); // Check every 1 seconds
               }
-            }, 100);
+            });
           }
           if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');

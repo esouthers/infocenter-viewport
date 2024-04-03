@@ -1897,7 +1897,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 'timeZone': 'Europe/Berlin'
               }),
               success: function(data){
-                console.log('succes: '+data.jobId);
+                console.log('job ID: '+data.jobId);
                 let jobID = data.jobId;
                 var checkDone = setInterval(function() {
                   $.ajax({

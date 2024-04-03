@@ -1882,7 +1882,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
             console.log('Start print');
             var doneArray = [];
-            $('.vp-tree-item--active .vp-tree-item__children li').each(function(i) {
+            if ($('.vp-tree-item--active').length == 0) {
+              that = $('.vp-desktop-navigation__page-tree__tree');
+            }
+            else {
+              that = $('.vp-tree-item--active');
+            }
+            $('li', that).each(function(i) {
               $('#article-inner-content').append('<div id="nextPage-'+i+'" class="forPrint"></div>');
               doneArray.push(false);
               $.get($('div a', this).attr('href'), function(data, status, jqXHR) {

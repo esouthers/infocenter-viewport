@@ -1897,7 +1897,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
         $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
         $('#dialog-overlay').fadeIn(500);
-        $('#pdf-dialog .card-close').on('click', function(e) {
+        $('#pdf-dialog .dialog-close-button').on('click', function(e) {
           e.preventDefault();
           $(this).parents('.hai-dialog').remove();
           $('#dialog-overlay').attr('aria-hidden','true').hide();

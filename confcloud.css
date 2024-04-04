@@ -1388,6 +1388,10 @@ figure.image-inline {
   vertical-align: text-top;
   background-color: var(--haiui-gray-06);
 }
+.aui-icon-large {
+  height: 32px;
+  width: 32px;
+}
 
 /* Previous/Next arrows at bottom of page */
 [i18nkey="page.article.pagination.label"] .cta, a:is(:hover, :focus-visible) .cta {
@@ -2069,6 +2073,7 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
 }
 .hai-dialog .aui-icon {
   padding: 0px;
+  display: inline-block;
 }
 
 .hai-dialog .hai-icon-info {

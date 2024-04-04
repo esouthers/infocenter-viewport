@@ -1869,8 +1869,11 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     }
 
     function addDone(selector) {
-      $(selector).removeClass('pdfStepPending').addClass('pdfStepDone');
-      $('.aui-icon', selector).removeClass('').addClass('hai-icon-checkmark');
+      $(selector).removeClass('pdfStepWaiting').addClass('pdfStepDone');
+      $('.aui-icon', selector).addClass('hai-icon-checkmark');
+    }
+    function addWait(selector) {
+      $(selector).removeClass('pdfStepPending').addClass('pdfStepWaiting');
     }
     function updateProgress(value1, value2) {
       let newValue = value1 + (value2 / 3);
@@ -1944,14 +1947,17 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     success: function(data, status, jqXHR) {
                       if (data.step == '1') {
                         addDone($('#PDFstep1'));
+                        addWait($('#PDFstep2'));
                         updateProgress(15, parseInt(data.stepProgress));
                       }
                       if (data.step == '2') {
                         addDone($('#PDFstep1, #PDFstep2'));
+                        addWait($('#PDFstep3'));
                         updateProgress(33, parseInt(data.stepProgress));
                       }
                       if (data.step == '3') {
                         addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
+                        addWait($('#PDFstep4'));
                         updateProgress(66, parseInt(data.stepProgress));
                         $('#PDFstep4 .numPDFDone').text(data.stepProgress + '%');
                       }

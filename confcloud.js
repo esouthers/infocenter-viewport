@@ -1965,6 +1965,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                           addDone($('#PDFstep1, #PDFstep2'));
                           addWait($('#PDFstep3'));
                           updateProgress(33, parseInt(data.stepProgress));
+                          $('#PDFstep3 .numPDFDone').text('(' + data.stepProgress + '%)');
                         }
                         if (data.step == '3') {
                           addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));

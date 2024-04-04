@@ -1920,8 +1920,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     /***************** *****/
             $('#pdf-dialog .dialog-start-button').on('click', function(e) {
               e.preventDefault();
-              $('#pdf-dialog .card-body.options').hide();
-              $('#pdf-dialog .card-body.status').show();
+              $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
+              $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
               $.ajax({
                 url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
                 headers: {

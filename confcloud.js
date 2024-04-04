@@ -1890,12 +1890,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
           }
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
+/* Move this to button */
             console.log('Start print');
 //        e.preventDefault();
         $('.hc-main-wrapper .vp-article').append(pdfDialog);
         $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
         $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
         $('#dialog-overlay').fadeIn(500);
+/***************** *****/
             $.ajax({
               url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
               headers: {
@@ -1922,19 +1924,25 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     },
                     method: 'GET',
                     success: function(data, status, jqXHR) {
-                      if (data.step == '2') {
+                      if (data.step == '1') {
                         addDone($('#PDFstep1'));
+                        updateProgress(15, parseInt(data.stepProgress));
+                      }
+                      if (data.step == '2') {
+                        addDone($('#PDFstep1, #PDFstep2'));
                         updateProgress(33, parseInt(data.stepProgress));
                       }
                       if (data.step == '3') {
-                        addDone($('#PDFstep1, #PDFstep2'));
+                        addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
                         updateProgress(66, parseInt(data.stepProgress));
                       }
                       console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking
+                        addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
                         updateProgress(100, 0);
-                        console.log('url: ' + data.downloadUrl); // Call the callback function
+                        $('#PDFDonelink').attr('href', data.downloadUrl);
+                        console.log('url: ' + data.downloadUrl);
                         window.open(data.downloadUrl, '_blank');
                       }
                     }

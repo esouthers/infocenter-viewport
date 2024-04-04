@@ -1914,6 +1914,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               method: 'DELETE',
               success: function(data){
                 $('#pdf-dialog').remove();
+                $('#dialog-overlay').hide();
               }
           });
         });

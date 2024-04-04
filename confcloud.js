@@ -1930,7 +1930,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               data: JSON.stringify({
                 'pageId': $('body').attr('pageid'),
                 'scope': 'current',
-                'templateId': 'a6bf7e10-a3df-44a7-9bf7-1e53ecd038ce',
+                'templateId': '8a044238-48b2-4484-9ec6-fdbc3e7df4f5',
                 'locale': 'en-US',
                 'timeZone': 'Europe/Berlin'
               }),

@@ -43,7 +43,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     var viewportList = parseViewportData();
     var hiddenSpaces = ['Inclusion Library'];
     var transmittersVariants = [{'variant' : 'Air', 'versions' : ['5.3.1']}, {'variant' : 'Pro3', 'versions' : ['5.3.1']}, {'variant' : 'Rack200 & Rack300', 'versions' : ['5.3.1']}, {'variant' : 'Pro460', 'versions' : ['3.5']}, {'variant' : 'Rack400', 'versions' : ['3.5']}];
-    var pdfDialog = '<section role="dialog" id="pdf-dialog" data-aui-modal="true" class="hai-dialog aui-dialog2 card" aria-hidden="true" style="display:none"><header class="aui-dialog2-header card-header"><svg id="a" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M22.59,31.44c.39,.39,.9,.59,1.41,.59s1.02-.2,1.41-.59l8.73-8.73c.78-.78,.78-2.05,0-2.83-.78-.78-2.05-.78-2.83,0l-5.32,5.32V4c0-1.1-.9-2-2-2s-2,.9-2,2V25.2l-5.32-5.32c-.78-.78-2.05-.78-2.83,0-.78,.78-.78,2.05,0,2.83l8.73,8.73Z"/><path d="M46,29c-1.1,0-2,.9-2,2v10.06c0,1.62-1.42,2.94-3.17,2.94H7.17c-1.75,0-3.17-1.32-3.17-2.94v-10.06c0-1.1-.9-2-2-2s-2,.9-2,2v10.06c0,3.82,3.22,6.94,7.17,6.94H40.83c3.95,0,7.17-3.11,7.17-6.94v-10.06c0-1.1-.9-2-2-2Z"/></svg><h2 class="haiui-heading-03-book">Exporting to PDF</h2><a class="card-close"><span class="aui-icon aui-icon-small hai-icon-download-close dialog-cancel-button">Close</span></a></header><div class="card-body haiui-body-02"><label for="paperSize">Paper Size:</label><input type="radio" name="paperSize" id="letter" value="letter"><label for="letter">Letter</label><input type="radio" name="paperSize" id="a4" value="a4"><label for="a4">A4</label></div><div class="card-body haiui-body-02"><div id="progress-bar" class="aui-progress-indicator" data-value="0"><span class="aui-progress-indicator-value" style="width: 0px;"></span></div><ul class="status-message"><li id="PDFstep1" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Queuing Export</li><li id="PDFstep2" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Collecting Pages</li><li id="PDFstep3" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Processing Pages</li><li id="PDFstep4" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Rendering PDF <span class="numPDFDone"></span></li></ul><div class="status-done" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-ok"></div><div class="done-text">Your PDF has been created and will start downloading in a few seconds! If the download doesn\'t start, <a id="PDFDonelink">click here</a>.</div></div><div class="status-error" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-error"></div><div class="error-text">Error. Something went wrong. Please <a href="mailto:infodev@haivision.com">contact us</a> regarding this issue.</div></div></div><footer class="card-footer"><div class=""><button class="primary dialog-cancel-button">Cancel</button><button class="primary dialog-close-button" style="display:none;">Close</button></div></footer></section>';
+    var pdfDialog = '<section role="dialog" id="pdf-dialog" data-aui-modal="true" class="hai-dialog aui-dialog2 card" aria-hidden="true" style="display:none"><header class="aui-dialog2-header card-header"><svg id="a" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M22.59,31.44c.39,.39,.9,.59,1.41,.59s1.02-.2,1.41-.59l8.73-8.73c.78-.78,.78-2.05,0-2.83-.78-.78-2.05-.78-2.83,0l-5.32,5.32V4c0-1.1-.9-2-2-2s-2,.9-2,2V25.2l-5.32-5.32c-.78-.78-2.05-.78-2.83,0-.78,.78-.78,2.05,0,2.83l8.73,8.73Z"/><path d="M46,29c-1.1,0-2,.9-2,2v10.06c0,1.62-1.42,2.94-3.17,2.94H7.17c-1.75,0-3.17-1.32-3.17-2.94v-10.06c0-1.1-.9-2-2-2s-2,.9-2,2v10.06c0,3.82,3.22,6.94,7.17,6.94H40.83c3.95,0,7.17-3.11,7.17-6.94v-10.06c0-1.1-.9-2-2-2Z"/></svg><h2 class="haiui-heading-03-book">Exporting to PDF</h2><a class="card-close"><span class="aui-icon aui-icon-small hai-icon-download-close dialog-cancel-button">Close</span></a></header><div class="card-body haiui-body-02 options"><label for="paperSize">Paper Size:</label><input type="radio" name="paperSize" id="letter" value="letter"><label for="letter">Letter</label><input type="radio" name="paperSize" id="a4" value="a4"><label for="a4">A4</label><button class="primary dialog-start-button">Start</button></div><div class="card-body haiui-body-02 status" style="display:none;"><div id="progress-bar" class="aui-progress-indicator" data-value="0"><span class="aui-progress-indicator-value" style="width: 0px;"></span></div><ul class="status-message"><li id="PDFstep1" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Queuing Export</li><li id="PDFstep2" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Collecting Pages</li><li id="PDFstep3" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Processing Pages</li><li id="PDFstep4" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Rendering PDF <span class="numPDFDone"></span></li></ul><div class="status-done" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-ok"></div><div class="done-text">Your PDF has been created and will start downloading in a few seconds! If the download doesn\'t start, <a id="PDFDonelink">click here</a>.</div></div><div class="status-error" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-error"></div><div class="error-text">Error. Something went wrong. Please <a href="mailto:infodev@haivision.com">contact us</a> regarding this issue.</div></div></div><footer class="card-footer" style="display:none;"><div class=""><button class="primary dialog-cancel-button">Cancel</button><button class="primary dialog-close-button" style="display:none;">Close</button></div></footer></section>';
     var pdfTemplateID = '8a044238-48b2-4484-9ec6-fdbc3e7df4f5';
     var isBetaSite = window.location.host.split('.')[0].indexOf('beta') >= 0 ? true : false;
     if (isBetaSite) {
@@ -1893,95 +1893,100 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
           }
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
-/* Move this to button */
-//        e.preventDefault();
-        $('.hc-main-wrapper .vp-article').append(pdfDialog);
-        $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
-        $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
-        $('#dialog-overlay').fadeIn(500);
-        $('#pdf-dialog .dialog-close-button').on('click', function(e) {
-          e.preventDefault();
-          $(this).parents('.hai-dialog').remove();
-          $('#dialog-overlay').attr('aria-hidden','true').hide();
-        });
-        $('#pdf-dialog .dialog-cancel-button').on('click', function(e) {
-          $.ajax({
-              url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + $('#pdf-dialog').attr('data-jobid'),
-              headers: {
-                  'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
-              },
-              method: 'DELETE',
-              success: function(data){
-                $('#pdf-dialog').remove();
-                $('#dialog-overlay').hide();
-              }
-          });
-        });
-/***************** *****/
-            $.ajax({
-              url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
-              headers: {
-                  'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
-              },
-              method: 'POST',
-              dataType: 'json',
-              contentType: 'application/json; charset=utf-8',
-              data: JSON.stringify({
-                'pageId': $('body').attr('pageid'),
-                'scope': 'descendants',
-                'templateId': pdfTemplateID,
-                'locale': 'en-US',
-                'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
-              }),
-              success: function(data){
-                let jobID = data.jobId;
-                $('#pdf-dialog').attr('data-jobid', jobID);
-                var checkDone = setInterval(function() {
-                  $.ajax({
-                    url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
-                    headers: {
-                        'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
-                    },
-                    method: 'GET',
-                    success: function(data, status, jqXHR) {
-                      if (data.step == '1') {
-                        addDone($('#PDFstep1'));
-                        addWait($('#PDFstep2'));
-                        updateProgress(15, parseInt(data.stepProgress));
-                      }
-                      if (data.step == '2') {
-                        addDone($('#PDFstep1, #PDFstep2'));
-                        addWait($('#PDFstep3'));
-                        updateProgress(33, parseInt(data.stepProgress));
-                      }
-                      if (data.step == '3') {
-                        addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
-                        addWait($('#PDFstep4'));
-                        updateProgress(66, parseInt(data.stepProgress));
-                        $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
-                      }
-                      if (data.status == 'complete') {
-                        clearInterval(checkDone); // Stop checking
-                        addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
-                        updateProgress(100, 0);
-                        $('#PDFstep4 .numPDFDone').text('(100%)');
-                        $('#PDFDonelink').attr('href', data.downloadUrl);
-                        $('#pdf-dialog .status-done').show();
-                        window.open(data.downloadUrl, '_blank');
+    /* Move this to button */
+    //        e.preventDefault();
+            $('.hc-main-wrapper .vp-article').append(pdfDialog);
+            $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
+            $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
+            $('#dialog-overlay').fadeIn(500);
+            $('#pdf-dialog .dialog-close-button').on('click', function(e) {
+              e.preventDefault();
+              $(this).parents('.hai-dialog').remove();
+              $('#dialog-overlay').attr('aria-hidden','true').hide();
+            });
+            $('#pdf-dialog .dialog-cancel-button').on('click', function(e) {
+              $.ajax({
+                  url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + $('#pdf-dialog').attr('data-jobid'),
+                  headers: {
+                      'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
+                  },
+                  method: 'DELETE',
+                  success: function(data){
+                    $('#pdf-dialog').remove();
+                    $('#dialog-overlay').hide();
+                  }
+              });
+            });
+    /***************** *****/
+            $('#pdf-dialog .dialog-start-button').on('click', function(e) {
+              e.preventDefault();
+              $('#pdf-dialog .card-body.options').hide();
+              $('#pdf-dialog .card-body.status').show();
+              $.ajax({
+                url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
+                headers: {
+                    'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
+                },
+                method: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                  'pageId': $('body').attr('pageid'),
+                  'scope': 'descendants',
+                  'templateId': pdfTemplateID,
+                  'locale': 'en-US',
+                  'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
+                }),
+                success: function(data){
+                  let jobID = data.jobId;
+                  $('#pdf-dialog').attr('data-jobid', jobID);
+                  var checkDone = setInterval(function() {
+                    $.ajax({
+                      url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
+                      headers: {
+                          'Authorization':'Bearer aafc5c5e6c1c37d642815738ffb5d436'
+                      },
+                      method: 'GET',
+                      success: function(data, status, jqXHR) {
+                        if (data.step == '1') {
+                          addDone($('#PDFstep1'));
+                          addWait($('#PDFstep2'));
+                          updateProgress(15, parseInt(data.stepProgress));
+                        }
+                        if (data.step == '2') {
+                          addDone($('#PDFstep1, #PDFstep2'));
+                          addWait($('#PDFstep3'));
+                          updateProgress(33, parseInt(data.stepProgress));
+                        }
+                        if (data.step == '3') {
+                          addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
+                          addWait($('#PDFstep4'));
+                          updateProgress(66, parseInt(data.stepProgress));
+                          $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
+                        }
+                        if (data.status == 'complete') {
+                          clearInterval(checkDone); // Stop checking
+                          addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
+                          updateProgress(100, 0);
+                          $('#PDFstep4 .numPDFDone').text('(100%)');
+                          $('#PDFDonelink').attr('href', data.downloadUrl);
+                          $('#pdf-dialog .status-done').show();
+                          window.open(data.downloadUrl, '_blank');
 
-                        $('#pdf-dialog .dialog-cancel-button').hide();
-                        $('#pdf-dialog .dialog-close-button').show();
+                          $('#pdf-dialog .dialog-cancel-button').hide();
+                          $('#pdf-dialog .dialog-close-button').show();
+                        }
+                        else if (data.status == 'cancelled') {
+                          clearInterval(checkDone);
+                        }
+                      },
+                      error: function() {
+                        $('#pdf-dialog .status-error').show();
                       }
-                      else if (data.status == 'cancelled') {
-                        clearInterval(checkDone);
-                      }
-                    },
-                    error: function() {
-                      $('#pdf-dialog .status-error').show();
-                    }
-                  });
-                }, 1000); // Check every 1 seconds
-              }
+                    });
+                  }, 1000); // Check every 1 seconds
+                }
+              });
             });
           }
           if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac

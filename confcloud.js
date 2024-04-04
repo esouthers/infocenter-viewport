@@ -43,6 +43,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     var viewportList = parseViewportData();
     var hiddenSpaces = ['Inclusion Library'];
     var transmittersVariants = [{'variant' : 'Air', 'versions' : ['5.3.1']}, {'variant' : 'Pro3', 'versions' : ['5.3.1']}, {'variant' : 'Rack200 & Rack300', 'versions' : ['5.3.1']}, {'variant' : 'Pro460', 'versions' : ['3.5']}, {'variant' : 'Rack400', 'versions' : ['3.5']}];
+    var pdfDialog = '<section role="dialog" id="pdf-dialog" data-aui-modal="false" class="aui-layer aui-dialog2 aui-dialog2-medium hai-dialog" aria-hidden="true"><header class="aui-dialog2-header"><span class="aui-icon aui-icon-medium hai-icon-download"></span><h2 class="aui-dialog2-header-main">Export</h2><a class="aui-dialog2-header-close"><span class="aui-icon aui-icon-small hai-icon-download-close dialog-close-button">Close</span></a></header><div class="aui-dialog2-content"><div id="progress-bar" class="aui-progress-indicator" data-value="0"><span class="aui-progress-indicator-value"></span></div><ul class="status-message"><li id="PDFstep1" class="pdfStepPending"><span class="aui-icon aui-icon-small hai-icon-checkmark"></span>Queuing Export</li><li id="PDFstep2" class="pdfStepPending"><span class="aui-icon aui-icon-small hai-icon-checkmark"></span>Collecting Pages</li><li id="PDFstep3" class="pdfStepPending"><span class="aui-icon aui-icon-small hai-icon-checkmark"></span>Processing Pages<span class="numPDFsteps"> (<span class="numPDFDone"></span>)</span></li><li id="PDFstep4" class="pdfStepPending"><span class="aui-icon aui-icon-small hai-icon-checkmark"></span>Rendering PDF<span class="numPDFsteps"> (<span class="numPDFDone"></span>)</span></li></ul><div class="status-done"><div class="aui-icon aui-icon-large hai-icon-status-ok"></div><div class="done-text">Your PDF has been created and will start downloading in a few seconds! If the download doesn\'t start, <a id="PDFDonelink">click here</a>.</div></div><div class="status-error hidden"><div class="aui-icon aui-icon-large hai-icon-status-error"></div><div class="error-text">Error. Something went wrong. Please <a href="mailto:infodev@haivision.com">contact us</a> regarding this issue.</div></div></div><footer class="aui-dialog2-footer"><div class="aui-dialog2-footer-actions"><button class="primary dialog-close-button">Cancel</button></div></footer></section>';
     var isBetaSite = window.location.host.split('.')[0].indexOf('beta') >= 0 ? true : false;
     if (isBetaSite) {
       $('body').addClass('beta');
@@ -1898,6 +1899,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               }),
               success: function(data){
                 console.log('job ID: '+data.jobId);
+                $('.hc-main-wrapper').append(pdfDialog);
+                $('#pdf-dialog"').show();
                 let jobID = data.jobId;
                 var checkDone = setInterval(function() {
                   $.ajax({
@@ -1907,6 +1910,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     },
                     method: 'GET',
                     success: function(data, status, jqXHR) {
+
                       console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking

@@ -1988,13 +1988,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     addDone($('#PDFstep1, #PDFstep2'));
                     addWait($('#PDFstep3'));
                     updateProgress(33, parseInt(data.stepProgress));
-                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
+                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
                     let numPagesDone = Math.round(numPages * parseInt(data.stepProgress) / 100);
                     $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
                   }
                   else if (data.step == '3') {
                     addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
-                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
+                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
                     $('#PDFstep3 .numPDFDone').text('(' + numPages + '/' + numPages + ')');
                     addWait($('#PDFstep4'));
                     updateProgress(66, parseInt(data.stepProgress));

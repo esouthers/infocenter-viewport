@@ -1933,12 +1933,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                       console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking
+                        updateProgress(100, 0);
                         console.log('url: ' + data.downloadUrl); // Call the callback function
                         window.open(data.downloadUrl, '_blank');
                       }
                     }
                   });
-                }, 1000); // Check every 1 seconds
+                }, 250); // Check every 1 seconds
               }
             });
           }

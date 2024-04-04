@@ -1923,6 +1923,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               e.preventDefault();
               $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
               $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
+              if ($('input[name="paperSize"]:checked').val() == 'a4') {
+                pdfTemplateID = pdfTemplateIDA4;
+              }
+              else {
+                pdfTemplateID = pdfTemplateIDPaper;
+              }
               $.ajax({
                 url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
                 headers: {

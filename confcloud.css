@@ -2418,6 +2418,7 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
 .aui-progress-indicator, .aui-progress-indicator .aui-progress-indicator-value, .aui-progress-indicator[data-value] .aui-progress-indicator-value {
   height: 8px;
   border-radius: 8px;
+  display: block;
 }
 .aui-progress-indicator {
   background-color: var(--haiui-gray-03);

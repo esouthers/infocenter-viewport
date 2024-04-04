@@ -1868,6 +1868,15 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
     }
 
+    function addDone(selector) {
+      $(selector).removeClass('pdfStepPending').addClass('pdfStepDone');
+      $('.aui-icon', selector).removeClass('').addClass('hai-icon-checkmark');
+    }
+    function updateProgress(value1, value2) {
+      let newValue = value1 + (value2 / 3);
+      $('#progress-bar').attr('data-value', newValue/100);
+      $('#progress-bar .aui-progress-indicator-value').css('width', newValue + '%');
+    }
     // Ctrl(17)+Alt(18)+O(79) to go to page in Confl Cloud
     // C: 67, L: 76, O: 79, U: 85, 
     // , or . go to previous or next topic
@@ -1882,6 +1891,11 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           }
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
             console.log('Start print');
+//        e.preventDefault();
+        $('.hc-main-wrapper .vp-article').append(pdfDialog);
+        $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
+        $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
+        $('#dialog-overlay').fadeIn(500);
             $.ajax({
               url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
               headers: {
@@ -1899,12 +1913,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               }),
               success: function(data){
                 console.log('job ID: '+data.jobId);
-                $('.hc-main-wrapper .vp-article').append(pdfDialog);
-                $('#pdf-dialog').show();
-//        e.preventDefault();
-        $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
-        $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
-        $('#dialog-overlay').fadeIn(500);
                 let jobID = data.jobId;
                 var checkDone = setInterval(function() {
                   $.ajax({
@@ -1914,7 +1922,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     },
                     method: 'GET',
                     success: function(data, status, jqXHR) {
-
+                      if (data.step == '2') {
+                        addDone($('#PDFstep1'));
+                        updateProgress(33, parseInt(data.stepProgress));
+                      }
+                      if (data.step == '3') {
+                        addDone($('#PDFstep1, #PDFstep2'));
+                        updateProgress(66, parseInt(data.stepProgress));
+                      }
                       console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking

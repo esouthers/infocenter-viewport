@@ -1914,7 +1914,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               newlink = $($('vp-article-pagination')[0].shadowRoot).find('a[rel="prev"]').attr('href');
               if(newlink) { window.location = newlink; }
             }
-            else if (map[190]) { // .>
+            else if (map[190]) { // .> 
               newlink = $($('vp-article-pagination')[0].shadowRoot).find('a[rel="next"]').attr('href');
               if(newlink) { window.location = newlink; }
             }

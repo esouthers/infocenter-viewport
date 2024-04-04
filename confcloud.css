@@ -2411,6 +2411,21 @@ a.card-close:hover, .hai-dialog .aui-dialog2-header-close:hover {
   color: var(--haiui-gray-05);
 }
 
+.aui-progress-indicator[data-value] .aui-progress-indicator-value {
+  background-image: linear-gradient(to left, rgb(145, 209, 250), 50%, rgb(88, 164, 243));
+  animation: 0ms linear 0s 1 normal none running animateprogress;
+}
+.aui-progress-indicator, .aui-progress-indicator .aui-progress-indicator-value, .aui-progress-indicator[data-value] .aui-progress-indicator-value {
+  height: 8px;
+  border-radius: 8px;
+}
+.aui-progress-indicator {
+  background-color: var(--haiui-gray-03);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
 .slider {
   -webkit-appearance: none;
   appearance: none;

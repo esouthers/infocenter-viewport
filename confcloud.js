@@ -1965,17 +1965,14 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                           addDone($('#PDFstep1, #PDFstep2'));
                           addWait($('#PDFstep3'));
                           updateProgress(33, parseInt(data.stepProgress));
-                          if ($('.vp-tree-item--active').length > 0) {
-                            numPages = $('.vp-tree-item--active li').length;
-                          }
-                          else {
-                            numPages = $('.vp-desktop-navigation__page-tree__tree li').length;
-                          }
+                          let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
                           let numPagesDone = Math.floor(numPages * parseInt(data.stepProgress) / 100);
                           $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
                         }
                         if (data.step == '3') {
                           addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
+                          let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
+                          $('#PDFstep3 .numPDFDone').text('(' + numPages + '/' + numPages + ')');
                           addWait($('#PDFstep4'));
                           updateProgress(66, parseInt(data.stepProgress));
                           $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');

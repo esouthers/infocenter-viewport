@@ -1936,10 +1936,11 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       });
 
       $('#pdf-dialog .dialog-cancel-button').on('click', function(e) {
+        var jobId = $('#pdf-dialog').attr('data-jobid');
         $('#pdf-dialog').remove();
         $('#dialog-overlay').hide();
         $.ajax({
-            url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + $('#pdf-dialog').attr('data-jobid'),
+            url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobId,
             headers: {
                 'Authorization':'Bearer ' + pdfBearerToken
             },

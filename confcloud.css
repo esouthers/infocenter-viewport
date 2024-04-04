@@ -2150,6 +2150,22 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
 .hai-dialog .status-message .pdfStepDone {
   padding-left: 0px;
 }
+.hai-dialog .status-message .pdfStepPending, .hai-dialog .status-message .pdfStepWaiting {
+  color: var(--haiui-gray-08);
+}
+
+.aui-dialog2 .pdfStepWaiting .aui-icon:before {
+  content: "";
+  animation: 1s linear 0s infinite normal none running spin;
+  position: absolute;
+  height: 1.058rem;
+  width: 1.058rem;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border-color: var(--haiui-blue-04) transparent;
+  border-style: solid;
+  border-width: 2px;
+}
 
 .hai-dialog .status-done,
 .hai-dialog .status-error {

@@ -1901,11 +1901,17 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
             $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
             $('#dialog-overlay').fadeIn(500);
+            pdfButtonEventListeners();
+    /***************** *****/
+            function pdfButtonEventListeners() {
+
+            }
             $('#pdf-dialog .dialog-close-button').on('click', function(e) {
               e.preventDefault();
               $(this).parents('.hai-dialog').remove();
               $('#dialog-overlay').attr('aria-hidden','true').hide();
             });
+
             $('#pdf-dialog .dialog-cancel-button').on('click', function(e) {
               $('#pdf-dialog').remove();
               $('#dialog-overlay').hide();
@@ -1919,18 +1925,11 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   }
               });
             });
-    /***************** *****/
             $('#pdf-dialog .dialog-start-button').on('click', function(e) {
               e.preventDefault();
               $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
               $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
-              var pdfTemplateID = '';
-              if ($('input[name="paperSize"]:checked').val() == 'a4') {
-                pdfTemplateID = pdfTemplateIDA4;
-              }
-              else {
-                pdfTemplateID = pdfTemplateIDPaper;
-              }
+              var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? pdfTemplateIDA4 : pdfTemplateIDPaper;
               $.ajax({
                 url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
                 headers: {
@@ -1962,7 +1961,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                           addWait($('#PDFstep2'));
                           updateProgress(15, parseInt(data.stepProgress));
                         }
-                        if (data.step == '2') {
+                        else if (data.step == '2') {
                           addDone($('#PDFstep1, #PDFstep2'));
                           addWait($('#PDFstep3'));
                           updateProgress(33, parseInt(data.stepProgress));
@@ -1970,7 +1969,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                           let numPagesDone = Math.round(numPages * parseInt(data.stepProgress) / 100);
                           $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
                         }
-                        if (data.step == '3') {
+                        else if (data.step == '3') {
                           addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
                           let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
                           $('#PDFstep3 .numPDFDone').text('(' + numPages + '/' + numPages + ')');

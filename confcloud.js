@@ -1975,6 +1975,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                         $('#pdf-dialog .dialog-cancel-button').hide();
                         $('#pdf-dialog .dialog-close-button').show();
                       }
+                      else if (data.status == 'cancelled') {
+                        clearInterval(checkDone);
+                      }
                     },
                     error: function() {
                       $('#pdf-dialog .status-error').show();

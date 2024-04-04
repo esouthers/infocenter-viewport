@@ -1923,6 +1923,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               e.preventDefault();
               $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
               $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
+              var pdfTemplateID = '';
               if ($('input[name="paperSize"]:checked').val() == 'a4') {
                 pdfTemplateID = pdfTemplateIDA4;
               }

@@ -1899,10 +1899,10 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               }),
               success: function(data){
                 console.log('job ID: '+data.jobId);
-                $('.hc-main-wrapper').append(pdfDialog);
+                $('.hc-main-wrapper .vp-article').append(pdfDialog);
                 $('#pdf-dialog').show();
 //        e.preventDefault();
-        $("##pdf-dialog").show().animate({top: '20%', opacity: '100%'},500);
+        $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
         $('.dialog-overlay, ##pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
         $('#dialog-overlay').fadeIn(500);
                 let jobID = data.jobId;

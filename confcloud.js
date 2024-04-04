@@ -1927,13 +1927,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               contentType: 'application/json; charset=utf-8',
               data: JSON.stringify({
                 'pageId': $('body').attr('pageid'),
-                'scope': 'current',
+                'scope': 'descendants',
                 'templateId': '8a044238-48b2-4484-9ec6-fdbc3e7df4f5',
                 'locale': 'en-US',
-                'timeZone': 'Europe/Berlin'
+                'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
               }),
               success: function(data){
-                console.log(data);
                 let jobID = data.jobId;
                 $('#pdf-dialog').attr('data-jobid', jobID);
                 var checkDone = setInterval(function() {
@@ -1960,7 +1959,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                         updateProgress(66, parseInt(data.stepProgress));
                         $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
                       }
-                console.log(data);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking
                         addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));

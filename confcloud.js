@@ -1900,7 +1900,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               success: function(data){
                 console.log('job ID: '+data.jobId);
                 $('.hc-main-wrapper').append(pdfDialog);
-                $('#pdf-dialog"').show();
+                $('#pdf-dialog').show();
                 let jobID = data.jobId;
                 var checkDone = setInterval(function() {
                   $.ajax({

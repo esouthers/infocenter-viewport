@@ -1945,9 +1945,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                         addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
                         updateProgress(100, 0);
                         $('#PDFDonelink').attr('href', data.downloadUrl);
+                        $('#pdf-dialog .status-done').show();
                         console.log('url: ' + data.downloadUrl);
                         window.open(data.downloadUrl, '_blank');
                       }
+                    },
+                    error: function() {
+                      $('#pdf-dialog .status-error').show();
                     }
                   });
                 }, 250); // Check every 1 seconds

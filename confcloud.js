@@ -1479,7 +1479,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         window.onbeforeprint = (event) => { 
         }
         window.onafterprint = (event) => { 
-          console.log('Stop print');
           $('.forPrint').remove();
 
         }
@@ -1894,7 +1893,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           }
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test printing functions
 /* Move this to button */
-            console.log('Start print');
 //        e.preventDefault();
         $('.hc-main-wrapper .vp-article').append(pdfDialog);
         $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
@@ -1935,7 +1933,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 'timeZone': 'Europe/Berlin'
               }),
               success: function(data){
-                console.log('job ID: '+data.jobId);
+                console.log(data);
                 let jobID = data.jobId;
                 $('#pdf-dialog').attr('data-jobid', jobID);
                 var checkDone = setInterval(function() {
@@ -1962,7 +1960,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                         updateProgress(66, parseInt(data.stepProgress));
                         $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
                       }
-                      console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
+                console.log(data);
                       if (data.status == 'complete') {
                         clearInterval(checkDone); // Stop checking
                         addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
@@ -1970,7 +1968,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                         $('#PDFstep4 .numPDFDone').text('(100%)');
                         $('#PDFDonelink').attr('href', data.downloadUrl);
                         $('#pdf-dialog .status-done').show();
-                        console.log('url: ' + data.downloadUrl);
                         window.open(data.downloadUrl, '_blank');
 
                         $('#pdf-dialog .dialog-cancel-button').hide();

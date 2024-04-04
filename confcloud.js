@@ -1931,13 +1931,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                       if (data.step == '2') {
                         addDone($('#PDFstep1, #PDFstep2'));
                         updateProgress(33, parseInt(data.stepProgress));
-                        $('#PDFstep3 .numPDFsteps').text(data.stepProgress + '%');
+                        $('#PDFstep3 .numPDFDone').text(data.stepProgress + '%');
                       }
                       if (data.step == '3') {
                         addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
                         updateProgress(66, parseInt(data.stepProgress));
-                        $('#PDFstep4 .numPDFsteps').text('100%');
-                        $('#PDFstep4 .numPDFsteps').text(data.stepProgress + '%');
+                        $('#PDFstep4 .numPDFDone').text('100%');
+                        $('#PDFstep4 .numPDFDone').text(data.stepProgress + '%');
                       }
                       console.log('status: '+data.status+', '+data.step+', '+data.totalSteps+', '+data.stepProgress);
                       if (data.status == 'complete') {

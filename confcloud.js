@@ -1966,7 +1966,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                           addWait($('#PDFstep3'));
                           updateProgress(33, parseInt(data.stepProgress));
                           let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length : $('.vp-desktop-navigation__page-tree__tree li').length;
-                          let numPagesDone = Math.floor(numPages * parseInt(data.stepProgress) / 100);
+                          let numPagesDone = Math.round(numPages * parseInt(data.stepProgress) / 100);
                           $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
                         }
                         if (data.step == '3') {

@@ -1905,6 +1905,8 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               $('#dialog-overlay').attr('aria-hidden','true').hide();
             });
             $('#pdf-dialog .dialog-cancel-button').on('click', function(e) {
+              $('#pdf-dialog').remove();
+              $('#dialog-overlay').hide();
               $.ajax({
                   url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + $('#pdf-dialog').attr('data-jobid'),
                   headers: {
@@ -1912,8 +1914,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   },
                   method: 'DELETE',
                   success: function(data){
-                    $('#pdf-dialog').remove();
-                    $('#dialog-overlay').hide();
                   }
               });
             });

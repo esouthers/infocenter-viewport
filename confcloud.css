@@ -2127,6 +2127,8 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
 .hai-dialog .status-message {
   line-height: 22px;
   list-style: none;
+  padding-left: 20px;
+  padding-top: 10px;
 }
 .hai-dialog .status-message .aui-icon {
   padding-right: 5px;

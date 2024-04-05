@@ -1990,7 +1990,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             'scope': 'descendants',
             'templateId': pdfTemplateID,
             'locale': 'en-US',
-            'variantId': variantToShow,
+            'variantId': 'a13d712ff5175366a5251e0bddae761a',
             'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
           });
           $.ajax({

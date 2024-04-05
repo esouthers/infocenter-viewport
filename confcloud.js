@@ -1793,7 +1793,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('.dialog-overlay, #userprefs, #dialog-overlay').attr('aria-hidden','false');
       //      $('.sp-blanket').removeClass('hidden');
             $('#dialog-overlay').fadeIn(500);
-  //          addEventTrackingUserPrefs("Open dialog", window.location.href);
+            addEventTrackingUserPrefs("Open dialog", window.location.href);
         });
         // Hides the dialog
         $('#userprefs .dialog-close-button, .card a.card-close').click(function (e) {
@@ -1803,7 +1803,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $('#userprefs').animate({top: '0%', opacity: '0%'},500).fadeOut(0);
           $('#dialog-overlay').fadeOut(500);
           $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
-  //        addEventTrackingUserPrefs("Close dialog", window.location.href);
+          addEventTrackingUserPrefs("Close dialog", window.location.href);
         });
         if ((!isPlayPro()) && (!isQwantBrowser())) {
           if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
@@ -1832,17 +1832,17 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           changeBrightness(this);
         });
         $('.brightnessRange').mouseup(function() {
-  //        addEventTrackingUserPrefs("Change brightness", this.value + '%');
+          addEventTrackingUserPrefs("Change brightness", this.value + '%');
         });
         $('.contrastRange').on('input', function() {
           changeContrast(this);
         });
         $('.contrastRange').mouseup(function() {
-  //        addEventTrackingUserPrefs("Change contrast", this.value + '%');
+          addEventTrackingUserPrefs("Change contrast", this.value + '%');
         });
         $('button.resetBCButton').click(function() {
           resetBC();
-  //        addEventTrackingUserPrefs("Reset brightness contrast", window.location.href);
+          addEventTrackingUserPrefs("Reset brightness contrast", window.location.href);
         });
         
         $('button.clearCookies').click(function() {
@@ -1856,7 +1856,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           } */
           $('#userprefs .cookieContainer').addClass('hidden');
           $('#userprefs .cookieDisabledNote').removeClass('hidden');
-  //        addEventTrackingUserPrefs("Clear cookies", window.location.href);
+          addEventTrackingUserPrefs("Clear cookies", window.location.href);
         });
         var getCookies = function(){
           let pairs = document.cookie.split(";");
@@ -2139,7 +2139,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         }
       }
       function addEventTrackingUserPrefs(eventAction, eventLabel) { // Adds event tracking for User Preferences
-        gtag("event", "User Preferences", {"event_category": "User Preferences","event_action": eventAction,"event_label": eventLabel});
+        if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
+          gtag("event", "User Preferences", {"event_category": "User Preferences","event_action": eventAction,"event_label": eventLabel});
+        }
       } 
       // End of must edit for GA
      }

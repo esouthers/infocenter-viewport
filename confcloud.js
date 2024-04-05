@@ -1970,81 +1970,83 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       });
       $('#pdf-dialog .dialog-start-button').on('click', function(e) {
         e.preventDefault();
-        $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
-        $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
-        let idLetter = overrideTemplateLetter == '' ? pdfTemplateIDLetter : overrideTemplateLetter
-        let idA4 = overrideTemplateA4 == '' ? pdfTemplateIDA4 : overrideTemplateA4
-        var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
-        $.ajax({
-          url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
-          headers: {
-                'Authorization':'Bearer ' + pdfBearerToken
-          },
-          method: 'POST',
-          dataType: 'json',
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify({
-            'pageId': $('body').attr('pageid'),
-            'scope': 'descendants',
-            'templateId': pdfTemplateID,
-            'locale': 'en-US',
-            'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
-          }),
-          success: function(data){
-            let jobID = data.jobId;
-            $('#pdf-dialog').attr('data-jobid', jobID);
-            var checkDone = setInterval(function() {
-              $.ajax({
-                url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
-                headers: {
+        if ($('input[name="paperSize"]:checked').length != 0) {
+          $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
+          $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
+          let idLetter = overrideTemplateLetter == '' ? pdfTemplateIDLetter : overrideTemplateLetter
+          let idA4 = overrideTemplateA4 == '' ? pdfTemplateIDA4 : overrideTemplateA4
+          var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
+          $.ajax({
+            url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
+            headers: {
                   'Authorization':'Bearer ' + pdfBearerToken
-                },
-                method: 'GET',
-                success: function(data, status, jqXHR) {
-                  if (data.step == '1') {
-                    addDone($('#PDFstep1'));
-                    addWait($('#PDFstep2'));
-                    updateProgress(15, parseInt(data.stepProgress));
-                  }
-                  else if (data.step == '2') {
-                    addDone($('#PDFstep1, #PDFstep2'));
-                    addWait($('#PDFstep3'));
-                    updateProgress(33, parseInt(data.stepProgress));
-                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
-                    let numPagesDone = Math.round(numPages * parseInt(data.stepProgress) / 100);
-                    $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
-                  }
-                  else if (data.step == '3') {
-                    addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
-                    let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
-                    $('#PDFstep3 .numPDFDone').text('(' + numPages + '/' + numPages + ')');
-                    addWait($('#PDFstep4'));
-                    updateProgress(66, parseInt(data.stepProgress));
-                    $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
-                  }
-                  if (data.status == 'complete') {
-                    clearInterval(checkDone); // Stop checking
-                    addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
-                    updateProgress(100, 0);
-                    $('#PDFstep4 .numPDFDone').text('(100%)');
-                    $('#PDFDonelink').attr('href', data.downloadUrl);
-                    $('#pdf-dialog .status-done').show();
-                    window.open(data.downloadUrl, '_blank');
+            },
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+              'pageId': $('body').attr('pageid'),
+              'scope': 'descendants',
+              'templateId': pdfTemplateID,
+              'locale': 'en-US',
+              'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
+            }),
+            success: function(data){
+              let jobID = data.jobId;
+              $('#pdf-dialog').attr('data-jobid', jobID);
+              var checkDone = setInterval(function() {
+                $.ajax({
+                  url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
+                  headers: {
+                    'Authorization':'Bearer ' + pdfBearerToken
+                  },
+                  method: 'GET',
+                  success: function(data, status, jqXHR) {
+                    if (data.step == '1') {
+                      addDone($('#PDFstep1'));
+                      addWait($('#PDFstep2'));
+                      updateProgress(15, parseInt(data.stepProgress));
+                    }
+                    else if (data.step == '2') {
+                      addDone($('#PDFstep1, #PDFstep2'));
+                      addWait($('#PDFstep3'));
+                      updateProgress(33, parseInt(data.stepProgress));
+                      let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
+                      let numPagesDone = Math.round(numPages * parseInt(data.stepProgress) / 100);
+                      $('#PDFstep3 .numPDFDone').text('(' + numPagesDone + '/' + numPages + ')');
+                    }
+                    else if (data.step == '3') {
+                      addDone($('#PDFstep1, #PDFstep2, #PDFstep3'));
+                      let numPages = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
+                      $('#PDFstep3 .numPDFDone').text('(' + numPages + '/' + numPages + ')');
+                      addWait($('#PDFstep4'));
+                      updateProgress(66, parseInt(data.stepProgress));
+                      $('#PDFstep4 .numPDFDone').text('(' + data.stepProgress + '%)');
+                    }
+                    if (data.status == 'complete') {
+                      clearInterval(checkDone); // Stop checking
+                      addDone($('#PDFstep1, #PDFstep2, #PDFstep3, #PDFstep4'));
+                      updateProgress(100, 0);
+                      $('#PDFstep4 .numPDFDone').text('(100%)');
+                      $('#PDFDonelink').attr('href', data.downloadUrl);
+                      $('#pdf-dialog .status-done').show();
+                      window.open(data.downloadUrl, '_blank');
 
-                    $('#pdf-dialog .dialog-cancel-button').hide();
-                    $('#pdf-dialog .dialog-close-button').show();
+                      $('#pdf-dialog .dialog-cancel-button').hide();
+                      $('#pdf-dialog .dialog-close-button').show();
+                    }
+                    else if (data.status == 'cancelled') {
+                      clearInterval(checkDone);
+                    }
+                  },
+                  error: function() {
+                    $('#pdf-dialog .status-error').show();
                   }
-                  else if (data.status == 'cancelled') {
-                    clearInterval(checkDone);
-                  }
-                },
-                error: function() {
-                  $('#pdf-dialog .status-error').show();
-                }
-              });
-            }, 1000); // Check every 1 seconds
-          }
-        });
+                });
+              }, 1000); // Check every 1 seconds
+            }
+          });
+        }
       });
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls

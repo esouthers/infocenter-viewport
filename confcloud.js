@@ -606,7 +606,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           startPDFprocess();
         });
       }
-      $('#pdf-article').on('click', function(e) {
+      $('#pdf-article').on('click', function(e) { 
         e.preventDefault();
         startPDFprocess();
       });

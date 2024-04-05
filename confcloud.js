@@ -598,15 +598,18 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $(this).after('<button class="primary pdf-button" data-templateLetter="' + $('.templateLetter', this).attr('title') + '" data-templateA4="' + $('.templateA4', this).attr('title') + '">Export to PDF</button>');
         });
         $('button.pdf-button').on('click', function() {
-  //        e.preventDefault();
-          $('.hc-main-wrapper .vp-article').append(pdfDialog);
-          $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
-          $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
-          $('#dialog-overlay').fadeIn(500);
+          e.preventDefault();
           overrideTemplateLetter = $(this).attr('data-templateLetter');
           overrideTemplateA4 = $(this).attr('data-templateA4');
-          pdfButtonEventListeners();
+          startPDFprocess();
         });
+      }
+      function startPDFprocess() {
+        $('.hc-main-wrapper .vp-article').append(pdfDialog);
+        $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
+        $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
+        $('#dialog-overlay').fadeIn(500);
+        pdfButtonEventListeners();
       }
 
       // open pdfs in new tab
@@ -1916,11 +1919,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test PDFing
     /* Move this to button */
     //        e.preventDefault();
-            $('.hc-main-wrapper .vp-article').append(pdfDialog);
-            $('#pdf-dialog').show().animate({top: '20%', opacity: '100%'},500);
-            $('.dialog-overlay, #pdf-dialog, #dialog-overlay').attr('aria-hidden','false');
-            $('#dialog-overlay').fadeIn(500);
-            pdfButtonEventListeners();
+            startPDFprocess();
     /***************** *****/
           }
           if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac

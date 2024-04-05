@@ -598,7 +598,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $(this).after('<button class="primary pdf-button" data-templateLetter="' + $('.templateLetter', this).attr('title') + '" data-templateA4="' + $('.templateA4', this).attr('title') + '">Export to PDF</button>');
           $(this).remove(); 
         });
-        $('button.pdf-button').on('click', function() {
+        $('button.pdf-button').on('click', function(e) {
           e.preventDefault();
           overrideTemplateLetter = $(this).attr('data-templateLetter');
           overrideTemplateA4 = $(this).attr('data-templateA4');

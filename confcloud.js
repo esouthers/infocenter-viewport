@@ -1981,9 +1981,18 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $('.haiui-body-02 .status-error').hide();
           $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
           $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
-          let idLetter = overrideTemplateLetter == '' ? pdfTemplateIDLetter : overrideTemplateLetter
-          let idA4 = overrideTemplateA4 == '' ? pdfTemplateIDA4 : overrideTemplateA4
+          let idLetter = overrideTemplateLetter == '' ? pdfTemplateIDLetter : overrideTemplateLetter;
+          let idA4 = overrideTemplateA4 == '' ? pdfTemplateIDA4 : overrideTemplateA4;
           var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
+          var variantToShow = viewportList.currentContentSource.variants == undefined ? '' : viewportList.currentContentSource.variants.current.name;
+          var apiData = JSON.stringify({
+            'pageId': $('body').attr('pageid'),
+            'scope': 'descendants',
+            'templateId': pdfTemplateID,
+            'locale': 'en-US',
+            'variant': variantToShow;
+            'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
+          });
           $.ajax({
             url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
             headers: {
@@ -1992,13 +2001,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             method: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify({
-              'pageId': $('body').attr('pageid'),
-              'scope': 'descendants',
-              'templateId': pdfTemplateID,
-              'locale': 'en-US',
-              'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
-            }),
+            data: apiData,
             success: function(data){
               let jobID = data.jobId;
               $('#pdf-dialog').attr('data-jobid', jobID);

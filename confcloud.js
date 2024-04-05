@@ -2098,10 +2098,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('#talk-to-sales').on('click', function() {
               gtag("event", "Contact Sales", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
             });
-
             // Add tracking to provide feedback
             $('#provide-feedback').on('click', function() {
               gtag("event", "Provide Feedback", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+            });
+            // Add tracking to printing page
+            $('#print-article').on('click', function() {
+              gtag("event", "Print page", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
             });
             // Add tracking for external links
             gaExternalLinks();

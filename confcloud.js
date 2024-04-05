@@ -1803,7 +1803,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $('#userprefs').animate({top: '0%', opacity: '0%'},500).fadeOut(0);
           $('#dialog-overlay').fadeOut(500);
           $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
-          addEventTrackingUserPrefs("Close dialog", window.location.href);
+          addEventTrackingUserPrefs("Close dialog", '');
         });
         if ((!isPlayPro()) && (!isQwantBrowser())) {
           if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
@@ -1842,7 +1842,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         });
         $('button.resetBCButton').click(function() {
           resetBC();
-          addEventTrackingUserPrefs("Reset brightness contrast", window.location.href);
+          addEventTrackingUserPrefs("Reset brightness contrast", '');
         });
         
         $('button.clearCookies').click(function() {
@@ -1856,7 +1856,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           } */
           $('#userprefs .cookieContainer').addClass('hidden');
           $('#userprefs .cookieDisabledNote').removeClass('hidden');
-          addEventTrackingUserPrefs("Clear cookies", window.location.href);
+          addEventTrackingUserPrefs("Clear cookies", '');
         });
         var getCookies = function(){
           let pairs = document.cookie.split(";");
@@ -2088,20 +2088,20 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               // Must have a delay to wait for js library to load the children.
               let numChildrenPDF = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
               $('button.pdf-button').on('click', function() {
-                gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": window.location.href,"value": '+numChildrenPDF+'});
+                gtag("event", "Export PDF", {"which_pdf": "guidePDFbutton","which_button": "page_button","Current URL": window.location.href,"number_pages": numChildrenPDF});
               });
               $('.pdf-article').on('click', function() {
-                gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": window.location.href,"value": '+numChildrenPDF+'});
+                gtag("event", "Export PDF", {"which_pdf": "pageActionButton","which_button": "page_action","Current URL": window.location.href,"number_pages": numChildrenPDF});
               });
             }, 1000);
             // Add tracking to talk to sales
             $('#talk-to-sales').on('click', function() {
-              gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": window.location.href,"value": 0});
+              gtag("event", "Contact Sales", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
             });
 
             // Add tracking to provide feedback
             $('#provide-feedback').on('click', function() {
-              gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": window.location.href,"value": 0});
+              gtag("event", "Provide Feedback", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
             });
             // Add tracking for external links
             gaExternalLinks();
@@ -2140,7 +2140,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 
                 // Log event to Analytics, once done, go to the link
                 // Specify the GA specifics here
-                  gtag("event", "externallink", {"event_category": event_category,"event_action": url,"event_label": window.location.href,"event_callback": hitCallbackHandler(url, win)});
+                  gtag("event", "External Link", {"which_link": event_category,"External URL": url,"Current URL": window.location.href,"event_callback": hitCallbackHandler(url, win)});
                 e.preventDefault();
               });
             }
@@ -2149,7 +2149,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       }
       function addEventTrackingUserPrefs(eventAction, eventLabel) { // Adds event tracking for User Preferences
         if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
-          gtag("event", "User Preferences", {"event_category": "User Preferences","event_action": eventAction,"event_label": eventLabel});
+          gtag("event", "User Preferences", {"Action": eventAction,"New Value": eventLabel, "Current URL": window.location.href});
         }
       } 
       // End of must edit for GA

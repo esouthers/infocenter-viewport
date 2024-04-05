@@ -1781,7 +1781,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       // User Preferences - Brightness/Contrast & Image Hover Zoom
       function userPreferences() {
         if (getLocalStorageWithExpiry('acceptedCookie')=='true') {
-      //      gaSetup(); 
+          gaSetup(); 
           $('#userprefs .cookieContainer').removeClass('hidden');
           $('#userprefs .cookieDisabledNote').addClass('hidden');
         }

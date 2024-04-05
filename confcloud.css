@@ -2197,6 +2197,11 @@ button.primary:disabled, button.primary[disabled], button.secondary:disabled, bu
   background-color: var(--haiui-red-01);
   min-width: 32px;
 }
+.haiui-body-02 .status-error {
+  margin-left: 85px;
+  color: var(--haiui-red-01);
+}
+
 .hai-dialog .done-text, .hai-dialog .error-text {
   margin-left: 10px;
 }

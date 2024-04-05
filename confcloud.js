@@ -2087,13 +2087,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             setTimeout(function() {
               // Must have a delay to wait for js library to load the children.
               let numChildrenPDF = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
-              $('button.pdf-button').attr('onClick','gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": ' + window.location.href + ',"value": '+numChildrenPDF+'});');
-              $('.pdf-article').attr('onClick','gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": ' + window.location.href + ',"value": '+numChildrenPDF+'});');
+              $('button.pdf-button').attr('onClick','gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": window.location.href,"value": '+numChildrenPDF+'});');
+              $('.pdf-article').attr('onClick','gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": window.location.href,"value": '+numChildrenPDF+'});');
             }, 1000);
             // Add tracking to talk to sales
-            $('#talk-to-sales').attr('onClick','gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": ' + window.location.href + ',"value": 0});');
+            $('#talk-to-sales').attr('onClick','gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": window.location.href,"value": 0});');
             // Add tracking to provide feedback
-            $('#provide-feedback').attr('onClick','gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": ' + window.location.href + ',"value": 0});');
+            $('#provide-feedback').attr('onClick','gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": window.location.href,"value": 0});');
             // Add tracking for external links
             gaExternalLinks();
       }

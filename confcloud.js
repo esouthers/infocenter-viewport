@@ -595,7 +595,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       addPDFButtons();
       function addPDFButtons() {
         $('.pdf-export-button').each(function() {
-          $(this).after('<button class="primary pdf-button" data-templateLetter="' + $('.templateLetter', this).attr('title') + '" data-templateA4="' + $('.templateA4', this).attr('title') + '">Export to PDF</button>');
+          $(this).after('<button class="primary pdf-button" data-templateLetter="' + $('.templateLetter', this).attr('title') + '" data-templateA4="' + $('.templateA4', this).attr('title') + '">Export Guide to PDF</button>');
           $(this).remove(); 
         });
         $('button.pdf-button').on('click', function(e) {

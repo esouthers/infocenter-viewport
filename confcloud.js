@@ -992,7 +992,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('#userprefs .cookieContainer').removeClass('hidden');
             $('#userprefs .cookieDisabledNote').addClass('hidden');
             // Setup Google Analytics
-            // gaSetup();
+            gaSetup();
           });
           $('#aui-flag-container .cookieReject').on('click', function() {
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
@@ -2074,27 +2074,24 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
     }
     // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
     function gaSetup() {
-       if (window.location.hostname == "doc.haivision.com") {  // Don't log analytics on Sandbox.
           gtag('js', new Date());
-        gtag('config', 'G-SDDSB8BN8V');
+          gtag('config', 'G-SDDSB8BN8V');
           // Add tracking to the PDF button and Create PDF footer link
           setTimeout(function() {
             // Must have a delay to wait for js library to load the children.
-            var numChildrenPDF = $('.sp-pagetree .current li').length;
-            $('.pdf-button').attr('onClick','gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": window.location.href,"value": '+numChildrenPDF+'});');
-            $('.footerbuttons#pdf-exporter').attr('onClick','gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": window.location.href,"value": '+numChildrenPDF+'});');
+            let numChildrenPDF = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
+            $('button.pdf-button').attr('onClick','gtag("event", "downloadPDF", {"event_category": "downloadPDFbutton","event_action": "button","event_label": ' + window.location.href + ',"value": '+numChildrenPDF+'});');
+            $('.pdf-article').attr('onClick','gtag("event", "downloadPDF", {"event_category": "footerPDFbutton","event_action": "footer","event_label": ' + window.location.href + ',"value": '+numChildrenPDF+'});');
           }, 1000);
           // Add tracking to talk to sales
-          $('.footerbuttons#talk-to-sales').attr('onClick','gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": window.location.href,"value": 0});');
+          $('#talk-to-sales').attr('onClick','gtag("event", "salesbutton", {"event_category": "email_sales","event_action": "footer","event_label": ' + window.location.href + ',"value": 0});');
           // Add tracking to provide feedback
-          $('.footerbuttons#provide-feedback').attr('onClick','gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": window.location.href,"value": 0});');
+          $('#provide-feedback').attr('onClick','gtag("event", "providefeedback", {"event_category": "provide_feedback","event_action": "footer","event_label": ' + window.location.href + ',"value": 0});');
           // Add tracking for external links
           gaExternalLinks();
-        }
     }
       
     function gaExternalLinks() {
-      // CX-335: Track Outbound Link Clicks and auto-add click event to links with external URLs
       // Code from http://www.joehessert.com/seo/google-analytics-external-link-tracking
       var hitCallbackHandler = function(url, win) {
         if (win) { window.open(url, win); } 

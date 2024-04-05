@@ -22,7 +22,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
   script.type = 'text/javascript';
   script.onload = function() {
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    var gtag = function(){dataLayer.push(arguments);}
 
     var script = document.createElement("SCRIPT");
     script.src = 'https://haivision.jira.com/s/d41d8cd98f00b204e9800998ecf8427e-T/-t2deah/b/11/e73395c53c3b10fde2303f4bf74ffbf6/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=99991144';

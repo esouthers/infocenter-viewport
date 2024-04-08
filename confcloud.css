@@ -1819,6 +1819,11 @@ h2 {
   top: 50px;
   z-index: 2000;
 }
+@media screen and (max-width: 500px) {
+  #aui-flag-container .aui-flag {
+    width: 280px;
+  }
+}
 @media screen and (max-width: 640px) {
   #aui-flag-container {
     right: 10px;
@@ -1902,6 +1907,7 @@ h2 {
   display: inline-block;
   font-size: 14px;
   margin-bottom: 5px;
+  text-align: right;
 }
 .aui-nav-actions-list>li+li:before {
   content: "";

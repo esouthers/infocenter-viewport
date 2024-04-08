@@ -57,21 +57,19 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
 
       var viewportList = window.scrollHelpCenter.collection;
 
-
-
       // PDF Export variables
       var pdfDialog = '<section role="dialog" id="pdf-dialog" data-aui-modal="true" class="hai-dialog aui-dialog2 card" aria-hidden="true" style="display:none"><header class="aui-dialog2-header card-header">' + svgPDF + '<h2 class="haiui-heading-03-book">Export to PDF</h2><a class="card-close"><span class="aui-icon aui-icon-small hai-icon-download-close dialog-cancel-button">Close</span></a></header><div class="card-body haiui-body-02 options"><label for="paperSize">Paper Size:</label><input type="radio" name="paperSize" id="letter" value="letter"><label for="letter">Letter</label><input type="radio" name="paperSize" id="a4" value="a4"><label for="a4">A4</label><div class="status-error" style="display: none;"><div class="aui-icon aui-icon-large hai-icon-status-error"></div><div class="error-text">Please select a size.</div></div></div><div class="card-body haiui-body-02 status" style="display:none;"><div id="progress-bar" class="aui-progress-indicator" data-value="0"><span class="aui-progress-indicator-value" style="width: 0px;"></span></div><ul class="status-message"><li id="PDFstep1" class="pdfStepWaiting"><span class="aui-icon aui-icon-small"></span>Queuing Export</li><li id="PDFstep2" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Collecting Pages</li><li id="PDFstep3" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Processing Pages <span class="numPDFDone"></span></li><li id="PDFstep4" class="pdfStepPending"><span class="aui-icon aui-icon-small"></span>Rendering PDF <span class="numPDFDone"></span></li></ul><div class="status-done" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-ok"></div><div class="done-text">Your PDF has been created and will start downloading in a few seconds! If the download doesn\'t start, <a id="PDFDonelink">click here</a>.</div></div><div class="status-error" style="display:none;"><div class="aui-icon aui-icon-large hai-icon-status-error"></div><div class="error-text">Error. Something went wrong. Please <a href="mailto:infodev@haivision.com">contact us</a> regarding this issue.</div></div></div><footer class="card-footer"><div class=""><button class="primary dialog-start-button">Start</button><button class="primary dialog-cancel-button" style="display:none;">Cancel</button><button class="primary dialog-close-button" style="display:none;">Close</button></div></footer></section>';
       var overrideTemplateLetter = '';
       var overrideTemplateA4 = '';
 
-      var pdfTemplateIDLetter = '8a044238-48b2-4484-9ec6-fdbc3e7df4f5';
-      var pdfTemplateIDA4    = 'b0be2f1b-fac2-43b6-9256-673607eac403';
-      var pdfBearerToken     = 'aa0b3c6daa35814471997af0a7ca4596';
-      var productRedirectJSON = '{"Command360":[{"redirect":"Command360"}],"CDVR":[{"redirect":"CDVR"}],"CS":[{"redirect":"CoolSign"}],"EMS":[{"redirect":"EMS"}],"Furnace":[{"redirect":"Furnace"}],"hai1000":[{"redirect":"hai1000"}],"HaiHelper":[{"redirect":"Helper"}],"HMG":[{"redirect":"HMG"}],"HMP":[{"redirect":"HMP"}],"Hub":[{"redirect":"Hub"}],"Hub360":[{"redirect":"Hub360"}],"KB":[{"redirect":"KB"}],"Kraken":[{"redirect":"Kraken"}],"LightFlow":[{"redirect":"LightFlow"}],"MakitoDec":[{"redirect":"MakitoDec"}],"MakitoEnc":[{"redirect":"MakitoEnc"}],"MakitoXDec":[{"redirect":"MakitoXDec"}],"MakitoXEnc":[{"redirect":"MakitoXEnc"}],"MFXE":[{"redirect":"MFXE"}],"MakitoX1Enc":[{"redirect":"MakitoX1Enc"}],"MakitoX4Dec":[{"redirect":"MakitoX4Dec"}],"MakitoX4Enc":[{"redirect":"MakitoX4Enc"}],"Mantaray":[{"redirect":"Mantaray"}],"MJPiOS":[{"redirect":"MJPiOS"}],"HPM":[{"redirect":"HPM"}],"HPPM":[{"redirect":"HPPM"}],"PlayProiOS":[{"redirect":"PlayProiOS"}],"STB":[{"redirect":"Play1000STB"}],"Play20004000STB":[{"redirect":"Play20004000STB"}],"Stingray":[{"redirect":"Stingray"}],"StreamHub":[{"redirect":"StreamHub"}],"Torpedo":[{"redirect":"Torpedo"}]}';
+      var pdfTemplateIDLetter = hvConfig.pdfTemplateIDLetter;
+      var pdfTemplateIDA4     = hvConfig.pdfTemplateIDA4;
+      var pdfBearerToken      = hvConfig.pdfBearerToken;
+      var productRedirectJSON = hvConfig.productRedirectJSON;
       // List of spaces you want to hide from search results
-      var hiddenSpaces = ['Inclusion Library'];
+      var hiddenSpaces = hvConfig.hiddenSpaces;
       // List of valid transmitter variants/version combinations. For example, Air 5.3.1 exists, but 3.5 does not
-      var transmittersVariants = [{'variant' : 'Air', 'variantId' : 'b7d408e64aa8cb3c490819e3c48a8325', 'versions' : ['5.3.1']}, {'variant' : 'Pro3', 'variantId' : '86da7b3392964e34996b43f4446a4589', 'versions' : ['5.3.1']}, {'variant' : 'Rack200 & Rack300', 'variantId' : 'ffb7362a6e50642fa62d414e7c4ad118', 'versions' : ['5.3.1']}, {'variant' : 'Pro460', 'variantId' : 'a13d712ff5175366a5251e0bddae761a', 'versions' : ['3.5']}, {'variant' : 'Rack400', 'variantId' : '61d254219f7ed6aa202a26272bef005a', 'versions' : ['3.5']}];
+      var transmittersVariants = hvConfig.transmittersVariants;
 
       var isBetaSite = window.location.host.split('.')[0].indexOf('beta') >= 0 ? true : false;
       if (isBetaSite) {

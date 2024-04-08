@@ -158,7 +158,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $.each(jsonObject, function(oldPrefix,prefixItem) {
             $('html').removeClass('show')
             let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
-            let newURL = '/' + prefixItem.redirect + '/';
+            let newURL = prefixItem.redirect != undefined ? '/' + prefixItem.redirect + '/' : '/' + oldPrefix + '/';
             for (const match of window.location.pathname.matchAll(regexp)) {
               newURL += match[1] + '/' + match[2].replace('index.html','').split('/').slice(-1)[0];
               found = true;
@@ -168,7 +168,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             }
             if (!found) {
               regexp = new RegExp("/" + oldPrefix + "([^/]+)","g");
-              newURL = '/' + prefixItem.redirect + '/';
+              newURL = prefixItem.redirect != undefined ? '/' + prefixItem.redirect + '/' : '/' + oldPrefix + '/';
               for (const match of window.location.pathname.matchAll(regexp)) {
                 newURL += match[1] + '/';
                 found = true;

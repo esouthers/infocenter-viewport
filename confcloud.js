@@ -1986,7 +1986,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             let idA4 = overrideTemplateA4 == '' ? hvConfig.pdfTemplateIDA4 : overrideTemplateA4;
             var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
             var variantToShow = '';
-            if (viewportList.currentContentSource.variants != undefined) {
+            if (viewportList.currentContentSource.variants.available.length != 0) {
               $.each(hvConfig.transmittersVariants, function(i,j) {
                 if (j.variant == viewportList.currentContentSource.variants.current.name) {
                   variantToShow = j.variantId;

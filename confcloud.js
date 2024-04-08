@@ -18,7 +18,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
   $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
 
   var script = document.createElement("SCRIPT");
-  script.src = 'config.js';
+  script.src = 'https://esouthers.github.io/infocenter-viewport/config.js';
   script.type = 'text/javascript';
   script.onload = function() {
 

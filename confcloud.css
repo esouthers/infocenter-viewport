@@ -1820,11 +1820,14 @@ h2 {
   z-index: 2000;
 }
 @media screen and (max-width: 500px) {
+  #aui-flag-container {
+    right: 10px;
+  }
   #aui-flag-container .aui-flag {
     width: 280px;
   }
 }
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 500px) and (max-width: 640px) {
   #aui-flag-container {
     right: 10px;
   }

@@ -942,7 +942,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           type: 'info',
           body: message + dnsMsg
         });
-        if ((!isPlayPro()) && (!isQwantBrowser())) {
+        if (!isPlayPro()) {
           if (getLocalStorageWithExpiry('acceptedCookie')=="true") { // Only show if we have accepted cookies.
             $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
           }
@@ -967,7 +967,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       // GDPR cookie popup
       // Show a popup if user hasn't been here before and accepted cookie message
       function cookieSetup() {
-        if ((!isPlayPro()) && (!isQwantBrowser())) {
+        if (!isPlayPro()) {
           if (!(getLocalStorageWithExpiry('acceptedCookie'))) {
             var cookieViewLink = isBetaSite ? '' : '<li><a href="/Home/privacy-and-cookies">View</a></li>';
             var cookieViewText = isBetaSite ? '' : 'Click <strong>View</strong> to read more.';
@@ -1620,7 +1620,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         $('.versionIcon').tooltip({gravity: 'nw'});
         $('.aui-tooltip').addClass('hidden');
         newMsg = '<div id=' + flagID + '>' + newMsg + '</div>';
-        if ((!isPlayPro()) && (!isQwantBrowser())) { 
+        if (!isPlayPro()) { 
           if (expDays == 'session' && !sessionStorage.getItem(flagID)) {
               addBanner(newMsg, true, expDays);
           } else if (!(expDays == 'session') && !getLocalStorageWithExpiry(flagID)) {
@@ -1767,10 +1767,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         if (navigator.userAgent.indexOf('HaivisionPlayPro') >= 0) { return true; }
         else { return false; }
       }
-      function isQwantBrowser() {
-        if (navigator.userAgent.indexOf('Qwant') >= 0) { return true; }
-        else { return false; }
-      }
 
       // User Preferences - Brightness/Contrast & Image Hover Zoom
       function userPreferences() {
@@ -1799,7 +1795,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $('#userprefs, #dialog-overlay').attr('aria-hidden','true');
           addEventTrackingUserPrefs("Close dialog", '');
         });
-        if ((!isPlayPro()) && (!isQwantBrowser())) {
+        if (!isPlayPro()) {
           if (getLocalStorageWithExpiry('acceptedCookie')=="true") {
             $('#ic-settings').css({opacity: 1.0, visibility: "visible"});
             var userBrightness = getLocalStorageWithExpiry('ICbrightness');

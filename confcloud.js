@@ -1793,7 +1793,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('.dialog-overlay, #userprefs, #dialog-overlay').attr('aria-hidden','false');
       //      $('.sp-blanket').removeClass('hidden');
             $('#dialog-overlay').fadeIn(500);
-            addEventTrackingUserPrefs("Open dialog", window.location.href);
+            addEventTrackingUserPrefs("Open dialog", '');
         });
         // Hides the dialog
         $('#userprefs .dialog-close-button, .card a.card-close').click(function (e) {

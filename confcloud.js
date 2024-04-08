@@ -975,12 +975,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               type: 'success',
               body: 'We use cookies and local browser storage to ensure the best web experience. By clicking <strong>Accept</strong>, you agree to their use. ' + cookieViewText + 
                 '<ul class="aui-nav-actions-list">' +
-                '<li><a class="cookieAccept">Accept</a></li>' +
+                '<li><a class="accept">Accept</a></li>' +
                 cookieViewLink + 
                 '<li><a class="cookieReject">Reject Optional Cookies</a></li>' +
                 '</ul>' 
             });
-            $('#aui-flag-container .cookieAccept').on('click', function() {
+            $('#aui-flag-container .accept').on('click', function() {
               $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
               cookieFlag.close();
               setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);

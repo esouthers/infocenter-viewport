@@ -1903,7 +1903,7 @@ h2 {
   position: relative;
   top: 2px;
 }
-.aui-nav-actions-list>li {
+.aui-nav-actions-list>li { 
   display: inline-block;
   font-size: 14px;
   margin-bottom: 5px;

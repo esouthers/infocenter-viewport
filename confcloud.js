@@ -62,15 +62,6 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
       var overrideTemplateLetter = '';
       var overrideTemplateA4 = '';
 
-      var pdfTemplateIDLetter = hvConfig.pdfTemplateIDLetter;
-      var pdfTemplateIDA4     = hvConfig.pdfTemplateIDA4;
-      var pdfBearerToken      = hvConfig.pdfBearerToken;
-      var productRedirectJSON = hvConfig.productRedirectJSON;
-      // List of spaces you want to hide from search results
-      var hiddenSpaces = hvConfig.hiddenSpaces;
-      // List of valid transmitter variants/version combinations. For example, Air 5.3.1 exists, but 3.5 does not
-      var transmittersVariants = hvConfig.transmittersVariants;
-
       var isBetaSite = window.location.host.split('.')[0].indexOf('beta') >= 0 ? true : false;
       if (isBetaSite) {
         $('body').addClass('beta');
@@ -162,7 +153,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           }
         }
         function forwardIfProdVer(path) {
-          let jsonObject = $.parseJSON(productRedirectJSON);
+          let jsonObject = $.parseJSON(hvConfig.productRedirectJSON);
           let found = false;
           $.each(jsonObject, function(oldPrefix,prefixList) {
             $('html').removeClass('show')
@@ -273,7 +264,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 var numResults = data.total;
                 if (numResults > 0) {
                   $(data.hits).each(function(i,val){
-                    if (val.contentSourceName.indexOf(hiddenSpaces) < 0) { 
+                    if (val.contentSourceName.indexOf(hvConfig.hiddenSpaces) < 0) { 
                       let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                       let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
                       searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
@@ -381,7 +372,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $.each(viewportList.members, function(key,val) {
               let productToAdd = ''
               if (val.prefix == 'Transmitters') {
-                $.each(transmittersVariants, function (i,j) {
+                $.each(hvConfig.transmittersVariants, function (i,j) {
                   productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.variant + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.variant + '</span></li>';
                 });
               }
@@ -406,7 +397,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     $.each(valVariants, function(varKey,varVal) {
   //*******************************************//
   // Insert Transmitters exception logic here! //
-                      $.each(transmittersVariants, function(i,variantToTest) {
+                      $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
                         if (variantToTest.variant == searchedVariant ) {
                           $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
                           $.each(variantToTest.versions, function(i,version) {
@@ -470,7 +461,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                 if (href.searchParams.has('va')) {  href.searchParams.set('va', '');  }
               }
               if ($(this).attr('data-transmitters') == 'true') {
-                $.each(transmittersVariants, function(i,j) {
+                $.each(hvConfig.transmittersVariants, function(i,j) {
                   if (j.variant == transmitterProduct) {
                     href.searchParams.set('v', j.versions[0]);
                   }
@@ -497,7 +488,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               var href = new URL(window.location.href);
               href.searchParams.set('va', $(this).attr('data-value'));
               if (href.searchParams.get('s')== 'Transmitters') {
-                $.each(transmittersVariants, function(i,j) {
+                $.each(hvConfig.transmittersVariants, function(i,j) {
                   if (href.searchParams.get('va') == j.variant) {
                     href.searchParams.set('v', j.versions[0]);
                   }
@@ -814,7 +805,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             var numResults = data.total;
             if (numResults > 0) {
               $(data.hits).each(function(i,val){
-                if (val.contentSourceName.indexOf(hiddenSpaces) < 0) {
+                if (val.contentSourceName.indexOf(hvConfig.hiddenSpaces) < 0) {
                   let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                   let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
                   searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
@@ -863,7 +854,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
         var versionsValid = [];
           let variantViewing = currentlyViewing.variants.current.name;
           let versionViewing = currentlyViewing.versions.current.name;
-          $.each(transmittersVariants, function(i,variantToTest) {
+          $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
             if (variantToTest.variant == variantViewing ) {
               if (variantToTest.versions.length == 1) {
                 $('#vp-js-desktop__navigation__picker').remove();
@@ -1979,7 +1970,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           $.ajax({
               url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobId,
               headers: {
-                  'Authorization':'Bearer ' + pdfBearerToken
+                  'Authorization':'Bearer ' + hvConfig.pdfBearerToken
               },
               method: 'DELETE',
               success: function(data){
@@ -1995,12 +1986,12 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $('.haiui-body-02 .status-error').hide();
             $('#pdf-dialog .card-body.options, #pdf-dialog .dialog-start-button').hide();
             $('#pdf-dialog .card-body.status, #pdf-dialog .dialog-cancel-button').show();
-            let idLetter = overrideTemplateLetter == '' ? pdfTemplateIDLetter : overrideTemplateLetter;
-            let idA4 = overrideTemplateA4 == '' ? pdfTemplateIDA4 : overrideTemplateA4;
+            let idLetter = overrideTemplateLetter == '' ? hvConfig.pdfTemplateIDLetter : overrideTemplateLetter;
+            let idA4 = overrideTemplateA4 == '' ? hvConfig.pdfTemplateIDA4 : overrideTemplateA4;
             var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
             var variantToShow = '';
             if (viewportList.currentContentSource.variants != undefined) {
-              $.each(transmittersVariants, function(i,j) {
+              $.each(hvConfig.transmittersVariants, function(i,j) {
                 if (j.variant == viewportList.currentContentSource.variants.current.name) {
                   variantToShow = j.variantId;
                   return false;
@@ -2018,7 +2009,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             $.ajax({
               url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports',
               headers: {
-                    'Authorization':'Bearer ' + pdfBearerToken
+                    'Authorization':'Bearer ' + hvConfig.pdfBearerToken
               },
               method: 'POST',
               dataType: 'json',
@@ -2031,7 +2022,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                   $.ajax({
                     url: 'https://scroll-pdf.us.exporter.k15t.app/api/public/1/exports/' + jobID + '/status',
                     headers: {
-                      'Authorization':'Bearer ' + pdfBearerToken
+                      'Authorization':'Bearer ' + hvConfig.pdfBearerToken
                     },
                     method: 'GET',
                     success: function(data, status, jqXHR) {

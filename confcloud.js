@@ -391,27 +391,25 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
                     $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                   }
                 }
-                if (val.variants !== undefined) {
-                  if (val.variants.available.length > 1) {
-                    let valVariants = val.variants.available;
-                    $.each(valVariants, function(varKey,varVal) {
-  //*******************************************//
-  // Insert Transmitters exception logic here! //
-                      $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
-                        if (variantToTest.variant == searchedVariant ) {
-                          $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
-                          $.each(variantToTest.versions, function(i,version) {
-                            $('[data-vp-id="search-page-horizontal-filter-versions-item"][data-value="' + version + '"]').show();
-                          })
-                        }
-                      });
+                if (val.variants?.available?.length ?? 0 > 1) {
+                  let valVariants = val.variants.available;
+                  $.each(valVariants, function(varKey,varVal) {
+//*******************************************//
+// Insert Transmitters exception logic here! //
+                    $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
+                      if (variantToTest.variant == searchedVariant ) {
+                        $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
+                        $.each(variantToTest.versions, function(i,version) {
+                          $('[data-vp-id="search-page-horizontal-filter-versions-item"][data-value="' + version + '"]').show();
+                        })
+                      }
+                    });
 
   //*******************************************//
   //                    let varToAdd = '<li data-vp-id="search-page-horizontal-filter-variants-item" data-name="va" data-value="' + varVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-var' + varKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + varVal.name + '</span></li>';
   //                    $('[data-vp-id="custom-search-page-horizontal-filter-variants"] ul').append(varToAdd);
-                    });
+                  });
   //                  $('[data-vp-id="custom-search-page-horizontal-filter-variants"]').show();
-                  }
                 }
 
               } 
@@ -1986,15 +1984,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
             let idA4 = overrideTemplateA4 == '' ? hvConfig.pdfTemplateIDA4 : overrideTemplateA4;
             var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
             var variantToShow = '';
-            if (viewportList.currentContentSource.variants != undefined) {
-              if (viewportList.currentContentSource.variants.available.length != 0) {
-                $.each(hvConfig.transmittersVariants, function(i,j) {
-                  if (j.variant == viewportList.currentContentSource.variants.current.name) {
-                    variantToShow = j.variantId;
-                    return false;
-                  }
-                });
-              }
+            if (viewportList.currentContentSource.variants?.available?.length ?? 0) {
+              $.each(hvConfig.transmittersVariants, function(i,j) {
+                if (j.variant == viewportList.currentContentSource.variants.current.name) {
+                  variantToShow = j.variantId;
+                  return false;
+                }
+              });
             }
             var apiData = JSON.stringify({
               'pageId': $('body').attr('pageid'),

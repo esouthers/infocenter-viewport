@@ -22,7 +22,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
   script.src = 'https://esouthers.github.io/infocenter-viewport/config.js';
   script.type = 'text/javascript';
   script.onload = function() {
-
+ 
   var script = document.createElement("SCRIPT");
   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SDDSB8BN8V';
   script.type = 'text/javascript';

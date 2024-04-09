@@ -16,7 +16,7 @@ var hvConfig = {
                           "CS":         {"redirect": "CoolSign"},
                           "EMS":        {},
                           "Furnace":    {},
-                          "hai1000":    {},
+                          "hai1000":    {}, 
                           "HaiHelper":  {},
                           "HMG":        {},
                           "HMP":        {},

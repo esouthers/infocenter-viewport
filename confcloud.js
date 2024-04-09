@@ -17,7 +17,7 @@ function confCloudJS() {
     script.src = src;
     script.type = "text/javascript";
     script.onload = callback;
-    script.onerror = console.error('Failed to load ' + src);
+    script.onerror = function(src) { console.error('Failed to load ' + src); };
     document.head.appendChild(script);
   }
 

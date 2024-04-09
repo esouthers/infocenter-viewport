@@ -49,8 +49,10 @@ var hvConfig = {
   hiddenSpaces:        ['Inclusion Library'],
 
   // List of valid transmitter variants/version combinations. For example, Air 5.3.1 exists, but 3.5 does not
-  // The variantId's are necessary for PDF exports
-  transmittersVariants: [
+  // The variantId's are necessary for PDF exports. To find these values, in the Confluence space, click Document Toolbox > Read icon. Select the variant in the dropdown. Click the Share icon > Copy icon. The resulting URL shows the variant ID. For example:
+  //   https://haivisioninfocenter.atlassian.net/wiki/plugins/servlet/ac/k15t-scroll-document-versions-for-confluence/k15t-docs-document-viewer?content.id=18428819#!/view/18387903?pageId=18382917&variantId=75a02b4af9de6080ddcc8464c9c00f45
+  variants: { 
+    "transmitters": [
       {
         'variant': 'Air',
         'variantId': 'b7d408e64aa8cb3c490819e3c48a8325',
@@ -76,5 +78,16 @@ var hvConfig = {
         'variantId': '61d254219f7ed6aa202a26272bef005a',
         'versions': ['3.5']
       }
+    ],
+    "hub": [
+      {
+        'variant': 'Hub',
+        'variantId': '75a02b4af9de6080ddcc8464c9c00f45'
+      },
+      {
+        'variant': 'HUB-GOV',
+        'variantId': '5393325de7a06b5cc8813b4c156555de'
+      }
     ]
+  }
 }

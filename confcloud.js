@@ -368,7 +368,7 @@ function confCloudJS() {
                   $.each(viewportList.members, function(key,val) {
                     let productToAdd = '';
                     if (val.prefix == 'Transmitters') {
-                      $.each(hvConfig.transmittersVariants, function (i,j) {
+                      $.each(hvConfig.variants.transmitters, function (i,j) {
                         productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.variant + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.variant + '</span></li>';
                       });
                     }
@@ -392,7 +392,7 @@ function confCloudJS() {
                         $.each(valVariants, function(varKey,varVal) {
       //*******************************************//
       // Insert Transmitters exception logic here! //
-                          $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
+                          $.each(hvConfig.variants.transmitters, function(i,variantToTest) {
                             if (variantToTest.variant == searchedVariant ) {
                               $('[data-vp-id="search-page-horizontal-filter-versions-item"]').hide();
                               $.each(variantToTest.versions, function(i,version) {
@@ -455,7 +455,7 @@ function confCloudJS() {
                       if (href.searchParams.has('va')) {  href.searchParams.set('va', '');  }
                     }
                     if ($(this).attr('data-transmitters') == 'true') {
-                      $.each(hvConfig.transmittersVariants, function(i,j) {
+                      $.each(hvConfig.variants.transmitters, function(i,j) {
                         if (j.variant == transmitterProduct) {
                           href.searchParams.set('v', j.versions[0]);
                         }
@@ -482,7 +482,7 @@ function confCloudJS() {
                     var href = new URL(window.location.href);
                     href.searchParams.set('va', $(this).attr('data-value'));
                     if (href.searchParams.get('s')== 'Transmitters') {
-                      $.each(hvConfig.transmittersVariants, function(i,j) {
+                      $.each(hvConfig.variants.transmitters, function(i,j) {
                         if (href.searchParams.get('va') == j.variant) {
                           href.searchParams.set('v', j.versions[0]);
                         }
@@ -848,7 +848,7 @@ function confCloudJS() {
               var versionsValid = [];
                 let variantViewing = currentlyViewing.variants.current.name;
                 let versionViewing = currentlyViewing.versions.current.name;
-                $.each(hvConfig.transmittersVariants, function(i,variantToTest) {
+                $.each(hvConfig.variants.transmitters, function(i,variantToTest) {
                   if (variantToTest.variant == variantViewing ) {
                     if (variantToTest.versions.length == 1) {
                       $('#vp-js-desktop__navigation__picker').remove();
@@ -1981,11 +1981,13 @@ function confCloudJS() {
                   var pdfTemplateID = $('input[name="paperSize"]:checked').val() == 'a4' ? idA4 : idLetter;
                   var variantToShow = '';
                   if (viewportList.currentContentSource.variants?.available?.length ?? 0) {
-                    $.each(hvConfig.transmittersVariants, function(i,j) {
-                      if (j.variant == viewportList.currentContentSource.variants.current.name) {
-                        variantToShow = j.variantId;
-                        return false;
-                      }
+                    $.each(hvConfig.variants, function(i,product) {
+                      $.each(product, function(i,j) {
+                        if (j.variant == viewportList.currentContentSource.variants.current.name) {
+                          variantToShow = j.variantId;
+                          return false;
+                        }
+                      });
                     });
                   }
                   var apiData = JSON.stringify({

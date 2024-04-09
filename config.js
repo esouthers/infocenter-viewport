@@ -1,13 +1,12 @@
 var hvConfig = {
 
   // PDF Export settings
-    
     // This token is necessary for API calls to the PDF Exporter. To change this, in Confluence click your profile image > Personal Settings > Scroll PDF Exporter API Tokens (https://haivisioninfocenter.atlassian.net/wiki/plugins/servlet/ac/com.k15t.scroll.scroll-pdf/k15t-cxp-api-token-page)
     pdfBearerToken:      'aa0b3c6daa35814471997af0a7ca4596',
     
     // These are the default PDF template IDs to use in PDF exports, for Letter and A4 sizes. If the page doesn't contain an Export To PDF button, then these are used. To update, in Confluence click the Gear icon > under Scroll PDF Exporter click Templates. In the template you wish to use click ... > Template Information. Copy the ID value and paste here.
-    pdfTemplateIDLetter: '8a044238-48b2-4484-9ec6-fdbc3e7df4f5',
-    pdfTemplateIDA4:     'b0be2f1b-fac2-43b6-9256-673607eac403',
+    pdfTemplateIDLetter: '69ac7180-c478-47e8-a5f8-0b5e2e8c58c7',
+    pdfTemplateIDA4:     '1461ba7c-3762-4b9a-8898-5994d5557549',
 
   // This is used for users who have bookmarks of our old Server site. The URL construction was "HMP3.8" versus now which is "HMP/3.8". If the redirect value doesn't exist, then the same value is implied. There is no need to update this as products are added, as they wouldn't have been in users old bookmarks. For example, AIr, Pro, Rack were not yet converted to the Server instance.
   productRedirect: {

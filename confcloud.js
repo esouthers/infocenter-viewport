@@ -24,12 +24,16 @@ function confCloudJS() {
   loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js', function() {
     $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
     $('body').attr('data-pageid',$('body').attr('pageid'));
+
     loadScript('https://esouthers.github.io/infocenter-viewport/config.js', function() {
-      loadScript('https://www.googletagmanager.com/gtag/js?id=G-SDDSB8BN8V', function() {
-        window.dataLayer = window.dataLayer || [];
-        var gtag = function(){dataLayer.push(arguments);};
+
         loadScript('https://haivision.jira.com/s/d41d8cd98f00b204e9800998ecf8427e-T/-t2deah/b/11/e73395c53c3b10fde2303f4bf74ffbf6/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=99991144', function() {
+
           loadScript('https://cdnjs.cloudflare.com/ajax/libs/aui/9.10.0/aui/aui-prototyping.min.js', function() {
+
+            // Google Analytics
+            window.dataLayer = window.dataLayer || [];
+            var gtag = function(){dataLayer.push(arguments);};
 
         /*** SVG images ***/  
             var svgHamburger = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250 250" xml:space="preserve" class="HaiIcon" iconname="Hamburger" subtype="hamburger" type="navigation"><path id="Path_1229" d="M219.4,73.7H32.6c-6.2-0.4-10.9-5.9-10.5-12.1C22.5,56,27,51.5,32.6,51.1h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,68.8,225,73.3,219.4,73.7z"></path><path id="Path_1230" d="M219.4,137H32.6c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C229.5,132.1,225,136.6,219.4,137z"></path><path id="Path_1231" d="M218.8,199.1H32c-6.2-0.4-10.9-5.9-10.5-12.1c0.4-5.6,4.9-10.1,10.5-10.5h186.8c6.2,0.4,10.9,5.9,10.5,12.1 C228.9,194.2,224.4,198.7,218.8,199.1z"></path></svg>';
@@ -2061,33 +2065,35 @@ function confCloudJS() {
             }
             // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
             function gaSetup() {
-                  gtag('js', new Date());
-                  gtag('config', 'G-SDDSB8BN8V');
-                  // Add tracking to the PDF button and Create PDF footer link
-                  setTimeout(function() {
-                    // Must have a delay to wait for js library to load the children.
-                    let numChildrenPDF = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
-                    $('button.pdf-button').on('click', function() {
-                      gtag("event", "Export PDF", {"which_pdf": "guidePDFbutton","which_button": "page_button","Current URL": window.location.href,"number_pages": numChildrenPDF});
-                    });
-                    $('.pdf-article').on('click', function() {
-                      gtag("event", "Export PDF", {"which_pdf": "pageActionButton","which_button": "page_action","Current URL": window.location.href,"number_pages": numChildrenPDF});
-                    });
-                  }, 1000);
-                  // Add tracking to talk to sales
-                  $('#talk-to-sales').on('click', function() {
-                    gtag("event", "Contact Sales", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+              loadScript('https://www.googletagmanager.com/gtag/js?id=G-SDDSB8BN8V', function() {
+                gtag('js', new Date());
+                gtag('config', 'G-SDDSB8BN8V');
+                // Add tracking to the PDF button and Create PDF footer link
+                setTimeout(function() {
+                  // Must have a delay to wait for js library to load the children.
+                  let numChildrenPDF = $('.vp-tree-item--active').length > 0 ? $('.vp-tree-item--active li').length + 1 : $('.vp-desktop-navigation__page-tree__tree li').length + 1;
+                  $('button.pdf-button').on('click', function() {
+                    gtag("event", "Export PDF", {"which_pdf": "guidePDFbutton","which_button": "page_button","Current URL": window.location.href,"number_pages": numChildrenPDF});
                   });
-                  // Add tracking to provide feedback
-                  $('#provide-feedback').on('click', function() {
-                    gtag("event", "Provide Feedback", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+                  $('.pdf-article').on('click', function() {
+                    gtag("event", "Export PDF", {"which_pdf": "pageActionButton","which_button": "page_action","Current URL": window.location.href,"number_pages": numChildrenPDF});
                   });
-                  // Add tracking to printing page
-                  $('#print-article').on('click', function() {
-                    gtag("event", "Print page", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
-                  });
-                  // Add tracking for external links
-                  gaExternalLinks();
+                }, 1000);
+                // Add tracking to talk to sales
+                $('#talk-to-sales').on('click', function() {
+                  gtag("event", "Contact Sales", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+                });
+                // Add tracking to provide feedback
+                $('#provide-feedback').on('click', function() {
+                  gtag("event", "Provide Feedback", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+                });
+                // Add tracking to printing page
+                $('#print-article').on('click', function() {
+                  gtag("event", "Print page", {"space_name": viewportList.currentContentSource.name,"which_button": "page_action","Current URL": window.location.href,"value": 0});
+                });
+                // Add tracking for external links
+                gaExternalLinks();
+              });
             }
               
             function gaExternalLinks() {
@@ -2139,7 +2145,6 @@ function confCloudJS() {
           });
         });
       });
-    });
   });
 }
 

@@ -9,6 +9,7 @@ function compare( a, b ) {
   return 0;
 }
 scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
+$('body').attr('data-pageid',$('body').attr('pageid'));
 
  var script = document.createElement("SCRIPT");
  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
@@ -25,7 +26,9 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
   var script = document.createElement("SCRIPT");
   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SDDSB8BN8V';
   script.type = 'text/javascript';
+  script.onerror = function() { console.log('Firefox error loading?')}
   script.onload = function() {
+
     window.dataLayer = window.dataLayer || [];
     var gtag = function(){dataLayer.push(arguments);}
 
@@ -1921,13 +1924,13 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
           if (e.keyCode in map) {
             map[e.keyCode] = true;
             if ((e.ctrlKey || e.metaKey) && e.altKey && map[79]) { // Go to the page in Confl Cloud
-              window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
+              window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('data-pageid'), '_blank');
             }
             if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test PDFing
               $('#pdf-article').show();
             }
             if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac
-              window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('pageid'), '_blank');
+              window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('data-pageid'), '_blank');
             }
             if (map[188] || map[190]) {   // ,/. goes to previous/next topic
               if ($(e.target).is('section *')) { return; } // Ignore if inside search or text box
@@ -1993,7 +1996,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
               });
             }
             var apiData = JSON.stringify({
-              'pageId': $('body').attr('pageid'),
+              'pageId': $('body').attr('data-pageid'),
               'scope': 'descendants',
               'templateId': pdfTemplateID,
               'locale': 'en-US',

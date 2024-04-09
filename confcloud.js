@@ -9,7 +9,6 @@ function compare( a, b ) {
   return 0;
 }
 scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( compare );
-$('body').attr('data-pageid',$('body').attr('pageid'));
 
  var script = document.createElement("SCRIPT");
  script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
@@ -17,6 +16,7 @@ $('body').attr('data-pageid',$('body').attr('pageid'));
  script.onload = function() {
 
   $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
+$('body').attr('data-pageid',$('body').attr('pageid'));
 
   var script = document.createElement("SCRIPT");
   script.src = 'https://esouthers.github.io/infocenter-viewport/config.js';

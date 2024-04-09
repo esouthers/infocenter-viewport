@@ -16,7 +16,7 @@ scrollHelpCenter.collection.members = scrollHelpCenter.collection.members.sort( 
  script.onload = function() {
 
   $('link[rel="icon"]').attr('href','https://esouthers.github.io/infocenter-viewport/assets/favicon.png');
-$('body').attr('data-pageid',$('body').attr('pageid'));
+  $('body').attr('data-pageid',$('body').attr('pageid'));
 
   var script = document.createElement("SCRIPT");
   script.src = 'https://esouthers.github.io/infocenter-viewport/config.js';

@@ -2063,7 +2063,6 @@ function confCloudJS() {
                 }
               });
             }
-            // 01/27/24: Need to edit this for Conf Cloud and uncomment above calls
             function gaSetup() {
               loadScript('https://www.googletagmanager.com/gtag/js?id=G-SDDSB8BN8V', function() {
                 gtag('js', new Date());
@@ -2141,7 +2140,6 @@ function confCloudJS() {
                 gtag("event", "User Preferences", {"Action": eventAction,"New Value": eventLabel, "Current URL": window.location.href});
               }
             } 
-            // End of must edit for GA
           });
         });
       });

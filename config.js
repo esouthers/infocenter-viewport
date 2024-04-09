@@ -10,7 +10,7 @@ var hvConfig = {
     pdfTemplateIDA4:     'b0be2f1b-fac2-43b6-9256-673607eac403',
 
   // This is used for users who have bookmarks of our old Server site. The URL construction was "HMP3.8" versus now which is "HMP/3.8". If the redirect value doesn't exist, then the same value is implied. There is no need to update this as products are added, as they wouldn't have been in users old bookmarks. For example, AIr, Pro, Rack were not yet converted to the Server instance.
-  productRedirectJSON: {
+  productRedirect: {
                           "Command360": {},
                           "CDVR":       {},
                           "CS":         {"redirect": "CoolSign"},

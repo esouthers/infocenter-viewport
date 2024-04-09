@@ -48,6 +48,17 @@ var hvConfig = {
   // List of spaces you want to hide from search results
   hiddenSpaces:        ['Inclusion Library'],
 
+  // List of product version redirects. For example, MakitoXEnc 2.5.3 and 2.5.4 have the same documentation as 2.5.2. This also shows a popup when viewing the olderVersion documentation that it applies to the newerVersions as well.
+  redirects : [
+                { 'productPrefix': 'MakitoXDec',
+                  'newerVersions': ['2.5.3'],
+                  'olderVersion':   '2.5.2'
+                },
+                { 'productPrefix': 'MakitoXEnc',
+                  'newerVersions': ['2.5.3', '2.5.4'],
+                  'olderVersion':   '2.5.2'
+                }
+             ],
   // List of valid variants and their IDs necessary for PDF exports. To find these values, in the Confluence space, click Document Toolbox > Read icon. Select the variant in the dropdown. Click the Share icon > Copy icon. The resulting URL shows the variant ID. For example:
   //   https://haivisioninfocenter.atlassian.net/wiki/plugins/servlet/ac/k15t-scroll-document-versions-for-confluence/k15t-docs-document-viewer?content.id=18428819#!/view/18387903?pageId=18382917&variantId=75a02b4af9de6080ddcc8464c9c00f45
   // Also lists valid Transmitter variant/version combinations. For example, Air 5.3.1 exists, but 3.5 does not

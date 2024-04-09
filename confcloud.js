@@ -149,9 +149,8 @@ function confCloudJS() {
                 }
               }
               function forwardIfProdVer(path) {
-                let jsonObject = hvConfig.productRedirectJSON;
                 let found = false;
-                $.each(jsonObject, function(oldPrefix,prefixItem) {
+                $.each(hvConfig.productRedirect, function(oldPrefix,prefixItem) {
                   $('html').removeClass('show');
                   let regexp = new RegExp("/" + oldPrefix + "([^/]+)\/(.+)","g");
                   let newURL = prefixItem.redirect != undefined ? '/' + prefixItem.redirect + '/' : '/' + oldPrefix + '/';

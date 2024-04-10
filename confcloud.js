@@ -1557,7 +1557,12 @@ function confCloudJS() {
                   let flagID = 'flag' + product.prefix;
                   newMsg = 'Documentation for ' + viewportList.currentContentSource.name + ' ';
 
-                  $.each(product.newerVersions, function(j,version) {
+                  newVerText = product.newerVersions.join(', ');
+                  if (product.newerVersions.length > 1) {
+                    newVerText = newMsg.replace(/,([^,]*)$/, ', and$1');
+                  }
+
+/*                  $.each(product.newerVersions, function(j,version) {
                     var isLastElement = j == product.newerVersions.length - 1;
                     if (j == 0) {
                       newMsg += version;
@@ -1568,8 +1573,8 @@ function confCloudJS() {
                     else {
                       newMsg += ', ' + version;
                     }
-                  });
-                  newMsg += ' is the same as version ' + product.olderVersion + '.';
+                  }); */
+                  newMsg = newMsg + newVerText + ' is the same as version ' + product.olderVersion + '.';
                   addIconNextToVersion(newMsg, flagID, 14);
                 };
               });

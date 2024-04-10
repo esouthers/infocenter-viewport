@@ -48,18 +48,20 @@ var hvConfig = {
   hiddenSpaces:        ['Inclusion Library'],
 
   // List of product version redirects. For example, MakitoXEnc 2.5.3 and 2.5.4 have the same documentation as 2.5.2. This also shows a popup when viewing the olderVersion documentation that it applies to the newerVersions as well.
+  // Note: you can have multiple prefix entries if there are multiple different redirects. For example, see the commented out section.
   redirects : [
                 { 'prefix': 'MakitoXDec',
-                  'newerVersions': ['2.5.3'],
-                  'olderVersion':   '2.5.2'
+                  'olderVersion':   '2.5.2',
+                  'newerVersions': ['2.5.3']
                 },
+// THIS IS JUST AN EXAMPLE. DO NOT UNCOMMENT
+//                { 'prefix': 'MakitoXEnc',
+//                  'olderVersion':   '2.4',
+//                  'newerVersions': ['2.4.3', '2.4.2', '2.4.1']
+//                }.
                 { 'prefix': 'MakitoXEnc',
-                  'newerVersions': ['2.5.3', '2.5.4'],
-                  'olderVersion':   '2.5.2'
-                },
-                { 'prefix': 'MakitoXEnc',
-                  'newerVersions': ['2.4.3', '2.4.2', '2.4.1'],
-                  'olderVersion':   '2.4'
+                  'olderVersion':   '2.5.2',
+                  'newerVersions': ['2.5.3', '2.5.4']
                 }
              ],
   // List of valid variants and their IDs necessary for PDF exports. To find these values, in the Confluence space, click Document Toolbox > Read icon. Select the variant in the dropdown. Click the Share icon > Copy icon. The resulting URL shows the variant ID. For example:

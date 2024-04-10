@@ -1595,6 +1595,8 @@ function confCloudJS() {
                       newMsg += ', ' + version;
                     }
                   });
+                  newMsg += ' is the same as version ' + product.olderVersion'.';
+                  addIconNextToVersion(newMsg, flagID, 14);
                 };
               });
 /*              if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {

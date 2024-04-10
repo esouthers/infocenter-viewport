@@ -72,29 +72,19 @@ function confCloudJS() {
             let page404 = ($('[i18nkey="page.error.status.404.label"]').length > 0);
             let pageSearch = (window.location.pathname == '/search.html');
             let doNotShowPage = false;
+            let redirecting = false;
             // Redirect to homepage
             if (window.location.pathname == '/') {
               window.location.replace('https://' + window.location.hostname + '/Home');
+              redirecting = true;
               return false;
             }
             else if (window.location.pathname.indexOf('/index.html') >= 0) {
               window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('/index.html',''));
+              redirecting = true;
               return false;
             }
-/*            else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
-              window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
-              return false;
-            }
-            else if (window.location.pathname.indexOf('MakitoXEnc/2.5.3') >= 0) {
-              window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
-              return false;
-            }
-            else if (window.location.pathname.indexOf('MakitoXDec/2.5.3') >= 0) {
-              window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
-              return false;
-            } */
             // Redirect to older version if newer versions have the same documentation
-            let redirecting = false;
             $.each(hvConfig.redirects, function(i,product) {
               $.each(product.newerVersions, function(j,version) {
                 if (window.location.pathname.indexOf(product.prefix  + '/' + version) >= 0) {

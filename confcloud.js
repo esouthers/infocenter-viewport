@@ -943,17 +943,10 @@ function confCloudJS() {
                 }
               }
               $('.aui-close-button',cookieFlag).on('click',function() {
+                $('.versionIcon').fadeIn(1000);
                 let cookieToSet = $('[id^=flag]', $(this).parent()).attr('id');
                 if ((isInIframe()) || ((getLocalStorageWithExpiry('acceptedCookie')=="true") && ($(this).siblings('.flagDoNotShow').children('input').is(':checked')))) {
-                  if (expireDays == 'session') {
-                    sessionStorage.setItem(cookieToSet,'true');
-                  }
-                  else {
-                    setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
-                  }
-                }
-                if ((cookieToSet == 'flagOldVer') || (cookieToSet == 'flagBeta') || (cookieToSet == 'flagMaintenance') || (cookieToSet == 'flagMakito') || (cookieToSet == 'flagMakitoDec')) {
-                  $('.versionIcon').fadeIn(1000);
+                  expireDays == 'session' ? sessionStorage.setItem(cookieToSet,'true') : setLocalStorageWithExpiry(cookieToSet,'true', expireDays);
                 }
               });
             }
@@ -979,12 +972,7 @@ function confCloudJS() {
                     $('.aui-nav-actions-list.flagDoNotShow').removeClass('hidden');
                     cookieFlag.close();
                     setLocalStorageWithExpiry('acceptedCookie', 'true', 3650);
-                    if ($('#vp-js-desktop__navigation').hasClass('sidebar-collapsed')) {
-                      setLocalStorageWithExpiry('collapsed-sidebar', 'true', 3650);
-                    }
-                    else {
-                      setLocalStorageWithExpiry('collapsed-sidebar', 'false', 3650);
-                    }
+                    $('#vp-js-desktop__navigation').hasClass('sidebar-collapsed') ? setLocalStorageWithExpiry('collapsed-sidebar', 'true', 3650) : setLocalStorageWithExpiry('collapsed-sidebar', 'false', 3650);
                     $('#userprefs .cookieContainer').removeClass('hidden');
                     $('#userprefs .cookieDisabledNote').addClass('hidden');
                     // Setup Google Analytics
@@ -1029,15 +1017,8 @@ function confCloudJS() {
                 let titleBreadcrumb = '<li id="titleBreadcrumb" style="display: none;">' + that.text() + '</li>';
                 $('.breadcrumbs').append(titleBreadcrumb);
                 $(window).on('resize scroll', function() {
-                  if ($('.search-header').length > 0) { that = $('.search-header');   }
-                  else                                { that = $('header > h1');      }
-                  if (that.isInViewport($('main > header').height())) {
-                    $('#titleBreadcrumbSlash').hide();
-                    $('#titleBreadcrumb').hide();
-                  } else {
-                    $('#titleBreadcrumbSlash').show();
-                    $('#titleBreadcrumb').show();
-                  }
+                  that = $('.search-header').length > 0 ? $('.search-header') : $('header > h1');
+                  that.isInViewport($('main > header').height()) ? ($('#titleBreadcrumbSlash, #titleBreadcrumb').hide()) : ($('#titleBreadcrumbSlash, #titleBreadcrumb').show());
                   hideShowBreadcrumbs(parseInt($('#vp-js-desktop__navigation').css('width')));
                 });
                 var breadcrumbs = $('.breadcrumbs--fit-content li');

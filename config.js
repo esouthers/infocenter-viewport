@@ -11,7 +11,7 @@ var hvConfig = {
     // Add a server outage message. Update with the proper dates
     // maintenanceTime: new Date(YYYY, MM, DD, HH, mm, ss, 0)
     //     ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
-    maintenanceDate:      new Date(2024, 10, 3, 4, 0, 0, 0),
+    maintenanceDate:      new Date(2023, 10, 3, 4, 0, 0, 0),
     maintenanceTime:      '4:00AM EDT',
     maintenanceDuration:  '2 hours',
 

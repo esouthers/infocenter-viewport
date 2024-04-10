@@ -49,11 +49,11 @@ var hvConfig = {
 
   // List of product version redirects. For example, MakitoXEnc 2.5.3 and 2.5.4 have the same documentation as 2.5.2. This also shows a popup when viewing the olderVersion documentation that it applies to the newerVersions as well.
   redirects : [
-                { 'productPrefix': 'MakitoXDec',
+                { 'prefix': 'MakitoXDec',
                   'newerVersions': ['2.5.3'],
                   'olderVersion':   '2.5.2'
                 },
-                { 'productPrefix': 'MakitoXEnc',
+                { 'prefix': 'MakitoXEnc',
                   'newerVersions': ['2.5.3', '2.5.4'],
                   'olderVersion':   '2.5.2'
                 }

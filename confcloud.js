@@ -81,7 +81,7 @@ function confCloudJS() {
               window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('/index.html',''));
               return false;
             }
-            else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
+/*            else if (window.location.pathname.indexOf('MakitoXEnc/2.5.4') >= 0) {
               window.location.replace('https://' + window.location.hostname + '/MakitoXEnc/2.5.2');
               return false;
             }
@@ -92,8 +92,15 @@ function confCloudJS() {
             else if (window.location.pathname.indexOf('MakitoXDec/2.5.3') >= 0) {
               window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
               return false;
-            }
-            else if (pageSearch || page404) {
+            } */
+            $.each(hvConfig.redirects, function(i,product) {
+              $.each(product.newerVersions, function(j,version) {
+              if (window.location.pathname.indexOf(product.prefix  + '/' + version) >= 0) {
+                window.location.replace('https://' + window.location.hostname + '/' + product.prefix  + '/' + product.olderVersion);
+                return false;
+              }
+            });
+            if (pageSearch || page404) {
               let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
               $('#content').before(sidebar);
               if (page404) {

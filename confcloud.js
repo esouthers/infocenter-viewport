@@ -372,9 +372,7 @@ function confCloudJS() {
                   $.each(viewportList.members, function(key,val) {
                     let productToAdd = '';
                     if (val.variants?.available.length ?? 0 > 1) {
-//                    if (val.prefix == 'Transmitters') {
                       $.each(val.variants.available, function (i,j) {
-//                      $.each(hvConfig.variants.transmitters, function (i,j) {
                         productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.name + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.name + '</span></li>';
                       });
                     }
@@ -867,8 +865,6 @@ function confCloudJS() {
               $('.vp-variant-picker').remove();
               let currentlyViewing = viewportList.currentContentSource;
               if (!currentlyViewing) { return false;}
-        /*      let versionsAirPro3Rack3 = ["5.3.1"];
-              let versionsPro4Rack4 = ["3.5"]; */
               var versionsValid = [];
                 let variantViewing = currentlyViewing.variants.current.name;
                 let versionViewing = currentlyViewing.versions.current.name;
@@ -881,23 +877,6 @@ function confCloudJS() {
                     $('.header__navigation--heading').text(variantViewing);
                   }
                 });
-        /*
-                if ((variantViewing == 'Air') || (variantViewing == 'Pro3') || (variantViewing == 'Rack200/300')) {
-                  if (versionsAirPro3Rack3.length == 1) {
-                    $('#vp-js-desktop__navigation__picker').remove();
-                  }
-                  else {
-                    var versionsToRemove = versionsPro4Rack4;
-                  }
-                }
-                else {
-                  if (versionsPro4Rack4.length == 1) {
-                    $('#vp-js-desktop__navigation__picker').remove();
-                  }
-                  else {
-                    var versionsToRemove = versionsAirPro3Rack3;
-                  }
-                } */
                 var removeUnusedVersions = new MutationObserver(function(mutations) {
                   $('.vp-picker__menu__item').each(function() {
                     if (versionsValid.indexOf($(this).text()) < 0) {

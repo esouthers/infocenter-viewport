@@ -1577,7 +1577,7 @@ function confCloudJS() {
                 addIconNextToVersion(newMsg, flagID, 14);
               }
   
-              // Redirect to older version if newer versions have the same documentation
+              // Redirect to older version if newer versions have the same documentation 
               $.each(hvConfig.redirects, function(i,product) {
                 if (window.location.pathname.indexOf(product.prefix  + '/' + product.olderVersion) >= 0) {
                   let flagID = 'flag' + product.prefix;

@@ -560,7 +560,7 @@ function confCloudJS() {
                       exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
                     }
                     else {
-                      exitSearchLink = '/' + searchedSpaceKey + '/' + getLatestVariantVersion(variant) + '/' + searchedVariant;
+                      exitSearchLink = '/' + searchedSpaceKey + '/' + getLatestVariantVersion(searchedVariant) + '/' + searchedVariant;
                     }
                   }
                   else {

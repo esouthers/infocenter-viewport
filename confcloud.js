@@ -93,12 +93,14 @@ function confCloudJS() {
               window.location.replace('https://' + window.location.hostname + '/MakitoXDec/2.5.2');
               return false;
             } */
+            // Redirect to older version if newer versions have the same documentation
             $.each(hvConfig.redirects, function(i,product) {
               $.each(product.newerVersions, function(j,version) {
-              if (window.location.pathname.indexOf(product.prefix  + '/' + version) >= 0) {
-                window.location.replace('https://' + window.location.hostname + '/' + product.prefix  + '/' + product.olderVersion);
-                return false;
-              }
+                if (window.location.pathname.indexOf(product.prefix  + '/' + version) >= 0) {
+                  window.location.replace('https://' + window.location.hostname + '/' + product.prefix  + '/' + product.olderVersion);
+                  return false;
+                }
+              });
             });
             if (pageSearch || page404) {
               let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
@@ -1574,7 +1576,28 @@ function confCloudJS() {
                 newMsg = 'You are viewing documentation for ' + spaceName + ' ' + curVer + '. However, the latest version is ' + latestVer + '. Documentation is not always updated for older releases.';
                 addIconNextToVersion(newMsg, flagID, 14);
               }
-              if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
+  
+              // Redirect to older version if newer versions have the same documentation
+              $.each(hvConfig.redirects, function(i,product) {
+                if (window.location.pathname.indexOf(product.prefix  + '/' + product.olderVersion) >= 0) {
+                  let flagID = 'flag' + product.prefix;
+                  newMsg = 'Documentation for ' + viewportList.currentContentSource.name;
+
+                  $.each(product.newerVersions, function(j,version) {
+                    var isLastElement = j == product.newerVersions.length - 1;
+                    if (j == 0) {
+                      newMsg += version;
+                    }
+                    else if (isLastElement) {
+                      newMsg += ' and ' + version;
+                    }
+                    else {
+                      newMsg += ', ' + version;
+                    }
+                  });
+                };
+              });
+/*              if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
                 let flagID = 'flagMakito';
                 newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
                 addIconNextToVersion(newMsg, flagID, 14);
@@ -1584,7 +1607,7 @@ function confCloudJS() {
                 newMsg = 'Documentation for Makito X Decoder version 2.5.3 is the same as version 2.5.2.';
                 addIconNextToVersion(newMsg, flagID, 14);
               }
-
+*/
               // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
               // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
               //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)

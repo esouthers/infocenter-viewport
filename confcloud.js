@@ -247,6 +247,7 @@ function confCloudJS() {
                   $('.vp-search-page__main-inner').prepend('<h1 class="search-header">Search for \'<span id="searchTerm">' + paramsGetS + '</span>\' returned <span id="numResults"></span> result<span id="pluralResults"></span>.');
                   $('.search-header').after('<p class="search-header-text">Showing results <span id="startIdx"></span> to <span id="stopIdx"></span>.</p>');
                   $('.search-header-text').after('<div class="noResults hidden"><p class="mb-4">Your search returned no matches.</p>Please check the spelling of your search terms or try other, more general keywords.</div>');
+                  $('.noResults').after('<div class="searchSpinner" style="display:none;"><div class="HaiSpinner" data-theme="argon"><div class="spinner-border" style="animation: 1s linear 0s infinite normal none running spin;"></div></div></div>');
                   $('#searchTerm').text(paramsGetQ);
                   $('#startIdx').text(parseInt(paramsGetStart) + 1);
 
@@ -257,7 +258,9 @@ function confCloudJS() {
                   newSearch(searchURL);
                   function newSearch(restURL) {
                     $('#custom-search-page-results li').remove();
+                    $('.vp-search-page__main-inner .HaiSpinner').show();
                     $.get(restURL, function(data, status, jqXHR) {
+                      $('.vp-search-page__main-inner .HaiSpinner').hide();
                       var numResults = data.total;
                       if (numResults > 0) {
                         $(data.hits).each(function(i,val){
@@ -797,7 +800,7 @@ function confCloudJS() {
                 }
               }
               function doSearch(str, searchAllVersions, searchAllProducts) {
-                $('.searchSpinner').show();
+                $('#suggestionList .searchSpinner').show();
                 $('#suggestionList li:not(.searchSpinner)').remove();
                 searchAllVersions = searchAllVersions || false;
                 searchAllProducts = searchAllProducts || false;
@@ -843,7 +846,7 @@ function confCloudJS() {
                     let noResults = '<li id="" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><div class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" tabindex="-1"><span class="vp-search-suggestion-option__label">Your search returned no matches.</span><div class="vp-search-suggestion-option__info-container"></div></div></li>';
                     $('#suggestionList').append(noResults);
                   }
-                  $('.searchSpinner').hide();
+                  $('#suggestionList .searchSpinner').hide();
         //          $('#suggestionList').show();
                 }).fail(function() {
                   // error handler

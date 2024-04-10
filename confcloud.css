@@ -2584,13 +2584,17 @@ body.beta .vp-search-suggestion-panel {
 }
 .HaiSpinner[data-theme=argon] div.spinner-border {
   position: relative;
-  height: 1.058rem;
-  width: 1.058rem;
+  height: 1rem;
+  width: 1rem;
   box-sizing: border-box;
   border-radius: 50%;
   border-color: var(--haiui-blue-04) transparent;
   border-style: solid; 
   border-width: 2px;
+}
+.vp-search-page__main-inner .HaiSpinner[data-theme=argon] div.spinner-border {
+  height: 3rem;
+  width: 3rem;
 }
 .forPrint {
   display: none;

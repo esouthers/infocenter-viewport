@@ -372,7 +372,7 @@ function confCloudJS() {
 //                    if (val.prefix == 'Transmitters') {
                       $.each(val.variants.available, function (i,j) {
 //                      $.each(hvConfig.variants.transmitters, function (i,j) {
-                        productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.variant + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.variant + '</span></li>';
+                        productToAdd += '<li data-vp-id="search-page-horizontal-filter-content-item" data-name="s" data-value="' + val.prefix + '" data-transmitters="true" data-variant="' + j.name + '"class="vp-dropdown__option" aria-selected="false" data-headlessui-state="" id="headlessui-listbox-option-prod' + key + 'fu' + i + '" role="option" tabindex="-1"><span class="vp-dropdown__option-label">' + j.name + '</span></li>';
                       });
                     }
                     else {

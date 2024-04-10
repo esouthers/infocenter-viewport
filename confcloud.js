@@ -77,12 +77,11 @@ function confCloudJS() {
             if (window.location.pathname == '/') {
               window.location.replace('https://' + window.location.hostname + '/Home');
               redirecting = true;
-              return false;
             }
+            // Remove instances of index.html
             else if (window.location.pathname.indexOf('/index.html') >= 0) {
               window.location.replace('https://' + window.location.hostname + window.location.pathname.replace('/index.html',''));
               redirecting = true;
-              return false;
             }
             // Redirect to older version if newer versions have the same documentation
             $.each(hvConfig.redirects, function(i,product) {

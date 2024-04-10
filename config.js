@@ -56,7 +56,7 @@ var hvConfig = {
   hiddenSpaces:        ['Inclusion Library'],
 
   // List of product version redirects. For example, MakitoXEnc 2.5.3 and 2.5.4 have the same documentation as 2.5.2. This also shows a popup when viewing the olderVersion documentation that it applies to the newerVersions as well.
-  // Note: you can have multiple prefix entries if there are multiple different redirects. For example, see the commented out section.
+  // Note: you can have multiple prefix entries if there are multiple different redirects. For example, see the commented out section, it is a duplicate MakitoXEnc section but for 2.4* versions.
   redirects : [
                 { 'prefix': 'MakitoXDec',
                   'olderVersion':   '2.5.2',

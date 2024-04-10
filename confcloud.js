@@ -1581,7 +1581,7 @@ function confCloudJS() {
               $.each(hvConfig.redirects, function(i,product) {
                 if (window.location.pathname.indexOf(product.prefix  + '/' + product.olderVersion) >= 0) {
                   let flagID = 'flag' + product.prefix;
-                  newMsg = 'Documentation for ' + viewportList.currentContentSource.name;
+                  newMsg = 'Documentation for ' + viewportList.currentContentSource.name + ' ';
 
                   $.each(product.newerVersions, function(j,version) {
                     var isLastElement = j == product.newerVersions.length - 1;

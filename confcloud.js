@@ -1587,7 +1587,6 @@ function confCloudJS() {
                 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
                 let monthStr = month[maintenanceDate.getMonth()];
                 newMsg = 'Server maintenance will occur on ' + monthStr + ' ' + maintenanceDate.getDate() + ', ' + maintenanceDate.getFullYear() +' at approximately ' + hvConfig.maintenanceTime + '. Expect up to ' + hvConfig.maintenanceDuration + ' of downtime.';
-                addBanner(newMsg, true, 'session');
                 addIconNextToVersion(newMsg, flagID, 'session');
             //    }
               }

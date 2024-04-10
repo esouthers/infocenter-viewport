@@ -258,9 +258,9 @@ function confCloudJS() {
                   newSearch(searchURL);
                   function newSearch(restURL) {
                     $('#custom-search-page-results li').remove();
-                    $('.vp-search-page__main-inner .HaiSpinner').show();
+                    $('.vp-search-page__main-inner .searchSpinner').show();
                     $.get(restURL, function(data, status, jqXHR) {
-                      $('.vp-search-page__main-inner .HaiSpinner').hide();
+                      $('.vp-search-page__main-inner .searchSpinner').hide();
                       var numResults = data.total;
                       if (numResults > 0) {
                         $(data.hits).each(function(i,val){

@@ -574,13 +574,15 @@ function confCloudJS() {
                   updateBreadcrumbs();
 
                   function getLatestVariantVersion(variant) {
+                    let version = '';
                     $.each(hvConfig.variants, function(i,product) {
                       $.each(product, function(i,j) {
                         if (j.variant == variant) {
-                          return j.versions[0];
+                          version = j.versions[0];
                         }
                       });
                     });
+                    return version;
                   }
                 }
               }

@@ -1558,7 +1558,7 @@ function confCloudJS() {
                   newMsg = 'Documentation for ' + viewportList.currentContentSource.name + ' ';
 
                   newVerText = product.newerVersions.join(', ');
-                  if (product.newerVersions.length > 1) {
+                  if (product.newerVersions.length > 1) { // Replace last comma with an and
                     newVerText = newVerText.replace(/,([^,]*)$/, ', and$1');
                   }
 
@@ -1578,31 +1578,16 @@ function confCloudJS() {
                   addIconNextToVersion(newMsg, flagID, 14);
                 };
               });
-/*              if (window.location.pathname.indexOf('MakitoXEnc/2.5.2') >= 0) {
-                let flagID = 'flagMakito';
-                newMsg = 'Documentation for Makito X Encoder versions 2.5.3 and 2.5.4 is the same as version 2.5.2.';
-                addIconNextToVersion(newMsg, flagID, 14);
-              }
-              if (window.location.pathname.indexOf('MakitoXDec/2.5.2') >= 0) {
-                let flagID = 'flagMakitoDec';
-                newMsg = 'Documentation for Makito X Decoder version 2.5.3 is the same as version 2.5.2.';
-                addIconNextToVersion(newMsg, flagID, 14);
-              }
-*/
-              // Add a server outage message. Update the next line with the proper dates and uncomment the following set of lines
-              // var maintenanceTime = new Date(YYYY, MM, DD, HH, mm, ss, 0); 
-              //         ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
-            //  var maintenanceTime = new Date(2022, 05, 16, 00, 00, 00, 0);
-              maintenanceTime = new Date(2023, 10, 03, 04, 00, 00, 0);
+              // Add a server outage message
+              maintenanceDate = hvConfig.maintenanceDate;
               var currentTime = new Date();
-              if (currentTime < maintenanceTime) {
+              if (currentTime < maintenanceDate) {
                 let flagID = 'flagMaintenance';
             //    if (!(sessionStorage.getItem(flagID))) {
-                  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-                  let monthStr = month[maintenanceTime.getMonth()];
-                  newMsg = 'Server maintenance will occur on ' + monthStr + ' ' + maintenanceTime.getDate() + ', ' + maintenanceTime.getFullYear() +' at approximately 4:00AM EDT. Expect up to 2 hours of downtime.';
-            //      let timetoexpire = Math.round((maintenanceTime.getTime() - currentTime.getTime())/(1000*60*60*24));
-            //      addBanner(newMsg, true, 'session');
+                const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                let monthStr = month[maintenanceDate.getMonth()];
+                newMsg = 'Server maintenance will occur on ' + monthStr + ' ' + maintenanceDate.getDate() + ', ' + maintenanceDate.getFullYear() +' at approximately ' + hvConfig.maintenanceTime + '. Expect up to ' + hvConfig.maintenanceDuration + ' of downtime.';
+                addBanner(newMsg, true, 'session');
                 addIconNextToVersion(newMsg, flagID, 'session');
             //    }
               }

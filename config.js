@@ -8,6 +8,13 @@ var hvConfig = {
     pdfTemplateIDLetter: '69ac7180-c478-47e8-a5f8-0b5e2e8c58c7',
     pdfTemplateIDA4:     '1461ba7c-3762-4b9a-8898-5994d5557549',
 
+    // Add a server outage message. Update with the proper dates
+    // maintenanceTime: new Date(YYYY, MM, DD, HH, mm, ss, 0)
+    //     ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
+    maintenanceDate:      new Date(2023, 10, 3, 4, 0, 0, 0),
+    maintenanceTime:      '4:00AM EDT',
+    maintenanceDuration:  '2 hours',
+
   // This is used for users who have bookmarks of our old Server site. The URL construction was "HMP3.8" versus now which is "HMP/3.8". If the redirect value doesn't exist, then the same value is implied. There is no need to update this as products are added, as they wouldn't have been in users old bookmarks. For example, AIr, Pro, Rack were not yet converted to the Server instance.
   productRedirect: {
               "Command360": {},
@@ -64,9 +71,10 @@ var hvConfig = {
                   'newerVersions': ['2.5.3', '2.5.4']
                 }
              ],
+
   // List of valid variants and their IDs necessary for PDF exports. To find these values, in the Confluence space, click Document Toolbox > Read icon. Select the variant in the dropdown. Click the Share icon > Copy icon. The resulting URL shows the variant ID. For example:
   //   https://haivisioninfocenter.atlassian.net/wiki/plugins/servlet/ac/k15t-scroll-document-versions-for-confluence/k15t-docs-document-viewer?content.id=18428819#!/view/18387903?pageId=18382917&variantId=75a02b4af9de6080ddcc8464c9c00f45
-  // Also lists valid Transmitter variant/version combinations. For example, Air 5.3.1 exists, but 3.5 does not
+  // Also, lists valid Transmitter variant/version combinations. For example, Air 5.3.1 exists, but 3.5 does not
   variants: { 
     "transmitters": [
       {

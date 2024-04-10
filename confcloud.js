@@ -94,15 +94,19 @@ function confCloudJS() {
               return false;
             } */
             // Redirect to older version if newer versions have the same documentation
+            let redirecting = false;
             $.each(hvConfig.redirects, function(i,product) {
               $.each(product.newerVersions, function(j,version) {
                 if (window.location.pathname.indexOf(product.prefix  + '/' + version) >= 0) {
                   window.location.replace('https://' + window.location.hostname + '/' + product.prefix  + '/' + product.olderVersion);
-                  return false;
+                  redirecting = true;
                 }
               });
             });
-            if (pageSearch || page404) {
+            if (redirecting) {
+              return false;
+            }
+            else if (pageSearch || page404) {
               let sidebar = '<div class="vp-article__aside-left no-print"><div id="vp-js-desktop__navigation" class="vp-article__aside-left__inner"><nav id="3ry00fx860k" aria-label="Main" class="vp-desktop-navigation__page-tree vp-scrollable-container"><div class="vp-tree vp-desktop-navigation__page-tree__tree"><ul class="vp-tree__container relative m-0 outline-none" role="tree"></ul></div></nav></div></div>';
               $('#content').before(sidebar);
               if (page404) {

@@ -8,10 +8,11 @@ var hvConfig = {
     pdfTemplateIDLetter: '69ac7180-c478-47e8-a5f8-0b5e2e8c58c7',
     pdfTemplateIDA4:     '1461ba7c-3762-4b9a-8898-5994d5557549',
 
-    // Add a server outage message. Update with the proper dates
-    // maintenanceTime: new Date(YYYY, MM, DD, HH, mm, ss, 0)
+    // Add a server outage message. Update with the proper dates. Format of maintenanceTime is: new Date(YYYY, MM, DD)
     //     ***NOTE****: MM starts at 0 (Jan) and ends at 11 (Dec)
-    maintenanceDate:      new Date(2023, 10, 3, 4, 0, 0, 0),
+    // Sample message: "Server maintenance will occur on November 3, 2023 at approximately 4:00AM EDT. Expect up to 2 hours of downtime.""
+
+    maintenanceDate:      new Date(2023, 10, 3),
     maintenanceTime:      '4:00AM EDT',
     maintenanceDuration:  '2 hours',
 

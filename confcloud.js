@@ -1595,7 +1595,7 @@ function confCloudJS() {
                       newMsg += ', ' + version;
                     }
                   });
-                  newMsg += ' is the same as version ' + product.olderVersion'.';
+                  newMsg += ' is the same as version ' + product.olderVersion + '.';
                   addIconNextToVersion(newMsg, flagID, 14);
                 };
               });

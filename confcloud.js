@@ -415,7 +415,7 @@ function confCloudJS() {
         //          if (searchedVariant == '') { $('[data-vp-id="search-page-horizontal-filter-variants-button"] .vp-dropdown__button-label').text('All variants'); }
 
                   // Indicate selected product
-                  if (searchedSpaceKey == 'Transmitters') { 
+                  if (searchedVariant != '') { 
                     $('[data-vp-id="search-page-horizontal-filter-content-button"] .vp-dropdown__button-label').text(searchedVariant); 
                     $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"]').addClass('is-selected').attr('aria-selected', 'true').attr('data-headlessui-state','selected');
                     $('ul[data-vp-id="search-page-horizontal-filter-content-options"] [data-value="' + searchedSpaceKey + '"][data-variant="' + searchedVariant + '"] .vp-dropdown__option-label').addClass('is-selected');
@@ -562,12 +562,11 @@ function confCloudJS() {
                       exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
                     }
                     else {
-                      exitSearchLink = '/' + searchedSpaceKey;
+                      exitSearchLink = '/' + searchedSpaceKey + '/' + getLatestVariantVersion(variant) + '/' + searchedVariant;
                     }
                   }
                   else {
                     exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;
-
                   }
                   $('.header__navigation--heading').attr('href',exitSearchLink);
                   $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
@@ -575,6 +574,16 @@ function confCloudJS() {
                     '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
 
                   updateBreadcrumbs();
+
+                  function getLatestVariantVersion(variant) {
+                    $.each(hvConfig.variants, function(i,product) {
+                      $.each(product, function(i,j) {
+                        if (j.variant == variant) {
+                          return j.versions[0];
+                        }
+                      });
+                    });
+                  }
                 }
               }
             }

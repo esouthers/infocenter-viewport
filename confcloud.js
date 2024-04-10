@@ -1559,7 +1559,7 @@ function confCloudJS() {
 
                   newVerText = product.newerVersions.join(', ');
                   if (product.newerVersions.length > 1) {
-                    newVerText = newMsg.replace(/,([^,]*)$/, ', and$1');
+                    newVerText = newVerText.replace(/,([^,]*)$/, ', and$1');
                   }
 
 /*                  $.each(product.newerVersions, function(j,version) {

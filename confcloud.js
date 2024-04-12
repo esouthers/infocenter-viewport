@@ -580,11 +580,12 @@ function confCloudJS() {
                 }
                 $('.header__navigation--heading').attr('href',exitSearchLink);
 
-                if (searchedVersion == '') { searchedVersion = getLatestProductVersion(searchedSpaceKey); }
-                if (searchedVersion != '') {
-                  exitSearchLink += '/' + searchedVersion;
+                if (searchedVersion == '') {
+                  searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                  if (searchedVersion != '') {
+                    exitSearchLink += '/' + searchedVersion;
+                  }
                 }
-
                 getPageTreeForSearch(exitSearchLink);
                 updateBreadcrumbs();
 

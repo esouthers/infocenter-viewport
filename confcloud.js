@@ -890,7 +890,7 @@ function confCloudJS() {
             }        
 
           }
-          function getPageTreeForSearch(link) {
+          function getPageTreeForSearch(link) { 
             $('.vp-desktop-navigation__page-tree__tree ul').remove();
             $('.vp-desktop-navigation__page-tree__tree').append('<div class="pagetreeSpinner">' + spinnerHTML + '</div>');
 

@@ -897,7 +897,7 @@ function confCloudJS() {
             if (link == '/') { link = '/Home'; }
             $.get(link + '/__pagetree.json', function(data, status, jqXHR) {
               var $pageTree = createPageTree(data);
-              $('.vp-desktop-navigation__page-tree__tree pagetreeSpinner').remove();
+              $('.vp-desktop-navigation__page-tree__tree .pagetreeSpinner').remove();
               $('.vp-desktop-navigation__page-tree__tree').append($pageTree);
               $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__icon').click(function() {
                 sidebarExpandoListeners($(this).children('button'));

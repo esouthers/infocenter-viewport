@@ -567,9 +567,48 @@ function confCloudJS() {
                   exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;
                 }
                 $('.header__navigation--heading').attr('href',exitSearchLink);
-                $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
+/*                $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
                   '<div data-item-id="" class="vp-tree-item__header relative flex items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + exitSearchLink + '">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
                   '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
+*/
+
+                $.get(exitSearchLink + '/__pagetree.json', function(data, status, jqXHR) {
+//$.get('https://doc.haivision.com/HMP/3.10.3/__pagetree.json', function(data, status, jqXHR) {
+                  var $pageTree = createPageTree(data);
+                  $('.vp-desktop-navigation__page-tree__tree').append($pageTree);
+                  $('.vp-desktop-navigation__page-tree__tree .vp-tree-item__header__icon').click(function() {
+                    sidebarExpandoListeners($(this).children('button'));
+                  });
+                })
+
+                function createPageTree(json) {
+                    function createNode(node) {
+                        var $li = $('<li>').addClass('vp-tree-item vp-focusable vp-tree-item--type-default vp-tree-item--with-hover-effect').attr('data-id', node.id).append(
+                            $('<div>').addClass('vp-tree-item__header relative flex items-start outline-none flex-row').attr('data-item-id', node.id).append(
+                                $('<a>').addClass('vp-tree-item__header__title').attr('href', node.link).text(node.title)).append(
+                                  $('<div>').addClass('vp-tree-item__header__icon').append()));
+                        
+                        if (node.children.length > 0) {
+                          $('.vp-tree-item__header__icon', $li).append($('<button>').addClass('vp-tree-item__header__expand-button cursor-pointer color-inherit transform rotate-0').attr('type','button').attr('aria-controls','submenu-' + node.id).attr('aria-label', node.title).attr('aria-hidden', 'true').attr('tabindex', '-1').append('<svg data-vp-id="chevron-right-icon-tree-item-"' + node.id + ' data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M7 5L10 8L7 11" stroke="currentColor" stroke-width="1px" stroke-linecap="square"></path></svg>'));
+                            var $ul = $('<ul>').attr('id','submenu-' + node.id).addClass('vp-tree-item__children hidden').attr('aria-label', node.title);
+                            node.children.forEach(function(child) {
+                                $ul.append(createNode(child));
+                            });
+                            $li.append($ul);
+                        }
+                        return $li;
+                    }
+
+                    var $ul = $('<ul class="vp-tree__container relative m-0 outline-none" role="tree">');
+                    json.pagetree.forEach(function(page) {
+                        $ul.append(createNode(page));
+                    });
+                    return $ul;
+                }
+
+
+
+
 
                 updateBreadcrumbs();
 
@@ -1289,17 +1328,6 @@ function confCloudJS() {
                 }
               });
 
-
-              function sidebarExpandoListeners(sidebarButton) {
-                if ($(sidebarButton).hasClass('rotate-0')) {
-                  $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
-                  $(sidebarButton).closest('li').children('ul').first().removeClass('hidden');
-                }
-                else {
-                  $(sidebarButton).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
-                  $(sidebarButton).closest('li').children('ul').first().addClass('hidden');
-                }
-              }
             });
           }
 
@@ -1328,6 +1356,16 @@ function confCloudJS() {
             }
           }
 
+          function sidebarExpandoListeners(sidebarButton) {
+            if ($(sidebarButton).hasClass('rotate-0')) {
+              $(sidebarButton).removeClass('rotate-0').addClass('rotate-90').attr('aria-label','Collapse item');
+              $(sidebarButton).closest('li').children('ul').first().removeClass('hidden');
+            }
+            else {
+              $(sidebarButton).removeClass('rotate-90').addClass('rotate-0').attr('aria-label','Expand item');
+              $(sidebarButton).closest('li').children('ul').first().addClass('hidden');
+            }
+          }
           function updateFooter() {
             $('article').append($('.footer__attribution-line--copyright'));
             // Add K15t footer

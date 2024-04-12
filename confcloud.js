@@ -528,7 +528,9 @@ function confCloudJS() {
                     else {
                       $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey);
                     }
+                    getPageTreeForSearch($('.header__navigation--heading').attr('href'));
                     addVersionToBreadcrumbs();
+
                   }
                 });
 

@@ -566,7 +566,8 @@ function confCloudJS() {
                     exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
                   } 
                   else {
-                    exitSearchLink = '/' + searchedSpaceKey + '/' + getLatestVariantVersion(searchedVariant) + '/' + searchedVariant;
+                    searchedVersion = getLatestVariantVersion(searchedVariant);
+                    exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
                   }
                 }
                 else {
@@ -579,7 +580,7 @@ function confCloudJS() {
                 }
                 $('.header__navigation--heading').attr('href',exitSearchLink);
 
-                searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                if (searchedVersion == '') { searchedVersion = getLatestProductVersion(searchedSpaceKey); }
                 if (searchedVersion != '') {
                   exitSearchLink += '/' + searchedVersion;
                 }

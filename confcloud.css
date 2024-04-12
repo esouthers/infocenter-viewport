@@ -634,6 +634,10 @@ li.searchSpinner {
   color: var(--haiui-white);
 }
 
+.pagetreeSpinner {
+    margin-left: 20px;
+    margin-top: 5px;
+}
 .vp-article__aside-left--collapsed ul {
   display: none;
 }

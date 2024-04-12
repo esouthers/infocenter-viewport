@@ -531,7 +531,7 @@ function confCloudJS() {
                         if ((prod.prefix == searchedSpaceKey) && (prod.versions)) {
                           searchedVersion = '/' + prod.versions.available[0].name;
                         }
-                      });
+                      }); 
                       $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
                     }
                     getPageTreeForSearch($('.header__navigation--heading').attr('href'));

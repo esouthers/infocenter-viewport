@@ -526,7 +526,13 @@ function confCloudJS() {
                       $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
                     }
                     else {
-                      $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey);
+                      searchedVersion = '';
+                      $.each(viewportList.members, function(key, prod) {
+                        if ((prod.prefix == searchedSpaceKey) && (prod.versions)) {
+                          searchedVersion = '/' + prod.versions.available[0].name;
+                        }
+                      });
+                      $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
                     }
                     getPageTreeForSearch($('.header__navigation--heading').attr('href'));
                     addVersionToBreadcrumbs();
@@ -874,6 +880,7 @@ function confCloudJS() {
           }
           function getPageTreeForSearch(link) {
             $('.vp-desktop-navigation__page-tree__tree ul').remove();
+            if (link == '') { link = '/Home'; }
             $.get(link + '/__pagetree.json', function(data, status, jqXHR) {
               var $pageTree = createPageTree(data);
               $('.vp-desktop-navigation__page-tree__tree').append($pageTree);

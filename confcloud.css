@@ -405,6 +405,7 @@ button.vp-tree-item__header__expand-button {
   color: var(--haiui-gray-00);
   padding-right: 8px;
   min-height: 30px;
+  min-width: max-content;
 }
 }
 .vp-picker__menu__item--selected {

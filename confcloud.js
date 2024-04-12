@@ -581,7 +581,7 @@ function confCloudJS() {
 
                 searchedVersion = getLatestProductVersion(searchedSpaceKey);
                 if (searchedVersion != '') {
-                  searchedVersion = '/' + searchedVersion;
+                  exitSearchLink += '/' + searchedVersion;
                 }
 
                 getPageTreeForSearch(exitSearchLink);

@@ -563,7 +563,12 @@ function confCloudJS() {
                   }
                 }
                 else {
-                  exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;
+                  if (searchedVersion != '') {
+                    exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey + '/' + searchedVersion;
+                  }
+                  else {
+                    exitSearchLink = searchedSpaceKey == '' ? '/' : '/' + searchedSpaceKey;
+                  }
                 }
                 $('.header__navigation--heading').attr('href',exitSearchLink);
 /*                let exitSearchText = 'Exit Search Results';

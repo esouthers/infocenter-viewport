@@ -526,12 +526,10 @@ function confCloudJS() {
                       $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
                     }
                     else {
-                      searchedVersion = '';
-                      $.each(viewportList.members, function(key, prod) {
-                        if ((prod.prefix == searchedSpaceKey) && (prod.versions)) {
-                          searchedVersion = '/' + prod.versions.available[0].name;
-                        }
-                      }); 
+                      searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                      if (searchedVersion != '') {
+                        searchedVersion = '/' + searchedVersion;
+                      }
                       $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
                     }
                     getPageTreeForSearch($('.header__navigation--heading').attr('href'));
@@ -588,6 +586,15 @@ function confCloudJS() {
                 getPageTreeForSearch(exitSearchLink);
                 updateBreadcrumbs();
 
+                function getLatestProductVersion(spacekey) {
+                  let version = '';
+                  $.each(viewportList.members, function(key, prod) {
+                    if ((prod.prefix == spacekey) && (prod.versions)) {
+                      version = prod.versions.available[0].name;
+                    }
+                  });
+                  return version;
+                }
                 function getLatestVariantVersion(variant) {
                   let version = '';
                   $.each(hvConfig.variants, function(i,product) {

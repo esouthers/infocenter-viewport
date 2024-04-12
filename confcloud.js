@@ -568,7 +568,7 @@ function confCloudJS() {
                   else {
                     searchedVersion = getLatestVariantVersion(searchedVariant);
                     exitSearchLink = '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant;
-                  }
+                  } 
                 }
                 else {
                   if (searchedVersion != '') {

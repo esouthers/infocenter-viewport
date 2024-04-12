@@ -578,11 +578,12 @@ function confCloudJS() {
                   }
                 }
                 $('.header__navigation--heading').attr('href',exitSearchLink);
-/*                let exitSearchText = 'Exit Search Results';
-                $('.vp-tree__container').append('<li class="vp-tree-item vp-tree-item--type-default vp-tree-item--variant-right-aligned list-none vp-tree-item--with-hover-effect" data-id="" role="treeitem" tabindex="-1" aria-label="Exit Search Results" aria-expanded="false" aria-selected="false" aria-level="1">' +
-                  '<div data-item-id="" class="vp-tree-item__header relative flex items-start outline-none flex-row"><a class="vp-tree-item__header__title flex-1 min-w-0 outline-none" tabindex="-1" href="' + exitSearchLink + '">' + exitSearchText + '</a><div class="vp-tree-item__header__icon">' +
-                  '<svg data-vp-id="dot-icon-tree-item-7046570" data-vp-component="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="1"></circle></svg></div></div></li>');
-*/
+
+                searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                if (searchedVersion != '') {
+                  searchedVersion = '/' + searchedVersion;
+                }
+
                 getPageTreeForSearch(exitSearchLink);
                 updateBreadcrumbs();
 
@@ -887,7 +888,7 @@ function confCloudJS() {
           }
           function getPageTreeForSearch(link) {
             $('.vp-desktop-navigation__page-tree__tree ul').remove();
-            if (link == '') { link = '/Home'; }
+            if (link == '/') { link = '/Home'; }
             $.get(link + '/__pagetree.json', function(data, status, jqXHR) {
               var $pageTree = createPageTree(data);
               $('.vp-desktop-navigation__page-tree__tree').append($pageTree);

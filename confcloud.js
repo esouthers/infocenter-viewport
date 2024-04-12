@@ -873,6 +873,7 @@ function confCloudJS() {
 
           }
           function getPageTreeForSearch(link) {
+            $('.vp-desktop-navigation__page-tree__tree ul').remove();
             $.get(link + '/__pagetree.json', function(data, status, jqXHR) {
               var $pageTree = createPageTree(data);
               $('.vp-desktop-navigation__page-tree__tree').append($pageTree);

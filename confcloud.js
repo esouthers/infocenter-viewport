@@ -884,7 +884,9 @@ function confCloudJS() {
                       searchSuggestion += version + '</span></div></a></li>';
                       $('#suggestionList').append(searchSuggestion);
                     }
-                    else { numResults -= 1; }
+                    else { 
+                      numResults -= 1; 
+                    }
                   });
                   if (numResults > 0) {
                     if ($('#custom-search-form .soAllVer').is(':checked') || $('#custom-search-form .soAllProd').is(':checked')) {

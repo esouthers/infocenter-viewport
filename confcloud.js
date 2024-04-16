@@ -474,6 +474,9 @@ function confCloudJS() {
                      if (val.versions.available.length > 0) {
                       addVersionsToDropdown(val.versions.available);
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
+                      $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {
+                        searchVersionEventListener($(this));
+                      });
                      }
                      else {
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').hide();
@@ -554,39 +557,7 @@ function confCloudJS() {
                   hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-versions-options"]'), e);
                 });
                 $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {
-                  if (!$(this).hasClass('is-selected')) {
-                    $('#custom-search-form input[name="v"]').attr('value',$(this).attr('data-value'));
-                    $('#custom-search-form input[name="start"]').attr('value','0');
-                    $('.vp-search-page__pagination').remove();
-                    const url = new URL(location);
-                    url.searchParams.set('v', $(this).attr('data-value'));
-                    url.searchParams.set('start','0');
-                    history.pushState({}, '', url);
-                    let searchURL = buildSearchURL();
-                    newSearch(searchURL);
-                    $('ul[data-vp-id="search-page-horizontal-filter-versions-options"]').hide();
-                    $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li.is-selected').removeClass('is-selected');
-                    $(this).addClass('is-selected');
-                    $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
-                    $('.vp-dropdown__option-label', this).addClass('is-selected');
-                    $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
-                    let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
-                    let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
-                    let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
-                    if (searchedVersion != 'All versions') {
-                      $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
-                    }
-                    else {
-                      searchedVersion = getLatestProductVersion(searchedSpaceKey);
-                      if (searchedVersion != '') {
-                        searchedVersion = '/' + searchedVersion;
-                      }
-                      $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
-                    }
-                    getPageTreeForSearch($('.header__navigation--heading').attr('href'));
-                    addVersionToBreadcrumbs();
-
-                  }
+                  searchVersionEventListener($(this));
                 });
 
                 function addVersionsToDropdown(versionsToAdd) {
@@ -668,6 +639,41 @@ function confCloudJS() {
                 }
               }
             }
+            function searchVersionEventListener(that) {                    
+              if (!$(that).hasClass('is-selected')) {
+                $('#custom-search-form input[name="v"]').attr('value',$(that).attr('data-value'));
+                $('#custom-search-form input[name="start"]').attr('value','0');
+                $('.vp-search-page__pagination').remove();
+                const url = new URL(location);
+                url.searchParams.set('v', $(that).attr('data-value'));
+                url.searchParams.set('start','0');
+                history.pushState({}, '', url);
+                let searchURL = buildSearchURL();
+                newSearch(searchURL);
+                $('ul[data-vp-id="search-page-horizontal-filter-versions-options"]').hide();
+                $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li.is-selected').removeClass('is-selected');
+                $(that).addClass('is-selected');
+                $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
+                $('.vp-dropdown__option-label', that).addClass('is-selected');
+                $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', that).text());
+                let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
+                let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
+                let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
+                if (searchedVersion != 'All versions') {
+                  $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
+                }
+                else {
+                  searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                  if (searchedVersion != '') {
+                    searchedVersion = '/' + searchedVersion;
+                  }
+                  $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
+                }
+                getPageTreeForSearch($('.header__navigation--heading').attr('href'));
+                addVersionToBreadcrumbs();
+              }
+            }
+
           }
           else {  // Regular page
             var removeBetaSpace = new MutationObserver(function(mutations) {

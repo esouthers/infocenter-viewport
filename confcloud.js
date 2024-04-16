@@ -467,8 +467,9 @@ function confCloudJS() {
                   if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
                   history.pushState({}, '', url);
                   let searchURL = buildSearchURL();
-                  newSearch(searchURL);
-//                  window.location.href = href;
+//                  newSearch(searchURL);
+
+                  window.location.href = href;
                 });
 
               // Variants Dropdown

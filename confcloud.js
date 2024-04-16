@@ -358,7 +358,7 @@ function confCloudJS() {
                 });
                 // Hide product dropdown
                 $(document).mouseup(function(e) {
-                  hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'), e);
+                  hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'), e); 
                 });
                 $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li').on('click', function() {
                   if (!$(this).hasClass('is-selected')) {

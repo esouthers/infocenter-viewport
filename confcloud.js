@@ -385,11 +385,7 @@ function confCloudJS() {
                   if (val.prefix == searchedSpaceKey) {
                     if (val.versions !== undefined) {
                       if (val.versions.available.length > 1) {
-                        let valVersions = val.versions.available;
-                        $.each(valVersions, function(verKey,verVal) {
-                          let verToAdd = '<li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="' + verVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-ver' + verKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + verVal.name + '</span></li>';
-                          $('[data-vp-id="custom-search-page-horizontal-filter-versions"] ul').append(verToAdd);
-                        });
+                        addVersionsToDropdown(val.versions.available);
                         $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                       }
                     }
@@ -443,7 +439,6 @@ function confCloudJS() {
                   hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'), e);
                 });
                 $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
-                  // Perform new search
                   var url = new URL(location);
                   url.searchParams.set('s', $(this).attr('data-value'));
                   $('#custom-search-form input[name="s"]').attr('value',$(this).attr('data-value'));
@@ -473,6 +468,17 @@ function confCloudJS() {
                   if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
                   history.pushState({}, '', url);
 
+                  $.each(viewportList.members, function(i,val) {
+                    if (val.name == $(this).attr('data-value')) {
+                     if (val.versions.available.length > 0) {
+                      addVersionsToDropdown(val.versions.available);
+                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
+                     }
+                     else {
+                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').hide();
+                     }
+                    }
+                  });
 
                     $('#custom-search-form input[name="start"]').attr('value','0');
                     $('.vp-search-page__pagination').remove();
@@ -582,6 +588,12 @@ function confCloudJS() {
                   }
                 });
 
+                function addVersionsToDropdown(versionsToAdd) {
+                  $.each(versionsToAdd, function(verKey,verVal) {
+                    let verToAdd = '<li data-vp-id="search-page-horizontal-filter-versions-item" data-name="v" data-value="' + verVal.name + '" class="vp-dropdown__option" id="headlessui-listbox-option-ver' + verKey + '" role="option" tabindex="-1" aria-selected="false" data-headlessui-state=""><span class="vp-dropdown__option-label">' + verVal.name + '</span></li>';
+                    $('[data-vp-id="custom-search-page-horizontal-filter-versions"] ul').append(verToAdd);
+                  });
+                }
                 function sortSearchDropdown(selector) {
                   var ul = selector;
                   var firstItem = ul.find("li:first-child");

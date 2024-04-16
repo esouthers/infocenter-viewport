@@ -446,26 +446,37 @@ function confCloudJS() {
                   // Perform new search
                   var url = new URL(location);
                   url.searchParams.set('s', $(this).attr('data-value'));
+                  $('#custom-search-form input[name="s"]').attr('value',$(this).attr('data-value'));
+
             // ******** EXCEPTION FOR TRANSMITTERS ******* //
                   let transmitterProduct = $(this).attr('data-variant');
                   if ($(this).attr('data-transmitters') == 'true') {
                     url.searchParams.set('va', transmitterProduct);
+                    $('#custom-search-form input[name="va"]').attr('value',transmitterProduct);
                   }
                   else {
                     if (url.searchParams.has('va')) {  url.searchParams.set('va', '');  }
+                    $('#custom-search-form input[name="va"]').attr('value','');
                   }
                   if ($(this).attr('data-transmitters') == 'true') {
                     $.each(hvConfig.variants.transmitters, function(i,j) {
                       if (j.variant == transmitterProduct) {
                         url.searchParams.set('v', j.versions[0]);
+                        $('#custom-search-form input[name="v"]').attr('value',j.versions[0]);
                       }
                     });
                   }
                   else {
                     if (url.searchParams.has('v')) {  url.searchParams.set('v', '');  }
+                    $('#custom-search-form input[name="v"]').attr('value','');
                   }
                   if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
                   history.pushState({}, '', url);
+
+
+                    $('#custom-search-form input[name="start"]').attr('value','0');
+                    $('.vp-search-page__pagination').remove();
+
                   let searchURL = buildSearchURL();
                   newSearch(searchURL);
 

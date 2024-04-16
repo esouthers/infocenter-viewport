@@ -1526,7 +1526,7 @@ function confCloudJS() {
               let modDay = modDate.split('-')[2].split('T')[0];
               let monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
               let modDateHTML = '<p class="modified-date">Last updated on '+monthArray[modMonth-1]+' '+modDay+', '+modYear+'</p>';
-              let pageactionsHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span><span title="Contact Sales" id="talk-to-sales">' + svgSales + '</span><span title="Print Page" id="print-article">' + svgPrint + '</span><span title="Export PDF" id="pdf-article" style="display:none;">' + svgPDF + '</span></p>';
+              let pageactionsHTML = '<p class="page-actions"><span title="Provide Feedback" id="provide-feedback">' + svgFeedback + '</span><span title="Contact Sales" id="talk-to-sales">' + svgSales + '</span><span title="Print Page" id="print-article">' + svgPrint + '</span><span title="Export PDF" id="pdf-article">' + svgPDF + '</span></p>';
               $('.article-header').append(modDateHTML).append(pageactionsHTML); 
               $('#pdf-article svg').attr('width','16px').attr('height', '16px');
               loadScript('https://haivision.jira.com/s/d41d8cd98f00b204e9800998ecf8427e-T/-t2deah/b/11/e73395c53c3b10fde2303f4bf74ffbf6/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=99991144', function() {
@@ -1984,9 +1984,6 @@ function confCloudJS() {
                 map[e.keyCode] = true;
                 if ((e.ctrlKey || e.metaKey) && e.altKey && map[79]) { // Go to the page in Confl Cloud
                   window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('data-pageid'), '_blank');
-                }
-                if ((e.ctrlKey || e.metaKey) && e.altKey && map[80]) { // Test PDFing
-                  $('#pdf-article').show();
                 }
                 if (e.ctrlKey && e.metaKey && map[79]) { // Go to the page in Confl Cloud for Mac
                   window.open("http://haivisioninfocenter.atlassian.net/wiki/pages/viewpage.action?pageId=" + $('body').attr('data-pageid'), '_blank');

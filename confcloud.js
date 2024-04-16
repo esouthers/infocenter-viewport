@@ -394,7 +394,7 @@ function confCloudJS() {
                   toDelete.slice(1).remove(); // Keep the first show all versions option
                   $.each(viewportList.members, function(i,val) {
                     if (val.prefix == formGet('s')) {
-                     if (val.versions.available.length > 0) {
+                     if (val.versions.available.length > 1) {
                       addVersionsToDropdown(val.versions.available);
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                       $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {

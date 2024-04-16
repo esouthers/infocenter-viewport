@@ -258,84 +258,6 @@ function confCloudJS() {
                 if (paramsGetS != '') { searchURL += '&s='; }
                 searchURL += paramsGetS + paramsGetV + paramsGetVa;
                 newSearch(searchURL);
-                function newSearch(restURL) {
-                  $('#custom-search-page-results li').remove();
-                  $('.vp-search-page__main-inner .searchSpinner').show();
-                  $.get(restURL, function(data, status, jqXHR) {
-                    $('.vp-search-page__main-inner .searchSpinner').hide();
-                    var numResults = data.total;
-                    if (numResults > 0) {
-                      $(data.hits).each(function(i,val){
-                        if (isValidSearchResult(val)) {
-                          let version = val.versionName === undefined ? '' : ' ' + val.versionName;
-                          let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
-                          searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
-                          searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
-                          $('#custom-search-page-results').append(searchResult);
-                        }
-                      });
-                    }
-                    if (numResults > data.max) {
-                      let pagination = '<div class="vp-search-page__pagination"><nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style=""><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav></div>';
-                      $('#sidebar-dragbar').before(pagination);
-                      if (data.start == 0) {
-                        $('button.vp-pagination__action--prev').attr('disabled','');
-                      }
-                      if (data.start + data.max >= data.total) {
-                        $('button.vp-pagination__action--next').attr('disabled','');
-                      }
-                      if (data.start - data.max < 0) { $('button.vp-pagination__action--prev').attr('value','0');  }
-                      else {                           $('button.vp-pagination__action--prev').attr('value',data.start - data.max);  }
-                      $('button.vp-pagination__action--next').attr('value',data.start + data.max);
-                      let count = 0;
-                      let pageNum = 1;
-                      let pageNumToShow = data.start / data.max + 1;
-                      while (count < data.total) {
-                        let newPage = '';
-                        if (((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5)) || ((pageNum > pageNumToShow) && (pageNum < pageNumToShow + 5))) {
-                          newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                        }
-                        else if (pageNum == pageNumToShow) {
-                          newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
-                        }
-                        else if ((pageNum < pageNumToShow) && ($('.pagination-ellipsis-before').length == 0)) {
-                          newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-before" disabled>...</button></li>';
-                        }
-                        else if ((pageNum > pageNumToShow) && ($('.pagination-ellipsis-after').length == 0)) {
-                          newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-after" disabled>...</button></li>';
-                        }
-                        if (newPage != '') {                  
-                          $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
-                        }
-                        count += data.max;
-                        pageNum++;
-                      }
-                      $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
-                        $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
-                        $('.vp-search-page__pagination').remove();
-                        $('html, body').animate({scrollTop:0}, 'fast');
-                        const url = new URL(location);
-                        url.searchParams.set('start',$(this).attr('value'));
-                        history.pushState({}, '', url);
-                        let searchURL = buildSearchURL();
-                        newSearch(searchURL);
-                        addVersionToBreadcrumbs();
-                      });
-                    }
-                    $('#startIdx').text(data.start + 1);
-                    if (data.start + data.max > data.total) {
-                      $('#stopIdx').text(data.total);
-                    }
-                    else {
-                      $('#stopIdx').text(data.start + data.max);
-                    }
-                    if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
-                    $('#numResults').text(data.total);
-                    if (data.total == 0) { $('.search-header-text').hide(); $('.noResults').removeClass('hidden'); }
-                    else { $('.search-header-text').show(); $('.noResults').addClass('hidden'); }
-                    $('#titleBreadcrumb').text($('.search-header').text());
-                  });
-                }
 
                 $('.vp-search-input__input').on('input', function() {
                   $('#custom-search-form input[name="q"]').attr('value',$('.vp-search-input__input').val().trim());
@@ -638,6 +560,84 @@ function confCloudJS() {
                   return version;
                 }
               }
+            }
+            function newSearch(restURL) {
+              $('#custom-search-page-results li').remove();
+              $('.vp-search-page__main-inner .searchSpinner').show();
+              $.get(restURL, function(data, status, jqXHR) {
+                $('.vp-search-page__main-inner .searchSpinner').hide();
+                var numResults = data.total;
+                if (numResults > 0) {
+                  $(data.hits).each(function(i,val){
+                    if (isValidSearchResult(val)) {
+                      let version = val.versionName === undefined ? '' : ' ' + val.versionName;
+                      let searchResult = '<li aria-label="Result '+i+'" id="Result' + i + '"><div class="vp-search-result"><div class="vp-search-result__content-source">';
+                      searchResult += val.variantName !== undefined ? val.variantName : val.contentSourceName;
+                      searchResult += version + '</div><a class="vp-search-result__title" href="' + val.relativeUrl + '">' + val.title + '</a><p class="vp-search-result__description">' + val.description + '</p></div></li>';
+                      $('#custom-search-page-results').append(searchResult);
+                    }
+                  });
+                }
+                if (numResults > data.max) {
+                  let pagination = '<div class="vp-search-page__pagination"><nav id="custom-search-page-pagination" class="vp-pagination" aria-label="Pagination" style=""><div class="vp-pagination__inner"><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--prev">Previous page</button></span><ul class="vp-pagination__items list-none m-0 p-0"></ul><span class="vp-pagination__action-container"><button type="button" class="vp-button vp-pagination__action vp-pagination__action--next">Next page</button></span></div></nav></div>';
+                  $('#sidebar-dragbar').before(pagination);
+                  if (data.start == 0) {
+                    $('button.vp-pagination__action--prev').attr('disabled','');
+                  }
+                  if (data.start + data.max >= data.total) {
+                    $('button.vp-pagination__action--next').attr('disabled','');
+                  }
+                  if (data.start - data.max < 0) { $('button.vp-pagination__action--prev').attr('value','0');  }
+                  else {                           $('button.vp-pagination__action--prev').attr('value',data.start - data.max);  }
+                  $('button.vp-pagination__action--next').attr('value',data.start + data.max);
+                  let count = 0;
+                  let pageNum = 1;
+                  let pageNumToShow = data.start / data.max + 1;
+                  while (count < data.total) {
+                    let newPage = '';
+                    if (((pageNum < pageNumToShow) && (pageNum > pageNumToShow - 5)) || ((pageNum > pageNumToShow) && (pageNum < pageNumToShow + 5))) {
+                      newPage = '<li><button type="button" aria-label="Page '+pageNum+'" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                    }
+                    else if (pageNum == pageNumToShow) {
+                      newPage = '<li><button type="button" aria-label="Page '+pageNum+'" aria-current="true" class="vp-pagination__item vp-button" value="'+count+'">'+pageNum+'</button></li>';
+                    }
+                    else if ((pageNum < pageNumToShow) && ($('.pagination-ellipsis-before').length == 0)) {
+                      newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-before" disabled>...</button></li>';
+                    }
+                    else if ((pageNum > pageNumToShow) && ($('.pagination-ellipsis-after').length == 0)) {
+                      newPage = '<li><button type="button" class="vp-pagination__item vp-button pagination-ellipsis-after" disabled>...</button></li>';
+                    }
+                    if (newPage != '') {                  
+                      $('#custom-search-page-pagination .vp-pagination__items').append(newPage);
+                    }
+                    count += data.max;
+                    pageNum++;
+                  }
+                  $('#custom-search-page-pagination button:not([aria-current="true"], .pagination-ellipsis-before, .pagination-ellipsis-after)').on('click', function() {
+                    $('#custom-search-form input[name="start"]').attr('value',$(this).attr('value'));
+                    $('.vp-search-page__pagination').remove();
+                    $('html, body').animate({scrollTop:0}, 'fast');
+                    const url = new URL(location);
+                    url.searchParams.set('start',$(this).attr('value'));
+                    history.pushState({}, '', url);
+                    let searchURL = buildSearchURL();
+                    newSearch(searchURL);
+                    addVersionToBreadcrumbs();
+                  });
+                }
+                $('#startIdx').text(data.start + 1);
+                if (data.start + data.max > data.total) {
+                  $('#stopIdx').text(data.total);
+                }
+                else {
+                  $('#stopIdx').text(data.start + data.max);
+                }
+                if ((data.total > 1) || (data.total == 0)) { $('#pluralResults').text('s');}
+                $('#numResults').text(data.total);
+                if (data.total == 0) { $('.search-header-text').hide(); $('.noResults').removeClass('hidden'); }
+                else { $('.search-header-text').show(); $('.noResults').addClass('hidden'); }
+                $('#titleBreadcrumb').text($('.search-header').text());
+              });
             }
             function searchVersionEventListener(that) {                    
               if (!$(that).hasClass('is-selected')) {

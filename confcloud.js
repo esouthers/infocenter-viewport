@@ -360,89 +360,91 @@ function confCloudJS() {
                 $(document).mouseup(function(e) {
                   hideDropdown($('ul[data-vp-id="search-page-horizontal-filter-content-options"]'), e);
                 });
-                $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
-                  var url = new URL(location);
-                  url.searchParams.set('s', $(this).attr('data-value'));
-                  $('#custom-search-form input[name="s"]').attr('value',$(this).attr('data-value'));
+                $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li').on('click', function() {
+                  if (!$(this).hasClass('is-selected')) {
+                    var url = new URL(location);
+                    url.searchParams.set('s', $(this).attr('data-value'));
+                    $('#custom-search-form input[name="s"]').attr('value',$(this).attr('data-value'));
 
-            // ******** EXCEPTION FOR TRANSMITTERS ******* //
-                  let transmitterProduct = $(this).attr('data-variant');
-                  if ($(this).attr('data-transmitters') == 'true') {
-                    url.searchParams.set('va', transmitterProduct);
-                    $('#custom-search-form input[name="va"]').attr('value',transmitterProduct);
-                  }
-                  else {
-                    if (url.searchParams.has('va')) {  url.searchParams.set('va', '');  }
-                    $('#custom-search-form input[name="va"]').attr('value','');
-                  }
-                  if ($(this).attr('data-transmitters') == 'true') { 
-                    $.each(hvConfig.variants.transmitters, function(i,j) {
-                      if (j.variant == transmitterProduct) {
-                        url.searchParams.set('v', j.versions[0]);
-                        $('#custom-search-form input[name="v"]').attr('value',j.versions[0]);
-                      }
-                    });
-                  }
-                  else {
-                    if (url.searchParams.has('v')) {  url.searchParams.set('v', '');  }
-                    $('#custom-search-form input[name="v"]').attr('value','');
-                  }
-                  if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
-                  history.pushState({}, '', url);
-
-                  let toDelete = $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').remove();
-                  toDelete.slice(1).remove(); // Keep the first show all versions option
-                  $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').addClass('is-selected');
-                  $.each(viewportList.members, function(i,val) {
-                    if (val.prefix == formGet('s')) {
-                     if (val.versions?.available?.length > 1) {
-                      addVersionsToDropdown(val.versions.available);
-                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
-                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text('All versions')
-                      $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {
-                        searchVersionEventListener($(this));
-                      });
-                     }
-                     else {
-                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').hide();
-                     }
-                    }
-                  });
-
-                    $('#custom-search-form input[name="start"]').attr('value','0');
-                    $('.vp-search-page__pagination').remove();
-
-                  let searchURL = buildSearchURL();
-                  newSearch(searchURL);
-
-                    $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').hide();
-                    $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li.is-selected').removeClass('is-selected');
-                    $(this).addClass('is-selected');
-                    $('ul[data-vp-id="search-page-horizontal-filter-content-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
-                    $('.vp-dropdown__option-label', this).addClass('is-selected');
-                    $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
-                    let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
-                    let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
-                    let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
-                    if (searchedSpaceName != 'Search all') {
-                      if (searchedVersion != 'All versions') {
-                        $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
-                      }
-                      else {
-                        searchedVersion = getLatestProductVersion(searchedSpaceKey);
-                        if (searchedVersion != '') {
-                          searchedVersion = '/' + searchedVersion;
-                        }
-                        $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
-                      }
+              // ******** EXCEPTION FOR TRANSMITTERS ******* //
+                    let transmitterProduct = $(this).attr('data-variant');
+                    if ($(this).attr('data-transmitters') == 'true') {
+                      url.searchParams.set('va', transmitterProduct);
+                      $('#custom-search-form input[name="va"]').attr('value',transmitterProduct);
                     }
                     else {
-                      $('.header__navigation--heading').text('InfoCenter').attr('href','/');
+                      if (url.searchParams.has('va')) {  url.searchParams.set('va', '');  }
+                      $('#custom-search-form input[name="va"]').attr('value','');
                     }
-                    getPageTreeForSearch($('.header__navigation--heading').attr('href'));
-                    addVersionToBreadcrumbs();
+                    if ($(this).attr('data-transmitters') == 'true') { 
+                      $.each(hvConfig.variants.transmitters, function(i,j) {
+                        if (j.variant == transmitterProduct) {
+                          url.searchParams.set('v', j.versions[0]);
+                          $('#custom-search-form input[name="v"]').attr('value',j.versions[0]);
+                        }
+                      });
+                    }
+                    else {
+                      if (url.searchParams.has('v')) {  url.searchParams.set('v', '');  }
+                      $('#custom-search-form input[name="v"]').attr('value','');
+                    }
+                    if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
+                    history.pushState({}, '', url);
 
-//                  window.location.href = href;
+                    let toDelete = $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').remove();
+                    toDelete.slice(1).remove(); // Keep the first show all versions option
+                    $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').addClass('is-selected');
+                    $.each(viewportList.members, function(i,val) {
+                      if (val.prefix == formGet('s')) {
+                       if (val.versions?.available?.length > 1) {
+                        addVersionsToDropdown(val.versions.available);
+                        $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
+                        $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text('All versions')
+                        $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {
+                          searchVersionEventListener($(this));
+                        });
+                       }
+                       else {
+                        $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').hide();
+                       }
+                      }
+                    });
+
+                      $('#custom-search-form input[name="start"]').attr('value','0');
+                      $('.vp-search-page__pagination').remove();
+
+                    let searchURL = buildSearchURL();
+                    newSearch(searchURL);
+
+                      $('ul[data-vp-id="search-page-horizontal-filter-content-options"]').hide();
+                      $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li.is-selected').removeClass('is-selected');
+                      $(this).addClass('is-selected');
+                      $('ul[data-vp-id="search-page-horizontal-filter-content-options"] .vp-dropdown__option-label.is-selected').removeClass('is-selected');
+                      $('.vp-dropdown__option-label', this).addClass('is-selected');
+                      $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
+                      let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
+                      let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
+                      let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
+                      if (searchedSpaceName != 'Search all') {
+                        if (searchedVersion != 'All versions') {
+                          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
+                        }
+                        else {
+                          searchedVersion = getLatestProductVersion(searchedSpaceKey);
+                          if (searchedVersion != '') {
+                            searchedVersion = '/' + searchedVersion;
+                          }
+                          $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
+                        }
+                      }
+                      else {
+                        $('.header__navigation--heading').text('InfoCenter').attr('href','/');
+                      }
+                      getPageTreeForSearch($('.header__navigation--heading').attr('href'));
+                      addVersionToBreadcrumbs();
+
+                  }
+
                 });
 
               // Variants Dropdown

@@ -741,7 +741,7 @@ function confCloudJS() {
                 $.each(hvConfig.variants, function(i,j) {
                   $.each(j, function(k,l) { 
                     if (resultObject.variantName == l.variant) {
-                      if (l.versions.indexOf(resultObject.versionName) >= 0) {
+                      if (l.versions?.indexOf(resultObject.versionName) >= 0) {
                         valid = true;
                       }
                       else { valid = false;}

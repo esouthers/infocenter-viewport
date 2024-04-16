@@ -390,7 +390,8 @@ function confCloudJS() {
                   if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
                   history.pushState({}, '', url);
 
-                  $('[data-vp-id="custom-search-page-horizontal-filter-versions"] li').remove();
+                  let toDelete = $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').remove();
+                  toDelete.slice(1).remove(); // Keep the first show all versions option
                   $.each(viewportList.members, function(i,val) {
                     if (val.prefix == formGet('s')) {
                      if (val.versions.available.length > 0) {

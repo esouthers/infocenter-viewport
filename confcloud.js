@@ -877,9 +877,7 @@ function confCloudJS() {
                 var numResults = data.total;
                 if (numResults > 0) {
                   $(data.hits).each(function(i,val){
-                    if (val.contentSourceName.indexOf(hvConfig.hiddenSpaces) < 0) {
-
-
+                    if (isValidSearchResult(val)) {
                       let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                       let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
                       searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;

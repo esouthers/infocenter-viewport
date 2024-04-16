@@ -870,14 +870,14 @@ function confCloudJS() {
               var searchTerm = str;
               let spaceSearched = viewportList.currentContentSource.prefix;
               $('#custom-search-form input[name="q"]').attr('value',searchTerm);
-              var searchURL = '/__search?l=en&start=0&max=10&ol=false&q=' + searchTerm;
+              var searchURL = '/__search?l=en&start=0&max=100&ol=false&q=' + searchTerm;
               searchURL += formGet('s', true) + formGet('v', true) + formGet('va', true);
               $.get(searchURL, function(data, status, jqXHR) {
                 $('#suggestionList li:not(.searchSpinner)').remove();
                 var numResults = data.total;
                 if (numResults > 0) {
                   $(data.hits).each(function(i,val){
-                    if (isValidSearchResult(val)) {
+                    if ((isValidSearchResult(val)) && (i <= 10)) {
                       let version = val.versionName === undefined ? '' : ' ' + val.versionName;
                       let searchSuggestion = '<li id="suggestion' + i + '" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><a class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" href="' + val.relativeUrl + '" tabindex="-1"><span class="vp-search-suggestion-option__label">' + val.title + '</span><div class="vp-search-suggestion-option__info-container"><span class="vp-search-suggestion-option__info">';
                       searchSuggestion += val.variantName !== undefined ? val.variantName : val.contentSourceName;
@@ -888,24 +888,21 @@ function confCloudJS() {
                       numResults -= 1; 
                     }
                   });
-                  if (numResults > 0) {
-                    if ($('#custom-search-form .soAllVer').is(':checked') || $('#custom-search-form .soAllProd').is(':checked')) {
-                      searchSpaceStr = '';
-                      searchVersionStr = '';
-                    }
-                    else if ($('#custom-search-form .soAllVer').is(':checked')) {
-                      searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
-                      searchVersionStr = '';
-                    }
-                    else {
-                      searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
-                      searchVersionStr = viewportList.currentContentSource.versions == undefined ? '' : '&s=' + viewportList.currentContentSource.versions.current.name;
-                    }
-      //              let searchPageLink = '/search.html?l=en&max=10&ol=false&q=' + $('#custom-search-form input').val() + searchSpaceStr + searchVersionStr + '&start=0';
-                    let searchPageLink = '/search.html?' + searchURL.split('?')[1];
-                    let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
-                    $('#suggestionList').append(searchSuggestionAll);
+                  if ($('#custom-search-form .soAllVer').is(':checked') || $('#custom-search-form .soAllProd').is(':checked')) {
+                    searchSpaceStr = '';
+                    searchVersionStr = '';
                   }
+                  else if ($('#custom-search-form .soAllVer').is(':checked')) {
+                    searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
+                    searchVersionStr = '';
+                  }
+                  else {
+                    searchSpaceStr = '&s=' + viewportList.currentContentSource.prefix;
+                    searchVersionStr = viewportList.currentContentSource.versions == undefined ? '' : '&s=' + viewportList.currentContentSource.versions.current.name;
+                  }
+                  let searchPageLink = '/search.html?' + searchURL.split('?')[1];
+                  let searchSuggestionAll = '<li class="vp-search-suggestion-action-container"><a id="showAll" role="option" aria-selected="false" href="' + searchPageLink + '" rel="noopener" tabindex="-1" class="vp-search-suggestion-action vp-button vp-button--secondary">Show all ' + numResults + ' results</a></li>';
+                  $('#suggestionList').append(searchSuggestionAll);
                 }
                 if (numResults == 0) {
                   let noResults = '<li id="" role="option" aria-selected="false" class="vp-search-suggestion-option-container vp-search-form__suggestion"><div class="vp-search-form__suggestion vp-search-suggestion-option vp-search-suggestion-option--default" tabindex="-1"><span class="vp-search-suggestion-option__label">Your search returned no matches.</span><div class="vp-search-suggestion-option__info-container"></div></div></li>';

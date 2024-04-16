@@ -469,7 +469,7 @@ function confCloudJS() {
                   history.pushState({}, '', url);
 
                   $.each(viewportList.members, function(i,val) {
-                    if (val.name == $(this).attr('data-value')) {
+                    if (val.name == formGet('s')) {
                      if (val.versions.available.length > 0) {
                       addVersionsToDropdown(val.versions.available);
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();

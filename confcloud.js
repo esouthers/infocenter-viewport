@@ -395,7 +395,7 @@ function confCloudJS() {
                   $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').addClass('is-selected');
                   $.each(viewportList.members, function(i,val) {
                     if (val.prefix == formGet('s')) {
-                     if (val.versions.available.length > 1) {
+                     if (val.versions?.available?.length > 1) {
                       addVersionsToDropdown(val.versions.available);
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text('All versions')

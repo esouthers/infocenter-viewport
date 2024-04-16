@@ -478,7 +478,7 @@ function confCloudJS() {
                     let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
                     let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
                     let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
-                    if searchedSpaceName != 'Search all' {
+                    if (searchedSpaceName != 'Search all') {
                       if (searchedVersion != 'All versions') {
                         $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
                       }

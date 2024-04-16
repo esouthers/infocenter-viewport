@@ -468,6 +468,7 @@ function confCloudJS() {
                   if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
                   history.pushState({}, '', url);
 
+                  $('[data-vp-id="custom-search-page-horizontal-filter-versions"] li').remove();
                   $.each(viewportList.members, function(i,val) {
                     if (val.prefix == formGet('s')) {
                      if (val.versions.available.length > 0) {

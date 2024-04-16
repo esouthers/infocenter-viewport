@@ -659,6 +659,10 @@ function confCloudJS() {
             }
             $('#pdf-article').on('click', function(e) { 
               e.preventDefault();
+              if ($('button.pdf-button').length > 0) {
+                overrideTemplateLetter = $('button.pdf-button').attr('data-templateLetter');
+                overrideTemplateA4 = $('button.pdf-button').attr('data-templateA4');
+              }
               startPDFprocess();
             });
             function startPDFprocess() {

@@ -444,28 +444,31 @@ function confCloudJS() {
                 });
                 $('ul[data-vp-id="search-page-horizontal-filter-content-options"] li:not(.is-selected)').on('click', function() {
                   // Perform new search
-                  var href = new URL(window.location.href);
-                  href.searchParams.set('s', $(this).attr('data-value'));
+                  var url = new URL(location);
+                  url.searchParams.set('s', $(this).attr('data-value'));
             // ******** EXCEPTION FOR TRANSMITTERS ******* //
                   let transmitterProduct = $(this).attr('data-variant');
                   if ($(this).attr('data-transmitters') == 'true') {
-                    href.searchParams.set('va', transmitterProduct);
+                    url.searchParams.set('va', transmitterProduct);
                   }
                   else {
-                    if (href.searchParams.has('va')) {  href.searchParams.set('va', '');  }
+                    if (url.searchParams.has('va')) {  url.searchParams.set('va', '');  }
                   }
                   if ($(this).attr('data-transmitters') == 'true') {
                     $.each(hvConfig.variants.transmitters, function(i,j) {
                       if (j.variant == transmitterProduct) {
-                        href.searchParams.set('v', j.versions[0]);
+                        url.searchParams.set('v', j.versions[0]);
                       }
                     });
                   }
                   else {
-                    if (href.searchParams.has('v')) {  href.searchParams.set('v', '');  }
+                    if (url.searchParams.has('v')) {  url.searchParams.set('v', '');  }
                   }
-                  if (href.searchParams.has('start')) {  href.searchParams.set('start', '0');  }
-                  window.location.href = href;
+                  if (url.searchParams.has('start')) {  url.searchParams.set('start', '0');  }
+                  history.pushState({}, '', url);
+                  let searchURL = buildSearchURL();
+                  newSearch(searchURL);
+//                  window.location.href = href;
                 });
 
               // Variants Dropdown

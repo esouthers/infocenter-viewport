@@ -392,11 +392,13 @@ function confCloudJS() {
 
                   let toDelete = $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').remove();
                   toDelete.slice(1).remove(); // Keep the first show all versions option
+                  $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').addClass('is-selected');
                   $.each(viewportList.members, function(i,val) {
                     if (val.prefix == formGet('s')) {
                      if (val.versions.available.length > 1) {
                       addVersionsToDropdown(val.versions.available);
                       $('[data-vp-id="custom-search-page-horizontal-filter-versions"]').show();
+                      $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text('All versions')
                       $('ul[data-vp-id="search-page-horizontal-filter-versions-options"] li').on('click', function() {
                         searchVersionEventListener($(this));
                       });
@@ -540,27 +542,27 @@ function confCloudJS() {
                 getPageTreeForSearch(exitSearchLink);
                 updateBreadcrumbs();
 
-                function getLatestProductVersion(spacekey) {
-                  let version = '';
-                  $.each(viewportList.members, function(key, prod) {
-                    if ((prod.prefix == spacekey) && (prod.versions)) {
-                      version = prod.versions.available[0].name;
-                    }
-                  });
-                  return version;
-                }
-                function getLatestVariantVersion(variant) {
-                  let version = '';
-                  $.each(hvConfig.variants, function(i,product) {
-                    $.each(product, function(i,j) {
-                      if (j.variant == variant) {
-                        version = j.versions[0];
-                      }
-                    });
-                  });
-                  return version;
-                }
               }
+            }
+            function getLatestProductVersion(spacekey) {
+              let version = '';
+              $.each(viewportList.members, function(key, prod) {
+                if ((prod.prefix == spacekey) && (prod.versions)) {
+                  version = prod.versions.available[0].name;
+                }
+              });
+              return version;
+            }
+            function getLatestVariantVersion(variant) {
+              let version = '';
+              $.each(hvConfig.variants, function(i,product) {
+                $.each(product, function(i,j) {
+                  if (j.variant == variant) {
+                    version = j.versions[0];
+                  }
+                });
+              });
+              return version;
             }
             function newSearch(restURL) {
               $('#custom-search-page-results li').remove();

@@ -453,7 +453,7 @@ function confCloudJS() {
                     if (url.searchParams.has('va')) {  url.searchParams.set('va', '');  }
                     $('#custom-search-form input[name="va"]').attr('value','');
                   }
-                  if ($(this).attr('data-transmitters') == 'true') {
+                  if ($(this).attr('data-transmitters') == 'true') { 
                     $.each(hvConfig.variants.transmitters, function(i,j) {
                       if (j.variant == transmitterProduct) {
                         url.searchParams.set('v', j.versions[0]);

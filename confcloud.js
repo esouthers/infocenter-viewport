@@ -733,22 +733,21 @@ function confCloudJS() {
 
 
           function isValidSearchResult(resultObject) {
-            if (val.contentSourceName.indexOf(hvConfig.hiddenSpaces) >= 0) { 
+            if (resultObject.contentSourceName.indexOf(hvConfig.hiddenSpaces) >= 0) { 
               valid = false;
             }
             else {
-              if (val.variantName) {
+              if (resultObject.variantName) {
                 $.each(hvConfig.variants, function(i,j) {
-                    $.each(j, function(k,l) { 
-                      if (val.variantName == l.variant) {
-                        if (l.versions.indexOf(val.versionName) >= 0) {
-                          valid = true;
-                        }
-                        else { valid = false;}
+                  $.each(j, function(k,l) { 
+                    if (resultObject.variantName == l.variant) {
+                      if (l.versions.indexOf(resultObject.versionName) >= 0) {
+                        valid = true;
                       }
-                  })
-                })
-
+                      else { valid = false;}
+                    }
+                  });
+                });
               }
               else {
                 valid = true;

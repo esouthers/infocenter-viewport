@@ -424,17 +424,23 @@ function confCloudJS() {
                       $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text($('.vp-dropdown__option-label', this).text());
                       let searchedSpaceName = $('[data-vp-id="custom-search-page-horizontal-filter-content"] .vp-dropdown__button-label').text();
                       let searchedVersion   = $('[data-vp-id="custom-search-page-horizontal-filter-versions"] .vp-dropdown__button-label').text();
+                      let searchedVariant   = $('[data-vp-id="custom-search-page-horizontal-filter-content"] li.is-selected').attr('data-variant');
                       let searchedSpaceKey  = $('#custom-search-form input[name="s"]').attr('value');
                       if (searchedSpaceName != 'Search all') {
                         if (searchedVersion != 'All versions') {
-                          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href','/' + searchedSpaceKey + '/' + searchedVersion);
+                          $('.header__navigation--heading').text(searchedSpaceName + ' ' + searchedVersion).attr('href', searchedVariant !== undefined
+                              ? '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant
+                              : '/' + searchedSpaceKey + '/' + searchedVersion);
                         }
                         else {
                           searchedVersion = getLatestProductVersion(searchedSpaceKey);
                           if (searchedVersion != '') {
-                            searchedVersion = '/' + searchedVersion;
+                            searchedVersion = searchedVersion;
                           }
-                          $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + searchedVersion );
+                          $('.header__navigation--heading').text(searchedSpaceName).attr('href', searchedVariant !== undefined
+                              ? '/' + searchedSpaceKey + '/' + searchedVersion + '/' + searchedVariant
+                              : '/' + searchedSpaceKey + '/' + searchedVersion);
+//                          $('.header__navigation--heading').text(searchedSpaceName).attr('href','/' + searchedSpaceKey + '/' + searchedVersion );
                         }
                       }
                       else {
